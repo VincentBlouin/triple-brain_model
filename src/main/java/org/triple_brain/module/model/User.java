@@ -1,4 +1,4 @@
-package org.triple_brain.model;
+package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;

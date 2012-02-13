@@ -1,4 +1,4 @@
-package org.triple_brain.model.suggestion;
+package org.triple_brain.module.model.suggestion;
 
 import java.util.ArrayList;
 import java.util.List;

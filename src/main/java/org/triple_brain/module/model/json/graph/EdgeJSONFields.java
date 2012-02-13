@@ -1,4 +1,4 @@
-package org.triple_brain.model.json.graph;
+package org.triple_brain.module.model.json.graph;
 
 /**
  * @author Vincent Blouin

@@ -1,4 +1,4 @@
-package org.triple_brain.model.json;
+package org.triple_brain.module.model.json;
 
 /**
  * @author Pascal
