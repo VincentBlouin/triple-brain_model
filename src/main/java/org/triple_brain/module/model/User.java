@@ -11,7 +11,7 @@ import java.util.UUID;
 public class User {
 
     // this field is completely hidden and only used for SQL-relative persistence
-    private Long internalID;
+    private Long internalId;
 
     private final String id = UUID.randomUUID().toString();
     private String email;
