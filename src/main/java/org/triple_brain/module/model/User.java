@@ -14,35 +14,10 @@ public class User {
     private Long internalId;
 
     private final String id = UUID.randomUUID().toString();
+    private String username;
     private String email;
     private String passwordHash;
     private String salt;
-    private String firstName = "";
-    private String lastName = "";
-
-    public String firstName() {
-        return firstName;
-    }
-
-    public String lastName() {
-        return lastName;
-    }
-
-    public User firstName(String firstName) {
-        if (firstName != null)
-            this.firstName = firstName;
-        return this;
-    }
-
-    public User lastName(String lastName) {
-        if (lastName != null)
-            this.lastName = lastName;
-        return this;
-    }
-
-    public String fullName() {
-        return firstName + " " + lastName;
-    }
 
     public String passwordHash() {
         return passwordHash;
@@ -97,16 +72,20 @@ public class User {
     }
 
     public String salt() {
-
         return salt;
     }
 
-    public static User withEmail(String email) {
-        return new User(email);
+    public static User withUsernameAndEmail(String username, String email) {
+        return new User(username, email);
     }
 
-    private User(String email) {
+    private User(String username, String email) {
+        this.username = username;
         this.email = email.toLowerCase().trim();
+    }
+
+    public String username(){
+        return username;
     }
 
     public String email(){
