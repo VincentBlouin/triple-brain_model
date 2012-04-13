@@ -6,7 +6,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.util.UUID;
 
 /**
- * @author Vincent Blouin
+ * Copyright Mozilla Public License 1.1
  */
 public class User {
 

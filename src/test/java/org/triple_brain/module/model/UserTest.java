@@ -12,7 +12,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 /**
- * @author Vincent Blouin
+ * Copyright Mozilla Public License 1.1
  */
 public class UserTest {
 

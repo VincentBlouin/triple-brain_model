@@ -1,7 +1,7 @@
 package org.triple_brain.module.model.json.drawn_graph;
 
 /**
- * @author Vincent Blouin
+ * Copyright Mozilla Public License 1.1
  */
 public class PointJSONFields {
     public static final String X = "x";

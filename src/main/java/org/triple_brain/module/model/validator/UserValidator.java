@@ -11,7 +11,7 @@ import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.triple_brain.module.model.json.UserJSONFields.*;
 
 /**
- * @author Vincent Blouin
+ * Copyright Mozilla Public License 1.1
  */
 
 public class UserValidator {

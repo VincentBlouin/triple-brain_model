@@ -1,7 +1,7 @@
 package org.triple_brain.module.model.json.graph;
 
 /**
- * @author Vincent Blouin
+ * Copyright Mozilla Public License 1.1
  */
 public class EdgeJSONFields {
     public static final String ID = "id";

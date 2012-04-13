@@ -3,7 +3,7 @@ package org.triple_brain.module.model.json.drawn_graph;
 import org.triple_brain.module.model.json.graph.VertexJSONFields;
 
 /**
- * @author Vincent Blouin
+ * Copyright Mozilla Public License 1.1
  */
 public class DrawnVertexJSONFields extends VertexJSONFields {
     public static final String POSITION = "position";
