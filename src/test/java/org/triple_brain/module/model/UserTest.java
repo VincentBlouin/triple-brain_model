@@ -2,6 +2,7 @@ package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.codehaus.jettison.json.JSONObject;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -10,7 +11,7 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
-
+import static org.triple_brain.module.model.json.UserJSONFields.*;
 /**
  * Copyright Mozilla Public License 1.1
  */
@@ -80,5 +81,16 @@ public class UserTest {
     public void toString_give_user_email() {
         User user = User.withUsernameAndEmail("roger_lamothe","roger.lamothe@example.org");
         MatcherAssert.assertThat(user.toString(), Matchers.is("roger.lamothe@example.org"));
+    }
+
+    @Test
+    public void can_get_json_representation_of_user()throws Exception{
+        User user = User.withUsernameAndEmail(
+                "roger_lamothe",
+                "roger.lamothe@example.org"
+        );
+        JSONObject jsonUser = user.toJSON();
+        assertThat(jsonUser.getString(USER_NAME), is("roger_lamothe"));
+        assertThat(jsonUser.getString(EMAIL), is("roger.lamothe@example.org"));
     }
 }

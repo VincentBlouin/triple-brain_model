@@ -2,8 +2,12 @@ package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import java.util.UUID;
+
+import static org.triple_brain.module.model.json.UserJSONFields.*;
 
 /**
  * Copyright Mozilla Public License 1.1
@@ -84,15 +88,28 @@ public class User {
         this.email = email.toLowerCase().trim();
     }
 
-    public String username(){
+    public String username() {
         return username;
     }
 
-    public String email(){
+    public String email() {
         return email;
     }
 
-    public String id(){
+    public String id() {
         return id;
+    }
+
+    public String URIFromSiteURI(String siteURI) {
+        return siteURI + username() + "/";
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        return new JSONObject()
+                .put(
+                        USER_NAME, username()
+                ).put(
+                        EMAIL, email()
+                );
     }
 }
