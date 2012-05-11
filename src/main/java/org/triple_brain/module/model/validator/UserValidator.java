@@ -20,7 +20,7 @@ public class UserValidator {
     private static String DOMAIN = "(" + ATOM + "+(\\." + ATOM + "+)*";
     private static String IP_DOMAIN = "\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
     private static Pattern email_pattern = Pattern.compile("^" + ATOM + "+(\\." + ATOM + "+)*@" + DOMAIN + "|" + IP_DOMAIN + ")$", Pattern.CASE_INSENSITIVE);
-    private static int EMAIL_MAX_LENGTH = 50;
+    private static int EMAIL_MAX_LENGTH = 255;
     
     public static final String INVALID_EMAIL = "invalid_email";
     public static final String MANDATORY_EMAIL = "mandatory_email";
