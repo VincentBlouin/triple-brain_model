@@ -41,19 +41,6 @@ public class UserValidatorTest {
     }
 
     @Test
-    public void email_cant_be_too_long() throws Exception{
-        assertTrue(
-                validationWithUserReturnsFieldWithMessage(
-                        validUserButWithFieldValue(
-                                EMAIL,
-                                "roger.lamotheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee@example.org"
-                        ),
-                        EMAIL,
-                        EMAIL_TOO_LONG)
-        );
-    }
-
-    @Test
     public void password_is_mandatory() throws Exception{
         assertTrue(
                 validationWithUserReturnsFieldWithMessage(
