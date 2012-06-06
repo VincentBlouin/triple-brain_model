@@ -104,6 +104,10 @@ public class User {
         return siteURI + username() + "/";
     }
 
+    public String mindMapURIFromSiteURI(String siteURI){
+        return URIFromSiteURI(siteURI) + "mind_map";
+    }
+
     public JSONObject toJSON() throws JSONException {
         return new JSONObject()
                 .put(
