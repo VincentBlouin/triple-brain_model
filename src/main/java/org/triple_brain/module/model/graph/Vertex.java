@@ -1,5 +1,7 @@
 package org.triple_brain.module.model.graph;
 
+import org.triple_brain.module.model.Suggestion;
+
 import java.util.List;
 import java.util.Set;
 
@@ -21,6 +23,8 @@ public abstract class Vertex implements GraphElement{
     public abstract boolean hasMinNumberOfEdgesFromCenterVertex();
     public abstract void minNumberOfEdgesFromCenterVertex(int number);
     public abstract int minNumberOfEdgesFromCenterVertex();
+    public abstract void suggestions(Set<Suggestion> suggestions);
+    public abstract Set<Suggestion> suggestions();
 
     @Override
     public boolean equals(Object vertexToCompareAsObject) {
