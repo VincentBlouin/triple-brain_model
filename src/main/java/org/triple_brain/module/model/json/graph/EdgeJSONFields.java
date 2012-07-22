@@ -17,7 +17,7 @@ public class EdgeJSONFields {
         try {
             return new JSONObject()
                     .put(ID, edge.id())
-                    .put(LABEL, edge.label())
+                    .put(LABEL, edge.label().trim().isEmpty() ? Edge.EMPTY_LABEL :  edge.label())
                     .put(SOURCE_VERTEX_ID, edge.sourceVertex().id())
                     .put(DESTINATION_VERTEX_ID, edge.destinationVertex().id());
         } catch (JSONException e) {

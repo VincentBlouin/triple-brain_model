@@ -23,6 +23,15 @@ public class User {
     private String passwordHash;
     private String salt;
 
+    public static User withUsernameAndEmail(String username, String email) {
+        return new User(username, email);
+    }
+
+    private User(String username, String email) {
+        this.username = username;
+        this.email = email.toLowerCase().trim();
+    }
+
     public String passwordHash() {
         return passwordHash;
     }
@@ -77,15 +86,6 @@ public class User {
 
     public String salt() {
         return salt;
-    }
-
-    public static User withUsernameAndEmail(String username, String email) {
-        return new User(username, email);
-    }
-
-    private User(String username, String email) {
-        this.username = username;
-        this.email = email.toLowerCase().trim();
     }
 
     public String username() {

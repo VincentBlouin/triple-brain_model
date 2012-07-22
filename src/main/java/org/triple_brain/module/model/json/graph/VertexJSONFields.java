@@ -33,7 +33,7 @@ public class VertexJSONFields {
             }
             JSONObject jsonVertex = new JSONObject()
             .put(ID, vertex.id())
-            .put(LABEL, vertex.label())
+            .put(LABEL, vertex.label().trim().isEmpty() ? Vertex.EMPTY_LABEL : vertex.label())
             .put(SUGGESTIONS, suggestions);
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if(!hiddenConnectedEdgesLabel.isEmpty()){
