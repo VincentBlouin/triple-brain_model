@@ -42,7 +42,6 @@ public class VertexJSONFields {
                 jsonVertex.put(VertexJSONFields.NUMBER_OF_HIDDEN_CONNECTED_VERTICES, numberOfHiddenConnectedVertices);
                 jsonVertex.put(NAME_OF_HIDDEN_PROPERTIES, new JSONArray(hiddenConnectedEdgesLabel));
             }
-            jsonVertex.put(MIN_NUMBER_OF_EDGES_FROM_CENTER_VERTEX, vertex.minNumberOfEdgesFromCenterVertex());
             return jsonVertex;
         } catch (JSONException e) {
             throw new RuntimeException(e);

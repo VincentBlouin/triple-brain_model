@@ -26,8 +26,6 @@ public abstract class Vertex implements GraphElement{
     public abstract List<String> hiddenConnectedEdgesLabel();
     public abstract void hiddenConnectedEdgesLabel(List<String> hiddenEdgeLabel);
     public abstract boolean hasMinNumberOfEdgesFromCenterVertex();
-    public abstract void minNumberOfEdgesFromCenterVertex(int number);
-    public abstract int minNumberOfEdgesFromCenterVertex();
     public abstract void suggestions(Set<Suggestion> suggestions);
     public abstract Set<Suggestion> suggestions();
     public abstract void addSemanticType(String typeUri);
