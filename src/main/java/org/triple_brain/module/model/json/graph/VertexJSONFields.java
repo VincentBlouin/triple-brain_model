@@ -5,7 +5,8 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.Suggestion;
 import org.triple_brain.module.model.graph.Vertex;
-import org.triple_brain.module.model.json.SuggestionJSONFields;
+import org.triple_brain.module.model.json.ExternalResourceJsonFields;
+import org.triple_brain.module.model.json.SuggestionJsonFields;
 
 import java.util.List;
 
@@ -20,13 +21,14 @@ public class VertexJSONFields {
     public static final String NAME_OF_HIDDEN_PROPERTIES = "name_of_hidden_properties";
     public static final String MIN_NUMBER_OF_EDGES_FROM_CENTER_VERTEX = "min_number_of_edges_from_center_vertex";
     public static final String SUGGESTIONS = "suggestions";
+    public static final String TYPE = "type";
 
     public static JSONObject vertexToJson(Vertex vertex) {
         try {
             JSONArray suggestions = new JSONArray();
             for(Suggestion suggestion : vertex.suggestions()){
                 suggestions.put(
-                        SuggestionJSONFields.suggestionToJson(
+                        SuggestionJsonFields.toJson(
                                 suggestion
                         )
                 );
@@ -35,6 +37,14 @@ public class VertexJSONFields {
             .put(ID, vertex.id())
             .put(LABEL, vertex.label().trim().isEmpty() ? Vertex.EMPTY_LABEL : vertex.label())
             .put(SUGGESTIONS, suggestions);
+            if(vertex.hasTheAdditionalType()){
+                jsonVertex.put(
+                        TYPE,
+                        ExternalResourceJsonFields.toJson(
+                                vertex.getTheAdditionalType()
+                        )
+                );
+            }
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if(!hiddenConnectedEdgesLabel.isEmpty()){
                 jsonVertex.put(VertexJSONFields.IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES, true);

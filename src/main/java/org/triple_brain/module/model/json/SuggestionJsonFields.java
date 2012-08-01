@@ -7,12 +7,12 @@ import org.triple_brain.module.model.Suggestion;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class SuggestionJSONFields {
+public class SuggestionJsonFields {
     public static final String TYPE_URI = "type_uri";
     public static final String DOMAIN_URI = "domain_uri";
     public static final String LABEL = "label";
 
-    public static JSONObject suggestionToJson(Suggestion suggestion) {
+    public static JSONObject toJson(Suggestion suggestion) {
         try {
             return new JSONObject()
                     .put(TYPE_URI, suggestion.typeUri())
