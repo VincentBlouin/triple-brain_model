@@ -31,6 +31,7 @@ public abstract class Vertex implements GraphElement{
     public abstract Set<Suggestion> suggestions();
     public abstract boolean hasTheAdditionalType();
     public abstract void setTheAdditionalType(ExternalResource type);
+    public abstract void removeTheAdditionalType();
     public abstract ExternalResource getTheAdditionalType();
     public abstract void setSameAsUsingUri(String uri);
     @Override
