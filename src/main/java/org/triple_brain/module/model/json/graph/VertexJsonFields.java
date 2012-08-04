@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class VertexJSONFields {
+public class VertexJsonFields {
     public static final String ID = "id";
     public static final String LABEL = "label";
     public static final String IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES = "is_frontier_vertex_with_hidden_vertices";
@@ -23,7 +23,7 @@ public class VertexJSONFields {
     public static final String SUGGESTIONS = "suggestions";
     public static final String TYPE = "type";
 
-    public static JSONObject vertexToJson(Vertex vertex) {
+    public static JSONObject toJson(Vertex vertex) {
         try {
             JSONArray suggestions = new JSONArray();
             for(Suggestion suggestion : vertex.suggestions()){
@@ -47,9 +47,9 @@ public class VertexJSONFields {
             }
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if(!hiddenConnectedEdgesLabel.isEmpty()){
-                jsonVertex.put(VertexJSONFields.IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES, true);
+                jsonVertex.put(VertexJsonFields.IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES, true);
                 Integer numberOfHiddenConnectedVertices = hiddenConnectedEdgesLabel.size();
-                jsonVertex.put(VertexJSONFields.NUMBER_OF_HIDDEN_CONNECTED_VERTICES, numberOfHiddenConnectedVertices);
+                jsonVertex.put(VertexJsonFields.NUMBER_OF_HIDDEN_CONNECTED_VERTICES, numberOfHiddenConnectedVertices);
                 jsonVertex.put(NAME_OF_HIDDEN_PROPERTIES, new JSONArray(hiddenConnectedEdgesLabel));
             }
             return jsonVertex;

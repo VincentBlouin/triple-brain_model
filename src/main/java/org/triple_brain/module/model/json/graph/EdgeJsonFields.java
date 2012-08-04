@@ -7,13 +7,13 @@ import org.triple_brain.module.model.graph.Edge;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class EdgeJSONFields {
+public class EdgeJsonFields {
     public static final String ID = "id";
     public static final String LABEL = "label";
     public static final String SOURCE_VERTEX_ID = "source_vertex_id";
     public static final String DESTINATION_VERTEX_ID = "destination_vertex_id";
 
-    public static JSONObject edgeToJson(Edge edge) {
+    public static JSONObject toJson(Edge edge) {
         try {
             return new JSONObject()
                     .put(ID, edge.id())

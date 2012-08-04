@@ -1,10 +1,10 @@
 package org.triple_brain.module.model.json;
 
 /**
- * @author Pascal
+ * Copyright Mozilla Public License 1.1
  */
 public class StatementJsonFields {
-     public static final String SUBJECT_ID = "subject_id";
-    public static final String PREDICATE_ID = "predicate_id";
-    public static final String OBJECT_ID = "object_id";
+    public static final String SOURCE_VERTEX = "source_vertex";
+    public static final String EDGE = "edge";
+    public static final String END_VERTEX = "end_vertex";
 }
