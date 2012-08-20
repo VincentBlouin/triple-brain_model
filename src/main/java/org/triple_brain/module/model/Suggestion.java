@@ -10,7 +10,7 @@ public class Suggestion {
     private URI domainUri;
     private String label;
 
-    public static Suggestion usingDomainAndExternalResourceForType(URI domainUri, ExternalResource type){
+    public static Suggestion usingDomainAndExternalResourceForType(URI domainUri, FriendlyResource type){
         return new Suggestion(
                 type.uri(),
                 domainUri,

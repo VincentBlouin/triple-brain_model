@@ -5,18 +5,18 @@ import java.net.URI;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class ExternalResource {
+public class FriendlyResource {
     private URI uri;
     private String label;
 
-    public static ExternalResource withUriAndLabel(URI uri, String label){
-        return new ExternalResource(
+    public static FriendlyResource withUriAndLabel(URI uri, String label){
+        return new FriendlyResource(
                 uri,
                 label
         );
     }
 
-    private ExternalResource(URI uri, String label){
+    private FriendlyResource(URI uri, String label){
         this.uri = uri;
         this.label = label;
     }

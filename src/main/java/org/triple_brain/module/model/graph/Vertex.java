@@ -1,8 +1,9 @@
 package org.triple_brain.module.model.graph;
 
-import org.triple_brain.module.model.ExternalResource;
+import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Suggestion;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Set;
 
@@ -29,11 +30,12 @@ public abstract class Vertex implements GraphElement{
     public abstract boolean hasMinNumberOfEdgesFromCenterVertex();
     public abstract void suggestions(Set<Suggestion> suggestions);
     public abstract Set<Suggestion> suggestions();
-    public abstract boolean hasTheAdditionalType();
-    public abstract void setTheAdditionalType(ExternalResource type);
-    public abstract void removeTheAdditionalType();
-    public abstract ExternalResource getTheAdditionalType();
-    public abstract void setSameAsUsingUri(String uri);
+    public abstract FriendlyResource friendlyResourceWithUri(URI uri);
+    public abstract void addType(FriendlyResource type);
+    public abstract void removeFriendlyResource(FriendlyResource type);
+    public abstract Set<FriendlyResource> getAdditionalTypes();
+    public abstract void addSameAs(FriendlyResource friendlyResource);
+    public abstract Set<FriendlyResource> getSameAs();
     @Override
     public boolean equals(Object vertexToCompareAsObject) {
         Vertex vertexToCompare = (Vertex) vertexToCompareAsObject;
