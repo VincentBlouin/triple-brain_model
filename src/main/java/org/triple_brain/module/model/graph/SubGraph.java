@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public interface Graph {
+public interface SubGraph {
     public Vertex vertexWithIdentifier(String identifier);
     public Edge edgeWithIdentifier(String identifier);
     public int numberOfEdgesAndVertices();

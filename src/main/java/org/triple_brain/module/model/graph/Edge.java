@@ -10,6 +10,8 @@ public abstract class Edge implements GraphElement {
 
     public abstract Vertex destinationVertex();
 
+    public abstract Vertex otherVertex(Vertex vertex);
+
     public abstract void remove();
 
     @Override
