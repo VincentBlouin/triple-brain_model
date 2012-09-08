@@ -5,9 +5,12 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.UUID;
 
-import static org.triple_brain.module.model.json.UserJSONFields.*;
+import static org.triple_brain.module.model.json.UserJSONFields.EMAIL;
+import static org.triple_brain.module.model.json.UserJSONFields.USER_NAME;
 
 /**
  * Copyright Mozilla Public License 1.1
@@ -104,12 +107,28 @@ public class User {
         return siteURI + username() + "/";
     }
 
-    public String mindMapURIFromSiteURI(String siteURI){
+    public String mindMapURIFromSiteURI(String siteURI) {
         return URIFromSiteURI(siteURI) + "mind_map";
     }
 
-    public String defaultVertexUri(){
-        return URIFromSiteURI(TripleBrainUris.BASE) + TripleBrainUris.DEFAULT_VERTEX_END_OF_URI;
+    public URI defaultVertexUri() {
+        try {
+            return new URI(
+                    URIFromSiteURI(TripleBrainUris.BASE) + TripleBrainUris.DEFAULT_VERTEX_END_OF_URI
+            );
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public URI generateUri() {
+        try {
+            return new URI(
+                    URIFromSiteURI(TripleBrainUris.BASE) + UUID.randomUUID().toString()
+            );
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public JSONObject toJSON() throws JSONException {
