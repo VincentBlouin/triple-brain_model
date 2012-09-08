@@ -108,6 +108,10 @@ public class User {
         return URIFromSiteURI(siteURI) + "mind_map";
     }
 
+    public String defaultVertexUri(){
+        return URIFromSiteURI(TripleBrainUris.BASE) + TripleBrainUris.DEFAULT_VERTEX_END_OF_URI;
+    }
+
     public JSONObject toJSON() throws JSONException {
         return new JSONObject()
                 .put(
