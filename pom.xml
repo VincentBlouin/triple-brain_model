@@ -72,16 +72,11 @@
         </dependency>
 
         <!--Tests-->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit-dep</artifactId>
             <version>4.8.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hamcrest</groupId>
-                    <artifactId>hamcrest-core</artifactId>
-                </exclusion>
-            </exclusions>
             <scope>test</scope>
         </dependency>
         <dependency>

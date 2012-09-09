@@ -11,6 +11,8 @@ public interface UserGraph {
     public void remove();
     public Vertex defaultVertex();
     public User user();
+    public boolean haveElementWithId(String id);
     public SubGraph graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, String centerVertexURI) throws NonExistingResourceException;
     public SubGraph graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
+    public String toRdfXml();
 }
