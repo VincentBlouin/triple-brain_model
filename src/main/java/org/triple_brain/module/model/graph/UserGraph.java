@@ -8,7 +8,6 @@ import org.triple_brain.module.model.graph.exceptions.NonExistingResourceExcepti
 * Copyright Mozilla Public License 1.1
 */
 public interface UserGraph {
-    public void remove();
     public Vertex defaultVertex();
     public User user();
     public boolean haveElementWithId(String id);
