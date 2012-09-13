@@ -28,4 +28,15 @@ public class FriendlyResource {
     public String label(){
         return label;
     }
+
+    @Override
+    public boolean equals(Object friendlyResourceToCompareAsObject) {
+        FriendlyResource friendlyResourceToCompare = (FriendlyResource) friendlyResourceToCompareAsObject;
+        return uri().equals(friendlyResourceToCompare.uri());
+    }
+
+    @Override
+    public int hashCode() {
+        return uri().hashCode();
+    }
 }

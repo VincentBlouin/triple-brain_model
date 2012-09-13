@@ -36,6 +36,7 @@ public abstract class Vertex implements GraphElement{
     public abstract Set<FriendlyResource> getAdditionalTypes();
     public abstract void addSameAs(FriendlyResource friendlyResource);
     public abstract Set<FriendlyResource> getSameAs();
+
     @Override
     public boolean equals(Object vertexToCompareAsObject) {
         Vertex vertexToCompare = (Vertex) vertexToCompareAsObject;
