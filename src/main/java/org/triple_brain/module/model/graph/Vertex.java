@@ -2,6 +2,7 @@ package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Suggestion;
+import org.triple_brain.module.model.User;
 
 import java.net.URI;
 import java.util.List;
@@ -36,6 +37,7 @@ public abstract class Vertex implements GraphElement{
     public abstract Set<FriendlyResource> getAdditionalTypes();
     public abstract void addSameAs(FriendlyResource friendlyResource);
     public abstract Set<FriendlyResource> getSameAs();
+
 
     @Override
     public boolean equals(Object vertexToCompareAsObject) {
