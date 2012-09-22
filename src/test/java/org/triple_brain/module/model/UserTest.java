@@ -6,6 +6,7 @@ import org.codehaus.jettison.json.JSONObject;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import org.triple_brain.module.model.json.UserJSONFields;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
@@ -89,7 +90,7 @@ public class UserTest {
                 "roger_lamothe",
                 "roger.lamothe@example.org"
         );
-        JSONObject jsonUser = user.toJSON();
+        JSONObject jsonUser = UserJSONFields.toJSON(user);
         assertThat(jsonUser.getString(USER_NAME), is("roger_lamothe"));
         assertThat(jsonUser.getString(EMAIL), is("roger.lamothe@example.org"));
     }

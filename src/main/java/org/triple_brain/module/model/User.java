@@ -2,15 +2,10 @@ package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
-
-import static org.triple_brain.module.model.json.UserJSONFields.EMAIL;
-import static org.triple_brain.module.model.json.UserJSONFields.USER_NAME;
 
 /**
  * Copyright Mozilla Public License 1.1
@@ -107,8 +102,8 @@ public class User {
         return siteURI + username() + "/";
     }
 
-    public String mindMapURIFromSiteURI(String siteURI) {
-        return URIFromSiteURI(siteURI) + "mind_map";
+    public String mindMapUri() {
+        return URIFromSiteURI(TripleBrainUris.BASE) + "mind_map";
     }
 
     public URI defaultVertexUri() {
@@ -129,14 +124,5 @@ public class User {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public JSONObject toJSON() throws JSONException {
-        return new JSONObject()
-                .put(
-                        USER_NAME, username()
-                ).put(
-                        EMAIL, email()
-                );
     }
 }

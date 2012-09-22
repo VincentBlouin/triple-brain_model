@@ -2,7 +2,6 @@ package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Suggestion;
-import org.triple_brain.module.model.User;
 
 import java.net.URI;
 import java.util.List;
@@ -28,7 +27,6 @@ public abstract class Vertex implements GraphElement{
     public abstract Set<Edge> connectedEdges();
     public abstract List<String> hiddenConnectedEdgesLabel();
     public abstract void hiddenConnectedEdgesLabel(List<String> hiddenEdgeLabel);
-    public abstract boolean hasMinNumberOfEdgesFromCenterVertex();
     public abstract void suggestions(Set<Suggestion> suggestions);
     public abstract Set<Suggestion> suggestions();
     public abstract FriendlyResource friendlyResourceWithUri(URI uri);
