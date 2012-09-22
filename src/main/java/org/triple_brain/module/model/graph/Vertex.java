@@ -17,7 +17,7 @@ public abstract class Vertex implements GraphElement{
     public abstract void addOutgoingEdge(Edge edge);
     public abstract void removeOutgoingEdge(Edge edge);
     public abstract Edge edgeThatLinksToDestinationVertex(Vertex destinationVertex);
-    public abstract boolean hasDestinationVertex(Vertex destinationVertex);
+    public abstract Boolean hasDestinationVertex(Vertex destinationVertex);
     public abstract void addNeighbor(Vertex neighbor);
     public abstract Edge addVertexAndRelation();
     public abstract Edge addRelationToVertex(Vertex destinationVertex);
