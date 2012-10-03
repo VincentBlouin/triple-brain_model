@@ -1,7 +1,8 @@
 package org.triple_brain.module.model.graph;
 
-import org.triple_brain.module.model.FriendlyResource;
-import org.triple_brain.module.model.Suggestion;
+import org.triple_brain.module.model.ExternalFriendlyResource;
+import org.triple_brain.module.model.suggestion.PersistedSuggestion;
+import org.triple_brain.module.model.suggestion.Suggestion;
 
 import java.net.URI;
 import java.util.List;
@@ -27,15 +28,14 @@ public abstract class Vertex implements GraphElement{
     public abstract Set<Edge> connectedEdges();
     public abstract List<String> hiddenConnectedEdgesLabel();
     public abstract void hiddenConnectedEdgesLabel(List<String> hiddenEdgeLabel);
-    public abstract void suggestions(Set<Suggestion> suggestions);
-    public abstract Set<Suggestion> suggestions();
-    public abstract FriendlyResource friendlyResourceWithUri(URI uri);
-    public abstract void addType(FriendlyResource type);
-    public abstract void removeFriendlyResource(FriendlyResource type);
-    public abstract Set<FriendlyResource> getAdditionalTypes();
-    public abstract void addSameAs(FriendlyResource friendlyResource);
-    public abstract Set<FriendlyResource> getSameAs();
-
+    public abstract void addSuggestions(Suggestion ... suggestions);
+    public abstract Set<PersistedSuggestion> suggestions();
+    public abstract ExternalFriendlyResource friendlyResourceWithUri(URI uri);
+    public abstract void addType(ExternalFriendlyResource type);
+    public abstract void removeFriendlyResource(ExternalFriendlyResource type);
+    public abstract Set<ExternalFriendlyResource> getAdditionalTypes();
+    public abstract void addSameAs(ExternalFriendlyResource friendlyResource);
+    public abstract Set<ExternalFriendlyResource> getSameAs();
 
     @Override
     public boolean equals(Object vertexToCompareAsObject) {

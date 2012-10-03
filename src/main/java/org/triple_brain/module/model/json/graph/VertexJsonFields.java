@@ -3,11 +3,11 @@ package org.triple_brain.module.model.json.graph;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.triple_brain.module.model.FriendlyResource;
-import org.triple_brain.module.model.Suggestion;
+import org.triple_brain.module.model.ExternalFriendlyResource;
 import org.triple_brain.module.model.graph.Vertex;
 import org.triple_brain.module.model.json.ExternalResourceJsonFields;
 import org.triple_brain.module.model.json.SuggestionJsonFields;
+import org.triple_brain.module.model.suggestion.PersistedSuggestion;
 
 import java.util.List;
 
@@ -56,10 +56,10 @@ public class VertexJsonFields {
 
     private static JSONArray jsonSuggestions(Vertex vertex){
         JSONArray suggestions = new JSONArray();
-        for(Suggestion suggestion : vertex.suggestions()){
+        for(PersistedSuggestion suggestion : vertex.suggestions()){
             suggestions.put(
                     SuggestionJsonFields.toJson(
-                            suggestion
+                            suggestion.get()
                     )
             );
         }
@@ -68,7 +68,7 @@ public class VertexJsonFields {
 
     private static JSONArray jsonAdditionalTypes(Vertex vertex){
         JSONArray additionalTypes = new JSONArray();
-        for(FriendlyResource friendlyResource: vertex.getAdditionalTypes()){
+        for(ExternalFriendlyResource friendlyResource: vertex.getAdditionalTypes()){
             additionalTypes.put(
                     ExternalResourceJsonFields.toJson(
                             friendlyResource
@@ -80,7 +80,7 @@ public class VertexJsonFields {
 
     private static JSONArray jsonSameAs(Vertex vertex){
         JSONArray sameAs = new JSONArray();
-        for(FriendlyResource friendlyResource: vertex.getSameAs()){
+        for(ExternalFriendlyResource friendlyResource: vertex.getSameAs()){
             sameAs.put(
                     ExternalResourceJsonFields.toJson(
                             friendlyResource

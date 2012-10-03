@@ -5,18 +5,18 @@ import java.net.URI;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class FriendlyResource {
+public class ExternalFriendlyResource {
     private URI uri;
     private String label;
 
-    public static FriendlyResource withUriAndLabel(URI uri, String label){
-        return new FriendlyResource(
+    public static ExternalFriendlyResource withUriAndLabel(URI uri, String label){
+        return new ExternalFriendlyResource(
                 uri,
                 label
         );
     }
 
-    private FriendlyResource(URI uri, String label){
+    private ExternalFriendlyResource(URI uri, String label){
         this.uri = uri;
         this.label = label;
     }
@@ -31,7 +31,7 @@ public class FriendlyResource {
 
     @Override
     public boolean equals(Object friendlyResourceToCompareAsObject) {
-        FriendlyResource friendlyResourceToCompare = (FriendlyResource) friendlyResourceToCompareAsObject;
+        ExternalFriendlyResource friendlyResourceToCompare = (ExternalFriendlyResource) friendlyResourceToCompareAsObject;
         return uri().equals(friendlyResourceToCompare.uri());
     }
 
