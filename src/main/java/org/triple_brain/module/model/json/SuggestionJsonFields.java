@@ -11,6 +11,7 @@ public class SuggestionJsonFields {
     public static final String TYPE_URI = "type_uri";
     public static final String DOMAIN_URI = "domain_uri";
     public static final String LABEL = "label";
+    public static final String ORIGIN = "origin";
 
     public static JSONObject toJson(Suggestion suggestion) {
         try {

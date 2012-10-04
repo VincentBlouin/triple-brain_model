@@ -9,6 +9,10 @@ public class SuggestionOrigin {
 
     private String origin;
 
+    public static SuggestionOrigin valueOf(String origin){
+        return new SuggestionOrigin(origin);
+    }
+
     public static SuggestionOrigin fromIdentificationWithUri(URI identificationUri){
         return new SuggestionOrigin(
                 "identification_" +
