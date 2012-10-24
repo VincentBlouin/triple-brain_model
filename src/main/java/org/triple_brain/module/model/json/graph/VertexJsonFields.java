@@ -5,7 +5,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.ExternalFriendlyResource;
 import org.triple_brain.module.model.graph.Vertex;
-import org.triple_brain.module.model.json.ExternalResourceJsonFields;
+import org.triple_brain.module.model.json.ExternalResourceJson;
 import org.triple_brain.module.model.json.SuggestionJsonFields;
 import org.triple_brain.module.model.suggestion.PersistedSuggestion;
 
@@ -70,7 +70,7 @@ public class VertexJsonFields {
         JSONArray additionalTypes = new JSONArray();
         for(ExternalFriendlyResource friendlyResource: vertex.getAdditionalTypes()){
             additionalTypes.put(
-                    ExternalResourceJsonFields.toJson(
+                    ExternalResourceJson.get(
                             friendlyResource
                     )
             );
@@ -82,7 +82,7 @@ public class VertexJsonFields {
         JSONArray sameAs = new JSONArray();
         for(ExternalFriendlyResource friendlyResource: vertex.getSameAs()){
             sameAs.put(
-                    ExternalResourceJsonFields.toJson(
+                    ExternalResourceJson.get(
                             friendlyResource
                     )
             );

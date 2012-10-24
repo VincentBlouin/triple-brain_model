@@ -1,7 +1,8 @@
 package org.triple_brain.module.model;
 
 import java.net.URI;
-import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
 * Copyright Mozilla Public License 1.1
@@ -9,7 +10,7 @@ import java.net.URL;
 public class ExternalFriendlyResource {
     private URI uri;
     private String label;
-    private URL imageUrl;
+    private Set<Image> images = new HashSet();
 
     public static ExternalFriendlyResource withUriAndLabel(URI uri, String label){
         return new ExternalFriendlyResource(
@@ -18,23 +19,26 @@ public class ExternalFriendlyResource {
         );
     }
 
-    public static ExternalFriendlyResource withUriLabelAndImageUrl(URI uri, String label, URL imageUrl){
+    public static ExternalFriendlyResource withUriLabelAndImages(URI uri, String label, Set<Image> images){
         return new ExternalFriendlyResource(
                 uri,
                 label,
-                imageUrl
+                images
         );
     }
 
     private ExternalFriendlyResource(URI uri, String label){
-        this.uri = uri;
-        this.label = label;
+        this(
+                uri,
+                label,
+                new HashSet<Image>()
+        );
     }
 
-    private ExternalFriendlyResource(URI uri, String label, URL imageUrl){
+    private ExternalFriendlyResource(URI uri, String label, Set<Image> images){
         this.uri = uri;
         this.label = label;
-        this.imageUrl = imageUrl;
+        this.images = images;
     }
 
     public URI uri(){
@@ -45,16 +49,12 @@ public class ExternalFriendlyResource {
         return label;
     }
 
-    public Boolean hasImageUrl(){
-        return imageUrl != null;
+    public Set<Image> images(){
+        return images;
     }
 
-    public URL imageUrl(){
-        return imageUrl;
-    }
-
-    public void imageUrl(URL imageUrl){
-        this.imageUrl = imageUrl;
+    public void images(Set<Image> images){
+        this.images = images;
     }
 
     @Override
