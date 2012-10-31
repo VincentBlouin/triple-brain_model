@@ -57,6 +57,10 @@ public class ExternalFriendlyResource {
         this.images = images;
     }
 
+    public Boolean gotTheImages(){
+        return images().size() > 0;
+    }
+
     @Override
     public boolean equals(Object friendlyResourceToCompareAsObject) {
         ExternalFriendlyResource friendlyResourceToCompare = (ExternalFriendlyResource) friendlyResourceToCompareAsObject;

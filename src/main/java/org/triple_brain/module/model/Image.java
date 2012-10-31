@@ -28,4 +28,15 @@ public class Image{
     public URL urlForBigger(){
         return urlForBigger;
     }
+
+    @Override
+    public boolean equals(Object imageToCompareAsObject) {
+        Image imageToCompare = (Image) imageToCompareAsObject;
+        return urlForSmall().equals(imageToCompare.urlForSmall());
+    }
+
+    @Override
+    public int hashCode() {
+        return urlForSmall().hashCode();
+    }
 }
