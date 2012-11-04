@@ -1,7 +1,6 @@
 package org.triple_brain.module.model;
 
 import org.junit.Test;
-import org.triple_brain.module.model.graph.scenarios.TestScenarios;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +11,7 @@ public class FreebaseExternalFriendlyResourceTest {
 
     @Test
     public void can_get_images(){
-        ExternalFriendlyResource timBernersLee = TestScenarios.timBernersLeeInFreebase();
+        ExternalFriendlyResource timBernersLee = ModelTestScenarios.timBernersLeeInFreebase();
         assertTrue(FreebaseExternalFriendlyResource.isFromFreebase(timBernersLee));
 
     }
