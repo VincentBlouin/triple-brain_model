@@ -13,7 +13,6 @@ public class FreebaseExternalFriendlyResourceTest {
     public void can_get_images(){
         ExternalFriendlyResource timBernersLee = ModelTestScenarios.timBernersLeeInFreebase();
         assertTrue(FreebaseExternalFriendlyResource.isFromFreebase(timBernersLee));
-
     }
 
 }

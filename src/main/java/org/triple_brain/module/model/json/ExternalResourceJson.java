@@ -13,6 +13,7 @@ public class ExternalResourceJson {
     public static final String URI = "uri";
     public static final String LABEL = "label";
     public static final String IMAGES = "images";
+    public static final String DESCRIPTION = "description";
 
     public static JSONObject get(ExternalFriendlyResource externalResource) {
         try {
@@ -21,7 +22,8 @@ public class ExternalResourceJson {
                     .put(LABEL, externalResource.label())
                     .put(IMAGES, ImageJson.fromCollection(
                             externalResource.images()
-                    ));
+                    ))
+                    .put(DESCRIPTION, externalResource.description());
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

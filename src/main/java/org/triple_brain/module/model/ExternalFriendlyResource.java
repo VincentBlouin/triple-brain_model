@@ -1,5 +1,7 @@
 package org.triple_brain.module.model;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.Set;
 public class ExternalFriendlyResource {
     private URI uri;
     private String label;
+    private String description;
     private Set<Image> images = new HashSet();
 
     public static ExternalFriendlyResource withUriAndLabel(URI uri, String label){
@@ -59,6 +62,18 @@ public class ExternalFriendlyResource {
 
     public Boolean gotTheImages(){
         return images().size() > 0;
+    }
+
+    public String description(){
+        return description;
+    }
+
+    public void description(String description){
+        this.description = description;
+    }
+
+    public Boolean gotADescription(){
+        return !StringUtils.isEmpty(description);
     }
 
     @Override

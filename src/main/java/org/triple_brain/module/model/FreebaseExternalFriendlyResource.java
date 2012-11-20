@@ -2,6 +2,12 @@ package org.triple_brain.module.model;
 
 import com.freebase.api.Freebase;
 import com.freebase.json.JSON;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.client.apache.config.DefaultApacheHttpClientConfig;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.common_utils.Urls;
 
 import java.util.*;
@@ -14,6 +20,8 @@ import static com.freebase.json.JSON.o;
 */
 public class FreebaseExternalFriendlyResource extends Observable {
     private ExternalFriendlyResource externalFriendlyResource;
+
+    public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text/";
 
     public static Boolean isFromFreebase(ExternalFriendlyResource externalFriendlyResource) {
         return externalFriendlyResource
@@ -35,6 +43,13 @@ public class FreebaseExternalFriendlyResource extends Observable {
 
     public void getImages(Observer observer) {
         new Thread(new GetImageThread(
+                this,
+                observer
+        )).start();
+    }
+
+    public void getDescription(Observer observer) {
+        new Thread(new GetDescriptionThread(
                 this,
                 observer
         )).start();
@@ -100,6 +115,41 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 );
             }
             return images;
+        }
+    }
+
+    private class GetDescriptionThread implements Runnable{
+
+        private FreebaseExternalFriendlyResource freebaseExternalFriendlyResource;
+        private Observer observer;
+
+        public GetDescriptionThread(FreebaseExternalFriendlyResource freebaseExternalFriendlyResource, Observer observer){
+            this.freebaseExternalFriendlyResource = freebaseExternalFriendlyResource;
+            this.observer = observer;
+        }
+
+        @Override
+        public void run() {
+            observer.update(
+                    freebaseExternalFriendlyResource,
+                    getDescription()
+            );
+        }
+
+        private String getDescription(){
+            DefaultApacheHttpClientConfig clientConfig = new DefaultApacheHttpClientConfig();
+            clientConfig.getProperties().put("com.sun.jersey.impl.client.httpclient.handleCookies", true);
+            Client client = Client.create(clientConfig);
+            WebResource resource = client.resource(DESCRIPTION_BASE_URI);
+            ClientResponse response = resource
+                    .path(freebaseExternalFriendlyResource.freebaseId())
+                    .get(ClientResponse.class);
+            JSONObject resultEnveloppe = response.getEntity(JSONObject.class);
+            try{
+                return resultEnveloppe.getString("result");
+            }catch(JSONException e){
+                throw new RuntimeException(e);
+            }
         }
     }
 }
