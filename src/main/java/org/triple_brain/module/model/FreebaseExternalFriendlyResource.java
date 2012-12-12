@@ -106,7 +106,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 images.add(
                         Image.withUrlForSmallAndBigger(
                                 Urls.get(
-                                        "https://usercontent.googleapis.com/freebase/v1/image" + imageId
+                                        "http://img.freebase.com/api/trans/image_thumb" + imageId
                                 ),
                                 Urls.get(
                                         "http://img.freebase.com/api/trans/raw" + imageId
