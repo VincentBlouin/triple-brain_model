@@ -2,14 +2,13 @@ package org.triple_brain.module.model;
 
 import com.freebase.api.Freebase;
 import com.freebase.json.JSON;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.client.apache.config.DefaultApacheHttpClientConfig;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.triple_brain.module.common_utils.DataFetcher;
 import org.triple_brain.module.common_utils.Urls;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 import static com.freebase.json.JSON.a;
@@ -137,17 +136,12 @@ public class FreebaseExternalFriendlyResource extends Observable {
         }
 
         private String getDescription(){
-            DefaultApacheHttpClientConfig clientConfig = new DefaultApacheHttpClientConfig();
-            clientConfig.getProperties().put("com.sun.jersey.impl.client.httpclient.handleCookies", true);
-            Client client = Client.create(clientConfig);
-            WebResource resource = client.resource(DESCRIPTION_BASE_URI);
-            ClientResponse response = resource
-                    .path(freebaseExternalFriendlyResource.freebaseId())
-                    .get(ClientResponse.class);
-            JSONObject resultEnveloppe = response.getEntity(JSONObject.class);
             try{
+                JSONObject resultEnveloppe = DataFetcher.getJsonFromUrl(
+                        new URL(DESCRIPTION_BASE_URI + freebaseExternalFriendlyResource.freebaseId())
+                );
                 return resultEnveloppe.getString("result");
-            }catch(JSONException e){
+            }catch(JSONException | MalformedURLException e){
                 throw new RuntimeException(e);
             }
         }
