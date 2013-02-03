@@ -34,7 +34,9 @@ public class GraphJSONFields {
     private static JSONArray verticesAsJsonFromGraph(SubGraph graph){
         JSONArray vertices = new JSONArray();
         for(Vertex vertex : graph.vertices()){
-            vertices.put(vertex);
+            vertices.put(
+                    VertexJsonFields.toJson(vertex)
+            );
         }
         return vertices;
     }
@@ -42,7 +44,9 @@ public class GraphJSONFields {
     private static JSONArray edgesAsJsonFromGraph(SubGraph graph){
         JSONArray edges = new JSONArray();
         for(Edge edge : graph.edges()){
-            edges.put(edge);
+            edges.put(
+                    EdgeJsonFields.toJson(edge)
+            );
         }
         return edges;
     }

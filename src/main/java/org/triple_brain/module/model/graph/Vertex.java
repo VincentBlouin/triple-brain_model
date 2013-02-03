@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public abstract class Vertex implements GraphElement{
+public interface Vertex extends GraphElement{
     public static final String EMPTY_LABEL = "a concept";
 
     public abstract boolean hasEdge(Edge edge);
@@ -36,16 +36,5 @@ public abstract class Vertex implements GraphElement{
     public abstract Set<ExternalFriendlyResource> getAdditionalTypes();
     public abstract void addSameAs(ExternalFriendlyResource friendlyResource);
     public abstract Set<ExternalFriendlyResource> getSameAs();
-
-    @Override
-    public boolean equals(Object vertexToCompareAsObject) {
-        Vertex vertexToCompare = (Vertex) vertexToCompareAsObject;
-        return id().equals(vertexToCompare.id());
-    }
-
-    @Override
-    public int hashCode() {
-        return id().hashCode();
-    }
 }
 
