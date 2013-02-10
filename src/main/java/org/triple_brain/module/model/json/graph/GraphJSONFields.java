@@ -16,7 +16,7 @@ public class GraphJSONFields {
 
     public static JSONObject toJson(SubGraph graph) {
         JSONObject graphAsJson = new JSONObject();
-        try{
+        try {
             graphAsJson.put(
                     VERTICES,
                     verticesAsJsonFromGraph(graph)
@@ -25,25 +25,30 @@ public class GraphJSONFields {
                     EDGES,
                     edgesAsJsonFromGraph(graph)
             );
-        }catch(JSONException e){
+        } catch (JSONException e) {
             throw new RuntimeException(e);
         }
         return graphAsJson;
     }
 
-    private static JSONArray verticesAsJsonFromGraph(SubGraph graph){
-        JSONArray vertices = new JSONArray();
-        for(Vertex vertex : graph.vertices()){
-            vertices.put(
-                    VertexJsonFields.toJson(vertex)
-            );
+    private static JSONObject verticesAsJsonFromGraph(SubGraph graph) {
+        JSONObject vertices = new JSONObject();
+        try {
+            for (Vertex vertex : graph.vertices()) {
+                vertices.put(
+                        vertex.id(),
+                        VertexJsonFields.toJson(vertex)
+                );
+            }
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
         return vertices;
     }
 
-    private static JSONArray edgesAsJsonFromGraph(SubGraph graph){
+    private static JSONArray edgesAsJsonFromGraph(SubGraph graph) {
         JSONArray edges = new JSONArray();
-        for(Edge edge : graph.edges()){
+        for (Edge edge : graph.edges()) {
             edges.put(
                     EdgeJsonFields.toJson(edge)
             );
