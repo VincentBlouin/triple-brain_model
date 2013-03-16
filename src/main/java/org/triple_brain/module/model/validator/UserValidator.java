@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
-import static org.triple_brain.module.model.json.UserJSONFields.*;
+import static org.triple_brain.module.model.json.UserJsonFields.*;
 
 /**
  * Copyright Mozilla Public License 1.1

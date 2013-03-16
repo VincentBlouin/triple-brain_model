@@ -3,8 +3,6 @@ package org.triple_brain.module.model;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.UUID;
 
 /**
@@ -96,33 +94,5 @@ public class User {
 
     public String id() {
         return id;
-    }
-
-    public String URIFromSiteURI(String siteURI) {
-        return siteURI + username() + "/";
-    }
-
-    public String mindMapUri() {
-        return URIFromSiteURI(TripleBrainUris.BASE) + "mind_map";
-    }
-
-    public URI defaultVertexUri() {
-        try {
-            return new URI(
-                    URIFromSiteURI(TripleBrainUris.BASE) + TripleBrainUris.DEFAULT_VERTEX_END_OF_URI
-            );
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public URI generateUri() {
-        try {
-            return new URI(
-                    URIFromSiteURI(TripleBrainUris.BASE) + UUID.randomUUID().toString()
-            );
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

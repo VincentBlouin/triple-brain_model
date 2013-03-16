@@ -4,8 +4,7 @@ package org.triple_brain.module.model;
 * Copyright Mozilla Public License 1.1
 */
 public class TripleBrainUris {
-    public static final String BASE = "http://www.triple_brain.org/";
-
+    public static final String BASE = "http://www.triple-brain.org/";
     public static final String DEFAULT_VERTEX_END_OF_URI = "default";
 
     public static final String MIN_NUMBER_OF_EDGES_FROM_CENTER_VERTEX = BASE + "min_number_of_edges_from_center_vertex";
