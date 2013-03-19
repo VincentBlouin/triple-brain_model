@@ -66,4 +66,8 @@ public class UserUris {
                 baseEdgeUri() + "/" + UUID.randomUUID().toString()
         );
     }
+
+    public static String edgeShortId(String id){
+        return id.substring(id.lastIndexOf("/") + 1);
+    }
 }
