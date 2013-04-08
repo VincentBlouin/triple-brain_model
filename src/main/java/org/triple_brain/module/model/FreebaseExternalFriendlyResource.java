@@ -1,18 +1,20 @@
 package org.triple_brain.module.model;
 
-import com.freebase.api.Freebase;
-import com.freebase.json.JSON;
+import com.google.api.client.http.*;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.triple_brain.module.common_utils.DataFetcher;
 import org.triple_brain.module.common_utils.Urls;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
-
-import static com.freebase.json.JSON.a;
-import static com.freebase.json.JSON.o;
+import java.util.HashSet;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
 /*
 * Copyright Mozilla Public License 1.1
@@ -82,38 +84,58 @@ public class FreebaseExternalFriendlyResource extends Observable {
         }
 
         private Set<Image> getImages(){
-            String imagesKey = "/common/topic/image";
-            String id = "id";
-            JSON query = o(
-                    id, freebaseId(),
-                    imagesKey, a(o(
-                    id, null
-            ))
-            );
-            JSON queryEnvelope = o("query", query);
-            JSON params = o();
-            JSON queryResult= Freebase.getFreebase().mqlread(
-                    query, queryEnvelope, params
-            ).get("result");
-            Set<Image> images = new HashSet<>();
-            if(queryResult == null || !queryResult.has(imagesKey)){
-                return images;
-            }
-            JSON imagesResult = queryResult.get(imagesKey);
-            for (JSON imageResult : (List<JSON>) imagesResult.array()) {
-                String imageId = imageResult.get(id).string();
-                images.add(
-                        Image.withUrlForSmallAndBigger(
-                                Urls.get(
-                                        "http://img.freebase.com/api/trans/image_thumb" + imageId
-                                ),
-                                Urls.get(
-                                        "http://img.freebase.com/api/trans/raw" + imageId
-                                )
-                        )
+//            HttpRequestInitializer initializer =
+//                    new CommonGoogleJsonClientRequestInitializer("MY KEY");
+//            HttpTransport httpTransport = new NetHttpTransport();
+//            JsonFactory jsonFactory = new JacksonFactory();
+//            Freebase freebase = new Freebase(
+//                    httpTransport,
+//                    jsonFactory,
+//                    initializer
+//            );
+            try{
+                String imagesKey = "/common/topic/image";
+                String id = "id";
+                org.codehaus.jettison.json.JSONArray imagesQuery = new org.codehaus.jettison.json.JSONArray();
+                imagesQuery.put(new org.codehaus.jettison.json.JSONObject().put(
+                        id,
+                        new org.codehaus.jettison.json.JSONArray()
+                ));
+                org.codehaus.jettison.json.JSONObject query = new org.codehaus.jettison.json.JSONObject();
+                query.put(id, freebaseId());
+                query.put(
+                    imagesKey,
+                    imagesQuery
                 );
+                HttpTransport httpTransport = new NetHttpTransport();
+                HttpRequestFactory requestFactory = httpTransport.createRequestFactory();
+                JSONParser parser = new JSONParser();
+                GenericUrl url = new GenericUrl("https://www.googleapis.com/freebase/v1/mqlread");
+                url.put("query", query.toString());
+                url.put("key", "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA");
+                HttpRequest request = requestFactory.buildGetRequest(url);
+                HttpResponse httpResponse = request.execute();
+                JSONObject response = new JSONObject(parser.parse(httpResponse.parseAsString()).toString());
+                JSONObject results = response.getJSONObject("result");
+                JSONArray imagesAsJson = results.getJSONArray("/common/topic/image");
+                Set<Image> images = new HashSet<>();
+                for(int i = 0 ; i < imagesAsJson.length(); i++){
+                    String imageId = imagesAsJson.getJSONObject(i).getJSONArray("id").getString(0);
+                    images.add(
+                            Image.withUrlForSmallAndBigger(
+                                    Urls.get(
+                                            "http://img.freebase.com/api/trans/image_thumb" + imageId
+                                    ),
+                                    Urls.get(
+                                            "http://img.freebase.com/api/trans/raw" + imageId
+                                    )
+                            )
+                    );
+                }
+                return images;
+            }catch(Exception e){
+                throw new RuntimeException(e);
             }
-            return images;
         }
     }
 
@@ -137,7 +159,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
 
         private String getDescription(){
             try{
-                JSONObject resultEnveloppe = DataFetcher.getJsonFromUrl(
+                org.codehaus.jettison.json.JSONObject resultEnveloppe = DataFetcher.getJsonFromUrl(
                         new URL(DESCRIPTION_BASE_URI + freebaseExternalFriendlyResource.freebaseId())
                 );
                 return resultEnveloppe.getString("result");
