@@ -116,9 +116,12 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 HttpRequest request = requestFactory.buildGetRequest(url);
                 HttpResponse httpResponse = request.execute();
                 JSONObject response = new JSONObject(parser.parse(httpResponse.parseAsString()).toString());
+                Set<Image> images = new HashSet<>();
+                if(response.getString("result").equals("null")){
+                    return images;
+                }
                 JSONObject results = response.getJSONObject("result");
                 JSONArray imagesAsJson = results.getJSONArray("/common/topic/image");
-                Set<Image> images = new HashSet<>();
                 for(int i = 0 ; i < imagesAsJson.length(); i++){
                     String imageId = imagesAsJson.getJSONObject(i).getJSONArray("id").getString(0);
                     images.add(
