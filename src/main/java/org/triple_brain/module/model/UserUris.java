@@ -14,7 +14,7 @@ public class UserUris {
 
     public URI baseUri() {
         return URI.create(
-                "/users/" + user.username()
+                "/service/users/" + user.username()
         );
     }
 
