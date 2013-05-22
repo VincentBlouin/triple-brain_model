@@ -113,6 +113,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 GenericUrl url = new GenericUrl("https://www.googleapis.com/freebase/v1/mqlread");
                 url.put("query", query.toString());
                 url.put("key", "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA");
+                url.put("raw", true);
                 HttpRequest request = requestFactory.buildGetRequest(url);
                 HttpResponse httpResponse = request.execute();
                 JSONObject response = new JSONObject(parser.parse(httpResponse.parseAsString()).toString());
@@ -127,7 +128,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
                     images.add(
                             Image.withUrlForSmallAndBigger(
                                     Urls.get(
-                                            "http://img.freebase.com/api/trans/image_thumb" + imageId
+                                            "https://usercontent.googleapis.com/freebase/v1/image/" + imageId
                                     ),
                                     Urls.get(
                                             "http://img.freebase.com/api/trans/raw" + imageId
