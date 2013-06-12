@@ -13,7 +13,8 @@ import java.util.Set;
  */
 public interface Vertex extends GraphElement{
     public static final String EMPTY_LABEL = "concept";
-
+    public String note();
+    public void note(String note);
     public abstract boolean hasEdge(Edge edge);
     public abstract void addOutgoingEdge(Edge edge);
     public abstract void removeOutgoingEdge(Edge edge);
