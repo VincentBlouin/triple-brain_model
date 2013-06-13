@@ -33,8 +33,8 @@ public class UserValidator {
     public static final String PASSWORD_TOO_SHORT = "password_too_short";
     public static final String MANDATORY_PASSWORD = "mandatory_password";
 
-    private static final int USER_NAME_MAX_LENGTH = 15;
-    private static final String USERNAME_PATTERN = "^[a-z0-9_-]{1,15}$";
+    private static final int USER_NAME_MAX_LENGTH = 50;
+    private static final String USERNAME_PATTERN = "^[a-z0-9_-]{1,50}$";
 
     public static final String MANDATORY_USER_NAME = "mandatory_user_name";
     public static final String INVALID_USER_NAME = "invalid_user_name";
