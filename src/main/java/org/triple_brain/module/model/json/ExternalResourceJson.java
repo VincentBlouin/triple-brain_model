@@ -39,9 +39,10 @@ public class ExternalResourceJson {
             String label = externalResource.getString(
                     ExternalResourceJson.LABEL
             );
-            return ExternalFriendlyResource.withUriAndLabel(
+            return ExternalFriendlyResource.withUriLabelAndDescription(
                     uri,
-                    label
+                    label,
+                    externalResource.getString(DESCRIPTION)
             );
         }catch(JSONException e){
             throw new RuntimeException(e);

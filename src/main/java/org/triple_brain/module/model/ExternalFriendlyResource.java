@@ -11,8 +11,8 @@ import java.util.Set;
 */
 public class ExternalFriendlyResource {
     private URI uri;
-    private String label;
-    private String description;
+    private String label = "";
+    private String description = "";
     private Set<Image> images = new HashSet();
 
     public static ExternalFriendlyResource withUriAndLabel(URI uri, String label){
@@ -20,6 +20,13 @@ public class ExternalFriendlyResource {
                 uri,
                 label
         );
+    }
+
+    public static ExternalFriendlyResource withUriLabelAndDescription(URI uri, String label, String description){
+        return new ExternalFriendlyResource(
+                uri,
+                label
+        ).description(description);
     }
 
     public static ExternalFriendlyResource withUriLabelAndImages(URI uri, String label, Set<Image> images){
@@ -68,8 +75,9 @@ public class ExternalFriendlyResource {
         return description;
     }
 
-    public void description(String description){
+    public ExternalFriendlyResource description(String description){
         this.description = description;
+        return this;
     }
 
     public Boolean gotADescription(){

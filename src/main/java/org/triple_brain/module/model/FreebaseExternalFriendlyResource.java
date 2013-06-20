@@ -10,6 +10,7 @@ import org.triple_brain.module.common_utils.DataFetcher;
 import org.triple_brain.module.common_utils.Urls;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Observable;
@@ -25,10 +26,11 @@ public class FreebaseExternalFriendlyResource extends Observable {
     public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text/";
 
     public static Boolean isFromFreebase(ExternalFriendlyResource externalFriendlyResource) {
-        return externalFriendlyResource
-                .uri()
-                .getHost()
-                .toLowerCase().
+        String host = externalFriendlyResource.uri().getHost();
+        if(host == null){
+            return false;
+        }
+        return host.toLowerCase().
                         contains("freebase.com");
     }
 
