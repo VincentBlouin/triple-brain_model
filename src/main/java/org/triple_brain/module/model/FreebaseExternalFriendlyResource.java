@@ -10,7 +10,6 @@ import org.triple_brain.module.common_utils.DataFetcher;
 import org.triple_brain.module.common_utils.Urls;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Observable;
@@ -127,13 +126,15 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 JSONArray imagesAsJson = results.getJSONArray("/common/topic/image");
                 for(int i = 0 ; i < imagesAsJson.length(); i++){
                     String imageId = imagesAsJson.getJSONObject(i).getJSONArray("id").getString(0);
+                    String baseUrl = "https://www.googleapis.com/freebase/v1/image";
+                    String key = "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA";
                     images.add(
                             Image.withUrlForSmallAndBigger(
                                     Urls.get(
-                                            "https://usercontent.googleapis.com/freebase/v1/image/" + imageId
+                                             baseUrl + imageId + "?maxwidth=60&key=" + key
                                     ),
                                     Urls.get(
-                                            "http://img.freebase.com/api/trans/raw" + imageId
+                                            baseUrl + imageId + "?maxwidth=600&key=" + key
                                     )
                             )
                     );
