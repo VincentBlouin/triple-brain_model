@@ -37,5 +37,8 @@ public interface Vertex extends GraphElement{
     public abstract Set<ExternalFriendlyResource> getAdditionalTypes();
     public abstract void addSameAs(ExternalFriendlyResource friendlyResource);
     public abstract Set<ExternalFriendlyResource> getSameAs();
+    public Boolean isPublic();
+    public void makePublic();
+    public void makePrivate();
 }
 

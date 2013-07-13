@@ -24,30 +24,35 @@ public class VertexJsonFields {
     public static final String SUGGESTIONS = "suggestions";
     public static final String TYPES = "types";
     public static final String SAME_AS = "same_as";
+    public static final String IS_PUBLIC = "is_public";
 
     public static JSONObject toJson(Vertex vertex) {
         try {
             JSONObject jsonVertex = new JSONObject()
-            .put(ID, vertex.id())
-            .put(
-                    LABEL,
-                    vertex.label().trim().isEmpty() ?
-                            Vertex.EMPTY_LABEL :
-                            vertex.label())
-            .put(
-                    NOTE,
-                    vertex.note()
-            )
-            .put(
-                    SUGGESTIONS, jsonSuggestions(vertex))
-            .put(
-                    TYPES, jsonAdditionalTypes(vertex)
-            )
-            .put(
-                    SAME_AS, jsonSameAs(vertex)
-            );
+                    .put(ID, vertex.id())
+                    .put(
+                            LABEL,
+                            vertex.label().trim().isEmpty() ?
+                                    Vertex.EMPTY_LABEL :
+                                    vertex.label())
+                    .put(
+                            NOTE,
+                            vertex.note()
+                    )
+                    .put(
+                            SUGGESTIONS, jsonSuggestions(vertex))
+                    .put(
+                            TYPES, jsonAdditionalTypes(vertex)
+                    )
+                    .put(
+                            SAME_AS, jsonSameAs(vertex)
+                    )
+                    .put(
+                            IS_PUBLIC,
+                            vertex.isPublic()
+                    );
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
-            if(!hiddenConnectedEdgesLabel.isEmpty()){
+            if (!hiddenConnectedEdgesLabel.isEmpty()) {
                 jsonVertex.put(VertexJsonFields.IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES, true);
                 Integer numberOfHiddenConnectedVertices = hiddenConnectedEdgesLabel.size();
                 jsonVertex.put(VertexJsonFields.NUMBER_OF_HIDDEN_CONNECTED_VERTICES, numberOfHiddenConnectedVertices);
@@ -59,9 +64,9 @@ public class VertexJsonFields {
         }
     }
 
-    private static JSONArray jsonSuggestions(Vertex vertex){
+    private static JSONArray jsonSuggestions(Vertex vertex) {
         JSONArray suggestions = new JSONArray();
-        for(PersistedSuggestion suggestion : vertex.suggestions()){
+        for (PersistedSuggestion suggestion : vertex.suggestions()) {
             suggestions.put(
                     SuggestionJsonFields.toJson(
                             suggestion.get()
@@ -71,9 +76,9 @@ public class VertexJsonFields {
         return suggestions;
     }
 
-    private static JSONArray jsonAdditionalTypes(Vertex vertex){
+    private static JSONArray jsonAdditionalTypes(Vertex vertex) {
         JSONArray additionalTypes = new JSONArray();
-        for(ExternalFriendlyResource friendlyResource: vertex.getAdditionalTypes()){
+        for (ExternalFriendlyResource friendlyResource : vertex.getAdditionalTypes()) {
             additionalTypes.put(
                     ExternalResourceJson.get(
                             friendlyResource
@@ -83,9 +88,9 @@ public class VertexJsonFields {
         return additionalTypes;
     }
 
-    private static JSONArray jsonSameAs(Vertex vertex){
+    private static JSONArray jsonSameAs(Vertex vertex) {
         JSONArray sameAs = new JSONArray();
-        for(ExternalFriendlyResource friendlyResource: vertex.getSameAs()){
+        for (ExternalFriendlyResource friendlyResource : vertex.getSameAs()) {
             sameAs.put(
                     ExternalResourceJson.get(
                             friendlyResource
