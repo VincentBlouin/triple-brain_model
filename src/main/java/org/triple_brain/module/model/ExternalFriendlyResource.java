@@ -10,6 +10,7 @@ import java.util.Set;
 * Copyright Mozilla Public License 1.1
 */
 public class ExternalFriendlyResource {
+
     private URI uri;
     private String label = "";
     private String description = "";
