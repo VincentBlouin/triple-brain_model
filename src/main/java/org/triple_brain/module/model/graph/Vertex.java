@@ -12,7 +12,7 @@ import java.util.Set;
  * Copyright Mozilla Public License 1.1
  */
 public interface Vertex extends GraphElement{
-    public static final String EMPTY_LABEL = "concept";
+    public static final String EMPTY_LABEL = "";
     public String note();
     public void note(String note);
     public abstract boolean hasEdge(Edge edge);
