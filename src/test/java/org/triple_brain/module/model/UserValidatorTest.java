@@ -1,5 +1,6 @@
 package org.triple_brain.module.model;
 
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
 
@@ -133,6 +134,10 @@ public class UserValidatorTest {
         user.put(EMAIL, "generated_email@example.org");
         user.put(PASSWORD, "generated password");
         user.put(PASSWORD_VERIFICATION, "generated password");
+        user.put(
+                PREFERRED_LOCALES,
+                new JSONArray().put("fr")
+        );
         return user;
     }
 }
