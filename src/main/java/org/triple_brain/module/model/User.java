@@ -18,14 +18,16 @@ public class User {
     private String email;
     private String passwordHash;
     private String salt;
+    private String preferredLocales;
 
-    public static User withUsernameAndEmail(String username, String email) {
-        return new User(username, email);
+    public static User withUsernameEmailAndLocales(String username, String email, String preferedLocales) {
+        return new User(username, email, preferedLocales);
     }
 
-    private User(String username, String email) {
+    private User(String username, String email, String preferredLocales) {
         this.username = username;
         this.email = email.toLowerCase().trim();
+        this.preferredLocales = preferredLocales;
     }
 
     public String passwordHash() {
@@ -90,6 +92,10 @@ public class User {
 
     public String email() {
         return email;
+    }
+
+    public String preferredLocales(){
+        return preferredLocales;
     }
 
     public String id() {

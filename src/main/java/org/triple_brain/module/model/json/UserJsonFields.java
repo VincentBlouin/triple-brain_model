@@ -13,6 +13,7 @@ public class UserJsonFields {
     public static String EMAIL = "email";
     public static String PASSWORD = "password";
     public static final String PASSWORD_VERIFICATION = "password_verification";
+    public static final String PREFERRED_LOCALES = "preferred_locales";
 
     public static JSONObject toJson(User user){
         try{
@@ -24,6 +25,9 @@ public class UserJsonFields {
                             USER_NAME, user.username()
                     ).put(
                             EMAIL, user.email()
+                    )
+                    .put(
+                            PREFERRED_LOCALES, user.preferredLocales()
                     );
         }catch(JSONException e){
             throw new RuntimeException(e);

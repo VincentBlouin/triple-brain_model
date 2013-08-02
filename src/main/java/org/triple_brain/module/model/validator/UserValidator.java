@@ -1,5 +1,6 @@
 package org.triple_brain.module.model.validator;
 
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 
 import java.util.LinkedHashMap;
@@ -33,6 +34,8 @@ public class UserValidator {
     public static final String PASSWORD_TOO_SHORT = "password_too_short";
     public static final String MANDATORY_PASSWORD = "mandatory_password";
 
+    public static final String LOCALES_MANDATORY = "locales_mandatory";
+
     private static final int USER_NAME_MAX_LENGTH = 50;
     private static final String USERNAME_PATTERN = "^[a-z0-9_-]{1,50}$";
 
@@ -48,6 +51,7 @@ public class UserValidator {
         errors.putAll(validateEmail(user.optString(EMAIL)));
         errors.putAll(validateUserName(user.optString(USER_NAME)));
         errors.putAll(validatePassword(user.optString(PASSWORD), user.optString(PASSWORD_VERIFICATION)));
+        errors.putAll(validateLocales(user.optJSONArray(PREFERRED_LOCALES)));
         return errors;
     }
 
@@ -89,6 +93,17 @@ public class UserValidator {
         if (email.length() > EMAIL_MAX_LENGTH) {
             errors.put(EMAIL, EMAIL_TOO_LONG);
             return errors;
+        }
+        return errors;
+    }
+
+    private static Map<String, String> validateLocales(JSONArray locales){
+        Map<String, String> errors = new LinkedHashMap<String, String>();
+        if(locales.length() == 0){
+            errors.put(
+                    PREFERRED_LOCALES,
+                    LOCALES_MANDATORY
+            );
         }
         return errors;
     }
