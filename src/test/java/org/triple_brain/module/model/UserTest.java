@@ -24,7 +24,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "roger_lamothe",
                 "roger.lamothe@example.org",
-                ""
+                "[fr]"
         );
 
         assertThat(user.id(), is(notNullValue()));
@@ -37,7 +37,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "a_user_name",
                 "email@mail.org",
-                ""
+                "[fr]"
         );
         user.password("secret");
         MatcherAssert.assertThat(user.hasPassword("secret"), Matchers.is(true));
@@ -48,17 +48,17 @@ public class UserTest {
         User user_1 = User.withUsernameEmailAndLocales(
                 "user1",
                 "email_1@mail.org",
-                ""
+                "[fr]"
         );
         User user_2 = User.withUsernameEmailAndLocales(
                 "user2",
                 "email_2@mail.org",
-                ""
+                "[fr]"
         );
         User user_3 = User.withUsernameEmailAndLocales(
                 "user3",
                 "email_1@mail.org",
-                ""
+                "[fr]"
         );
 
         MatcherAssert.assertThat(user_1, Matchers.is(not(equalTo(user_2))));
@@ -70,7 +70,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "a_user_name",
                 "  Email@mail.org  ",
-                ""
+                "[fr]"
         );
         MatcherAssert.assertThat(
                 user.email(),
@@ -85,7 +85,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "roger_lamothe",
                 "roger@lamothe.org",
-                ""
+                "[fr]"
         ).password(password);
         String expectedPasswordHash = Base64.encodeBase64URLSafeString(DigestUtils.sha512(password + user.salt()));
 
@@ -97,7 +97,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "roger_lamothe",
                 "roger@lamothe.org",
-                ""
+                "[fr]"
         ).password("potatoe");
         MatcherAssert.assertThat(user.hasPassword("potatoe"), Matchers.is(true));
 
@@ -112,7 +112,7 @@ public class UserTest {
         User member = User.withUsernameEmailAndLocales(
                 "roger_lamothe",
                 "roger.lamothe@example.org",
-                ""
+                "[fr]"
         );
         MatcherAssert.assertThat(member.hashCode(), Matchers.is("roger.lamothe@example.org".hashCode()));
     }
@@ -122,7 +122,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "roger_lamothe",
                 "roger.lamothe@example.org",
-                ""
+                "[fr]"
         );
         MatcherAssert.assertThat(user.toString(), Matchers.is("roger.lamothe@example.org"));
     }
@@ -132,7 +132,7 @@ public class UserTest {
         User user = User.withUsernameEmailAndLocales(
                 "roger_lamothe",
                 "roger.lamothe@example.org",
-                ""
+                "[fr]"
         );
         JSONObject jsonUser = UserJsonFields.toJson(user);
         assertThat(jsonUser.getString(USER_NAME), is("roger_lamothe"));
