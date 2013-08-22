@@ -16,6 +16,6 @@ public interface UserGraph {
     public SubGraph graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, String centerVertexURI) throws NonExistingResourceException;
     public SubGraph graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     public String toRdfXml();
-    public Vertex vertexWithURI(URI uri);
+    public Vertex vertexWithUri(URI uri);
     public Edge edgeWithUri(URI uri);
 }

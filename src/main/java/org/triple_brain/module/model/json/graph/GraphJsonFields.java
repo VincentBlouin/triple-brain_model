@@ -10,7 +10,7 @@ import org.triple_brain.module.model.graph.Vertex;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class GraphJSONFields {
+public class GraphJsonFields {
     public static final String VERTICES = "vertices";
     public static final String EDGES = "edges";
 

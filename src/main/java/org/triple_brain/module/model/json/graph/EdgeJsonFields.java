@@ -7,7 +7,7 @@ import org.triple_brain.module.model.graph.Edge;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class EdgeJsonFields {
+public class EdgeJsonFields extends GraphElementJsonFields{
     public static final String ID = "id";
     public static final String LABEL = "label";
     public static final String SOURCE_VERTEX_ID = "source_vertex_id";
@@ -19,7 +19,13 @@ public class EdgeJsonFields {
                     .put(ID, edge.id())
                     .put(LABEL, edge.label().trim().isEmpty() ? Edge.EMPTY_LABEL :  edge.label())
                     .put(SOURCE_VERTEX_ID, edge.sourceVertex().id())
-                    .put(DESTINATION_VERTEX_ID, edge.destinationVertex().id());
+                    .put(DESTINATION_VERTEX_ID, edge.destinationVertex().id())
+                    .put(
+                            TYPES, jsonAdditionalTypes(edge)
+                    )
+                    .put(
+                            SAME_AS, jsonSameAs(edge)
+                    );
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

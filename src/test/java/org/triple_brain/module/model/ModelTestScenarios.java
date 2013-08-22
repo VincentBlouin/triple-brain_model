@@ -31,6 +31,13 @@ public class ModelTestScenarios {
         );
     }
 
+    public static ExternalFriendlyResource creatorPredicate() {
+        return ExternalFriendlyResource.withUriAndLabel(
+                Uris.get("http://purl.org/dc/terms/creator"),
+                "Creator"
+        );
+    }
+
     public static ExternalFriendlyResource timBernersLeeInFreebase() {
         return ExternalFriendlyResource.withUriAndLabel(
                 Uris.get("http://rdf.freebase.com/rdf/en/tim_berners-lee"),
