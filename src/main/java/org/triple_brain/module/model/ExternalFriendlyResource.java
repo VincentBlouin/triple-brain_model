@@ -1,6 +1,8 @@
 package org.triple_brain.module.model;
 
 import org.apache.commons.lang.StringUtils;
+import org.triple_brain.module.common_utils.Uris;
+import org.triple_brain.module.model.graph.GraphElement;
 
 import java.net.URI;
 import java.util.HashSet;
@@ -28,6 +30,13 @@ public class ExternalFriendlyResource {
                 uri,
                 label
         ).description(description);
+    }
+
+    public static ExternalFriendlyResource fromGraphElement(GraphElement graphElement){
+        return new ExternalFriendlyResource(
+                Uris.get(graphElement.id()),
+                graphElement.label()
+        );
     }
 
     public static ExternalFriendlyResource withUriLabelAndImages(URI uri, String label, Set<Image> images){
