@@ -1,6 +1,6 @@
 package org.triple_brain.module.model.graph;
 
-import org.triple_brain.module.model.suggestion.PersistedSuggestion;
+import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.suggestion.Suggestion;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public interface Vertex extends GraphElement{
+public interface Vertex extends GraphElement, FriendlyResource {
     public static final String EMPTY_LABEL = "";
     public String note();
     public void note(String note);
@@ -27,8 +27,8 @@ public interface Vertex extends GraphElement{
     public Set<Edge> connectedEdges();
     public List<String> hiddenConnectedEdgesLabel();
     public void hiddenConnectedEdgesLabel(List<String> hiddenEdgeLabel);
-    public void addSuggestions(Suggestion ... suggestions);
-    public Set<PersistedSuggestion> suggestions();
+    public void addSuggestions(Suggestion... suggestions);
+    public Set<Suggestion> suggestions();
     public Boolean isPublic();
     public void makePublic();
     public void makePrivate();

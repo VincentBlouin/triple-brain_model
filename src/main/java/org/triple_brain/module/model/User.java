@@ -59,7 +59,7 @@ public class User {
         if (password == null)
             throw new IllegalArgumentException("Missing password");
 
-        // the salt is composed of the email and id. This way, two member objects with
+        // the salt is composed of the email and uri. This way, two member objects with
         // the same email and same password can have two different hash
         return Base64.encodeBase64URLSafeString(DigestUtils.sha512(password + salt));
     }

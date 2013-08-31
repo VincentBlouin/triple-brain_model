@@ -67,7 +67,8 @@ public class UserUris {
         );
     }
 
-    public static String edgeShortId(String id){
-        return id.substring(id.lastIndexOf("/") + 1);
+    public static String edgeShortId(URI uri){
+        String uriStr = uri.toString();
+        return uriStr.substring(uriStr.lastIndexOf("/") + 1);
     }
 }

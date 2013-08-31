@@ -16,8 +16,8 @@ public class SuggestionJsonFields {
     public static JSONObject toJson(Suggestion suggestion) {
         try {
             return new JSONObject()
-                    .put(TYPE_URI, suggestion.sameAsUri())
-                    .put(DOMAIN_URI, suggestion.domainUri())
+                    .put(TYPE_URI, suggestion.sameAs().uri())
+                    .put(DOMAIN_URI, suggestion.domain().uri())
                     .put(LABEL, suggestion.label());
         } catch (JSONException e) {
             throw new RuntimeException(e);

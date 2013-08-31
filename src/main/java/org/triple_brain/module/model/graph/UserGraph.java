@@ -12,8 +12,8 @@ import java.net.URI;
 public interface UserGraph {
     public Vertex defaultVertex();
     public User user();
-    public Boolean haveElementWithId(String id);
-    public SubGraph graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, String centerVertexURI) throws NonExistingResourceException;
+    public Boolean haveElementWithId(URI id);
+    public SubGraph graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
     public SubGraph graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     public String toRdfXml();
     public Vertex vertexWithUri(URI uri);

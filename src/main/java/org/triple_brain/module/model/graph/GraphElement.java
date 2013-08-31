@@ -1,7 +1,7 @@
 package org.triple_brain.module.model.graph;
 
 import org.joda.time.DateTime;
-import org.triple_brain.module.model.ExternalFriendlyResource;
+import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.User;
 
 import java.net.URI;
@@ -13,15 +13,14 @@ import java.util.Set;
 public interface GraphElement {
     public DateTime creationDate();
     public DateTime lastModificationDate();
-    public String id();
+    public URI uri();
     public String label();
     public void label(String label);
     public boolean hasLabel();
     public User owner();
-    public void addSameAs(ExternalFriendlyResource friendlyResource);
-    public Set<ExternalFriendlyResource> getSameAs();
-    public ExternalFriendlyResource friendlyResourceWithUri(URI uri);
-    public void addType(ExternalFriendlyResource type);
-    public void removeFriendlyResource(ExternalFriendlyResource type);
-    public Set<ExternalFriendlyResource> getAdditionalTypes();
+    public void addSameAs(FriendlyResource friendlyResource);
+    public Set<FriendlyResource> getSameAs();
+    public void addType(FriendlyResource type);
+    public void removeFriendlyResource(FriendlyResource type);
+    public Set<FriendlyResource> getAdditionalTypes();
 }

@@ -20,12 +20,12 @@ import java.util.Set;
 * Copyright Mozilla Public License 1.1
 */
 public class FreebaseExternalFriendlyResource extends Observable {
-    private ExternalFriendlyResource externalFriendlyResource;
+    private FriendlyResource friendlyResource;
 
     public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text/";
 
-    public static Boolean isFromFreebase(ExternalFriendlyResource externalFriendlyResource) {
-        String host = externalFriendlyResource.uri().getHost();
+    public static Boolean isFromFreebase(FriendlyResource friendlyResource) {
+        String host = friendlyResource.uri().getHost();
         if(host == null){
             return false;
         }
@@ -33,14 +33,14 @@ public class FreebaseExternalFriendlyResource extends Observable {
                         contains("freebase.com");
     }
 
-    public static FreebaseExternalFriendlyResource fromExternalResource(ExternalFriendlyResource externalFriendlyResource) {
+    public static FreebaseExternalFriendlyResource fromExternalResource(FriendlyResource friendlyResourceImpl) {
         return new FreebaseExternalFriendlyResource(
-                externalFriendlyResource
+                friendlyResourceImpl
         );
     }
 
-    protected FreebaseExternalFriendlyResource(ExternalFriendlyResource externalFriendlyResource) {
-        this.externalFriendlyResource = externalFriendlyResource;
+    protected FreebaseExternalFriendlyResource(FriendlyResource friendlyResource) {
+        this.friendlyResource = friendlyResource;
     }
 
     public void getImages(Observer observer) {
@@ -58,12 +58,12 @@ public class FreebaseExternalFriendlyResource extends Observable {
     }
 
     public String freebaseId() {
-        return externalFriendlyResource.uri().toString()
+        return friendlyResource.uri().toString()
                 .replace("http://rdf.freebase.com/rdf", "");
     }
 
-    public ExternalFriendlyResource get() {
-        return externalFriendlyResource;
+    public FriendlyResource get() {
+        return friendlyResource;
     }
 
     private class GetImageThread implements Runnable{
@@ -96,7 +96,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
 //            );
             try{
                 String imagesKey = "/common/topic/image";
-                String id = "id";
+                String id = "uri";
                 org.codehaus.jettison.json.JSONArray imagesQuery = new org.codehaus.jettison.json.JSONArray();
                 imagesQuery.put(new org.codehaus.jettison.json.JSONObject().put(
                         id,
@@ -125,7 +125,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 JSONObject results = response.getJSONObject("result");
                 JSONArray imagesAsJson = results.getJSONArray("/common/topic/image");
                 for(int i = 0 ; i < imagesAsJson.length(); i++){
-                    String imageId = imagesAsJson.getJSONObject(i).getJSONArray("id").getString(0);
+                    String imageId = imagesAsJson.getJSONObject(i).getJSONArray("uri").getString(0);
                     String baseUrl = "https://www.googleapis.com/freebase/v1/image";
                     String key = "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA";
                     images.add(

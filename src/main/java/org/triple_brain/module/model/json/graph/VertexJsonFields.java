@@ -5,7 +5,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.graph.Vertex;
 import org.triple_brain.module.model.json.SuggestionJsonFields;
-import org.triple_brain.module.model.suggestion.PersistedSuggestion;
+import org.triple_brain.module.model.suggestion.Suggestion;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * Copyright Mozilla Public License 1.1
  */
 public class VertexJsonFields extends GraphElementJsonFields{
-    public static final String ID = "id";
+    public static final String ID = "uri";
     public static final String LABEL = "label";
     public static final String NOTE = "note";
     public static final String IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES = "is_frontier_vertex_with_hidden_vertices";
@@ -25,7 +25,7 @@ public class VertexJsonFields extends GraphElementJsonFields{
     public static JSONObject toJson(Vertex vertex) {
         try {
             JSONObject jsonVertex = new JSONObject()
-                    .put(ID, vertex.id())
+                    .put(ID, vertex.uri())
                     .put(
                             LABEL,
                             vertex.label().trim().isEmpty() ?
@@ -62,10 +62,10 @@ public class VertexJsonFields extends GraphElementJsonFields{
 
     private static JSONArray jsonSuggestions(Vertex vertex) {
         JSONArray suggestions = new JSONArray();
-        for (PersistedSuggestion suggestion : vertex.suggestions()) {
+        for (Suggestion suggestion : vertex.suggestions()) {
             suggestions.put(
                     SuggestionJsonFields.toJson(
-                            suggestion.get()
+                            suggestion
                     )
             );
         }

@@ -36,7 +36,7 @@ public class GraphJsonFields {
         try {
             for (Vertex vertex : graph.vertices()) {
                 vertices.put(
-                        vertex.id(),
+                        vertex.uri().toString(),
                         VertexJsonFields.toJson(vertex)
                 );
             }

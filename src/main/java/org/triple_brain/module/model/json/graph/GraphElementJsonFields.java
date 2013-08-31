@@ -1,7 +1,7 @@
 package org.triple_brain.module.model.json.graph;
 
 import org.codehaus.jettison.json.JSONArray;
-import org.triple_brain.module.model.ExternalFriendlyResource;
+import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.graph.GraphElement;
 import org.triple_brain.module.model.json.ExternalResourceJson;
 
@@ -14,7 +14,7 @@ public class GraphElementJsonFields {
 
     protected static JSONArray jsonAdditionalTypes(GraphElement graphElement) {
         JSONArray additionalTypes = new JSONArray();
-        for (ExternalFriendlyResource friendlyResource : graphElement.getAdditionalTypes()) {
+        for (FriendlyResource friendlyResource : graphElement.getAdditionalTypes()) {
             additionalTypes.put(
                     ExternalResourceJson.get(
                             friendlyResource
@@ -26,10 +26,10 @@ public class GraphElementJsonFields {
 
     protected static JSONArray jsonSameAs(GraphElement graphElement) {
         JSONArray sameAs = new JSONArray();
-        for (ExternalFriendlyResource friendlyResource : graphElement.getSameAs()) {
+        for (FriendlyResource friendlyResourceImpl : graphElement.getSameAs()) {
             sameAs.put(
                     ExternalResourceJson.get(
-                            friendlyResource
+                            friendlyResourceImpl
                     )
             );
         }
