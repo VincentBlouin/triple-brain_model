@@ -19,8 +19,9 @@ import java.util.Set;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class FreebaseExternalFriendlyResource extends Observable {
-    private FriendlyResource friendlyResource;
+public class FreebaseFriendlyResource extends Observable {
+
+    private FriendlyResourceCached friendlyResource;
 
     public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text/";
 
@@ -33,13 +34,13 @@ public class FreebaseExternalFriendlyResource extends Observable {
                         contains("freebase.com");
     }
 
-    public static FreebaseExternalFriendlyResource fromExternalResource(FriendlyResource friendlyResourceImpl) {
-        return new FreebaseExternalFriendlyResource(
-                friendlyResourceImpl
+    public static FreebaseFriendlyResource fromFriendlyResource(FriendlyResourceCached friendlyResource) {
+        return new FreebaseFriendlyResource(
+                friendlyResource
         );
     }
 
-    protected FreebaseExternalFriendlyResource(FriendlyResource friendlyResource) {
+    protected FreebaseFriendlyResource(FriendlyResourceCached friendlyResource) {
         this.friendlyResource = friendlyResource;
     }
 
@@ -62,24 +63,24 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 .replace("http://rdf.freebase.com/rdf", "");
     }
 
-    public FriendlyResource get() {
+    public FriendlyResourceCached getCachedFriendlyResource() {
         return friendlyResource;
     }
 
     private class GetImageThread implements Runnable{
 
-        private FreebaseExternalFriendlyResource freebaseExternalFriendlyResource;
+        private FreebaseFriendlyResource freebaseFriendlyResource;
         private Observer observer;
 
-        public GetImageThread(FreebaseExternalFriendlyResource freebaseExternalFriendlyResource, Observer observer){
-            this.freebaseExternalFriendlyResource = freebaseExternalFriendlyResource;
+        public GetImageThread(FreebaseFriendlyResource freebaseFriendlyResource, Observer observer){
+            this.freebaseFriendlyResource = freebaseFriendlyResource;
             this.observer = observer;
         }
 
         @Override
         public void run() {
             observer.update(
-                    freebaseExternalFriendlyResource,
+                    freebaseFriendlyResource,
                     getImages()
             );
         }
@@ -96,7 +97,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
 //            );
             try{
                 String imagesKey = "/common/topic/image";
-                String id = "uri";
+                String id = "id";
                 org.codehaus.jettison.json.JSONArray imagesQuery = new org.codehaus.jettison.json.JSONArray();
                 imagesQuery.put(new org.codehaus.jettison.json.JSONObject().put(
                         id,
@@ -125,7 +126,7 @@ public class FreebaseExternalFriendlyResource extends Observable {
                 JSONObject results = response.getJSONObject("result");
                 JSONArray imagesAsJson = results.getJSONArray("/common/topic/image");
                 for(int i = 0 ; i < imagesAsJson.length(); i++){
-                    String imageId = imagesAsJson.getJSONObject(i).getJSONArray("uri").getString(0);
+                    String imageId = imagesAsJson.getJSONObject(i).getJSONArray("id").getString(0);
                     String baseUrl = "https://www.googleapis.com/freebase/v1/image";
                     String key = "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA";
                     images.add(
@@ -148,26 +149,26 @@ public class FreebaseExternalFriendlyResource extends Observable {
 
     private class GetDescriptionThread implements Runnable{
 
-        private FreebaseExternalFriendlyResource freebaseExternalFriendlyResource;
+        private FreebaseFriendlyResource freebaseFriendlyResource;
         private Observer observer;
 
-        public GetDescriptionThread(FreebaseExternalFriendlyResource freebaseExternalFriendlyResource, Observer observer){
-            this.freebaseExternalFriendlyResource = freebaseExternalFriendlyResource;
+        public GetDescriptionThread(FreebaseFriendlyResource freebaseFriendlyResource, Observer observer){
+            this.freebaseFriendlyResource = freebaseFriendlyResource;
             this.observer = observer;
         }
 
         @Override
         public void run() {
             observer.update(
-                    freebaseExternalFriendlyResource,
+                    freebaseFriendlyResource,
                     getDescription()
             );
         }
 
-        private String getDescription(){
+       private String getDescription(){
             try{
                 org.codehaus.jettison.json.JSONObject resultEnveloppe = DataFetcher.getJsonFromUrl(
-                        new URL(DESCRIPTION_BASE_URI + freebaseExternalFriendlyResource.freebaseId())
+                        new URL(DESCRIPTION_BASE_URI + freebaseFriendlyResource.freebaseId())
                 );
                 return resultEnveloppe.getString("result");
             }catch(JSONException | MalformedURLException e){
