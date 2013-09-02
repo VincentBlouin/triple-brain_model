@@ -7,6 +7,8 @@ import java.net.URI;
 */
 public class SuggestionOrigin {
 
+    public static final String ORIGIN_PROPERTY = "origin";
+
     private String origin;
 
     public static SuggestionOrigin valueOf(String origin){
