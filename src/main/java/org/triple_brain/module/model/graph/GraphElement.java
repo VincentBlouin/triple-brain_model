@@ -23,4 +23,5 @@ public interface GraphElement {
     public void addType(FriendlyResource type);
     public void removeFriendlyResource(FriendlyResource type);
     public Set<FriendlyResource> getAdditionalTypes();
+    public void remove();
 }

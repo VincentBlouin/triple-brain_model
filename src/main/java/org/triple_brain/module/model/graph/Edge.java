@@ -13,6 +13,4 @@ public interface Edge extends GraphElement {
     public abstract Vertex otherVertex(Vertex vertex);
 
     public abstract boolean hasVertex(Vertex vertex);
-
-    public abstract void remove();
 }

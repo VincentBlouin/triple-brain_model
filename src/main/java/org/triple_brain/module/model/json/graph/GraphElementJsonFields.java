@@ -11,6 +11,7 @@ import org.triple_brain.module.model.json.ExternalResourceJson;
 public class GraphElementJsonFields {
     public static final String TYPES = "types";
     public static final String SAME_AS = "same_as";
+    public static final String URI = "uri";
 
     protected static JSONArray jsonAdditionalTypes(GraphElement graphElement) {
         JSONArray additionalTypes = new JSONArray();

@@ -13,7 +13,6 @@ import java.util.List;
  * Copyright Mozilla Public License 1.1
  */
 public class VertexJsonFields extends GraphElementJsonFields{
-    public static final String URI = "uri";
     public static final String LABEL = "label";
     public static final String NOTE = "note";
     public static final String IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES = "is_frontier_vertex_with_hidden_vertices";

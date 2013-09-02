@@ -21,7 +21,6 @@ public interface Vertex extends GraphElement, FriendlyResource {
     public void addNeighbor(Vertex neighbor);
     public Edge addVertexAndRelation();
     public Edge addRelationToVertex(Vertex destinationVertex);
-    public void remove();
     public void removeNeighbor(Vertex neighbor);
     public Set<Edge> outGoingEdges();
     public Set<Edge> connectedEdges();
