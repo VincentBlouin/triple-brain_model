@@ -12,9 +12,7 @@ import java.util.List;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class VertexJsonFields extends GraphElementJsonFields{
-    public static final String LABEL = "label";
-    public static final String NOTE = "note";
+public class VertexJson extends GraphElementJson {
     public static final String IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES = "is_frontier_vertex_with_hidden_vertices";
     public static final String NUMBER_OF_HIDDEN_CONNECTED_VERTICES = "number_of_hidden_connected_vertices";
     public static final String NAME_OF_HIDDEN_PROPERTIES = "name_of_hidden_properties";
@@ -23,34 +21,25 @@ public class VertexJsonFields extends GraphElementJsonFields{
 
     public static JSONObject toJson(Vertex vertex) {
         try {
-            JSONObject jsonVertex = new JSONObject()
-                    .put(URI, vertex.uri())
+            JSONObject jsonVertex = GraphElementJson.toJson(
+                    vertex
+            )
                     .put(
                             LABEL,
                             vertex.label().trim().isEmpty() ?
                                     Vertex.EMPTY_LABEL :
                                     vertex.label())
                     .put(
-                            NOTE,
-                            vertex.note()
-                    )
-                    .put(
                             SUGGESTIONS, jsonSuggestions(vertex))
-                    .put(
-                            TYPES, jsonAdditionalTypes(vertex)
-                    )
-                    .put(
-                            SAME_AS, jsonSameAs(vertex)
-                    )
                     .put(
                             IS_PUBLIC,
                             vertex.isPublic()
                     );
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if (!hiddenConnectedEdgesLabel.isEmpty()) {
-                jsonVertex.put(VertexJsonFields.IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES, true);
+                jsonVertex.put(VertexJson.IS_FRONTIER_VERTEX_WITH_HIDDEN_VERTICES, true);
                 Integer numberOfHiddenConnectedVertices = hiddenConnectedEdgesLabel.size();
-                jsonVertex.put(VertexJsonFields.NUMBER_OF_HIDDEN_CONNECTED_VERTICES, numberOfHiddenConnectedVertices);
+                jsonVertex.put(VertexJson.NUMBER_OF_HIDDEN_CONNECTED_VERTICES, numberOfHiddenConnectedVertices);
                 jsonVertex.put(NAME_OF_HIDDEN_PROPERTIES, new JSONArray(hiddenConnectedEdgesLabel));
             }
             return jsonVertex;

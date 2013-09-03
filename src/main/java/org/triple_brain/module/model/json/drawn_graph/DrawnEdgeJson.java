@@ -1,11 +1,11 @@
 package org.triple_brain.module.model.json.drawn_graph;
 
-import org.triple_brain.module.model.json.graph.EdgeJsonFields;
+import org.triple_brain.module.model.json.graph.EdgeJson;
 
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class DrawnEdgeJsonFields extends EdgeJsonFields {
+public class DrawnEdgeJson extends EdgeJson {
     public static final String ARROW_LINE_BEZIER_POINTS = "arrow_line_bezier_points";
     public static final String LABEL_POSITION = "label_position";
     public static final String ARROW_HEAD_SUMMIT_1 = "arrow_head_summit_1";

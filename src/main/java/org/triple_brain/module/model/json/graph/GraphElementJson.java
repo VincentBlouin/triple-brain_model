@@ -1,23 +1,41 @@
 package org.triple_brain.module.model.json.graph;
 
 import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.graph.GraphElement;
-import org.triple_brain.module.model.json.ExternalResourceJson;
+import org.triple_brain.module.model.json.FriendlyResourceJson;
 
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class GraphElementJsonFields {
+public class GraphElementJson extends FriendlyResourceJson {
+
     public static final String TYPES = "types";
     public static final String SAME_AS = "same_as";
-    public static final String URI = "uri";
+
+    protected static JSONObject toJson(GraphElement graphElement){
+        try{
+            return FriendlyResourceJson.toJson(
+                    graphElement
+            ).put(
+                    TYPES,
+                    jsonAdditionalTypes(graphElement)
+            ).put(
+                    SAME_AS,
+                    jsonSameAs(graphElement)
+            );
+        }catch(JSONException e){
+            throw new RuntimeException(e);
+        }
+    }
 
     protected static JSONArray jsonAdditionalTypes(GraphElement graphElement) {
         JSONArray additionalTypes = new JSONArray();
         for (FriendlyResource friendlyResource : graphElement.getAdditionalTypes()) {
             additionalTypes.put(
-                    ExternalResourceJson.get(
+                    FriendlyResourceJson.toJson(
                             friendlyResource
                     )
             );
@@ -29,7 +47,7 @@ public class GraphElementJsonFields {
         JSONArray sameAs = new JSONArray();
         for (FriendlyResource friendlyResourceImpl : graphElement.getSameAs()) {
             sameAs.put(
-                    ExternalResourceJson.get(
+                    FriendlyResourceJson.toJson(
                             friendlyResourceImpl
                     )
             );

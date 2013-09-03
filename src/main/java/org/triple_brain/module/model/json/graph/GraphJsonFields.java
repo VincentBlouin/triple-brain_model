@@ -37,7 +37,7 @@ public class GraphJsonFields {
             for (Vertex vertex : graph.vertices()) {
                 vertices.put(
                         vertex.uri().toString(),
-                        VertexJsonFields.toJson(vertex)
+                        VertexJson.toJson(vertex)
                 );
             }
         } catch (JSONException e) {
@@ -50,7 +50,7 @@ public class GraphJsonFields {
         JSONArray edges = new JSONArray();
         for (Edge edge : graph.edges()) {
             edges.put(
-                    EdgeJsonFields.toJson(edge)
+                    EdgeJson.toJson(edge)
             );
         }
         return edges;

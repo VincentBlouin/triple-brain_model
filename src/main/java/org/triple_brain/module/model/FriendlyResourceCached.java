@@ -1,5 +1,7 @@
 package org.triple_brain.module.model;
 
+import org.joda.time.DateTime;
+
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +15,8 @@ public class FriendlyResourceCached implements FriendlyResource{
     private String label = "";
     private Set<Image> images = new HashSet<>();
     private String description = "";
+    private DateTime creationDate = new DateTime();
+    private DateTime lastModificationDate = new DateTime();
 
     public static FriendlyResourceCached fromFriendlyResource(FriendlyResource friendlyResource){
         return new FriendlyResourceCached(
@@ -24,7 +28,9 @@ public class FriendlyResourceCached implements FriendlyResource{
         this.uri = friendlyResource.uri();
         this.label = friendlyResource.label();
         this.images = friendlyResource.images();
-        this.description = friendlyResource.description();
+        this.description = friendlyResource.comment();
+        this.creationDate = friendlyResource.creationDate();
+        this.lastModificationDate = friendlyResource.lastModificationDate();
     }
 
     @Override
@@ -53,22 +59,32 @@ public class FriendlyResourceCached implements FriendlyResource{
     }
 
     @Override
-    public String description() {
+    public String comment() {
         return description;
     }
 
     @Override
-    public void description(String description) {
-        this.description = description;
+    public void comment(String comment) {
+        this.description = comment;
     }
 
     @Override
-    public Boolean gotADescription() {
+    public Boolean gotComments() {
         return !description.isEmpty();
     }
 
     @Override
     public void addImages(Set<Image> images) {
         images.addAll(images);
+    }
+
+    @Override
+    public DateTime creationDate() {
+        return creationDate;
+    }
+
+    @Override
+    public DateTime lastModificationDate() {
+        return lastModificationDate;
     }
 }

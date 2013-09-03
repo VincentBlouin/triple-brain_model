@@ -7,23 +7,25 @@ import org.triple_brain.module.model.graph.Edge;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public class EdgeJsonFields extends GraphElementJsonFields{
-    public static final String LABEL = "label";
+public class EdgeJson extends GraphElementJson {
     public static final String SOURCE_VERTEX_ID = "source_vertex_id";
     public static final String DESTINATION_VERTEX_ID = "destination_vertex_id";
-
     public static JSONObject toJson(Edge edge) {
         try {
-            return new JSONObject()
-                    .put(URI, edge.uri())
-                    .put(LABEL, edge.label().trim().isEmpty() ? Edge.EMPTY_LABEL :  edge.label())
-                    .put(SOURCE_VERTEX_ID, edge.sourceVertex().uri())
-                    .put(DESTINATION_VERTEX_ID, edge.destinationVertex().uri())
+            return GraphElementJson.toJson(edge)
                     .put(
-                            TYPES, jsonAdditionalTypes(edge)
+                            LABEL,
+                            edge.label().trim().isEmpty() ?
+                                    Edge.EMPTY_LABEL :
+                                    edge.label()
                     )
                     .put(
-                            SAME_AS, jsonSameAs(edge)
+                            SOURCE_VERTEX_ID,
+                            edge.sourceVertex().uri()
+                    )
+                    .put(
+                            DESTINATION_VERTEX_ID,
+                            edge.destinationVertex().uri()
                     );
         } catch (JSONException e) {
             throw new RuntimeException(e);
