@@ -23,7 +23,7 @@ public class FreebaseFriendlyResource extends Observable {
 
     private FriendlyResourceCached friendlyResource;
 
-    public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text/";
+    public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text";
 
     public static Boolean isFromFreebase(FriendlyResource friendlyResource) {
         String host = friendlyResource.uri().getHost();
@@ -168,7 +168,11 @@ public class FreebaseFriendlyResource extends Observable {
        private String getDescription(){
             try{
                 org.codehaus.jettison.json.JSONObject resultEnveloppe = DataFetcher.getJsonFromUrl(
-                        new URL(DESCRIPTION_BASE_URI + freebaseFriendlyResource.freebaseId())
+                        new URL(
+                                DESCRIPTION_BASE_URI +
+                                        freebaseFriendlyResource.freebaseId() +
+                                        "?key=AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA"
+                        )
                 );
                 return resultEnveloppe.getString("result");
             }catch(JSONException | MalformedURLException e){

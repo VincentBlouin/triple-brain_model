@@ -16,5 +16,6 @@ public interface GraphElement extends FriendlyResource{
     public void addType(FriendlyResource type);
     public void removeIdentification(FriendlyResource type);
     public Set<FriendlyResource> getAdditionalTypes();
+    public Set<FriendlyResource> getIdentifications();
     public void remove();
 }
