@@ -18,4 +18,5 @@ public interface UserGraph {
     public String toRdfXml();
     public Vertex vertexWithUri(URI uri);
     public Edge edgeWithUri(URI uri);
+    public Vertex createVertex();
 }
