@@ -14,6 +14,7 @@ public class GraphElementJson extends FriendlyResourceJson {
 
     public static final String TYPES = "types";
     public static final String SAME_AS = "same_as";
+    public static final String GENERIC_IDENTIFICATIONS = "generic_identifications";
 
     protected static JSONObject toJson(GraphElement graphElement){
         try{
@@ -25,6 +26,9 @@ public class GraphElementJson extends FriendlyResourceJson {
             ).put(
                     SAME_AS,
                     jsonSameAs(graphElement)
+            ).put(
+                    GENERIC_IDENTIFICATIONS,
+                    genericIdentificationsJson(graphElement)
             );
         }catch(JSONException e){
             throw new RuntimeException(e);
@@ -53,5 +57,17 @@ public class GraphElementJson extends FriendlyResourceJson {
             );
         }
         return sameAs;
+    }
+
+    protected static JSONArray genericIdentificationsJson(GraphElement graphElement){
+        JSONArray genericIdentifications = new JSONArray();
+        for (FriendlyResource friendlyResourceImpl : graphElement.getGenericIdentifications()) {
+            genericIdentifications.put(
+                    FriendlyResourceJson.toJson(
+                            friendlyResourceImpl
+                    )
+            );
+        }
+        return genericIdentifications;
     }
 }
