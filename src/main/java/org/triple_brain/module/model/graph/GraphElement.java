@@ -1,7 +1,6 @@
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.FriendlyResource;
-import org.triple_brain.module.model.User;
 
 import java.util.Set;
 
@@ -10,7 +9,6 @@ import java.util.Set;
  */
 public interface GraphElement extends FriendlyResource{
     public boolean hasLabel();
-    public User owner();
     public void addGenericIdentification(FriendlyResource friendlyResource);
     public Set<FriendlyResource> getGenericIdentifications();
     public void addSameAs(FriendlyResource friendlyResource);
@@ -20,4 +18,5 @@ public interface GraphElement extends FriendlyResource{
     public Set<FriendlyResource> getAdditionalTypes();
     public Set<FriendlyResource> getIdentifications();
     public void remove();
+    public String ownerUsername();
 }

@@ -7,14 +7,20 @@ import java.util.UUID;
 * Copyright Mozilla Public License 1.1
 */
 public class UserUris {
-    private User user;
+    private String userName;
+
     public UserUris(User user){
-        this.user = user;
+        this(
+                user.username()
+        );
+    }
+    public UserUris(String userName){
+        this.userName = userName;
     }
 
     public URI baseUri() {
         return URI.create(
-                "/service/users/" + user.username()
+                "/service/users/" + userName
         );
     }
 
@@ -70,5 +76,14 @@ public class UserUris {
     public static String edgeShortId(URI uri){
         String uriStr = uri.toString();
         return uriStr.substring(uriStr.lastIndexOf("/") + 1);
+    }
+
+    public static String ownerUserNameFromUri(URI uri){
+        String uriStr = uri.toString();
+        String modifiedUriStr = uriStr.replace("/service/users/", "");
+        return modifiedUriStr.substring(
+                0,
+                modifiedUriStr.indexOf("/")
+        );
     }
 }
