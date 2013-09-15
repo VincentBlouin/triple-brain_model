@@ -42,8 +42,21 @@ public class FriendlyResourceValidatorTest {
         assertTrue(validationWithFriendlyResourceReturnsFieldWithMessage(
                 friendlyResource,
                 FriendlyResourceJson.URI,
-                FriendlyResourceValidator.FriendlyResourceError.INVALID_URI
+                FriendlyResourceValidator.FriendlyResourceError.EMPTY_URI
         ));
+    }
+
+    @Test
+    public void can_have_relative_uris()throws Exception{
+        JSONObject friendlyResource = new JSONObject()
+                .put(
+                        FriendlyResourceJson.URI,
+                        "/service/users/vince/graph/edge/c30bbev5-0c1f-4b08-b600-fb6040abb7eq/identification"
+                );
+        FriendlyResourceValidator validator = new FriendlyResourceValidator();
+        assertTrue(
+                validator.validate(friendlyResource).isEmpty()
+        );
     }
 
     private boolean validationWithFriendlyResourceReturnsFieldWithMessage(

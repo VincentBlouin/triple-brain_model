@@ -1,6 +1,6 @@
 package org.triple_brain.module.model.validator;
 
-import org.apache.commons.validator.routines.UrlValidator;
+import org.apache.commons.lang.StringUtils;
 import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.json.FriendlyResourceJson;
 
@@ -14,7 +14,7 @@ public class FriendlyResourceValidator {
 
     public static enum FriendlyResourceError {
         URI_MANDATORY,
-        INVALID_URI
+        EMPTY_URI
     }
 
     public Map<String, FriendlyResourceError> validate(JSONObject friendlyResource){
@@ -27,11 +27,10 @@ public class FriendlyResourceValidator {
             return errors;
         }
         String uri = friendlyResource.optString(FriendlyResourceJson.URI);
-        UrlValidator urlValidator = new UrlValidator();
-        if(!urlValidator.isValid(uri)){
+        if(StringUtils.isEmpty(uri)){
             errors.put(
                     FriendlyResourceJson.URI,
-                    FriendlyResourceError.INVALID_URI
+                    FriendlyResourceError.EMPTY_URI
             );
         }
         return errors;
