@@ -1,31 +1,31 @@
 package org.triple_brain.module.model;
 
-import java.net.URL;
+import java.net.URI;
 
 /*
 * Copyright Mozilla Public License 1.1
 */
 public class Image{
-    URL urlForSmall;
-    URL urlForBigger;
+    URI urlForSmall;
+    URI urlForBigger;
 
-    public static Image withUrlForSmallAndBigger(URL urlForSmall, URL urlForBigger){
+    public static Image withUriForSmallAndBigger(URI urlForSmall, URI urlForBigger){
         return new Image(
                 urlForSmall,
                 urlForBigger
         );
     }
 
-    public Image(URL urlForSmall, URL urlForBigger){
+    public Image(URI urlForSmall, URI urlForBigger){
         this.urlForSmall = urlForSmall;
         this.urlForBigger = urlForBigger;
     }
 
-    public URL urlForSmall(){
+    public URI urlForSmall(){
         return urlForSmall;
     }
 
-    public URL urlForBigger(){
+    public URI urlForBigger(){
         return urlForBigger;
     }
 

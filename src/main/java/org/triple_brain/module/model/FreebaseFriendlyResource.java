@@ -7,9 +7,9 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.triple_brain.module.common_utils.DataFetcher;
-import org.triple_brain.module.common_utils.Urls;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Observable;
@@ -130,11 +130,11 @@ public class FreebaseFriendlyResource extends Observable {
                     String baseUrl = "https://www.googleapis.com/freebase/v1/image";
                     String key = "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA";
                     images.add(
-                            Image.withUrlForSmallAndBigger(
-                                    Urls.get(
-                                             baseUrl + imageId + "?maxwidth=60&key=" + key
+                            Image.withUriForSmallAndBigger(
+                                    URI.create(
+                                            baseUrl + imageId + "?maxwidth=60&key=" + key
                                     ),
-                                    Urls.get(
+                                    URI.create(
                                             baseUrl + imageId + "?maxwidth=600&key=" + key
                                     )
                             )
