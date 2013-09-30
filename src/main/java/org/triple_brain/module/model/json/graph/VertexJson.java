@@ -18,6 +18,7 @@ public class VertexJson extends GraphElementJson {
     public static final String NAME_OF_HIDDEN_PROPERTIES = "name_of_hidden_properties";
     public static final String SUGGESTIONS = "suggestions";
     public static final String IS_PUBLIC = "is_public";
+    public static final String INCLUDED_VERTICES_URI = "included_vertices_uri";
 
     public static JSONObject toJson(Vertex vertex) {
         try {
@@ -34,6 +35,10 @@ public class VertexJson extends GraphElementJson {
                     .put(
                             IS_PUBLIC,
                             vertex.isPublic()
+                    )
+                    .put(
+                            INCLUDED_VERTICES_URI,
+                            includedVerticesUrisJson(vertex)
                     );
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if (!hiddenConnectedEdgesLabel.isEmpty()) {
@@ -58,5 +63,15 @@ public class VertexJson extends GraphElementJson {
             );
         }
         return suggestions;
+    }
+
+    private static JSONArray includedVerticesUrisJson(Vertex vertex) {
+        JSONArray includedVerticesUri = new JSONArray();
+        for(Vertex includedVertex : vertex.getIncludedVertices()){
+            includedVerticesUri.put(
+                    includedVertex.uri()
+            );
+        }
+        return includedVerticesUri;
     }
 }

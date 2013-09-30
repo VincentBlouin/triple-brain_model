@@ -73,7 +73,7 @@ public class UserUris {
         );
     }
 
-    public static String edgeShortId(URI uri){
+    public static String graphElementShortId (URI uri){
         String uriStr = uri.toString();
         return uriStr.substring(uriStr.lastIndexOf("/") + 1);
     }

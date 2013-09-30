@@ -28,5 +28,6 @@ public interface Vertex extends GraphElement {
     public Boolean isPublic();
     public void makePublic();
     public void makePrivate();
+    public Set<Vertex> getIncludedVertices();
 }
 
