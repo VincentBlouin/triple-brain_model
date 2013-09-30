@@ -18,7 +18,7 @@ public class VertexJson extends GraphElementJson {
     public static final String NAME_OF_HIDDEN_PROPERTIES = "name_of_hidden_properties";
     public static final String SUGGESTIONS = "suggestions";
     public static final String IS_PUBLIC = "is_public";
-    public static final String INCLUDED_VERTICES_URI = "included_vertices_uri";
+    public static final String INCLUDED_VERTICES = "included_vertices";
 
     public static JSONObject toJson(Vertex vertex) {
         try {
@@ -37,8 +37,8 @@ public class VertexJson extends GraphElementJson {
                             vertex.isPublic()
                     )
                     .put(
-                            INCLUDED_VERTICES_URI,
-                            includedVerticesUrisJson(vertex)
+                            INCLUDED_VERTICES,
+                            includedVerticesJson(vertex)
                     );
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if (!hiddenConnectedEdgesLabel.isEmpty()) {
@@ -49,6 +49,20 @@ public class VertexJson extends GraphElementJson {
             }
             return jsonVertex;
         } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static JSONObject toJsonAsIncludedVertex(Vertex vertex) {
+        try{
+            return new JSONObject().put(
+                    LABEL,
+                    vertex.label()
+            ).put(
+                    URI,
+                    vertex.uri()
+            );
+        }catch(JSONException e){
             throw new RuntimeException(e);
         }
     }
@@ -65,13 +79,13 @@ public class VertexJson extends GraphElementJson {
         return suggestions;
     }
 
-    private static JSONArray includedVerticesUrisJson(Vertex vertex) {
-        JSONArray includedVerticesUri = new JSONArray();
+    private static JSONArray includedVerticesJson(Vertex vertex) {
+        JSONArray includedVertices = new JSONArray();
         for(Vertex includedVertex : vertex.getIncludedVertices()){
-            includedVerticesUri.put(
-                    includedVertex.uri()
+            includedVertices.put(
+                    toJsonAsIncludedVertex(includedVertex)
             );
         }
-        return includedVerticesUri;
+        return includedVertices;
     }
 }
