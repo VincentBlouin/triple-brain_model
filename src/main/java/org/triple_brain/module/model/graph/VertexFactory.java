@@ -7,7 +7,7 @@ import java.util.Set;
 * Copyright Mozilla Public License 1.1
 */
 public interface VertexFactory {
-    public VertexInSubGraph createOrLoadUsingUri(URI uri);
-    public VertexInSubGraph createForOwnerUsername(String username);
-    public VertexInSubGraph createFromVertices(Set<Vertex> vertices);
+    VertexInSubGraph createOrLoadUsingUri(URI uri);
+    VertexInSubGraph createForOwnerUsername(String username);
+    VertexInSubGraph createFromVertices(Set<Vertex> vertices);
 }

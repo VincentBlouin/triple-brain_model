@@ -19,6 +19,7 @@ public class VertexJson extends GraphElementJson {
     public static final String SUGGESTIONS = "suggestions";
     public static final String IS_PUBLIC = "is_public";
     public static final String INCLUDED_VERTICES = "included_vertices";
+    public static final String NUMBER_OF_CONNECTED_EDGES = "number_of_connected_edges";
 
     public static JSONObject toJson(Vertex vertex) {
         try {
@@ -39,6 +40,9 @@ public class VertexJson extends GraphElementJson {
                     .put(
                             INCLUDED_VERTICES,
                             includedVerticesJson(vertex)
+                    ).put(
+                            NUMBER_OF_CONNECTED_EDGES,
+                            vertex.getNumberOfConnectedEdges()
                     );
             List<String> hiddenConnectedEdgesLabel = vertex.hiddenConnectedEdgesLabel();
             if (!hiddenConnectedEdgesLabel.isEmpty()) {
@@ -54,7 +58,7 @@ public class VertexJson extends GraphElementJson {
     }
 
     public static JSONObject toJsonAsIncludedVertex(Vertex vertex) {
-        try{
+        try {
             return new JSONObject().put(
                     LABEL,
                     vertex.label()
@@ -62,7 +66,7 @@ public class VertexJson extends GraphElementJson {
                     URI,
                     vertex.uri()
             );
-        }catch(JSONException e){
+        } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
@@ -81,7 +85,7 @@ public class VertexJson extends GraphElementJson {
 
     private static JSONArray includedVerticesJson(Vertex vertex) {
         JSONArray includedVertices = new JSONArray();
-        for(Vertex includedVertex : vertex.getIncludedVertices()){
+        for (Vertex includedVertex : vertex.getIncludedVertices()) {
             includedVertices.put(
                     toJsonAsIncludedVertex(includedVertex)
             );
