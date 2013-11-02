@@ -5,12 +5,9 @@ package org.triple_brain.module.model.graph;
  */
 public interface Edge extends GraphElement {
     public static final String EMPTY_LABEL = "";
-
-    public abstract Vertex sourceVertex();
-
-    public abstract Vertex destinationVertex();
-
-    public abstract Vertex otherVertex(Vertex vertex);
-
-    public abstract boolean hasVertex(Vertex vertex);
+    Vertex sourceVertex();
+    Vertex destinationVertex();
+    Vertex otherVertex(Vertex vertex);
+    boolean hasVertex(Vertex vertex);
+    void inverse();
 }
