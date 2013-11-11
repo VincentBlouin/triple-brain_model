@@ -9,5 +9,8 @@ import java.util.Set;
 public interface VertexFactory {
     VertexInSubGraph createOrLoadUsingUri(URI uri);
     VertexInSubGraph createForOwnerUsername(String username);
-    VertexInSubGraph createFromVertices(Set<Vertex> vertices);
+    VertexInSubGraph createFromGraphElements(
+            Set<Vertex> includedVertices,
+            Set<Edge> includedEdges
+    );
 }

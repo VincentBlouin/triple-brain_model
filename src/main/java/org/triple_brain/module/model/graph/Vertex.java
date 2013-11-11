@@ -47,5 +47,7 @@ public interface Vertex extends GraphElement {
     void makePrivate();
 
     Set<Vertex> getIncludedVertices();
+
+    Set<Edge> getIncludedEdges();
 }
 

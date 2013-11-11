@@ -70,4 +70,18 @@ public class GraphElementJson extends FriendlyResourceJson {
         }
         return genericIdentifications;
     }
+
+    protected static JSONObject toJsonAsIncludedGraphElement(GraphElement graphElement) {
+        try {
+            return new JSONObject().put(
+                    LABEL,
+                    graphElement.label()
+            ).put(
+                    URI,
+                    graphElement.uri()
+            );
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

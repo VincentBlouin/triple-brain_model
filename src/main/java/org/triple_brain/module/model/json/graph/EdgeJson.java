@@ -10,6 +10,7 @@ import org.triple_brain.module.model.graph.Edge;
 public class EdgeJson extends GraphElementJson {
     public static final String SOURCE_VERTEX_ID = "source_vertex_id";
     public static final String DESTINATION_VERTEX_ID = "destination_vertex_id";
+
     public static JSONObject toJson(Edge edge) {
         try {
             return GraphElementJson.toJson(edge)
@@ -27,6 +28,22 @@ public class EdgeJson extends GraphElementJson {
                             DESTINATION_VERTEX_ID,
                             edge.destinationVertex().uri()
                     );
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static JSONObject toJsonAsIncludedEdge(Edge edge) {
+        try {
+            return GraphElementJson.toJsonAsIncludedGraphElement(
+                    edge
+            ).put(
+                    SOURCE_VERTEX_ID,
+                    edge.sourceVertex().uri()
+            ).put(
+                    DESTINATION_VERTEX_ID,
+                    edge.destinationVertex().uri()
+            );
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
