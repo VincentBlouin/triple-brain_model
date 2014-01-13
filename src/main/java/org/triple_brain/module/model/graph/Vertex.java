@@ -12,23 +12,13 @@ public interface Vertex extends GraphElement {
 
     boolean hasEdge(Edge edge);
 
-    void addOutgoingEdge(Edge edge);
-
-    void removeOutgoingEdge(Edge edge);
-
     Edge edgeThatLinksToDestinationVertex(Vertex destinationVertex);
 
     Boolean hasDestinationVertex(Vertex destinationVertex);
 
-    void addNeighbor(Vertex neighbor);
-
     Edge addVertexAndRelation();
 
     Edge addRelationToVertex(Vertex destinationVertex);
-
-    void removeNeighbor(Vertex neighbor);
-
-    Set<Edge> outGoingEdges();
 
     Set<Edge> connectedEdges();
 
