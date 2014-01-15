@@ -1,4 +1,4 @@
-package org.triple_brain.module.model.graph;
+package org.triple_brain.module.model.graph.vertex;
 
 /*
 * Copyright Mozilla Public License 1.1

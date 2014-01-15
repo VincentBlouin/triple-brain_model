@@ -74,11 +74,6 @@ public class FriendlyResourceCached implements FriendlyResource{
     }
 
     @Override
-    public void addImages(Set<Image> images) {
-        images.addAll(images);
-    }
-
-    @Override
     public DateTime creationDate() {
         return creationDate;
     }

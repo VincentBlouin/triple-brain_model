@@ -9,5 +9,4 @@ public interface SuggestionOrigin extends FriendlyResource {
     public Boolean isRelatedToFriendlyResource(
             FriendlyResource friendlyResource
     );
-    public void remove();
 }

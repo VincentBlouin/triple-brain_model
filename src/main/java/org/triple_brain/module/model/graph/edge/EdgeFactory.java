@@ -1,4 +1,4 @@
-package org.triple_brain.module.model.graph;
+package org.triple_brain.module.model.graph.edge;
 
 import java.net.URI;
 

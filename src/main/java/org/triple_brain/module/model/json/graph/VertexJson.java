@@ -3,8 +3,8 @@ package org.triple_brain.module.model.json.graph;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.triple_brain.module.model.graph.Edge;
-import org.triple_brain.module.model.graph.Vertex;
+import org.triple_brain.module.model.graph.edge.Edge;
+import org.triple_brain.module.model.graph.vertex.Vertex;
 import org.triple_brain.module.model.json.SuggestionJsonFields;
 import org.triple_brain.module.model.suggestion.Suggestion;
 
@@ -25,7 +25,7 @@ public class VertexJson extends GraphElementJson {
             ).put(
                     LABEL,
                     vertex.label().trim().isEmpty() ?
-                            Vertex.EMPTY_LABEL :
+                            "" :
                             vertex.label()
             ).put(
                     SUGGESTIONS, jsonSuggestions(vertex)

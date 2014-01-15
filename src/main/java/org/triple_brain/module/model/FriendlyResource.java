@@ -17,7 +17,6 @@ public interface FriendlyResource {
     public String comment();
     public void comment(String comment);
     public Boolean gotComments();
-    public void addImages(Set<Image> images);
     public DateTime creationDate();
     public DateTime lastModificationDate();
 }

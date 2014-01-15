@@ -9,14 +9,9 @@ import java.util.Set;
  */
 public interface GraphElement extends FriendlyResource{
     public boolean hasLabel();
-    public void addGenericIdentification(FriendlyResource friendlyResource);
     public Set<FriendlyResource> getGenericIdentifications();
-    public void addSameAs(FriendlyResource friendlyResource);
     public Set<FriendlyResource> getSameAs();
-    public void addType(FriendlyResource type);
-    public void removeIdentification(FriendlyResource type);
     public Set<FriendlyResource> getAdditionalTypes();
     public Set<FriendlyResource> getIdentifications();
-    public void remove();
     public String ownerUsername();
 }

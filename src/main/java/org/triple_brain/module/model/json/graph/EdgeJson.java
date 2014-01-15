@@ -2,7 +2,7 @@ package org.triple_brain.module.model.json.graph;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.triple_brain.module.model.graph.Edge;
+import org.triple_brain.module.model.graph.edge.Edge;
 
 /**
  * Copyright Mozilla Public License 1.1
@@ -17,7 +17,7 @@ public class EdgeJson extends GraphElementJson {
                     .put(
                             LABEL,
                             edge.label().trim().isEmpty() ?
-                                    Edge.EMPTY_LABEL :
+                                    "" :
                                     edge.label()
                     )
                     .put(
