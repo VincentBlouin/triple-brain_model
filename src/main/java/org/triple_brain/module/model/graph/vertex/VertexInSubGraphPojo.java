@@ -13,7 +13,7 @@ import java.util.Set;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class VertexImpl implements Vertex{
+public class VertexInSubGraphPojo implements VertexInSubGraph{
 
     private GraphElement graphElement;
     private Integer numberOfConnectedEdges;
@@ -21,6 +21,23 @@ public class VertexImpl implements Vertex{
     private Set<Edge> includedEdges;
     private Set<Suggestion> suggestions;
     private Boolean isPublic;
+    private Integer minDistanceFromCenterVertex = -1;
+
+    public VertexInSubGraphPojo(
+            GraphElement graphElement,
+            Integer numberOfConnectedEdges,
+            Set<Vertex> includedVertices,
+            Set<Edge> includedEdges,
+            Set<Suggestion> suggestions,
+            Boolean isPublic
+    ){
+        this.graphElement = graphElement;
+        this.numberOfConnectedEdges = numberOfConnectedEdges;
+        this.includedVertices = includedVertices;
+        this.includedEdges = includedEdges;
+        this.suggestions = suggestions;
+        this.isPublic = isPublic;
+    }
 
     @Override
     public Integer getNumberOfConnectedEdges() {
@@ -88,28 +105,18 @@ public class VertexImpl implements Vertex{
     }
 
     @Override
-    public void label(String label) {
-        graphElement.label(label);
-    }
-
-    @Override
     public Set<Image> images() {
         return graphElement.images();
     }
 
     @Override
-    public Boolean gotTheImages() {
-        return graphElement.gotTheImages();
+    public Boolean gotImages() {
+        return graphElement.gotImages();
     }
 
     @Override
     public String comment() {
         return graphElement.comment();
-    }
-
-    @Override
-    public void comment(String comment) {
-        graphElement.comment(comment);
     }
 
     @Override
@@ -125,5 +132,26 @@ public class VertexImpl implements Vertex{
     @Override
     public DateTime lastModificationDate() {
         return graphElement.lastModificationDate();
+    }
+
+    @Override
+    public Integer minDistanceFromCenterVertex() {
+        return minDistanceFromCenterVertex;
+    }
+
+    @Override
+    public VertexInSubGraph setMinDistanceFromCenterVertex(Integer minDistanceFromCenterVertex) {
+        this.minDistanceFromCenterVertex = minDistanceFromCenterVertex;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object vertexToCompareAsObject) {
+        return graphElement.equals(vertexToCompareAsObject);
+    }
+
+    @Override
+    public int hashCode() {
+        return graphElement.hashCode();
     }
 }

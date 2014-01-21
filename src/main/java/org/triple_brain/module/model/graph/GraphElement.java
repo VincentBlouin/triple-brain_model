@@ -8,7 +8,6 @@ import java.util.Set;
  * Copyright Mozilla Public License 1.1
  */
 public interface GraphElement extends FriendlyResource{
-    public boolean hasLabel();
     public Set<FriendlyResource> getGenericIdentifications();
     public Set<FriendlyResource> getSameAs();
     public Set<FriendlyResource> getAdditionalTypes();

@@ -8,8 +8,8 @@ import java.util.Set;
 * Copyright Mozilla Public License 1.1
 */
 public interface Suggestion extends FriendlyResource{
-    public FriendlyResource sameAs();
-    public FriendlyResource domain();
-    public Set<SuggestionOrigin> origins();
-    public void removeOriginsThatDependOnResource(FriendlyResource resource);
+    FriendlyResource sameAs();
+    FriendlyResource domain();
+    Set<SuggestionOrigin> origins();
+    void removeOriginsThatDependOnResource(FriendlyResource resource);
 }

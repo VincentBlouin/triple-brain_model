@@ -10,12 +10,11 @@ import java.util.Set;
 */
 public interface FriendlyResource {
     public URI uri();
+    public boolean hasLabel();
     public String label();
-    public void label(String label);
     public Set<Image> images();
-    public Boolean gotTheImages();
+    public Boolean gotImages();
     public String comment();
-    public void comment(String comment);
     public Boolean gotComments();
     public DateTime creationDate();
     public DateTime lastModificationDate();

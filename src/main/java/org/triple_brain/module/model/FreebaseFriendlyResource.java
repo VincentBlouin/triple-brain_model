@@ -21,7 +21,7 @@ import java.util.Set;
 */
 public class FreebaseFriendlyResource extends Observable {
 
-    private FriendlyResourceCached friendlyResource;
+    private FriendlyResource friendlyResource;
 
     public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text";
 
@@ -34,13 +34,13 @@ public class FreebaseFriendlyResource extends Observable {
                         contains("freebase.com");
     }
 
-    public static FreebaseFriendlyResource fromFriendlyResource(FriendlyResourceCached friendlyResource) {
+    public static FreebaseFriendlyResource fromFriendlyResource(FriendlyResource friendlyResource) {
         return new FreebaseFriendlyResource(
                 friendlyResource
         );
     }
 
-    protected FreebaseFriendlyResource(FriendlyResourceCached friendlyResource) {
+    protected FreebaseFriendlyResource(FriendlyResource friendlyResource) {
         this.friendlyResource = friendlyResource;
     }
 
@@ -63,7 +63,7 @@ public class FreebaseFriendlyResource extends Observable {
                 .replace("http://rdf.freebase.com/rdf", "");
     }
 
-    public FriendlyResourceCached getCachedFriendlyResource() {
+    public FriendlyResource getCachedFriendlyResource() {
         return friendlyResource;
     }
 
