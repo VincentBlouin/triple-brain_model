@@ -11,5 +11,4 @@ public interface Suggestion extends FriendlyResource{
     FriendlyResource sameAs();
     FriendlyResource domain();
     Set<SuggestionOrigin> origins();
-    void removeOriginsThatDependOnResource(FriendlyResource resource);
 }

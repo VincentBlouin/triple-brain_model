@@ -1,36 +1,95 @@
 package org.triple_brain.module.model.graph.vertex;
 
-import org.joda.time.DateTime;
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
-import org.triple_brain.module.model.graph.GraphElement;
+import org.triple_brain.module.model.graph.FriendlyResourcePojo;
+import org.triple_brain.module.model.graph.GraphElementPojo;
 import org.triple_brain.module.model.graph.edge.Edge;
+import org.triple_brain.module.model.graph.edge.EdgeOperator;
+import org.triple_brain.module.model.graph.edge.EdgePojo;
 import org.triple_brain.module.model.suggestion.Suggestion;
+import org.triple_brain.module.model.suggestion.SuggestionOperator;
+import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
-import java.util.Set;
+import java.util.*;
 
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class VertexInSubGraphPojo implements VertexInSubGraph{
+public class VertexInSubGraphPojo implements VertexInSubGraph {
 
-    private GraphElement graphElement;
+    private GraphElementPojo graphElement;
     private Integer numberOfConnectedEdges;
-    private Set<Vertex> includedVertices;
-    private Set<Edge> includedEdges;
-    private Set<Suggestion> suggestions;
+    private Map<URI, VertexInSubGraphPojo> includedVertices;
+    private Set<EdgePojo> includedEdges;
+    private Set<SuggestionPojo> suggestions;
     private Boolean isPublic;
     private Integer minDistanceFromCenterVertex = -1;
 
+    @Deprecated
+    public VertexInSubGraphPojo(VertexOperator vertexOperator) {
+        this(
+                new GraphElementPojo(vertexOperator),
+                vertexOperator.getNumberOfConnectedEdges(),
+                convertVertexOperatorSetToPojo(vertexOperator.getIncludedVertices()),
+                convertEdgeOperatorSetToPojo(vertexOperator.getIncludedEdges()),
+                convertSuggestionOperatorSetToPojo(vertexOperator.suggestions()),
+                vertexOperator.isPublic()
+        );
+    }
+
+    public static Map<URI, VertexInSubGraphPojo> convertVertexOperatorSetToPojo(Set<Vertex> vertices) {
+        Map<URI, VertexInSubGraphPojo> verticesPojo = new HashMap<>();
+        for (Vertex vertex : vertices) {
+            verticesPojo.put(
+                    vertex.uri(),
+                    new VertexInSubGraphPojo(
+                            (VertexOperator) vertex
+                    )
+            );
+        }
+        return verticesPojo;
+    }
+
+    public static Set<SuggestionPojo> convertSuggestionOperatorSetToPojo(Set<Suggestion> suggestions) {
+        Set<SuggestionPojo> suggestionsPojo = new HashSet<>();
+        for (Suggestion suggestion : suggestions) {
+            suggestionsPojo.add(
+                    new SuggestionPojo(
+                            (SuggestionOperator) suggestion
+                    )
+            );
+        }
+        return suggestionsPojo;
+    }
+
+    public static Set<EdgePojo> convertEdgeOperatorSetToPojo(Set<Edge> edges) {
+        Set<EdgePojo> edgesPojo = new HashSet<>();
+        for (Edge edge : edges) {
+            edgesPojo.add(
+                    new EdgePojo(
+                            (EdgeOperator) edge
+                    )
+            );
+        }
+        return edgesPojo;
+    }
+
+    public VertexInSubGraphPojo(FriendlyResourcePojo friendlyResourcePojo) {
+        this.graphElement = new GraphElementPojo(
+                friendlyResourcePojo
+        );
+    }
+
     public VertexInSubGraphPojo(
-            GraphElement graphElement,
+            GraphElementPojo graphElement,
             Integer numberOfConnectedEdges,
-            Set<Vertex> includedVertices,
-            Set<Edge> includedEdges,
-            Set<Suggestion> suggestions,
+            Map<URI, VertexInSubGraphPojo> includedVertices,
+            Set<EdgePojo> includedEdges,
+            Set<SuggestionPojo> suggestions,
             Boolean isPublic
-    ){
+    ) {
         this.graphElement = graphElement;
         this.numberOfConnectedEdges = numberOfConnectedEdges;
         this.includedVertices = includedVertices;
@@ -46,7 +105,9 @@ public class VertexInSubGraphPojo implements VertexInSubGraph{
 
     @Override
     public Set<Suggestion> suggestions() {
-        return suggestions;
+        Set<Suggestion> suggestionSet = new HashSet<>();
+        suggestionSet.addAll(suggestions);
+        return suggestionSet;
     }
 
     @Override
@@ -56,12 +117,16 @@ public class VertexInSubGraphPojo implements VertexInSubGraph{
 
     @Override
     public Set<Vertex> getIncludedVertices() {
-        return includedVertices;
+        Set<Vertex> vertices = new HashSet<>();
+        vertices.addAll(includedVertices.values());
+        return vertices;
     }
 
     @Override
     public Set<Edge> getIncludedEdges() {
-        return includedEdges;
+        Set<Edge> edges = new HashSet<>();
+        edges.addAll(includedEdges);
+        return edges;
     }
 
     @Override
@@ -125,12 +190,12 @@ public class VertexInSubGraphPojo implements VertexInSubGraph{
     }
 
     @Override
-    public DateTime creationDate() {
+    public Date creationDate() {
         return graphElement.creationDate();
     }
 
     @Override
-    public DateTime lastModificationDate() {
+    public Date lastModificationDate() {
         return graphElement.lastModificationDate();
     }
 
@@ -153,5 +218,9 @@ public class VertexInSubGraphPojo implements VertexInSubGraph{
     @Override
     public int hashCode() {
         return graphElement.hashCode();
+    }
+
+    public GraphElementPojo getGraphElement() {
+        return graphElement;
     }
 }

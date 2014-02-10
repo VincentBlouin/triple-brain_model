@@ -1,7 +1,7 @@
 package org.triple_brain.module.model;
 
-import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.graph.FriendlyResourceOperator;
+import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 
 import java.net.URI;
 
@@ -14,7 +14,7 @@ public interface FriendlyResourceFactory {
             URI uri,
             String label
     );
-    public FriendlyResourceOperator createOrLoadUsingJson(
-            JSONObject json
+    public FriendlyResourceOperator createOrLoadUsingPojo(
+            FriendlyResourcePojo friendlyResource
     );
 }

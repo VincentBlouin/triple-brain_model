@@ -1,10 +1,10 @@
 package org.triple_brain.module.model.graph;
 
-import org.joda.time.DateTime;
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.Set;
 
 /*
@@ -13,19 +13,39 @@ import java.util.Set;
 public class FriendlyResourcePojo implements FriendlyResource {
 
     private URI uri;
-    private String label;
+    private String  label,
+                    comment;
     private Set<Image> images;
-    private String comment;
-    private DateTime creationDate,
+    private Date creationDate,
             lastModificationDate;
+
+    @Deprecated
+    public FriendlyResourcePojo(
+            FriendlyResourceOperator friendlyResourceOperator
+    ){
+        this(
+                friendlyResourceOperator.uri(),
+                friendlyResourceOperator.label(),
+                friendlyResourceOperator.images(),
+                friendlyResourceOperator.comment(),
+                friendlyResourceOperator.creationDate(),
+                friendlyResourceOperator.lastModificationDate()
+        );
+    }
+
+    public FriendlyResourcePojo(
+            URI uri
+    ){
+        this.uri = uri;
+    }
 
     public FriendlyResourcePojo(
             URI uri,
             String label,
             Set<Image> images,
             String comment,
-            DateTime creationDate,
-            DateTime lastModificationDate
+            Date creationDate,
+            Date lastModificationDate
     ) {
         this.uri = uri;
         this.label = label;
@@ -71,12 +91,12 @@ public class FriendlyResourcePojo implements FriendlyResource {
     }
 
     @Override
-    public DateTime creationDate() {
+    public Date creationDate() {
         return creationDate;
     }
 
     @Override
-    public DateTime lastModificationDate() {
+    public Date lastModificationDate() {
         return lastModificationDate;
     }
 

@@ -15,8 +15,8 @@ public interface UserGraph {
     public VertexOperator defaultVertex();
     public User user();
     public Boolean haveElementWithId(URI id);
-    public SubGraph graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
-    public SubGraph graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
+    public SubGraphPojo graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
+    public SubGraphPojo graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     public String toRdfXml();
     public VertexOperator vertexWithUri(URI uri);
     public EdgeOperator edgeWithUri(URI uri);

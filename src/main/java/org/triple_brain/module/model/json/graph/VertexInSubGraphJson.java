@@ -1,30 +1,31 @@
 package org.triple_brain.module.model.json.graph;
 
+import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.triple_brain.module.model.graph.vertex.Vertex;
-import org.triple_brain.module.model.graph.vertex.VertexInSubGraph;
+import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class VertexInSubGraphJson extends VertexJson {
-    public static final String DISTANCE_FROM_CENTER_VERTEX = "distance_from_center_vertex";
-    public static JSONObject toJson(VertexInSubGraph vertex) {
+public class VertexInSubGraphJson{
+
+    private static Gson gson = new Gson();
+
+    public static JSONObject toJson(VertexInSubGraphPojo vertex) {
         try{
-            return VertexJson.toJson(
+            return new JSONObject(gson.toJson(
                     vertex
-            ).put(
-                    DISTANCE_FROM_CENTER_VERTEX,
-                    vertex.minDistanceFromCenterVertex()
-            );
+            ));
         }catch(JSONException e){
             throw new RuntimeException(e);
         }
     }
-    public static JSONObject toJson(Vertex vertex) {
-        return toJson(
-                (VertexInSubGraph) vertex
+
+    public static VertexInSubGraphPojo fromJson(JSONObject jsonObject){
+        return gson.fromJson(
+                jsonObject.toString(),
+                VertexInSubGraphPojo.class
         );
     }
 }

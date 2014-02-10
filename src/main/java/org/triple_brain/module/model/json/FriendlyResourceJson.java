@@ -1,29 +1,33 @@
 package org.triple_brain.module.model.json;
 
+import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.triple_brain.module.model.FriendlyResource;
+import org.triple_brain.module.model.graph.FriendlyResourcePojo;
+
 /*
 * Copyright Mozilla Public License 1.1
 */
 public class FriendlyResourceJson {
 
-    public static final String URI = "uri";
-    public static final String LABEL = "label";
-    public static final String IMAGES = "images";
-    public static final String COMMENT = "comment";
+    private static Gson gson = new Gson();
 
-    public static JSONObject toJson(FriendlyResource resource) {
+    public static JSONObject toJson(FriendlyResourcePojo resource) {
         try {
-            return new JSONObject()
-                    .put(URI, resource.uri())
-                    .put(LABEL, resource.label())
-                    .put(IMAGES, ImageJson.fromCollection(
-                            resource.images()
-                    ))
-                    .put(COMMENT, resource.comment());
+            return new JSONObject(
+                    gson.toJson(
+                            resource
+                    )
+            );
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static FriendlyResourcePojo fromJson(JSONObject json){
+        return gson.fromJson(
+                json.toString(),
+                FriendlyResourcePojo.class
+        );
     }
 }

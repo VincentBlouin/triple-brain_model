@@ -6,13 +6,13 @@ import org.codehaus.jettison.json.JSONObject;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
-import org.triple_brain.module.model.json.UserJsonFields;
+import org.triple_brain.module.model.json.UserJson;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.triple_brain.module.model.json.UserJsonFields.*;
+import static org.triple_brain.module.model.json.UserJson.*;
 
 /**
  * Copyright Mozilla Public License 1.1
@@ -134,7 +134,7 @@ public class UserTest {
                 "roger.lamothe@example.org",
                 "[fr]"
         );
-        JSONObject jsonUser = UserJsonFields.toJson(user);
+        JSONObject jsonUser = UserJson.toJson(user);
         assertThat(jsonUser.getString(USER_NAME), is("roger_lamothe"));
         assertThat(jsonUser.getString(EMAIL), is("roger.lamothe@example.org"));
     }

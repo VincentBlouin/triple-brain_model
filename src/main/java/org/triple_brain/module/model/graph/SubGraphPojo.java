@@ -1,26 +1,30 @@
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.graph.edge.Edge;
+import org.triple_brain.module.model.graph.edge.EdgePojo;
 import org.triple_brain.module.model.graph.vertex.Vertex;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraph;
+import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class SubGraphImpl implements SubGraph{
+public class SubGraphPojo implements SubGraph{
 
-    private Set<VertexInSubGraph> vertices = new HashSet<VertexInSubGraph>();
-    private Set<Edge> edges = new HashSet<Edge>();
+    private Map<URI, VertexInSubGraphPojo> vertices = new HashMap<URI, VertexInSubGraphPojo>();
+    private Set<EdgePojo> edges = new HashSet<EdgePojo>();
 
-    public static SubGraphImpl withVerticesAndEdges(Set<VertexInSubGraph> vertices, Set<Edge> edges){
-        return new SubGraphImpl(vertices, edges);
+    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexInSubGraphPojo> vertices, Set<EdgePojo> edges){
+        return new SubGraphPojo(vertices, edges);
     }
 
-    protected SubGraphImpl(Set<VertexInSubGraph> vertices, Set<Edge> edges){
+    protected SubGraphPojo(Map<URI, VertexInSubGraphPojo> vertices, Set<EdgePojo> edges){
         this.vertices = vertices;
         this.edges = edges;
     }
@@ -63,16 +67,31 @@ public class SubGraphImpl implements SubGraph{
 
     @Override
     public boolean containsVertex(Vertex vertex) {
-        return vertices.contains(vertex);
+        return vertices.containsValue(vertex);
     }
 
     @Override
     public Set<VertexInSubGraph> vertices() {
-        return vertices;
+        Set<VertexInSubGraph> verticesInterface = new HashSet<>();
+        verticesInterface.addAll(vertices.values());
+        return verticesInterface;
     }
 
     @Override
     public Set<Edge> edges() {
-        return edges;
+        Set<Edge> edgesInterface = new HashSet<>();
+        edgesInterface.addAll(edges);
+        return edgesInterface;
+    }
+
+    public void addEdge(EdgePojo edge){
+        edges.add(edge);
+    }
+
+    public void addVertex(VertexInSubGraphPojo vertex){
+        vertices.put(
+                vertex.uri(),
+                vertex
+        );
     }
 }

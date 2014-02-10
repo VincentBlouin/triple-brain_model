@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.triple_brain.module.model.json.UserJsonFields.*;
+import static org.triple_brain.module.model.json.UserJson.*;
 import static org.triple_brain.module.model.validator.UserValidator.*;
 
 /**

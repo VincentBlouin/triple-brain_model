@@ -1,11 +1,11 @@
 package org.triple_brain.module.model.graph;
 
-import org.joda.time.DateTime;
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.UserUris;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,16 +14,39 @@ import java.util.Set;
 */
 public class GraphElementPojo implements GraphElement {
 
-    private FriendlyResource friendlyResource;
-    private Set<FriendlyResource> genericIdentifications;
-    private Set<FriendlyResource> sameAs;
-    private Set<FriendlyResource> additionalTypes;
+    private FriendlyResourcePojo friendlyResource;
+    private Set<FriendlyResourcePojo> genericIdentifications;
+    private Set<FriendlyResourcePojo> sameAs;
+    private Set<FriendlyResourcePojo> additionalTypes;
+
+    @Deprecated
+    public GraphElementPojo(GraphElementOperator graphElementOperator){
+        this(
+                new FriendlyResourcePojo(graphElementOperator),
+                setOfFriendlyResourceFromOperator(graphElementOperator.getGenericIdentifications()),
+                setOfFriendlyResourceFromOperator(graphElementOperator.getSameAs()),
+                setOfFriendlyResourceFromOperator(graphElementOperator.getAdditionalTypes())
+        );
+    }
+    public GraphElementPojo(
+            FriendlyResourcePojo friendlyResource,
+            Set<FriendlyResourcePojo> genericIdentifications
+    ){
+        this.friendlyResource = friendlyResource;
+        this.genericIdentifications = genericIdentifications;
+    }
 
     public GraphElementPojo(
-            FriendlyResource friendlyResource,
-            Set<FriendlyResource> genericIdentifications,
-            Set<FriendlyResource> sameAs,
-            Set<FriendlyResource> additionalTypes
+            FriendlyResourcePojo friendlyResource
+    ){
+        this.friendlyResource = friendlyResource;
+    }
+
+    public GraphElementPojo(
+            FriendlyResourcePojo friendlyResource,
+            Set<FriendlyResourcePojo> genericIdentifications,
+            Set<FriendlyResourcePojo> sameAs,
+            Set<FriendlyResourcePojo> additionalTypes
     ){
         this.friendlyResource = friendlyResource;
         this.genericIdentifications = genericIdentifications;
@@ -38,17 +61,23 @@ public class GraphElementPojo implements GraphElement {
 
     @Override
     public Set<FriendlyResource> getGenericIdentifications() {
-        return genericIdentifications;
+        return convertSetToInterface(
+                genericIdentifications
+        );
     }
 
     @Override
     public Set<FriendlyResource> getSameAs() {
-        return sameAs;
+        return convertSetToInterface(
+                sameAs
+        );
     }
 
     @Override
     public Set<FriendlyResource> getAdditionalTypes() {
-        return additionalTypes;
+        return convertSetToInterface(
+                additionalTypes
+        );
     }
 
     @Override
@@ -98,12 +127,12 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public DateTime creationDate() {
+    public Date creationDate() {
         return friendlyResource.creationDate();
     }
 
     @Override
-    public DateTime lastModificationDate() {
+    public Date lastModificationDate() {
         return friendlyResource.lastModificationDate();
     }
 
@@ -115,5 +144,29 @@ public class GraphElementPojo implements GraphElement {
     @Override
     public int hashCode() {
         return friendlyResource.hashCode();
+    }
+
+    @Deprecated
+    public FriendlyResourcePojo getFriendlyResource(){
+        return friendlyResource;
+    }
+
+    private static Set<FriendlyResourcePojo> setOfFriendlyResourceFromOperator(Set<FriendlyResource> friendlyResourcesOperator){
+        Set<FriendlyResourcePojo> friendlyResourcesPojo = new HashSet<>();
+        for(FriendlyResource friendlyResource : friendlyResourcesOperator){
+            FriendlyResourceOperator friendlyResourceOperator = (FriendlyResourceOperator) friendlyResource;
+            friendlyResourcesPojo.add(
+                    new FriendlyResourcePojo(
+                            friendlyResourceOperator
+                    )
+            );
+        }
+        return friendlyResourcesPojo;
+    }
+
+    private Set<FriendlyResource> convertSetToInterface(Set<FriendlyResourcePojo> friendlyResourcePojoSet){
+        Set<FriendlyResource> friendlyResources = new HashSet<>();
+        friendlyResources.addAll(friendlyResourcePojoSet);
+        return friendlyResources;
     }
 }

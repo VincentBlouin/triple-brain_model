@@ -1,12 +1,13 @@
 package org.triple_brain.module.model.graph.edge;
 
-import org.joda.time.DateTime;
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
-import org.triple_brain.module.model.graph.GraphElement;
+import org.triple_brain.module.model.graph.GraphElementPojo;
 import org.triple_brain.module.model.graph.vertex.Vertex;
+import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.Set;
 
 /*
@@ -14,14 +15,25 @@ import java.util.Set;
 */
 public class EdgePojo implements Edge{
 
-    private GraphElement graphElement;
-    private Vertex sourceVertex;
-    private Vertex destinationVertex;
+    private GraphElementPojo graphElement;
+    private VertexInSubGraphPojo sourceVertex;
+    private VertexInSubGraphPojo destinationVertex;
+
+    @Deprecated
+    public EdgePojo(
+            EdgeOperator edgeOperator
+    ){
+        this(
+                new GraphElementPojo(edgeOperator),
+                new VertexInSubGraphPojo(edgeOperator.sourceVertex()),
+                new VertexInSubGraphPojo(edgeOperator.destinationVertex())
+        );
+    }
 
     public EdgePojo(
-            GraphElement graphElement,
-            Vertex sourceVertex,
-            Vertex destinationVertex
+            GraphElementPojo graphElement,
+            VertexInSubGraphPojo sourceVertex,
+            VertexInSubGraphPojo destinationVertex
     ){
         this.graphElement = graphElement;
         this.sourceVertex = sourceVertex;
@@ -112,22 +124,26 @@ public class EdgePojo implements Edge{
     }
 
     @Override
-    public DateTime creationDate() {
+    public Date creationDate() {
         return graphElement.creationDate();
     }
 
     @Override
-    public DateTime lastModificationDate() {
+    public Date lastModificationDate() {
         return graphElement.lastModificationDate();
     }
 
     @Override
-    public boolean equals(Object vertexToCompareAsObject) {
-        return graphElement.equals(vertexToCompareAsObject);
+    public boolean equals(Object edgeToCompareAsObject) {
+        return graphElement.equals(edgeToCompareAsObject);
     }
 
     @Override
     public int hashCode() {
         return graphElement.hashCode();
+    }
+
+    public GraphElementPojo getGraphElement(){
+        return graphElement;
     }
 }

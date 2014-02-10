@@ -1,8 +1,7 @@
 package org.triple_brain.module.model;
 
-import org.joda.time.DateTime;
-
 import java.net.URI;
+import java.util.Date;
 import java.util.Set;
 
 /*
@@ -16,6 +15,6 @@ public interface FriendlyResource {
     public Boolean gotImages();
     public String comment();
     public Boolean gotComments();
-    public DateTime creationDate();
-    public DateTime lastModificationDate();
+    public Date creationDate();
+    public Date lastModificationDate();
 }
