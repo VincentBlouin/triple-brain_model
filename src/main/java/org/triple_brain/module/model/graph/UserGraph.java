@@ -5,6 +5,7 @@ import org.triple_brain.module.model.graph.edge.EdgeOperator;
 import org.triple_brain.module.model.graph.exceptions.InvalidDepthOfSubVerticesException;
 import org.triple_brain.module.model.graph.exceptions.NonExistingResourceException;
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
+import org.triple_brain.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
 
@@ -20,5 +21,5 @@ public interface UserGraph {
     public String toRdfXml();
     public VertexOperator vertexWithUri(URI uri);
     public EdgeOperator edgeWithUri(URI uri);
-    public VertexOperator createVertex();
+    public VertexPojo createVertex();
 }

@@ -9,7 +9,7 @@ import java.net.URI;
 * Copyright Mozilla Public License 1.1
 */
 public interface FriendlyResourceFactory {
-    public FriendlyResourceOperator createOrLoadFromUri(URI uri);
+    public FriendlyResourceOperator withUri(URI uri);
     public FriendlyResourceOperator createOrLoadUsingUriAndLabel(
             URI uri,
             String label

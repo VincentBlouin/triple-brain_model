@@ -2,12 +2,14 @@ package org.triple_brain.module.model.graph.edge;
 
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
+import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 import org.triple_brain.module.model.graph.GraphElementPojo;
 import org.triple_brain.module.model.graph.vertex.Vertex;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -40,14 +42,34 @@ public class EdgePojo implements Edge{
         this.destinationVertex = destinationVertex;
     }
 
+    public EdgePojo(
+            URI uri,
+            String label
+    ){
+        graphElement = new GraphElementPojo(
+                new FriendlyResourcePojo(
+                        uri,
+                        label
+                )
+        );
+    }
+
     @Override
     public Vertex sourceVertex() {
         return sourceVertex;
     }
 
+    public void setSourceVertex(VertexInSubGraphPojo vertex){
+        this.sourceVertex = vertex;
+    }
+
     @Override
     public Vertex destinationVertex() {
         return destinationVertex;
+    }
+
+    public void setDestinationVertex(VertexInSubGraphPojo vertex){
+        this.destinationVertex = vertex;
     }
 
     @Override
@@ -64,22 +86,22 @@ public class EdgePojo implements Edge{
     }
 
     @Override
-    public Set<FriendlyResource> getGenericIdentifications() {
+    public Map<URI,?extends FriendlyResource> getGenericIdentifications() {
         return graphElement.getGenericIdentifications();
     }
 
     @Override
-    public Set<FriendlyResource> getSameAs() {
+    public Map<URI,?extends FriendlyResource> getSameAs() {
         return graphElement.getSameAs();
     }
 
     @Override
-    public Set<FriendlyResource> getAdditionalTypes() {
+    public Map<URI,?extends FriendlyResource> getAdditionalTypes() {
         return graphElement.getAdditionalTypes();
     }
 
     @Override
-    public Set<FriendlyResource> getIdentifications() {
+    public Map<URI,?extends FriendlyResource> getIdentifications() {
         return graphElement.getIdentifications();
     }
 

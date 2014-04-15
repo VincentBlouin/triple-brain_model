@@ -5,7 +5,6 @@ import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 import org.triple_brain.module.model.graph.GraphElementPojo;
 import org.triple_brain.module.model.graph.edge.Edge;
-import org.triple_brain.module.model.graph.edge.EdgeOperator;
 import org.triple_brain.module.model.graph.edge.EdgePojo;
 import org.triple_brain.module.model.suggestion.Suggestion;
 import org.triple_brain.module.model.suggestion.SuggestionOperator;
@@ -19,12 +18,7 @@ import java.util.*;
 */
 public class VertexInSubGraphPojo implements VertexInSubGraph {
 
-    private GraphElementPojo graphElement;
-    private Integer numberOfConnectedEdges;
-    private Map<URI, VertexInSubGraphPojo> includedVertices;
-    private Set<EdgePojo> includedEdges;
-    private Set<SuggestionPojo> suggestions;
-    private Boolean isPublic;
+    private VertexPojo vertex;
     private Integer minDistanceFromCenterVertex = -1;
 
     @Deprecated
@@ -32,171 +26,188 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         this(
                 new GraphElementPojo(vertexOperator),
                 vertexOperator.getNumberOfConnectedEdges(),
-                convertVertexOperatorSetToPojo(vertexOperator.getIncludedVertices()),
-                convertEdgeOperatorSetToPojo(vertexOperator.getIncludedEdges()),
-                convertSuggestionOperatorSetToPojo(vertexOperator.suggestions()),
+                convertVertexSetToPojoMap(vertexOperator.getIncludedVertices()),
+                convertEdgeSetToPojoMap(vertexOperator.getIncludedEdges()),
+                convertSuggestionSetToPojo(vertexOperator.suggestions()),
                 vertexOperator.isPublic()
         );
     }
 
-    public static Map<URI, VertexInSubGraphPojo> convertVertexOperatorSetToPojo(Set<Vertex> vertices) {
+    public VertexInSubGraphPojo(URI uri){
+        this(
+                new FriendlyResourcePojo(uri)
+        );
+    }
+
+    public VertexInSubGraphPojo(URI uri, String label){
+        this(
+                new FriendlyResourcePojo(
+                        uri,
+                        label
+                )
+        );
+    }
+
+    public static Map<URI, VertexInSubGraphPojo> convertVertexSetToPojoMap(Map<URI, ? extends Vertex> vertices) {
         Map<URI, VertexInSubGraphPojo> verticesPojo = new HashMap<>();
-        for (Vertex vertex : vertices) {
+        for (Vertex vertex : vertices.values()) {
             verticesPojo.put(
                     vertex.uri(),
-                    new VertexInSubGraphPojo(
-                            (VertexOperator) vertex
-                    )
+                    (VertexInSubGraphPojo) vertex
             );
         }
         return verticesPojo;
     }
 
-    public static Set<SuggestionPojo> convertSuggestionOperatorSetToPojo(Set<Suggestion> suggestions) {
-        Set<SuggestionPojo> suggestionsPojo = new HashSet<>();
-        for (Suggestion suggestion : suggestions) {
-            suggestionsPojo.add(
-                    new SuggestionPojo(
-                            (SuggestionOperator) suggestion
-                    )
+    public static Map<URI, SuggestionPojo> convertSuggestionSetToPojo(Map<URI, ? extends Suggestion> suggestions) {
+        Map<URI, SuggestionPojo> suggestionsPojo = new HashMap<>();
+        for (Suggestion suggestion : suggestions.values()) {
+            suggestionsPojo.put(
+                    suggestion.uri(),
+                    (SuggestionPojo) suggestion
             );
         }
         return suggestionsPojo;
     }
 
-    public static Set<EdgePojo> convertEdgeOperatorSetToPojo(Set<Edge> edges) {
-        Set<EdgePojo> edgesPojo = new HashSet<>();
-        for (Edge edge : edges) {
-            edgesPojo.add(
-                    new EdgePojo(
-                            (EdgeOperator) edge
-                    )
+    public static Map<URI, EdgePojo> convertEdgeSetToPojoMap(Map<URI, ? extends Edge> edges) {
+        Map<URI, EdgePojo> edgesPojo = new HashMap<>();
+        for (Edge edge : edges.values()) {
+            edgesPojo.put(
+                    edge.uri(),
+                    (EdgePojo) edge
             );
         }
         return edgesPojo;
     }
 
     public VertexInSubGraphPojo(FriendlyResourcePojo friendlyResourcePojo) {
-        this.graphElement = new GraphElementPojo(
-                friendlyResourcePojo
+        this(
+                new VertexPojo(friendlyResourcePojo)
         );
+    }
+
+    public VertexInSubGraphPojo(VertexPojo vertex){
+        this.vertex = vertex;
     }
 
     public VertexInSubGraphPojo(
             GraphElementPojo graphElement,
             Integer numberOfConnectedEdges,
             Map<URI, VertexInSubGraphPojo> includedVertices,
-            Set<EdgePojo> includedEdges,
-            Set<SuggestionPojo> suggestions,
+            Map<URI, EdgePojo> includedEdges,
+            Map<URI, SuggestionPojo> suggestions,
             Boolean isPublic
     ) {
-        this.graphElement = graphElement;
-        this.numberOfConnectedEdges = numberOfConnectedEdges;
-        this.includedVertices = includedVertices;
-        this.includedEdges = includedEdges;
-        this.suggestions = suggestions;
-        this.isPublic = isPublic;
+        this.vertex = new VertexPojo(
+                graphElement,
+                numberOfConnectedEdges,
+                includedVertices,
+                includedEdges,
+                suggestions,
+                isPublic
+        );
     }
 
     @Override
     public Integer getNumberOfConnectedEdges() {
-        return numberOfConnectedEdges;
+        return vertex.getNumberOfConnectedEdges();
     }
 
     @Override
-    public Set<Suggestion> suggestions() {
-        Set<Suggestion> suggestionSet = new HashSet<>();
-        suggestionSet.addAll(suggestions);
-        return suggestionSet;
+    public Map<URI, SuggestionPojo> suggestions() {
+        return vertex.suggestions();
+    }
+
+    public void addSuggestion(SuggestionPojo suggestion){
+        vertex.addSuggestion(
+                suggestion
+        );
     }
 
     @Override
     public Boolean isPublic() {
-        return isPublic;
+        return vertex.isPublic();
     }
 
     @Override
-    public Set<Vertex> getIncludedVertices() {
-        Set<Vertex> vertices = new HashSet<>();
-        vertices.addAll(includedVertices.values());
-        return vertices;
+    public Map<URI, VertexInSubGraphPojo> getIncludedVertices() {
+        return vertex.getIncludedVertices();
     }
 
     @Override
-    public Set<Edge> getIncludedEdges() {
-        Set<Edge> edges = new HashSet<>();
-        edges.addAll(includedEdges);
-        return edges;
+    public Map<URI, EdgePojo> getIncludedEdges() {
+        return vertex.getIncludedEdges();
     }
 
     @Override
     public boolean hasLabel() {
-        return graphElement.hasLabel();
+        return vertex.hasLabel();
     }
 
     @Override
-    public Set<FriendlyResource> getGenericIdentifications() {
-        return graphElement.getGenericIdentifications();
+    public Map<URI, ?extends FriendlyResource> getGenericIdentifications() {
+        return vertex.getGenericIdentifications();
     }
 
     @Override
-    public Set<FriendlyResource> getSameAs() {
-        return graphElement.getSameAs();
+    public Map<URI, ?extends FriendlyResource> getSameAs() {
+        return vertex.getSameAs();
     }
 
     @Override
-    public Set<FriendlyResource> getAdditionalTypes() {
-        return graphElement.getAdditionalTypes();
+    public Map<URI, ?extends FriendlyResource> getAdditionalTypes() {
+        return vertex.getAdditionalTypes();
     }
 
     @Override
-    public Set<FriendlyResource> getIdentifications() {
-        return graphElement.getIdentifications();
+    public Map<URI, ?extends FriendlyResource> getIdentifications() {
+        return vertex.getIdentifications();
     }
 
     @Override
     public String ownerUsername() {
-        return graphElement.ownerUsername();
+        return vertex.ownerUsername();
     }
 
     @Override
     public URI uri() {
-        return graphElement.uri();
+        return vertex.uri();
     }
 
     @Override
     public String label() {
-        return graphElement.label();
+        return vertex.label();
     }
 
     @Override
     public Set<Image> images() {
-        return graphElement.images();
+        return vertex.images();
     }
 
     @Override
     public Boolean gotImages() {
-        return graphElement.gotImages();
+        return vertex.gotImages();
     }
 
     @Override
     public String comment() {
-        return graphElement.comment();
+        return vertex.comment();
     }
 
     @Override
     public Boolean gotComments() {
-        return graphElement.gotComments();
+        return vertex.gotComments();
     }
 
     @Override
     public Date creationDate() {
-        return graphElement.creationDate();
+        return vertex.creationDate();
     }
 
     @Override
     public Date lastModificationDate() {
-        return graphElement.lastModificationDate();
+        return vertex.lastModificationDate();
     }
 
     @Override
@@ -212,15 +223,15 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
 
     @Override
     public boolean equals(Object vertexToCompareAsObject) {
-        return graphElement.equals(vertexToCompareAsObject);
+        return vertex.equals(vertexToCompareAsObject);
     }
 
     @Override
     public int hashCode() {
-        return graphElement.hashCode();
+        return vertex.hashCode();
     }
 
     public GraphElementPojo getGraphElement() {
-        return graphElement;
+        return vertex.getGraphElement();
     }
 }

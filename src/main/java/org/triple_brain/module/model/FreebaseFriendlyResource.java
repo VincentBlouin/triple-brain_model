@@ -7,6 +7,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.triple_brain.module.common_utils.DataFetcher;
+import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -21,7 +22,7 @@ import java.util.Set;
 */
 public class FreebaseFriendlyResource extends Observable {
 
-    private FriendlyResource friendlyResource;
+    private FriendlyResourcePojo friendlyResource;
 
     public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text";
 
@@ -34,13 +35,13 @@ public class FreebaseFriendlyResource extends Observable {
                         contains("freebase.com");
     }
 
-    public static FreebaseFriendlyResource fromFriendlyResource(FriendlyResource friendlyResource) {
+    public static FreebaseFriendlyResource fromFriendlyResource(FriendlyResourcePojo friendlyResource) {
         return new FreebaseFriendlyResource(
                 friendlyResource
         );
     }
 
-    protected FreebaseFriendlyResource(FriendlyResource friendlyResource) {
+    protected FreebaseFriendlyResource(FriendlyResourcePojo friendlyResource) {
         this.friendlyResource = friendlyResource;
     }
 
@@ -63,7 +64,7 @@ public class FreebaseFriendlyResource extends Observable {
                 .replace("http://rdf.freebase.com/rdf", "");
     }
 
-    public FriendlyResource getCachedFriendlyResource() {
+    public FriendlyResourcePojo getCachedFriendlyResource() {
         return friendlyResource;
     }
 
@@ -86,15 +87,6 @@ public class FreebaseFriendlyResource extends Observable {
         }
 
         private Set<Image> getImages(){
-//            HttpRequestInitializer initializer =
-//                    new CommonGoogleJsonClientRequestInitializer("MY KEY");
-//            HttpTransport httpTransport = new NetHttpTransport();
-//            JsonFactory jsonFactory = new JacksonFactory();
-//            Freebase freebase = new Freebase(
-//                    httpTransport,
-//                    jsonFactory,
-//                    initializer
-//            );
             try{
                 String imagesKey = "/common/topic/image";
                 String id = "id";

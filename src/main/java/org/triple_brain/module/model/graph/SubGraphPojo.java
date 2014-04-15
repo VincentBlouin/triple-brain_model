@@ -15,38 +15,32 @@ import java.util.Set;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class SubGraphPojo implements SubGraph{
+public class SubGraphPojo implements SubGraph {
 
-    private Map<URI, VertexInSubGraphPojo> vertices = new HashMap<URI, VertexInSubGraphPojo>();
-    private Set<EdgePojo> edges = new HashSet<EdgePojo>();
+    private Map<URI, VertexInSubGraphPojo> vertices = new HashMap<>();
+    private Map<URI, EdgePojo> edges = new HashMap<>();
 
-    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexInSubGraphPojo> vertices, Set<EdgePojo> edges){
+    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
         return new SubGraphPojo(vertices, edges);
     }
 
-    protected SubGraphPojo(Map<URI, VertexInSubGraphPojo> vertices, Set<EdgePojo> edges){
+    protected SubGraphPojo(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
         this.vertices = vertices;
         this.edges = edges;
     }
 
     @Override
     public VertexInSubGraph vertexWithIdentifier(URI identifier) {
-        for(VertexInSubGraph vertex : vertices()){
-            if(vertex.uri().equals(identifier)){
-                return vertex;
-            }
-        }
-        throw new RuntimeException("vertex with identifier " + identifier + " not found");
+        return vertices.get(
+                identifier
+        );
     }
 
     @Override
     public Edge edgeWithIdentifier(URI identifier) {
-        for(Edge edge : edges()){
-            if(edge.uri().equals(identifier)){
-                return edge;
-            }
-        }
-        throw new RuntimeException("edge with identifier " + identifier + " not found");
+        return edges.get(
+                identifier
+        );
     }
 
     @Override
@@ -66,29 +60,40 @@ public class SubGraphPojo implements SubGraph{
     }
 
     @Override
-    public boolean containsVertex(Vertex vertex) {
-        return vertices.containsValue(vertex);
+    public Boolean containsVertex(Vertex vertex) {
+        return vertices.containsKey(
+                vertex.uri()
+        );
     }
 
     @Override
-    public Set<VertexInSubGraph> vertices() {
-        Set<VertexInSubGraph> verticesInterface = new HashSet<>();
-        verticesInterface.addAll(vertices.values());
-        return verticesInterface;
+    public Boolean containsEdge(Edge edge) {
+        return edges.containsKey(edge.uri());
     }
 
     @Override
-    public Set<Edge> edges() {
-        Set<Edge> edgesInterface = new HashSet<>();
-        edgesInterface.addAll(edges);
-        return edgesInterface;
+    public Boolean hasEdgeWithUri(URI uri) {
+        return edges.containsKey(uri);
     }
 
-    public void addEdge(EdgePojo edge){
-        edges.add(edge);
+    @Override
+    public Map<URI, VertexInSubGraphPojo> vertices() {
+        return vertices;
     }
 
-    public void addVertex(VertexInSubGraphPojo vertex){
+    @Override
+    public Map<URI, EdgePojo> edges() {
+        return edges;
+    }
+
+    public void addEdge(EdgePojo edge) {
+        edges.put(
+                edge.uri(),
+                edge
+        );
+    }
+
+    public void addVertex(VertexInSubGraphPojo vertex) {
         vertices.put(
                 vertex.uri(),
                 vertex

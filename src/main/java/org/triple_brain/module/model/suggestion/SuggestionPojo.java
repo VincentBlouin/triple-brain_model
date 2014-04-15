@@ -93,15 +93,31 @@ public class SuggestionPojo implements Suggestion {
     }
 
     @Override
-    public Set<SuggestionOrigin> origins() {
-        Set<SuggestionOrigin> origins = new HashSet<>();
-        origins.addAll(this.origins);
+    public Set<SuggestionOriginPojo> origins() {
         return origins;
+    }
+
+    public void addOrigin(SuggestionOriginPojo origin){
+        origins.add(
+                origin
+        );
     }
 
     @Override
     public URI uri() {
         return friendlyResource.uri();
+    }
+
+    public void setUri(URI uri){
+        if(friendlyResource == null){
+            friendlyResource = new FriendlyResourcePojo(
+                    uri
+            );
+        }else{
+            friendlyResource.setUri(
+                    uri
+            );
+        }
     }
 
     @Override
@@ -144,7 +160,7 @@ public class SuggestionPojo implements Suggestion {
         return friendlyResource.lastModificationDate();
     }
 
-    public static Set<SuggestionOriginPojo> convertSuggestionOriginOperatorSetToPojo(Set<SuggestionOrigin> suggestionOrigins){
+    public static Set<SuggestionOriginPojo> convertSuggestionOriginOperatorSetToPojo(Set<?extends SuggestionOrigin> suggestionOrigins){
         Set<SuggestionOriginPojo> suggestionOriginsPojo = new HashSet<>();
         for(SuggestionOrigin suggestionOrigin : suggestionOrigins){
             suggestionOriginsPojo.add(

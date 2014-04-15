@@ -36,11 +36,11 @@ public class SuggestionJson {
         );
     }
 
-    public static JSONArray inVertex(VertexOperator vertexOperator) {
+    public static JSONObject inVertex(VertexOperator vertexOperator) {
         try {
-            return new JSONArray(
+            return new JSONObject(
                     gson.toJson(
-                            VertexInSubGraphPojo.convertSuggestionOperatorSetToPojo(
+                            VertexInSubGraphPojo.convertSuggestionSetToPojo(
                                     vertexOperator.suggestions()
                             )
                     )

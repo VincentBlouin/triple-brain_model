@@ -43,6 +43,18 @@ public class SuggestionOriginPojo implements SuggestionOrigin{
         return friendlyResource.uri();
     }
 
+    public void setUri(URI uri){
+        if(friendlyResource == null){
+            friendlyResource = new FriendlyResourcePojo(
+                    uri
+            );
+        }else{
+            friendlyResource.setUri(
+                    uri
+            );
+        }
+    }
+
     @Override
     public boolean hasLabel() {
         return friendlyResource.hasLabel();

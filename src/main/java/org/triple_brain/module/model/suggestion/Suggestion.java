@@ -10,5 +10,5 @@ import java.util.Set;
 public interface Suggestion extends FriendlyResource{
     FriendlyResource sameAs();
     FriendlyResource domain();
-    Set<SuggestionOrigin> origins();
+    Set<?extends SuggestionOrigin> origins();
 }

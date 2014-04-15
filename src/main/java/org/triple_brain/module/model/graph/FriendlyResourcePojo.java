@@ -41,6 +41,14 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     public FriendlyResourcePojo(
             URI uri,
+            String label
+    ){
+        this.uri = uri;
+        this.label = label;
+    }
+
+    public FriendlyResourcePojo(
+            URI uri,
             String label,
             Set<Image> images,
             String comment,
@@ -55,9 +63,14 @@ public class FriendlyResourcePojo implements FriendlyResource {
         this.lastModificationDate = lastModificationDate;
     }
 
+
     @Override
     public URI uri() {
         return uri;
+    }
+
+    public void setUri(URI uri){
+        this.uri = uri;
     }
 
     @Override
@@ -68,6 +81,10 @@ public class FriendlyResourcePojo implements FriendlyResource {
     @Override
     public String label() {
         return label;
+    }
+
+    public void setLabel(String label){
+        this.label = label;
     }
 
     @Override
@@ -88,6 +105,10 @@ public class FriendlyResourcePojo implements FriendlyResource {
     @Override
     public Boolean gotComments() {
         return !comment().isEmpty();
+    }
+
+    public void setComment(String comment){
+        this.comment = comment;
     }
 
     @Override

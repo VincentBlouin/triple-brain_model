@@ -1,7 +1,7 @@
 package org.triple_brain.module.model;
 
 import org.triple_brain.module.model.graph.edge.EdgeOperator;
-import org.triple_brain.module.model.graph.vertex.VertexOperator;
+import org.triple_brain.module.model.graph.vertex.VertexInSubGraphOperator;
 
 import java.util.Iterator;
 
@@ -9,6 +9,6 @@ import java.util.Iterator;
 * Copyright Mozilla Public License 1.1
 */
 public interface WholeGraph {
-    public Iterator<VertexOperator> getAllVertices();
+    public Iterator<VertexInSubGraphOperator> getAllVertices();
     public Iterator<EdgeOperator> getAllEdges();
 }

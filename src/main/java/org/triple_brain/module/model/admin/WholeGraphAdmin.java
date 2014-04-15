@@ -1,6 +1,7 @@
 package org.triple_brain.module.model.admin;
 
 import org.triple_brain.module.model.WholeGraph;
+import org.triple_brain.module.model.graph.vertex.VertexInSubGraphOperator;
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
 import java.util.Iterator;
@@ -14,7 +15,7 @@ public class WholeGraphAdmin {
         this.wholeGraph = wholeGraph;
     }
     public void refreshNumberOfConnectedEdges(){
-        Iterator<VertexOperator> vertexIt = wholeGraph.getAllVertices();
+        Iterator<VertexInSubGraphOperator> vertexIt = wholeGraph.getAllVertices();
         while(vertexIt.hasNext()){
             VertexOperator vertex = vertexIt.next();
             vertex.setNumberOfConnectedEdges(

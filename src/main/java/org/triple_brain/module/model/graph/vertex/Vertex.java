@@ -4,6 +4,8 @@ import org.triple_brain.module.model.graph.edge.Edge;
 import org.triple_brain.module.model.graph.GraphElement;
 import org.triple_brain.module.model.suggestion.Suggestion;
 
+import java.net.URI;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -11,9 +13,9 @@ import java.util.Set;
  */
 public interface Vertex extends GraphElement {
     Integer getNumberOfConnectedEdges();
-    Set<Suggestion> suggestions();
+    Map<URI, ?extends Suggestion> suggestions();
     Boolean isPublic();
-    Set<Vertex> getIncludedVertices();
-    Set<Edge> getIncludedEdges();
+    Map<URI, ?extends Vertex> getIncludedVertices();
+    Map<URI, ?extends Edge> getIncludedEdges();
 }
 
