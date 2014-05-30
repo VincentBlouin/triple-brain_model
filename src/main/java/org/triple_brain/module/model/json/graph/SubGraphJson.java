@@ -9,8 +9,6 @@ import org.triple_brain.module.model.graph.SubGraphPojo;
  * Copyright Mozilla Public License 1.1
  */
 public class SubGraphJson {
-    public static final String VERTICES = "vertices";
-    public static final String EDGES = "edges";
     private static Gson gson = new Gson();
 
     public static JSONObject toJson(SubGraphPojo graph) {

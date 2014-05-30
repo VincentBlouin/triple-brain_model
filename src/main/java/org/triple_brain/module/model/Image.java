@@ -1,28 +1,30 @@
 package org.triple_brain.module.model;
 
 import java.net.URI;
+import java.util.UUID;
 
 /*
 * Copyright Mozilla Public License 1.1
 */
 public class Image{
-    URI urlForSmall;
+
+    String base64ForSmall;
     URI urlForBigger;
 
-    public static Image withUriForSmallAndBigger(URI urlForSmall, URI urlForBigger){
+    public static Image withBase64ForSmallAndUriForBigger(String base64ForSmall, URI urlForBigger){
         return new Image(
-                urlForSmall,
+                base64ForSmall,
                 urlForBigger
         );
     }
 
-    public Image(URI urlForSmall, URI urlForBigger){
-        this.urlForSmall = urlForSmall;
+    public Image(String base64ForSmall, URI urlForBigger){
+        this.base64ForSmall = base64ForSmall;
         this.urlForBigger = urlForBigger;
     }
 
-    public URI urlForSmall(){
-        return urlForSmall;
+    public String base64ForSmall(){
+        return base64ForSmall;
     }
 
     public URI urlForBigger(){
@@ -32,11 +34,11 @@ public class Image{
     @Override
     public boolean equals(Object imageToCompareAsObject) {
         Image imageToCompare = (Image) imageToCompareAsObject;
-        return urlForSmall().equals(imageToCompare.urlForSmall());
+        return urlForBigger().equals(imageToCompare.urlForBigger());
     }
 
     @Override
     public int hashCode() {
-        return urlForSmall().hashCode();
+        return urlForBigger().hashCode();
     }
 }

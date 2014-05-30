@@ -2,6 +2,7 @@ package org.triple_brain.module.model;
 
 import com.google.api.client.http.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
+import org.apache.commons.codec.binary.Base64;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -9,6 +10,9 @@ import org.json.simple.parser.JSONParser;
 import org.triple_brain.module.common_utils.DataFetcher;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -121,11 +125,15 @@ public class FreebaseFriendlyResource extends Observable {
                     String imageId = imagesAsJson.getJSONObject(i).getJSONArray("id").getString(0);
                     String baseUrl = "https://www.googleapis.com/freebase/v1/image";
                     String key = "AIzaSyBHOqdqbswxnNmNb4k59ARSx-RWokLZhPA";
+                    URL smallImageUrl = URI.create(
+                            baseUrl + imageId + "?maxwidth=55&key=" + key
+                    ).toURL();
+                    String smallImageBase64 = Base64.encodeBase64String(
+                            DataFetcher.downloadImageAtUrl(smallImageUrl)
+                    );
                     images.add(
-                            Image.withUriForSmallAndBigger(
-                                    URI.create(
-                                            baseUrl + imageId + "?maxwidth=60&key=" + key
-                                    ),
+                            Image.withBase64ForSmallAndUriForBigger(
+                                    smallImageBase64,
                                     URI.create(
                                             baseUrl + imageId + "?maxwidth=600&key=" + key
                                     )
@@ -137,6 +145,9 @@ public class FreebaseFriendlyResource extends Observable {
                 throw new RuntimeException(e);
             }
         }
+
+
+
     }
 
     private class GetDescriptionThread implements Runnable{
