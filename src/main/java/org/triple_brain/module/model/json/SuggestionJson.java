@@ -9,6 +9,9 @@ import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
 import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -18,22 +21,46 @@ public class SuggestionJson {
 
     private static Gson gson = new Gson();
 
-    public static JSONObject toJson(SuggestionPojo suggestionPojo){
-        try{
+    public static JSONObject toJson(SuggestionPojo suggestionPojo) {
+        try {
             return new JSONObject(gson.toJson(
                     suggestionPojo
             ));
-        }catch(JSONException e){
+        } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static Set<SuggestionPojo> fromJsonArray(String json){
+    public static JSONArray multipleToJson(Set<SuggestionPojo> suggestionPojo) {
+        try {
+            return new JSONArray(gson.toJson(
+                    suggestionPojo
+            ));
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Set<SuggestionPojo> fromJsonArray(String json) {
         return gson.fromJson(
-                json.toString(),
+                json,
                 new TypeToken<Set<SuggestionPojo>>() {
                 }.getType()
         );
+    }
+
+    public static HashMap<URI, SuggestionPojo> fromJsonArrayToMap(String json) {
+        Set<SuggestionPojo> suggestionsSet = SuggestionJson.fromJsonArray(
+                json
+        );
+        HashMap<URI, SuggestionPojo> suggestions = new HashMap<>();
+        for (SuggestionPojo suggestion : suggestionsSet) {
+            suggestions.put(
+                    suggestion.uri(),
+                    suggestion
+            );
+        }
+        return suggestions;
     }
 
     public static JSONObject inVertex(VertexOperator vertexOperator) {

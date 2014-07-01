@@ -2,12 +2,15 @@ package org.triple_brain.module.model.suggestion;
 
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
+import org.triple_brain.module.model.User;
+import org.triple_brain.module.model.UserUris;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 
 import java.net.URI;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 /*
 * Copyright Mozilla Public License 1.1
@@ -23,7 +26,8 @@ public class SuggestionPojo implements Suggestion {
             String sameAsUri,
             String domainUri,
             String label,
-            String origin
+            String origin,
+            User owner
     ){
         FriendlyResourcePojo sameAs = new FriendlyResourcePojo(
                 URI.create(sameAsUri),
@@ -44,7 +48,8 @@ public class SuggestionPojo implements Suggestion {
         return new SuggestionPojo(
                 sameAs,
                 domain,
-                origins
+                origins,
+                owner
         );
     }
 
@@ -62,14 +67,27 @@ public class SuggestionPojo implements Suggestion {
     public SuggestionPojo(
             FriendlyResourcePojo sameAs,
             FriendlyResourcePojo domain,
-            Set<SuggestionOriginPojo> origins
+            Set<SuggestionOriginPojo> origins,
+            User owner
     ){
-        this(
-                null,
-                sameAs,
-                domain,
-                origins
+        UserUris userUris = new UserUris(owner);
+        URI suggestionUri = URI.create(
+                userUris.baseUri() + "/suggestion/" + UUID.randomUUID()
         );
+        this.friendlyResource = new FriendlyResourcePojo(
+            suggestionUri
+        );
+        this.sameAs = sameAs;
+        this.domain = domain;
+        for(SuggestionOriginPojo suggestionOriginPojo: origins){
+            suggestionOriginPojo.setUri(
+                    URI.create(
+                            suggestionUri.toString() + "/origin/" + UUID.randomUUID()
+                    )
+            );
+        }
+        this.origins = origins;
+
    }
     public SuggestionPojo(
             SuggestionOperator suggestionOperator

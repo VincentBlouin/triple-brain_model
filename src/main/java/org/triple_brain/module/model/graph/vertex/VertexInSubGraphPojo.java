@@ -7,11 +7,13 @@ import org.triple_brain.module.model.graph.GraphElementPojo;
 import org.triple_brain.module.model.graph.edge.Edge;
 import org.triple_brain.module.model.graph.edge.EdgePojo;
 import org.triple_brain.module.model.suggestion.Suggestion;
-import org.triple_brain.module.model.suggestion.SuggestionOperator;
 import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /*
 * Copyright Mozilla Public License 1.1

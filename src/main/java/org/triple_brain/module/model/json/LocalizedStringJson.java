@@ -6,7 +6,4 @@ package org.triple_brain.module.model.json;
 public enum LocalizedStringJson {
         locale,
         content
-
-//    public static final String  LOCALE = "locale",
-//                                CONTENT = "content";
 }
