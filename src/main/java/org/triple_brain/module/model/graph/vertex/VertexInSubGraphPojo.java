@@ -30,7 +30,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
                 vertexOperator.getNumberOfConnectedEdges(),
                 convertVertexSetToPojoMap(vertexOperator.getIncludedVertices()),
                 convertEdgeSetToPojoMap(vertexOperator.getIncludedEdges()),
-                convertSuggestionSetToPojo(vertexOperator.suggestions()),
+                convertSuggestionSetToPojo(vertexOperator.getSuggestions()),
                 vertexOperator.isPublic()
         );
     }

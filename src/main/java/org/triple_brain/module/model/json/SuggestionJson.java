@@ -68,7 +68,7 @@ public class SuggestionJson {
             return new JSONObject(
                     gson.toJson(
                             VertexInSubGraphPojo.convertSuggestionSetToPojo(
-                                    vertexOperator.suggestions()
+                                    vertexOperator.getSuggestions()
                             )
                     )
             );
