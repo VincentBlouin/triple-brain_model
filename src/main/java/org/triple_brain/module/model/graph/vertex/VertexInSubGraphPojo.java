@@ -20,6 +20,8 @@ import java.util.Set;
 */
 public class VertexInSubGraphPojo implements VertexInSubGraph {
 
+    //test jenkins;
+
     private VertexPojo vertex;
     private Integer minDistanceFromCenterVertex = -1;
 
