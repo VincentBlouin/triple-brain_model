@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public interface Vertex extends GraphElement {
     Integer getNumberOfConnectedEdges();
-    Map<URI, ?extends Suggestion> suggestions();
+    Set<?extends Suggestion> getSuggestions();
     Boolean isPublic();
     Map<URI, ?extends Vertex> getIncludedVertices();
     Map<URI, ?extends Edge> getIncludedEdges();

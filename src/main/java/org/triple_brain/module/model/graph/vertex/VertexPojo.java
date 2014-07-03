@@ -21,7 +21,7 @@ public class VertexPojo implements Vertex {
     private Integer numberOfConnectedEdges;
     private Map<URI, VertexInSubGraphPojo> includedVertices;
     private Map<URI, EdgePojo> includedEdges;
-    private Map<URI, SuggestionPojo> suggestions;
+    private Set<SuggestionPojo> suggestions;
     private Boolean isPublic;
 
     public VertexPojo(
@@ -29,7 +29,7 @@ public class VertexPojo implements Vertex {
             Integer numberOfConnectedEdges,
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
-            Map<URI, SuggestionPojo> suggestions,
+            Set<SuggestionPojo> suggestions,
             Boolean isPublic
     ) {
         this.graphElement = graphElement;
@@ -60,13 +60,12 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public Map<URI, SuggestionPojo> suggestions() {
+    public Set<SuggestionPojo> getSuggestions() {
         return suggestions;
     }
 
     public void addSuggestion(SuggestionPojo suggestion){
-        suggestions.put(
-                suggestion.uri(),
+        suggestions.add(
                 suggestion
         );
     }

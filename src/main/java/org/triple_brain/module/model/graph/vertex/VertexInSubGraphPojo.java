@@ -10,10 +10,7 @@ import org.triple_brain.module.model.suggestion.Suggestion;
 import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /*
 * Copyright Mozilla Public License 1.1
@@ -61,11 +58,10 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         return verticesPojo;
     }
 
-    public static Map<URI, SuggestionPojo> convertSuggestionSetToPojo(Map<URI, ? extends Suggestion> suggestions) {
-        Map<URI, SuggestionPojo> suggestionsPojo = new HashMap<>();
-        for (Suggestion suggestion : suggestions.values()) {
-            suggestionsPojo.put(
-                    suggestion.uri(),
+    public static Set<SuggestionPojo> convertSuggestionSetToPojo(Set<? extends Suggestion> suggestions) {
+        Set<SuggestionPojo> suggestionsPojo = new HashSet<>();
+        for (Suggestion suggestion : suggestions) {
+            suggestionsPojo.add(
                     (SuggestionPojo) suggestion
             );
         }
@@ -98,7 +94,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
             Integer numberOfConnectedEdges,
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
-            Map<URI, SuggestionPojo> suggestions,
+            Set<SuggestionPojo> suggestions,
             Boolean isPublic
     ) {
         this.vertex = new VertexPojo(
@@ -117,14 +113,8 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public Map<URI, SuggestionPojo> suggestions() {
-        return vertex.suggestions();
-    }
-
-    public void addSuggestion(SuggestionPojo suggestion){
-        vertex.addSuggestion(
-                suggestion
-        );
+    public Set<SuggestionPojo> getSuggestions() {
+        return vertex.getSuggestions();
     }
 
     @Override

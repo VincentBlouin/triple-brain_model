@@ -25,7 +25,6 @@ public interface VertexOperator extends GraphElementOperator, Vertex {
     void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
     void addSuggestions(Set<SuggestionPojo> suggestions);
     void setSuggestions(Set<SuggestionPojo> suggestions);
-    Map<URI, ?extends Suggestion> getSuggestions();
     void makePublic();
     void makePrivate();
     Set<EdgeOperator> connectedEdges();

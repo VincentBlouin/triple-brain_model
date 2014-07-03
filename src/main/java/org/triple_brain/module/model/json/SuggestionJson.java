@@ -49,20 +49,6 @@ public class SuggestionJson {
         );
     }
 
-    public static HashMap<URI, SuggestionPojo> fromJsonArrayToMap(String json) {
-        Set<SuggestionPojo> suggestionsSet = SuggestionJson.fromJsonArray(
-                json
-        );
-        HashMap<URI, SuggestionPojo> suggestions = new HashMap<>();
-        for (SuggestionPojo suggestion : suggestionsSet) {
-            suggestions.put(
-                    suggestion.uri(),
-                    suggestion
-            );
-        }
-        return suggestions;
-    }
-
     public static JSONObject inVertex(VertexOperator vertexOperator) {
         try {
             return new JSONObject(
