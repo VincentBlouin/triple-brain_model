@@ -17,8 +17,6 @@ import java.util.*;
  */
 public class VertexPojo implements Vertex {
 
-    //test jenkins;
-
     private GraphElementPojo graphElement;
     private Integer numberOfConnectedEdges;
     private Map<URI, VertexInSubGraphPojo> includedVertices;
