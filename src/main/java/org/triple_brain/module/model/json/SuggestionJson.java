@@ -48,18 +48,4 @@ public class SuggestionJson {
                 }.getType()
         );
     }
-
-    public static JSONObject inVertex(VertexOperator vertexOperator) {
-        try {
-            return new JSONObject(
-                    gson.toJson(
-                            VertexInSubGraphPojo.convertSuggestionSetToPojo(
-                                    vertexOperator.getSuggestions()
-                            )
-                    )
-            );
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
