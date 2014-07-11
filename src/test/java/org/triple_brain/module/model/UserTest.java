@@ -101,7 +101,7 @@ public class UserTest {
         ).password("potatoe");
         MatcherAssert.assertThat(user.hasPassword("potatoe"), Matchers.is(true));
 
-        user.cleanPassword();
+        user.resetPassword();
 
         MatcherAssert.assertThat(user.hasPassword("potatoe"), Matchers.is(false));
         MatcherAssert.assertThat(user.passwordHash(), Matchers.is(nullValue()));

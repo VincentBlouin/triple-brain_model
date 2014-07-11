@@ -1,9 +1,9 @@
 package org.triple_brain.module.model.graph.edge;
 
-import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 import org.triple_brain.module.model.graph.GraphElementPojo;
+import org.triple_brain.module.model.graph.IdentificationPojo;
 import org.triple_brain.module.model.graph.vertex.Vertex;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 
@@ -86,22 +86,22 @@ public class EdgePojo implements Edge{
     }
 
     @Override
-    public Map<URI,?extends FriendlyResource> getGenericIdentifications() {
+    public Map<URI,?extends IdentificationPojo> getGenericIdentifications() {
         return graphElement.getGenericIdentifications();
     }
 
     @Override
-    public Map<URI,?extends FriendlyResource> getSameAs() {
+    public Map<URI,?extends IdentificationPojo> getSameAs() {
         return graphElement.getSameAs();
     }
 
     @Override
-    public Map<URI,?extends FriendlyResource> getAdditionalTypes() {
+    public Map<URI,?extends IdentificationPojo> getAdditionalTypes() {
         return graphElement.getAdditionalTypes();
     }
 
     @Override
-    public Map<URI,?extends FriendlyResource> getIdentifications() {
+    public Map<URI,?extends IdentificationPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 
@@ -156,6 +156,11 @@ public class EdgePojo implements Edge{
     }
 
     @Override
+    public String getOwner() {
+        return graphElement.getOwner();
+    }
+
+    @Override
     public boolean equals(Object edgeToCompareAsObject) {
         return graphElement.equals(edgeToCompareAsObject);
     }
@@ -167,5 +172,10 @@ public class EdgePojo implements Edge{
 
     public GraphElementPojo getGraphElement(){
         return graphElement;
+    }
+
+    @Override
+    public URI getExternalResourceUri() {
+        return graphElement.getExternalResourceUri();
     }
 }

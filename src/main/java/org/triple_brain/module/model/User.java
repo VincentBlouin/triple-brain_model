@@ -34,10 +34,6 @@ public class User {
         return passwordHash;
     }
 
-    public boolean hasPassword() {
-        return passwordHash != null;
-    }
-
     public boolean hasPassword(String password) {
         return passwordHash != null && encode(password).equals(passwordHash);
     }
@@ -51,7 +47,7 @@ public class User {
         return this;
     }
 
-    public void cleanPassword() {
+    public void resetPassword() {
         passwordHash = null;
     }
 
@@ -59,7 +55,7 @@ public class User {
         if (password == null)
             throw new IllegalArgumentException("Missing password");
 
-        // the salt is composed of the email and uri. This way, two member objects with
+        // the salt is composed of the email and salt. This way, two member objects with
         // the same email and same password can have two different hash
         return Base64.encodeBase64URLSafeString(DigestUtils.sha512(password + salt));
     }

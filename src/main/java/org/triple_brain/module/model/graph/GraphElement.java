@@ -9,10 +9,10 @@ import java.util.Set;
 /**
  * Copyright Mozilla Public License 1.1
  */
-public interface GraphElement extends FriendlyResource{
-    Map<URI, ?extends FriendlyResource> getGenericIdentifications();
-    Map<URI, ?extends FriendlyResource> getSameAs();
-    Map<URI, ?extends FriendlyResource> getAdditionalTypes();
-    Map<URI, ?extends FriendlyResource> getIdentifications();
+public interface GraphElement extends FriendlyResource, Identification{
+    Map<URI, ?extends Identification> getGenericIdentifications();
+    Map<URI, ?extends Identification> getSameAs();
+    Map<URI, ?extends Identification> getAdditionalTypes();
+    Map<URI, ?extends Identification> getIdentifications();
     String ownerUsername();
 }

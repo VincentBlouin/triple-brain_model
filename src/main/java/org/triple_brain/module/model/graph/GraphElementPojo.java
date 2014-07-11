@@ -1,11 +1,13 @@
 package org.triple_brain.module.model.graph;
 
-import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.UserUris;
 
 import java.net.URI;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /*
 * Copyright Mozilla Public License 1.1
@@ -13,9 +15,9 @@ import java.util.*;
 public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
-    private Map<URI,FriendlyResourcePojo> genericIdentifications;
-    private Map<URI,FriendlyResourcePojo> sameAs;
-    private Map<URI,FriendlyResourcePojo> additionalTypes;
+    private Map<URI,IdentificationPojo> genericIdentifications;
+    private Map<URI,IdentificationPojo> sameAs;
+    private Map<URI,IdentificationPojo> additionalTypes;
 
     @Deprecated
     public GraphElementPojo(GraphElementOperator graphElementOperator){
@@ -28,7 +30,7 @@ public class GraphElementPojo implements GraphElement {
     }
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI,FriendlyResourcePojo> genericIdentifications
+            Map<URI,IdentificationPojo> genericIdentifications
     ){
         this.friendlyResource = friendlyResource;
         this.genericIdentifications = genericIdentifications;
@@ -42,9 +44,9 @@ public class GraphElementPojo implements GraphElement {
 
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI,FriendlyResourcePojo> genericIdentifications,
-            Map<URI,FriendlyResourcePojo> sameAs,
-            Map<URI,FriendlyResourcePojo> additionalTypes
+            Map<URI,IdentificationPojo> genericIdentifications,
+            Map<URI,IdentificationPojo> sameAs,
+            Map<URI,IdentificationPojo> additionalTypes
     ){
         this.friendlyResource = friendlyResource;
         this.genericIdentifications = genericIdentifications;
@@ -58,23 +60,23 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public Map<URI, FriendlyResourcePojo> getGenericIdentifications() {
+    public Map<URI, IdentificationPojo> getGenericIdentifications() {
         return genericIdentifications;
     }
 
     @Override
-    public Map<URI, FriendlyResourcePojo> getSameAs() {
+    public Map<URI, IdentificationPojo> getSameAs() {
         return sameAs;
     }
 
     @Override
-    public Map<URI, FriendlyResourcePojo> getAdditionalTypes() {
+    public Map<URI, IdentificationPojo> getAdditionalTypes() {
         return additionalTypes;
     }
 
     @Override
-    public Map<URI, FriendlyResource> getIdentifications() {
-        Map<URI, FriendlyResource> identifications = new HashMap<>();
+    public Map<URI, IdentificationPojo> getIdentifications() {
+        Map<URI, IdentificationPojo> identifications = new HashMap<>();
         identifications.putAll(getSameAs());
         identifications.putAll(getAdditionalTypes());
         identifications.putAll(getGenericIdentifications());
@@ -129,6 +131,11 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
+    public String getOwner() {
+        return friendlyResource.getOwner();
+    }
+
+    @Override
     public boolean equals(Object graphElementToCompareAsObject) {
         return friendlyResource.equals(graphElementToCompareAsObject);
     }
@@ -143,17 +150,23 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource;
     }
 
-    private static Map<URI, FriendlyResourcePojo> mapOfFriendlyResourceFromOperator(Map<URI, ? extends FriendlyResource> resources){
-        Map<URI, FriendlyResourcePojo> friendlyResourcesPojo = new HashMap<>();
-        for(FriendlyResource friendlyResource : resources.values()){
-            FriendlyResourceOperator friendlyResourceOperator = (FriendlyResourceOperator) friendlyResource;
-            friendlyResourcesPojo.put(
-                    friendlyResource.uri(),
-                    new FriendlyResourcePojo(
-                            friendlyResourceOperator
+    private static Map<URI, IdentificationPojo> mapOfFriendlyResourceFromOperator(Map<URI, ? extends Identification> resources){
+        Map<URI, IdentificationPojo> identificationPojo = new HashMap<>();
+        for(Identification identification: resources.values()){
+            IdentificationOperator identificationOperator = (IdentificationOperator) identification;
+            identificationPojo.put(
+                    identification.uri(),
+                    new IdentificationPojo(
+                            identificationOperator.getExternalResourceUri(),
+                            new FriendlyResourcePojo(identificationOperator)
                     )
             );
         }
-        return friendlyResourcesPojo;
+        return identificationPojo;
+    }
+
+    @Override
+    public URI getExternalResourceUri() {
+        return uri();
     }
 }

@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
-import org.triple_brain.module.model.validator.FriendlyResourceValidator;
+import org.triple_brain.module.model.graph.Identification;
+import org.triple_brain.module.model.graph.IdentificationPojo;
+import org.triple_brain.module.model.validator.IdentificationValidator;
 
 import java.util.Set;
 
@@ -14,31 +16,31 @@ import static org.junit.Assert.assertTrue;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public class FriendlyResourceValidatorTest {
+public class IdentificationValidatorTest {
 
     private Gson gson = new Gson();
 
     private enum fields{
-        uri
-    };
+        externalResourceUri
+    }
 
     @Test
-    public void no_errors_when_uri_is_present()throws Exception{
+    public void no_errors_when_external_uri_is_present()throws Exception{
         JSONObject friendlyResource = new JSONObject().put(
-                fields.uri.name(),
+                fields.externalResourceUri.name(),
                 "http://triple-brain.org/asviojasoviasjvoisjv"
         );
         assertFalse(validationWithJsonReturnsMessage(
                 friendlyResource,
-                FriendlyResourceValidator.FriendlyResourceError.URI_MANDATORY
+                IdentificationValidator.IdentificationError.EXTERNAL_URI_MANDATORY
         ));
     }
 
     @Test
-    public void uri_is_mandatory(){
+    public void external_resource_uri_is_mandatory(){
         assertTrue(validationWithJsonReturnsMessage(
                 new JSONObject(),
-                FriendlyResourceValidator.FriendlyResourceError.URI_MANDATORY
+                IdentificationValidator.IdentificationError.EXTERNAL_URI_MANDATORY
         ));
     }
 
@@ -46,12 +48,12 @@ public class FriendlyResourceValidatorTest {
     public void uri_has_to_be_valid()throws Exception{
         JSONObject friendlyResource = new JSONObject()
                 .put(
-                        fields.uri.name(),
+                        fields.externalResourceUri.name(),
                         ""
                 );
         assertTrue(validationWithJsonReturnsMessage(
                 friendlyResource,
-                FriendlyResourceValidator.FriendlyResourceError.EMPTY_URI
+                IdentificationValidator.IdentificationError.EMPTY_EXTERNAL_URI
         ));
     }
 
@@ -59,36 +61,36 @@ public class FriendlyResourceValidatorTest {
     public void can_have_relative_uris()throws Exception{
         JSONObject json = new JSONObject()
                 .put(
-                        fields.uri.name(),
+                        fields.externalResourceUri.name(),
                         "/service/users/vince/graph/edge/c30bbev5-0c1f-4b08-b600-fb6040abb7eq/identification"
                 );
-        FriendlyResourceValidator validator = new FriendlyResourceValidator();
-        FriendlyResource friendlyResource = gson.fromJson(
+        IdentificationValidator validator = new IdentificationValidator();
+        Identification identification = gson.fromJson(
                 json.toString(),
-                FriendlyResourcePojo.class
+                IdentificationPojo.class
         );
         assertTrue(
                 validator.validate(
-                        friendlyResource
+                        identification
                 ).isEmpty()
         );
     }
 
     private boolean validationWithJsonReturnsMessage(
             JSONObject json,
-            FriendlyResourceValidator.FriendlyResourceError message
+            IdentificationValidator.IdentificationError message
     ){
-        Set<FriendlyResourceValidator.FriendlyResourceError> errors ;
-        errors = new FriendlyResourceValidator().validate(
-                friendlyResourceFromJson(json)
+        Set<IdentificationValidator.IdentificationError> errors ;
+        errors = new IdentificationValidator().validate(
+                identificationFromJson(json)
         );
         return errors.contains(message);
     }
 
-    private FriendlyResource friendlyResourceFromJson(JSONObject jsonObject){
+    private Identification identificationFromJson(JSONObject jsonObject){
         return gson.fromJson(
                 jsonObject.toString(),
-                FriendlyResourcePojo.class
+                IdentificationPojo.class
         );
     }
 }

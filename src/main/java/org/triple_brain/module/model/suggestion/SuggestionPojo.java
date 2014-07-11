@@ -18,36 +18,26 @@ import java.util.UUID;
 public class SuggestionPojo implements Suggestion {
 
     FriendlyResourcePojo friendlyResource;
-    FriendlyResourcePojo sameAs;
-    FriendlyResourcePojo domain;
+    URI sameAsUri;
+    URI domainUri;
     Set<SuggestionOriginPojo> origins;
 
     public static SuggestionPojo fromSameAsAndDomainUriLabelAndOrigin(
-            String sameAsUri,
-            String domainUri,
+            URI sameAsUri,
+            URI domainUri,
             String label,
             String origin,
             User owner
     ){
-        FriendlyResourcePojo sameAs = new FriendlyResourcePojo(
-                URI.create(sameAsUri),
-                label,
-                new HashSet<Image>(),
-                "",
-                new Date(),
-                new Date()
-        );
-        FriendlyResourcePojo domain = new FriendlyResourcePojo(
-                URI.create(domainUri)
-        );
         SuggestionOriginPojo suggestionOriginPojo = new SuggestionOriginPojo(
                 origin
         );
         Set<SuggestionOriginPojo> origins = new HashSet<>();
         origins.add(suggestionOriginPojo);
         return new SuggestionPojo(
-                sameAs,
-                domain,
+                sameAsUri,
+                domainUri,
+                label,
                 origins,
                 owner
         );
@@ -55,18 +45,19 @@ public class SuggestionPojo implements Suggestion {
 
     public SuggestionPojo(
             FriendlyResourcePojo friendlyResource,
-            FriendlyResourcePojo sameAs,
-            FriendlyResourcePojo domain,
+            URI sameAsUri,
+            URI domainUri,
             Set<SuggestionOriginPojo> origins
     ){
         this.friendlyResource = friendlyResource;
-        this.sameAs = sameAs;
-        this.domain = domain;
+        this.sameAsUri = sameAsUri;
+        this.domainUri = domainUri;
         this.origins = origins;
     }
     public SuggestionPojo(
-            FriendlyResourcePojo sameAs,
-            FriendlyResourcePojo domain,
+            URI sameAsUri,
+            URI domainUri,
+            String label,
             Set<SuggestionOriginPojo> origins,
             User owner
     ){
@@ -77,8 +68,9 @@ public class SuggestionPojo implements Suggestion {
         this.friendlyResource = new FriendlyResourcePojo(
             suggestionUri
         );
-        this.sameAs = sameAs;
-        this.domain = domain;
+        friendlyResource.setLabel(label);
+        this.sameAsUri = sameAsUri;
+        this.domainUri = domainUri;
         for(SuggestionOriginPojo suggestionOriginPojo: origins){
             suggestionOriginPojo.setUri(
                     URI.create(
@@ -87,38 +79,21 @@ public class SuggestionPojo implements Suggestion {
             );
         }
         this.origins = origins;
-
    }
-    public SuggestionPojo(
-            SuggestionOperator suggestionOperator
-    ){
-        this(
-                new FriendlyResourcePojo(suggestionOperator),
-                new FriendlyResourcePojo(suggestionOperator.sameAs()),
-                new FriendlyResourcePojo((suggestionOperator.domain())),
-                convertSuggestionOriginOperatorSetToPojo(suggestionOperator.origins())
-        );
+
+    @Override
+    public URI getSameAsUri() {
+        return sameAsUri;
     }
 
     @Override
-    public FriendlyResource sameAs() {
-        return sameAs;
-    }
-
-    @Override
-    public FriendlyResource domain() {
-        return domain;
+    public URI getDomainUri() {
+        return domainUri;
     }
 
     @Override
     public Set<SuggestionOriginPojo> origins() {
         return origins;
-    }
-
-    public void addOrigin(SuggestionOriginPojo origin){
-        origins.add(
-                origin
-        );
     }
 
     @Override
@@ -140,32 +115,32 @@ public class SuggestionPojo implements Suggestion {
 
     @Override
     public boolean hasLabel() {
-        return sameAs.hasLabel();
+        return friendlyResource.hasLabel();
     }
 
     @Override
     public String label() {
-        return sameAs.label();
+        return friendlyResource.label();
     }
 
     @Override
     public Set<Image> images() {
-        return sameAs.images();
+        return friendlyResource.images();
     }
 
     @Override
     public Boolean gotImages() {
-        return sameAs.gotImages();
+        return friendlyResource.gotImages();
     }
 
     @Override
     public String comment() {
-        return sameAs.comment();
+        return friendlyResource.comment();
     }
 
     @Override
     public Boolean gotComments() {
-        return sameAs.gotComments();
+        return friendlyResource.gotComments();
     }
 
     @Override
@@ -178,15 +153,9 @@ public class SuggestionPojo implements Suggestion {
         return friendlyResource.lastModificationDate();
     }
 
-    public static Set<SuggestionOriginPojo> convertSuggestionOriginOperatorSetToPojo(Set<?extends SuggestionOrigin> suggestionOrigins){
-        Set<SuggestionOriginPojo> suggestionOriginsPojo = new HashSet<>();
-        for(SuggestionOrigin suggestionOrigin : suggestionOrigins){
-            suggestionOriginsPojo.add(
-                    new SuggestionOriginPojo(
-                            (SuggestionOriginOperator) suggestionOrigin
-                    )
-            );
-        }
-        return suggestionOriginsPojo;
+    @Override
+    public String getOwner() {
+        return friendlyResource.getOwner();
     }
+
 }

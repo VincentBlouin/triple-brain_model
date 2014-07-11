@@ -1,16 +1,16 @@
 package org.triple_brain.module.model.graph.vertex;
 
-import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 import org.triple_brain.module.model.graph.GraphElementPojo;
-import org.triple_brain.module.model.graph.edge.Edge;
+import org.triple_brain.module.model.graph.Identification;
 import org.triple_brain.module.model.graph.edge.EdgePojo;
-import org.triple_brain.module.model.suggestion.Suggestion;
 import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
-import java.util.*;
+import java.util.Date;
+import java.util.Map;
+import java.util.Set;
 
 /*
  * Copyright Mozilla Public License 1.1
@@ -86,22 +86,22 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public Map<URI, ? extends FriendlyResource> getGenericIdentifications() {
+    public Map<URI, ? extends Identification> getGenericIdentifications() {
         return graphElement.getGenericIdentifications();
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getSameAs() {
+    public Map<URI, ?extends Identification> getSameAs() {
         return graphElement.getSameAs();
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getAdditionalTypes() {
+    public Map<URI, ?extends Identification> getAdditionalTypes() {
         return graphElement.getAdditionalTypes();
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getIdentifications() {
+    public Map<URI, ?extends Identification> getIdentifications() {
         return graphElement.getIdentifications();
     }
 
@@ -156,6 +156,11 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
+    public String getOwner() {
+        return graphElement.getOwner();
+    }
+
+    @Override
     public boolean equals(Object vertexToCompareAsObject) {
         return graphElement.equals(vertexToCompareAsObject);
     }
@@ -167,5 +172,10 @@ public class VertexPojo implements Vertex {
 
     public GraphElementPojo getGraphElement() {
         return graphElement;
+    }
+
+    @Override
+    public URI getExternalResourceUri() {
+        return graphElement.getExternalResourceUri();
     }
 }

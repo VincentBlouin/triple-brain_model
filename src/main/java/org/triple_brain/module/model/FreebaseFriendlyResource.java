@@ -9,10 +9,9 @@ import org.codehaus.jettison.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.triple_brain.module.common_utils.DataFetcher;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
+import org.triple_brain.module.model.graph.Identification;
+import org.triple_brain.module.model.graph.IdentificationPojo;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -26,27 +25,23 @@ import java.util.Set;
 */
 public class FreebaseFriendlyResource extends Observable {
 
-    private FriendlyResourcePojo friendlyResource;
+    private IdentificationPojo identification;
 
     public static String DESCRIPTION_BASE_URI = "https://www.googleapis.com/freebase/v1/text";
 
-    public static Boolean isFromFreebase(FriendlyResource friendlyResource) {
-        String host = friendlyResource.uri().getHost();
-        if(host == null){
-            return false;
-        }
-        return host.toLowerCase().
-                        contains("freebase.com");
+    public static Boolean isFromFreebase(Identification identification) {
+        String host = identification.getExternalResourceUri().getHost();
+        return host != null && host.toLowerCase().contains("freebase.com");
     }
 
-    public static FreebaseFriendlyResource fromFriendlyResource(FriendlyResourcePojo friendlyResource) {
+    public static FreebaseFriendlyResource fromIdentification(IdentificationPojo identification) {
         return new FreebaseFriendlyResource(
-                friendlyResource
+                identification
         );
     }
 
-    protected FreebaseFriendlyResource(FriendlyResourcePojo friendlyResource) {
-        this.friendlyResource = friendlyResource;
+    protected FreebaseFriendlyResource(IdentificationPojo friendlyResource) {
+        this.identification = friendlyResource;
     }
 
     public void getImages(Observer observer) {
@@ -64,12 +59,12 @@ public class FreebaseFriendlyResource extends Observable {
     }
 
     public String freebaseId() {
-        return friendlyResource.uri().toString()
+        return identification.getExternalResourceUri().toString()
                 .replace("http://rdf.freebase.com/rdf", "");
     }
 
-    public FriendlyResourcePojo getCachedFriendlyResource() {
-        return friendlyResource;
+    public IdentificationPojo getCachedFriendlyResource() {
+        return identification;
     }
 
     private class GetImageThread implements Runnable{

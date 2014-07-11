@@ -26,6 +26,7 @@ public interface GraphComponentTest {
     void setDefaultVertexAkaVertexA(VertexOperator vertexA);
     VertexOperator vertexB();
     VertexOperator vertexC();
+    VertexOperator vertexOfAnotherUser();
     VertexInSubGraphPojo vertexInWholeConnectedGraph(Vertex vertex);
     EdgePojo edgeInWholeGraph(Edge edge);
     void beforeClass();

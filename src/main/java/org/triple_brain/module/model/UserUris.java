@@ -7,6 +7,21 @@ import java.util.UUID;
 * Copyright Mozilla Public License 1.1
 */
 public class UserUris {
+
+    public static String graphElementShortId (URI uri){
+        String uriStr = uri.toString();
+        return uriStr.substring(uriStr.lastIndexOf("/") + 1);
+    }
+
+    public static String ownerUserNameFromUri(URI uri){
+        String uriStr = uri.toString();
+        String modifiedUriStr = uriStr.replace("/service/users/", "");
+        return modifiedUriStr.substring(
+                0,
+                modifiedUriStr.indexOf("/")
+        );
+    }
+
     private String userName;
 
     public UserUris(User user){
@@ -73,17 +88,9 @@ public class UserUris {
         );
     }
 
-    public static String graphElementShortId (URI uri){
-        String uriStr = uri.toString();
-        return uriStr.substring(uriStr.lastIndexOf("/") + 1);
-    }
-
-    public static String ownerUserNameFromUri(URI uri){
-        String uriStr = uri.toString();
-        String modifiedUriStr = uriStr.replace("/service/users/", "");
-        return modifiedUriStr.substring(
-                0,
-                modifiedUriStr.indexOf("/")
+    public URI generateIdentificationUri(){
+        return URI.create(
+                graphUri() + "/identification/" + UUID.randomUUID().toString()
         );
     }
 }

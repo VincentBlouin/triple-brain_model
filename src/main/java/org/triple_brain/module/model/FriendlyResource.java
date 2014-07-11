@@ -17,4 +17,6 @@ public interface FriendlyResource {
     Boolean gotComments();
     Date creationDate();
     Date lastModificationDate();
+    String getOwner();
 }
+

@@ -96,6 +96,11 @@ public class SuggestionOriginPojo implements SuggestionOrigin{
     }
 
     @Override
+    public String getOwner() {
+        return friendlyResource.getOwner();
+    }
+
+    @Override
     public Boolean isRelatedToFriendlyResource(FriendlyResource friendlyResource) {
         return origin.contains(
                 friendlyResource.uri().toString()

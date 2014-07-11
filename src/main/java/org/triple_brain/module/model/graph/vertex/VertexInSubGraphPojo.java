@@ -1,9 +1,9 @@
 package org.triple_brain.module.model.graph.vertex;
 
-import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 import org.triple_brain.module.model.graph.GraphElementPojo;
+import org.triple_brain.module.model.graph.Identification;
 import org.triple_brain.module.model.graph.edge.Edge;
 import org.triple_brain.module.model.graph.edge.EdgePojo;
 import org.triple_brain.module.model.suggestion.Suggestion;
@@ -138,22 +138,22 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getGenericIdentifications() {
+    public Map<URI, ?extends Identification> getGenericIdentifications() {
         return vertex.getGenericIdentifications();
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getSameAs() {
+    public Map<URI, ?extends Identification> getSameAs() {
         return vertex.getSameAs();
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getAdditionalTypes() {
+    public Map<URI, ?extends Identification> getAdditionalTypes() {
         return vertex.getAdditionalTypes();
     }
 
     @Override
-    public Map<URI, ?extends FriendlyResource> getIdentifications() {
+    public Map<URI, ?extends Identification> getIdentifications() {
         return vertex.getIdentifications();
     }
 
@@ -203,6 +203,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
+    public String getOwner() {
+        return vertex.getOwner();
+    }
+
+    @Override
     public Integer minDistanceFromCenterVertex() {
         return minDistanceFromCenterVertex;
     }
@@ -225,5 +230,10 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
 
     public GraphElementPojo getGraphElement() {
         return vertex.getGraphElement();
+    }
+
+    @Override
+    public URI getExternalResourceUri() {
+        return vertex.getExternalResourceUri();
     }
 }

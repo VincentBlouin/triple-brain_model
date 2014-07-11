@@ -7,10 +7,10 @@ import java.util.Map;
 /*
 * Copyright Mozilla Public License 1.1
 */
-public interface GraphElementOperator extends FriendlyResourceOperator, GraphElement {
+public interface GraphElementOperator extends GraphElement, IdentificationOperator {
     void remove();
-    void removeIdentification(FriendlyResource type);
-    FriendlyResourcePojo addType(FriendlyResource type);
-    FriendlyResourcePojo addSameAs(FriendlyResource friendlyResource);
-    FriendlyResourcePojo addGenericIdentification(FriendlyResource friendlyResource);
+    void removeIdentification(Identification type);
+    IdentificationPojo addType(Identification type);
+    IdentificationPojo addSameAs(Identification friendlyResource);
+    IdentificationPojo addGenericIdentification(Identification friendlyResource);
 }

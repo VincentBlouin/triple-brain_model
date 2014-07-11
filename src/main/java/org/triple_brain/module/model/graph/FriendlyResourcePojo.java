@@ -2,6 +2,7 @@ package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.Image;
+import org.triple_brain.module.model.UserUris;
 
 import java.net.URI;
 import java.util.Date;
@@ -37,6 +38,12 @@ public class FriendlyResourcePojo implements FriendlyResource {
             URI uri
     ){
         this.uri = uri;
+    }
+
+    public FriendlyResourcePojo(
+            String label
+    ){
+        this.label = label;
     }
 
     public FriendlyResourcePojo(
@@ -119,6 +126,11 @@ public class FriendlyResourcePojo implements FriendlyResource {
     @Override
     public Date lastModificationDate() {
         return lastModificationDate;
+    }
+
+    @Override
+    public String getOwner() {
+        return UserUris.ownerUserNameFromUri(uri);
     }
 
     @Override
