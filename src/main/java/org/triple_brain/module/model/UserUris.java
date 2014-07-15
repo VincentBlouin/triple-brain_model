@@ -88,9 +88,15 @@ public class UserUris {
         );
     }
 
+    public URI baseIdentificationUri(){
+        return URI.create(
+                graphUri() + "/identification"
+        );
+    }
+
     public URI generateIdentificationUri(){
         return URI.create(
-                graphUri() + "/identification/" + UUID.randomUUID().toString()
+                baseIdentificationUri() + "/" + UUID.randomUUID().toString()
         );
     }
 }

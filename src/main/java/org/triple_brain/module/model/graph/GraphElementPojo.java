@@ -23,9 +23,9 @@ public class GraphElementPojo implements GraphElement {
     public GraphElementPojo(GraphElementOperator graphElementOperator){
         this(
                 new FriendlyResourcePojo(graphElementOperator),
-                mapOfFriendlyResourceFromOperator(graphElementOperator.getGenericIdentifications()),
-                mapOfFriendlyResourceFromOperator(graphElementOperator.getSameAs()),
-                mapOfFriendlyResourceFromOperator(graphElementOperator.getAdditionalTypes())
+                identificationsFromOperator(graphElementOperator.getGenericIdentifications()),
+                identificationsFromOperator(graphElementOperator.getSameAs()),
+                identificationsFromOperator(graphElementOperator.getAdditionalTypes())
         );
     }
     public GraphElementPojo(
@@ -150,14 +150,14 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource;
     }
 
-    private static Map<URI, IdentificationPojo> mapOfFriendlyResourceFromOperator(Map<URI, ? extends Identification> resources){
+    private static Map<URI, IdentificationPojo> identificationsFromOperator(Map<URI, ? extends Identification> resources){
         Map<URI, IdentificationPojo> identificationPojo = new HashMap<>();
         for(Identification identification: resources.values()){
             IdentificationOperator identificationOperator = (IdentificationOperator) identification;
             identificationPojo.put(
-                    identification.uri(),
+                    identificationOperator.getExternalResourceUri(),
                     new IdentificationPojo(
-                            identificationOperator.getExternalResourceUri(),
+                            identification.uri(),
                             new FriendlyResourcePojo(identificationOperator)
                     )
             );
