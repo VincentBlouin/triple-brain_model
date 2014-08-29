@@ -28,6 +28,11 @@ public class GraphElementPojo implements GraphElement {
                 identificationsFromOperator(graphElementOperator.getAdditionalTypes())
         );
     }
+    public GraphElementPojo(URI uri){
+        this(
+                new FriendlyResourcePojo(uri)
+        );
+    }
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
             Map<URI,IdentificationPojo> genericIdentifications

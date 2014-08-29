@@ -1,5 +1,7 @@
 package org.triple_brain.module.model;
 
+import org.triple_brain.module.model.graph.schema.Schema;
+
 import java.net.URI;
 import java.util.UUID;
 
@@ -19,6 +21,18 @@ public class UserUris {
         return modifiedUriStr.substring(
                 0,
                 modifiedUriStr.indexOf("/")
+        );
+    }
+
+    public static URI generateSchemaPropertyUri(URI schemaUri){
+        return URI.create(
+                schemaUri + "/property/" + UUID.randomUUID().toString()
+        );
+    }
+
+    public static URI schemaPropertyUriFromShortIdAndSchema(Schema schema, String shortId){
+        return URI.create(
+                schema.uri() + "/property/" + shortId
         );
     }
 
@@ -58,6 +72,12 @@ public class UserUris {
         );
     }
 
+    public URI baseSchemaUri() {
+        return URI.create(
+                graphUri() + "/schema"
+        );
+    }
+
     public URI defaultVertexUri() {
         return URI.create(
                 baseVertexUri() + "/" + TripleBrainUris.DEFAULT_VERTEX_END_OF_URI
@@ -76,6 +96,12 @@ public class UserUris {
         );
     }
 
+    public URI schemaUriFromShortId(String shortId){
+        return URI.create(
+                baseSchemaUri() + "/" + shortId
+        );
+    }
+
     public URI generateVertexUri() {
         return URI.create(
                 baseVertexUri() + "/" + UUID.randomUUID().toString()
@@ -85,6 +111,12 @@ public class UserUris {
     public URI generateEdgeUri() {
         return URI.create(
                 baseEdgeUri() + "/" + UUID.randomUUID().toString()
+        );
+    }
+
+    public URI generateSchemaUri(){
+        return URI.create(
+                baseSchemaUri() + "/" + UUID.randomUUID().toString()
         );
     }
 
