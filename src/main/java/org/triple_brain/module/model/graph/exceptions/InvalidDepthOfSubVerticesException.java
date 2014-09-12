@@ -1,10 +1,11 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph.exceptions;
 
 import java.net.URI;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class InvalidDepthOfSubVerticesException extends GraphManipulatorException {
 
     public InvalidDepthOfSubVerticesException(Integer depthOfSubvertices, URI centerVertexId){

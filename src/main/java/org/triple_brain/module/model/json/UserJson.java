@@ -1,12 +1,13 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.json;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.User;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class UserJson {
     public static String ID = "uri";
     public static String USER_NAME = "user_name";

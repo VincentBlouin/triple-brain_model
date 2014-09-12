@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import org.triple_brain.module.model.graph.schema.Schema;
@@ -5,9 +9,6 @@ import org.triple_brain.module.model.graph.schema.Schema;
 import java.net.URI;
 import java.util.UUID;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class UserUris {
 
     public static String graphElementShortId (URI uri){

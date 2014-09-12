@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.json;
 
 import com.google.gson.Gson;
@@ -14,9 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class SuggestionJson {
 
     private static Gson gson = new Gson();

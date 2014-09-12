@@ -1,12 +1,13 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import org.junit.Test;
 
 import static junit.framework.Assert.assertTrue;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class UserUrisTest {
 
     @Test

@@ -1,11 +1,12 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import java.net.URI;
 import java.util.UUID;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class Image{
 
     String base64ForSmall;

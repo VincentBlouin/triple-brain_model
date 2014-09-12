@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.suggestion;
 
 import org.triple_brain.module.model.FriendlyResource;
@@ -8,9 +12,6 @@ import java.net.URI;
 import java.util.Date;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class SuggestionOriginPojo implements SuggestionOrigin{
 
     FriendlyResourcePojo friendlyResource;
@@ -96,8 +97,8 @@ public class SuggestionOriginPojo implements SuggestionOrigin{
     }
 
     @Override
-    public String getOwner() {
-        return friendlyResource.getOwner();
+    public String getOwnerUsername() {
+        return friendlyResource.getOwnerUsername();
     }
 
     @Override

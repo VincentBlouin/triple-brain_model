@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.json.graph;
 
 import com.google.gson.Gson;
@@ -6,9 +10,6 @@ import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.graph.schema.Schema;
 import org.triple_brain.module.model.graph.schema.SchemaPojo;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class SchemaJson {
     private static Gson gson = new Gson();
     public static JSONObject toJson(Schema schema) {

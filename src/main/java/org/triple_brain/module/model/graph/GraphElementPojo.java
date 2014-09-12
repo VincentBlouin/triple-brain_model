@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.Image;
@@ -9,9 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
@@ -89,13 +90,6 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public String ownerUsername() {
-        return UserUris.ownerUserNameFromUri(
-                uri()
-        );
-    }
-
-    @Override
     public URI uri() {
         return friendlyResource.uri();
     }
@@ -136,8 +130,8 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public String getOwner() {
-        return friendlyResource.getOwner();
+    public String getOwnerUsername() {
+        return friendlyResource.getOwnerUsername();
     }
 
     @Override

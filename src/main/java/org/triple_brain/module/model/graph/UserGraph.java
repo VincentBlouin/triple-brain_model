@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.User;
@@ -11,9 +15,6 @@ import org.triple_brain.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public interface UserGraph {
     public VertexOperator defaultVertex();
     public User user();

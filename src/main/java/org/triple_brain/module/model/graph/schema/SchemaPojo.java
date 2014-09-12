@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph.schema;
 
 import org.triple_brain.module.model.Image;
@@ -10,9 +14,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class SchemaPojo implements Schema {
 
     private FriendlyResourcePojo friendlyResource;
@@ -82,8 +83,8 @@ public class SchemaPojo implements Schema {
     }
 
     @Override
-    public String getOwner() {
-        return friendlyResource.getOwner();
+    public String getOwnerUsername() {
+        return friendlyResource.getOwnerUsername();
     }
 
     public void setLabel(String label) {

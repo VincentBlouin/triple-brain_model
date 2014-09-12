@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.test;
 
 import org.triple_brain.module.model.graph.edge.Edge;
@@ -9,9 +13,6 @@ import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class SubGraphOperator{
 
     private Set<VertexInSubGraphOperator> vertices = new HashSet<VertexInSubGraphOperator>();

@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.admin;
 
 import org.triple_brain.module.model.FriendlyResource;
@@ -9,9 +13,6 @@ import org.triple_brain.module.model.graph.vertex.VertexOperator;
 import java.util.Iterator;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class WholeGraphAdmin {
     private WholeGraph wholeGraph;
     public WholeGraphAdmin(WholeGraph wholeGraph){

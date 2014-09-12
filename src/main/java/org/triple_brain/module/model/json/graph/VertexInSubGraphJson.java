@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.json.graph;
 
 import com.google.gson.Gson;
@@ -6,9 +10,6 @@ import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 import org.triple_brain.module.model.graph.vertex.VertexPojo;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class VertexInSubGraphJson{
 
     private static Gson gson = new Gson();

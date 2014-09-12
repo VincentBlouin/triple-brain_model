@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.test.scenarios;
 
 import org.triple_brain.module.model.test.GraphComponentTest;
@@ -8,9 +12,6 @@ import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
 import javax.inject.Inject;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class TestScenarios {
 
     @Inject
@@ -28,9 +29,9 @@ public class TestScenarios {
         vertexB.label("vertex B");
         VertexOperator vertexC = vertexB.addVertexAndRelation().destinationVertex();
         vertexC.label("vertex C");
-        EdgeOperator betweenAAndB = vertexA.edgeThatLinksToDestinationVertex(vertexB);
+        EdgeOperator betweenAAndB = vertexA.getEdgeThatLinksToDestinationVertex(vertexB);
         betweenAAndB.label("between vertex A and vertex B");
-        EdgeOperator betweenBAndC = vertexB.edgeThatLinksToDestinationVertex(vertexC);
+        EdgeOperator betweenBAndC = vertexB.getEdgeThatLinksToDestinationVertex(vertexC);
         betweenBAndC.label("between vertex B and vertex C");
         return new VerticesCalledABAndC(
                 vertexA,

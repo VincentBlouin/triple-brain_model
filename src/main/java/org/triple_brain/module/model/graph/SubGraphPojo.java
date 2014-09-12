@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.graph.edge.Edge;
@@ -12,9 +16,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class SubGraphPojo implements SubGraph {
 
     private Map<URI, VertexInSubGraphPojo> vertices = new HashMap<>();

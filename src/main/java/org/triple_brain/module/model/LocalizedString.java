@@ -1,10 +1,11 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import java.util.Locale;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class LocalizedString {
 
     private String string;

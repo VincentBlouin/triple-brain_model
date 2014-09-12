@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
@@ -14,9 +18,6 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.triple_brain.module.model.json.UserJson.*;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class UserTest {
 
     @Test

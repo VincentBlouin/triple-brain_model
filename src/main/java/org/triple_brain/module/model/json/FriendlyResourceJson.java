@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.json;
 
 import com.google.gson.Gson;
@@ -5,9 +9,6 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class FriendlyResourceJson {
 
     private static Gson gson = new Gson();

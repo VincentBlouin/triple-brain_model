@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import org.codehaus.jettison.json.JSONArray;
@@ -13,9 +17,6 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.triple_brain.module.model.json.UserJson.*;
 import static org.triple_brain.module.model.validator.UserValidator.*;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class UserValidatorTest {
 
     @Test

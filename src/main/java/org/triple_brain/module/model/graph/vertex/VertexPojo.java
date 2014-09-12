@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph.vertex;
 
 import org.triple_brain.module.model.Image;
@@ -12,9 +16,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-/*
- * Copyright Mozilla Public License 1.1
- */
 public class VertexPojo implements Vertex {
 
     private GraphElementPojo graphElement;
@@ -106,11 +107,6 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public String ownerUsername() {
-        return graphElement.ownerUsername();
-    }
-
-    @Override
     public URI uri() {
         return graphElement.uri();
     }
@@ -156,8 +152,8 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public String getOwner() {
-        return graphElement.getOwner();
+    public String getOwnerUsername() {
+        return graphElement.getOwnerUsername();
     }
 
     @Override

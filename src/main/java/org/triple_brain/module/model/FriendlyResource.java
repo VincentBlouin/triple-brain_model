@@ -1,12 +1,13 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import java.net.URI;
 import java.util.Date;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public interface FriendlyResource {
     URI uri();
     boolean hasLabel();
@@ -17,6 +18,6 @@ public interface FriendlyResource {
     Boolean gotComments();
     Date creationDate();
     Date lastModificationDate();
-    String getOwner();
+    String getOwnerUsername();
 }
 

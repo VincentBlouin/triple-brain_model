@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.validator;
 
 import org.codehaus.jettison.json.JSONArray;
@@ -10,10 +14,6 @@ import java.util.regex.Pattern;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.triple_brain.module.model.json.UserJson.*;
-
-/**
- * Copyright Mozilla Public License 1.1
- */
 
 public class UserValidator {
 

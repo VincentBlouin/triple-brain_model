@@ -1,10 +1,11 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.test.scenarios;
 
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class VerticesCalledABAndC {
 
     private VertexOperator vertexA;

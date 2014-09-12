@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.FriendlyResource;
@@ -8,9 +12,6 @@ import java.net.URI;
 import java.util.Date;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class FriendlyResourcePojo implements FriendlyResource {
 
     private URI uri;
@@ -129,7 +130,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
     }
 
     @Override
-    public String getOwner() {
+    public String getOwnerUsername() {
         return UserUris.ownerUserNameFromUri(uri);
     }
 

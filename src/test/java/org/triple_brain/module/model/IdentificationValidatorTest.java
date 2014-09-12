@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import com.google.gson.Gson;
@@ -13,9 +17,6 @@ import java.util.Set;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class IdentificationValidatorTest {
 
     private Gson gson = new Gson();

@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph.vertex;
 
 import org.triple_brain.module.model.graph.edge.Edge;
@@ -9,9 +13,6 @@ import java.net.URI;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Copyright Mozilla  License 1.1
- */
 public interface Vertex extends GraphElement {
     Integer getNumberOfConnectedEdges();
     Set<SuggestionPojo> getSuggestions();

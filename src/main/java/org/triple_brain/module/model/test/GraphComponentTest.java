@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.test;
 
 import org.triple_brain.module.model.User;
@@ -10,9 +14,6 @@ import org.triple_brain.module.model.graph.vertex.VertexInSubGraph;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public interface GraphComponentTest {
     int numberOfEdgesAndVertices();
     SubGraphPojo wholeGraphAroundDefaultCenterVertex();

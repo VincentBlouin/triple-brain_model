@@ -1,8 +1,8 @@
-package org.triple_brain.module.model.json;
-
 /*
-* Copyright Mozilla Public License 1.1
-*/
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
+package org.triple_brain.module.model.json;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph.vertex;
 
 import org.triple_brain.module.model.Image;
@@ -12,13 +16,9 @@ import org.triple_brain.module.model.suggestion.SuggestionPojo;
 import java.net.URI;
 import java.util.*;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class VertexInSubGraphPojo implements VertexInSubGraph {
 
     private VertexPojo vertex;
-    private Integer minDistanceFromCenterVertex = -1;
 
     @Deprecated
     public VertexInSubGraphPojo(VertexOperator vertexOperator) {
@@ -158,11 +158,6 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public String ownerUsername() {
-        return vertex.ownerUsername();
-    }
-
-    @Override
     public URI uri() {
         return vertex.uri();
     }
@@ -203,19 +198,8 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public String getOwner() {
-        return vertex.getOwner();
-    }
-
-    @Override
-    public Integer minDistanceFromCenterVertex() {
-        return minDistanceFromCenterVertex;
-    }
-
-    @Override
-    public VertexInSubGraph setMinDistanceFromCenterVertex(Integer minDistanceFromCenterVertex) {
-        this.minDistanceFromCenterVertex = minDistanceFromCenterVertex;
-        return this;
+    public String getOwnerUsername() {
+        return vertex.getOwnerUsername();
     }
 
     @Override

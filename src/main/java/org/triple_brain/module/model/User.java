@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
@@ -5,9 +9,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.UUID;
 
-/**
- * Copyright Mozilla Public License 1.1
- */
 public class User {
 
     // this field is completely hidden and only used for SQL-relative persistence

@@ -1,3 +1,7 @@
+/*
+ * Copyright Vincent Blouin under the Mozilla Public License 1.1
+ */
+
 package org.triple_brain.module.model.graph;
 
 
@@ -7,9 +11,6 @@ import java.net.URI;
 import java.util.Date;
 import java.util.Set;
 
-/*
-* Copyright Mozilla Public License 1.1
-*/
 public class IdentificationPojo implements Identification{
 
     URI externalResourceUri;
@@ -80,8 +81,8 @@ public class IdentificationPojo implements Identification{
     }
 
     @Override
-    public String getOwner() {
-        return friendlyResource.getOwner();
+    public String getOwnerUsername() {
+        return friendlyResource.getOwnerUsername();
     }
 
     public void setComment(String comment){
