@@ -42,7 +42,7 @@ public class SuggestionJson {
         }
     }
 
-        public static Set<SuggestionPojo> fromJsonArray(String json) {
+    public static Set<SuggestionPojo> fromJsonArray(String json) {
         return gson.fromJson(
                 json,
                 new TypeToken<Set<SuggestionPojo>>() {

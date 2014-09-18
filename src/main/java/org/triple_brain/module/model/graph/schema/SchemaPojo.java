@@ -7,10 +7,12 @@ package org.triple_brain.module.model.graph.schema;
 import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 import org.triple_brain.module.model.graph.GraphElement;
+import org.triple_brain.module.model.graph.GraphElementOperator;
 import org.triple_brain.module.model.graph.GraphElementPojo;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,6 +20,18 @@ public class SchemaPojo implements Schema {
 
     private FriendlyResourcePojo friendlyResource;
     private Map<URI, GraphElementPojo> properties;
+
+    @Deprecated
+    public SchemaPojo(SchemaOperator schemaOperator) {
+        this.friendlyResource = new FriendlyResourcePojo(schemaOperator);
+        Map<URI, GraphElementPojo> properties = new HashMap<>();
+        for(GraphElement property : schemaOperator.getProperties().values()){
+            properties.put(
+                    property.uri(),
+                    new GraphElementPojo((GraphElementOperator) property)
+            );
+        }
+    }
 
     public SchemaPojo(URI uri) {
         this(

@@ -5,9 +5,14 @@
 package org.triple_brain.module.model.json;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.triple_brain.module.model.graph.Identification;
 import org.triple_brain.module.model.graph.IdentificationPojo;
+
+import java.net.URI;
+import java.util.Map;
 
 public class IdentificationJson {
 
