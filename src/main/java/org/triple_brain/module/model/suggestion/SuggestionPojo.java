@@ -18,26 +18,25 @@ import java.util.UUID;
 public class SuggestionPojo implements Suggestion {
 
     FriendlyResourcePojo friendlyResource;
-    URI sameAsUri;
-    URI domainUri;
+    FriendlyResourcePojo sameAs;
+    FriendlyResourcePojo type;
     Set<SuggestionOriginPojo> origins;
 
-    public static SuggestionPojo fromSameAsAndDomainUriLabelAndOrigin(
-            URI sameAsUri,
-            URI domainUri,
-            String label,
+    public static SuggestionPojo forSameAsTypeAndOrigin(
+            FriendlyResourcePojo sameAs,
+            FriendlyResourcePojo type,
             String origin,
             User owner
-    ){
+    ) {
         SuggestionOriginPojo suggestionOriginPojo = new SuggestionOriginPojo(
                 origin
         );
         Set<SuggestionOriginPojo> origins = new HashSet<>();
         origins.add(suggestionOriginPojo);
         return new SuggestionPojo(
-                sameAsUri,
-                domainUri,
-                label,
+                sameAs,
+                type,
+                sameAs.label(),
                 origins,
                 owner
         );
@@ -45,33 +44,33 @@ public class SuggestionPojo implements Suggestion {
 
     public SuggestionPojo(
             FriendlyResourcePojo friendlyResource,
-            URI sameAsUri,
-            URI domainUri,
+            FriendlyResourcePojo sameAs,
+            FriendlyResourcePojo type,
             Set<SuggestionOriginPojo> origins
-    ){
+    ) {
         this.friendlyResource = friendlyResource;
-        this.sameAsUri = sameAsUri;
-        this.domainUri = domainUri;
+        this.sameAs = sameAs;
+        this.type = type;
         this.origins = origins;
     }
+
     public SuggestionPojo(
-            URI sameAsUri,
-            URI domainUri,
+            FriendlyResourcePojo sameAs,
+            FriendlyResourcePojo type,
             String label,
             Set<SuggestionOriginPojo> origins,
             User owner
-    ){
+    ) {
         UserUris userUris = new UserUris(owner);
-        URI suggestionUri = URI.create(
-                userUris.baseUri() + "/suggestion/" + UUID.randomUUID()
-        );
+        URI suggestionUri = userUris.generateSuggestionUri();
+
         this.friendlyResource = new FriendlyResourcePojo(
-            suggestionUri
+                suggestionUri
         );
         friendlyResource.setLabel(label);
-        this.sameAsUri = sameAsUri;
-        this.domainUri = domainUri;
-        for(SuggestionOriginPojo suggestionOriginPojo: origins){
+        this.sameAs = sameAs;
+        this.type = type;
+        for (SuggestionOriginPojo suggestionOriginPojo : origins) {
             suggestionOriginPojo.setUri(
                     URI.create(
                             suggestionUri.toString() + "/origin/" + UUID.randomUUID()
@@ -79,16 +78,16 @@ public class SuggestionPojo implements Suggestion {
             );
         }
         this.origins = origins;
-   }
-
-    @Override
-    public URI getSameAsUri() {
-        return sameAsUri;
     }
 
     @Override
-    public URI getDomainUri() {
-        return domainUri;
+    public FriendlyResourcePojo getSameAs() {
+        return sameAs;
+    }
+
+    @Override
+    public FriendlyResourcePojo getType() {
+        return type;
     }
 
     @Override
@@ -101,12 +100,12 @@ public class SuggestionPojo implements Suggestion {
         return friendlyResource.uri();
     }
 
-    public void setUri(URI uri){
-        if(friendlyResource == null){
+    public void setUri(URI uri) {
+        if (friendlyResource == null) {
             friendlyResource = new FriendlyResourcePojo(
                     uri
             );
-        }else{
+        } else {
             friendlyResource.setUri(
                     uri
             );

@@ -132,4 +132,10 @@ public class UserUris {
                 baseIdentificationUri() + "/" + UUID.randomUUID().toString()
         );
     }
+
+    public URI generateSuggestionUri(){
+        return URI.create(
+                baseUri() + "/suggestion/" + UUID.randomUUID()
+        );
+    }
 }

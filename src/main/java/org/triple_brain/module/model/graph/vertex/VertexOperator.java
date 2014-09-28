@@ -17,6 +17,7 @@ public interface VertexOperator extends GraphElementOperator, Vertex {
     Boolean hasDestinationVertex(Vertex destinationVertex);
     EdgeOperator addVertexAndRelation();
     EdgeOperator addRelationToVertex(Vertex destinationVertex);
+    EdgeOperator acceptSuggestion(SuggestionPojo suggestion);
     void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
     void addSuggestions(Set<SuggestionPojo> suggestions);
     void setSuggestions(Set<SuggestionPojo> suggestions);

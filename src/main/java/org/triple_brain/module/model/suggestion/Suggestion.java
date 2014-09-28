@@ -5,12 +5,12 @@
 package org.triple_brain.module.model.suggestion;
 
 import org.triple_brain.module.model.FriendlyResource;
+import org.triple_brain.module.model.graph.FriendlyResourcePojo;
 
-import java.net.URI;
 import java.util.Set;
 
 public interface Suggestion extends FriendlyResource{
-    URI getSameAsUri();
-    URI getDomainUri();
+    FriendlyResourcePojo getSameAs();
+    FriendlyResourcePojo getType();
     Set<?extends SuggestionOrigin> origins();
 }

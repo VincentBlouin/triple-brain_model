@@ -32,6 +32,10 @@ public class SuggestionJson {
         }
     }
 
+    public static SuggestionPojo fromJson(String json) {
+        return gson.fromJson(json, SuggestionPojo.class);
+    }
+
     public static JSONArray multipleToJson(Set<SuggestionPojo> suggestionPojo) {
         try {
             return new JSONArray(gson.toJson(
