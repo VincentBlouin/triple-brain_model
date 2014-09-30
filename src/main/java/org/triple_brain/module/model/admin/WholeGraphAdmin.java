@@ -4,14 +4,11 @@
 
 package org.triple_brain.module.model.admin;
 
-import org.triple_brain.module.model.FriendlyResource;
-import org.triple_brain.module.model.Image;
 import org.triple_brain.module.model.WholeGraph;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraphOperator;
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
 import java.util.Iterator;
-import java.util.Set;
 
 public class WholeGraphAdmin {
     private WholeGraph wholeGraph;
@@ -27,23 +24,4 @@ public class WholeGraphAdmin {
             );
         }
     }
-
-
-
-//    public void convertAllSmallImagesToBase64(){
-//        Iterator<VertexInSubGraphOperator> vertexIt = wholeGraph.getAllVertices();
-//        while(vertexIt.hasNext()){
-//            VertexOperator vertex = vertexIt.next();
-//            convertImagesSmallVersionToBase64(vertex.images());
-//            for(FriendlyResource friendlyResource : vertex.getIdentifications().values()){
-//                convertImagesSmallVersionToBase64(friendlyResource.images());
-//            }
-//        }
-//    }
-//
-//    private void convertImagesSmallVersionToBase64(Set<Image> images){
-//        for(Image image : images){
-//            image.
-//        }
-//    }
 }
