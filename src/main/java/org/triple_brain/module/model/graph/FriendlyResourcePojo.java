@@ -144,4 +144,16 @@ public class FriendlyResourcePojo implements FriendlyResource {
     public int hashCode() {
         return uri().hashCode();
     }
+
+    public void setLastModificationDate(Date lastModificationDate){
+        this.lastModificationDate = lastModificationDate;
+    }
+
+    public void setCreationDate(Date creationDate){
+        this.creationDate = creationDate;
+    }
+
+    public void setImages(Set<Image> images){
+        this.images = images;
+    }
 }

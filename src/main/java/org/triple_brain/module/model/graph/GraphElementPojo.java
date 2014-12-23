@@ -5,7 +5,6 @@
 package org.triple_brain.module.model.graph;
 
 import org.triple_brain.module.model.Image;
-import org.triple_brain.module.model.UserUris;
 
 import java.net.URI;
 import java.util.Date;
@@ -16,17 +15,13 @@ import java.util.Set;
 public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
-    private Map<URI,IdentificationPojo> genericIdentifications;
-    private Map<URI,IdentificationPojo> sameAs;
-    private Map<URI,IdentificationPojo> additionalTypes;
+    private Map<URI,IdentificationPojo> identifications;
 
     @Deprecated
     public GraphElementPojo(GraphElementOperator graphElementOperator){
         this(
                 new FriendlyResourcePojo(graphElementOperator),
-                identificationsFromOperator(graphElementOperator.getGenericIdentifications()),
-                identificationsFromOperator(graphElementOperator.getSameAs()),
-                identificationsFromOperator(graphElementOperator.getAdditionalTypes())
+                convertIdentificationsToPojo(graphElementOperator.getIdentifications())
         );
     }
     public GraphElementPojo(URI uri){
@@ -36,28 +31,16 @@ public class GraphElementPojo implements GraphElement {
     }
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI,IdentificationPojo> genericIdentifications
+            Map<URI,IdentificationPojo> identifications
     ){
         this.friendlyResource = friendlyResource;
-        this.genericIdentifications = genericIdentifications;
+        this.identifications = identifications;
     }
 
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource
     ){
         this.friendlyResource = friendlyResource;
-    }
-
-    public GraphElementPojo(
-            FriendlyResourcePojo friendlyResource,
-            Map<URI,IdentificationPojo> genericIdentifications,
-            Map<URI,IdentificationPojo> sameAs,
-            Map<URI,IdentificationPojo> additionalTypes
-    ){
-        this.friendlyResource = friendlyResource;
-        this.genericIdentifications = genericIdentifications;
-        this.sameAs = sameAs;
-        this.additionalTypes = additionalTypes;
     }
 
     @Override
@@ -67,25 +50,27 @@ public class GraphElementPojo implements GraphElement {
 
     @Override
     public Map<URI, IdentificationPojo> getGenericIdentifications() {
-        return genericIdentifications;
+        return getIdentificationsOfType(
+                IdentificationType.generic
+        );
     }
 
     @Override
     public Map<URI, IdentificationPojo> getSameAs() {
-        return sameAs;
+        return getIdentificationsOfType(
+                IdentificationType.same_as
+        );
     }
 
     @Override
     public Map<URI, IdentificationPojo> getAdditionalTypes() {
-        return additionalTypes;
+        return getIdentificationsOfType(
+                IdentificationType.type
+        );
     }
 
     @Override
     public Map<URI, IdentificationPojo> getIdentifications() {
-        Map<URI, IdentificationPojo> identifications = new HashMap<>();
-        identifications.putAll(getSameAs());
-        identifications.putAll(getAdditionalTypes());
-        identifications.putAll(getGenericIdentifications());
         return identifications;
     }
 
@@ -149,19 +134,28 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource;
     }
 
-    private static Map<URI, IdentificationPojo> identificationsFromOperator(Map<URI, ? extends Identification> resources){
-        Map<URI, IdentificationPojo> identificationPojo = new HashMap<>();
-        for(Identification identification: resources.values()){
-            IdentificationOperator identificationOperator = (IdentificationOperator) identification;
-            identificationPojo.put(
-                    identificationOperator.getExternalResourceUri(),
-                    new IdentificationPojo(
-                            identification.uri(),
-                            new FriendlyResourcePojo(identificationOperator)
-                    )
+    private Map<URI, IdentificationPojo> getIdentificationsOfType(IdentificationType identificationType){
+        Map<URI, IdentificationPojo> identificationsOfType = new HashMap<>();
+        for(IdentificationPojo identification : getIdentifications().values()){
+            if(identification.getType().equals(identificationType)){
+                identificationsOfType.put(
+                        identification.getExternalResourceUri(),
+                        identification
+                );
+            }
+        }
+        return identificationsOfType;
+    }
+
+    private static Map<URI, IdentificationPojo> convertIdentificationsToPojo(Map<URI, ? extends Identification> identifications){
+        Map<URI, IdentificationPojo> identificationsPojo = new HashMap<>();
+        for (Identification identification : identifications.values()) {
+            identificationsPojo.put(
+                    identification.getExternalResourceUri(),
+                    (IdentificationPojo) identification
             );
         }
-        return identificationPojo;
+        return identificationsPojo;
     }
 
     @Override

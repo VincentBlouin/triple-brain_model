@@ -9,30 +9,56 @@ import org.triple_brain.module.model.Image;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
-public class IdentificationPojo implements Identification{
+public class IdentificationPojo implements Identification {
 
     URI externalResourceUri;
     FriendlyResourcePojo friendlyResource;
+    IdentificationType identificationType;
+
+    public IdentificationPojo(
+            URI uri,
+            Identification identification
+    ) {
+        friendlyResource = new FriendlyResourcePojo(uri);
+        externalResourceUri = identification.getExternalResourceUri();
+        friendlyResource.setLabel(identification.label());
+        if (identification.comment() != null) {
+            friendlyResource.setComment(
+                    identification.comment()
+            );
+        }
+        if (identification.images() != null) {
+            friendlyResource.setImages(
+                    identification.images()
+            );
+        }
+        friendlyResource.setLastModificationDate(new Date());
+    }
 
     public IdentificationPojo(
             URI externalResourceUri,
             FriendlyResourcePojo friendlyResourcePojo
-    ){
+    ) {
         this.externalResourceUri = externalResourceUri;
         this.friendlyResource = friendlyResourcePojo;
     }
 
     public IdentificationPojo(
             FriendlyResourcePojo friendlyResourcePojo
-    ){
+    ) {
         this.friendlyResource = friendlyResourcePojo;
     }
 
     @Override
     public URI getExternalResourceUri() {
         return externalResourceUri;
+    }
+
+    public void setExternalResourceUri(URI externalResourceUri) {
+        this.externalResourceUri = externalResourceUri;
     }
 
     @Override
@@ -55,6 +81,10 @@ public class IdentificationPojo implements Identification{
         return friendlyResource.images();
     }
 
+    public void setImages(Set<Image> images) {
+        friendlyResource.setImages(images);
+    }
+
     @Override
     public Boolean gotImages() {
         return friendlyResource.gotImages();
@@ -63,6 +93,10 @@ public class IdentificationPojo implements Identification{
     @Override
     public String comment() {
         return friendlyResource.comment();
+    }
+
+    public void setComment(String comment) {
+        friendlyResource.setComment(comment);
     }
 
     @Override
@@ -85,10 +119,6 @@ public class IdentificationPojo implements Identification{
         return friendlyResource.getOwnerUsername();
     }
 
-    public void setComment(String comment){
-        friendlyResource.setComment(comment);
-    }
-
     @Override
     public boolean equals(Object toCompare) {
         return friendlyResource.equals(toCompare);
@@ -98,4 +128,25 @@ public class IdentificationPojo implements Identification{
     public int hashCode() {
         return friendlyResource.hashCode();
     }
+
+    public void setUri(URI uri) {
+        friendlyResource.setUri(uri);
+    }
+
+    public void setLastModificationDate(Date date) {
+        friendlyResource.setLastModificationDate(date);
+    }
+
+    public void setCreationDate(Date date) {
+        friendlyResource.setCreationDate(date);
+    }
+
+    public IdentificationType getType() {
+        return identificationType;
+    }
+
+    public void setType(IdentificationType identificationType) {
+        this.identificationType = identificationType;
+    }
+
 }
