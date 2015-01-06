@@ -9,6 +9,8 @@ import org.triple_brain.module.model.graph.edge.Edge;
 import org.triple_brain.module.model.graph.edge.EdgeOperator;
 import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
+import java.net.URI;
+import java.util.Map;
 import java.util.Set;
 
 public interface VertexOperator extends GraphElementOperator, Vertex {
@@ -19,8 +21,8 @@ public interface VertexOperator extends GraphElementOperator, Vertex {
     EdgeOperator addRelationToVertex(Vertex destinationVertex);
     EdgeOperator acceptSuggestion(SuggestionPojo suggestion);
     void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
-    void addSuggestions(Set<SuggestionPojo> suggestions);
-    void setSuggestions(Set<SuggestionPojo> suggestions);
+    void addSuggestions(Map<URI, SuggestionPojo> suggestions);
+    void setSuggestions(Map<URI, SuggestionPojo> suggestions);
     void makePublic();
     void makePrivate();
     Set<EdgeOperator> connectedEdges();

@@ -9,14 +9,10 @@ import com.google.gson.reflect.TypeToken;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
-import org.triple_brain.module.model.graph.vertex.VertexOperator;
 import org.triple_brain.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class SuggestionJson {
 
@@ -36,9 +32,9 @@ public class SuggestionJson {
         return gson.fromJson(json, SuggestionPojo.class);
     }
 
-    public static JSONArray multipleToJson(Set<SuggestionPojo> suggestionPojo) {
+    public static JSONObject multipleToJson(Map<URI, SuggestionPojo> suggestionPojo) {
         try {
-            return new JSONArray(gson.toJson(
+            return new JSONObject(gson.toJson(
                     suggestionPojo
             ));
         } catch (JSONException e) {
@@ -46,10 +42,10 @@ public class SuggestionJson {
         }
     }
 
-    public static Set<SuggestionPojo> fromJsonArray(String json) {
+    public static Map<URI, SuggestionPojo> fromJsonArray(String json) {
         return gson.fromJson(
                 json,
-                new TypeToken<Set<SuggestionPojo>>() {
+                new TypeToken<Map<URI, SuggestionPojo>>() {
                 }.getType()
         );
     }
