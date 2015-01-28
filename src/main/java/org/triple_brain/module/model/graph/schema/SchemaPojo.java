@@ -110,6 +110,10 @@ public class SchemaPojo implements Schema {
         return properties;
     }
 
+    public Boolean hasProperties(){
+        return properties != null;
+    }
+
     @Override
     public boolean equals(Object graphElementToCompareAsObject) {
         return friendlyResource.equals(graphElementToCompareAsObject);
