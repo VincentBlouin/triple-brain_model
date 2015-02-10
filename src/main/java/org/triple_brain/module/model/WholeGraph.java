@@ -11,7 +11,7 @@ import org.triple_brain.module.model.graph.vertex.VertexInSubGraphOperator;
 import java.util.Iterator;
 
 public interface WholeGraph {
-    public Iterator<VertexInSubGraphOperator> getAllVertices();
-    public Iterator<EdgeOperator> getAllEdges();
-    public Iterator<SchemaOperator> getAllSchemas();
+    Iterator<VertexInSubGraphOperator> getAllVertices();
+    Iterator<EdgeOperator> getAllEdges();
+    Iterator<SchemaOperator> getAllSchemas();
 }

@@ -4,11 +4,11 @@
 
 package org.triple_brain.module.model.test.scenarios;
 
+import org.triple_brain.module.model.graph.vertex.VertexOperator;
 import org.triple_brain.module.model.test.GraphComponentTest;
 import org.triple_brain.module.model.graph.GraphFactory;
 import org.triple_brain.module.model.graph.UserGraph;
 import org.triple_brain.module.model.graph.edge.EdgeOperator;
-import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
 import javax.inject.Inject;
 

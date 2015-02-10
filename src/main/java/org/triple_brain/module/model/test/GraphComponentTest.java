@@ -10,7 +10,6 @@ import org.triple_brain.module.model.graph.UserGraph;
 import org.triple_brain.module.model.graph.edge.Edge;
 import org.triple_brain.module.model.graph.edge.EdgePojo;
 import org.triple_brain.module.model.graph.vertex.Vertex;
-import org.triple_brain.module.model.graph.vertex.VertexInSubGraph;
 import org.triple_brain.module.model.graph.vertex.VertexInSubGraphPojo;
 import org.triple_brain.module.model.graph.vertex.VertexOperator;
 
