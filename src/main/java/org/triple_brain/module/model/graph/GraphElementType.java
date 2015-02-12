@@ -5,8 +5,8 @@
 package org.triple_brain.module.model.graph;
 
 public enum GraphElementType {
-    VERTEX,
-    EDGE,
-    SCHEMA,
-    SCHEMA_PROPERTY
+    vertex,
+    edge,
+    schema,
+    property
 }
