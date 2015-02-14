@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-public class EdgePojo implements Edge{
+public class EdgePojo implements Edge {
 
     private GraphElementPojo graphElement;
     private VertexInSubGraphPojo sourceVertex;
@@ -25,7 +25,7 @@ public class EdgePojo implements Edge{
     @Deprecated
     public EdgePojo(
             EdgeOperator edgeOperator
-    ){
+    ) {
         this(
                 new GraphElementPojo(edgeOperator),
                 new VertexInSubGraphPojo(edgeOperator.sourceVertex()),
@@ -37,16 +37,22 @@ public class EdgePojo implements Edge{
             GraphElementPojo graphElement,
             VertexInSubGraphPojo sourceVertex,
             VertexInSubGraphPojo destinationVertex
-    ){
+    ) {
         this.graphElement = graphElement;
         this.sourceVertex = sourceVertex;
         this.destinationVertex = destinationVertex;
     }
 
     public EdgePojo(
+            GraphElementPojo graphElement
+    ) {
+        this.graphElement = graphElement;
+    }
+
+    public EdgePojo(
             URI uri,
             String label
-    ){
+    ) {
         graphElement = new GraphElementPojo(
                 new FriendlyResourcePojo(
                         uri,
@@ -60,7 +66,7 @@ public class EdgePojo implements Edge{
         return sourceVertex;
     }
 
-    public void setSourceVertex(VertexInSubGraphPojo vertex){
+    public void setSourceVertex(VertexInSubGraphPojo vertex) {
         this.sourceVertex = vertex;
     }
 
@@ -69,7 +75,7 @@ public class EdgePojo implements Edge{
         return destinationVertex;
     }
 
-    public void setDestinationVertex(VertexInSubGraphPojo vertex){
+    public void setDestinationVertex(VertexInSubGraphPojo vertex) {
         this.destinationVertex = vertex;
     }
 
@@ -87,22 +93,22 @@ public class EdgePojo implements Edge{
     }
 
     @Override
-    public Map<URI,?extends IdentificationPojo> getGenericIdentifications() {
+    public Map<URI, ? extends IdentificationPojo> getGenericIdentifications() {
         return graphElement.getGenericIdentifications();
     }
 
     @Override
-    public Map<URI,?extends IdentificationPojo> getSameAs() {
+    public Map<URI, ? extends IdentificationPojo> getSameAs() {
         return graphElement.getSameAs();
     }
 
     @Override
-    public Map<URI,?extends IdentificationPojo> getAdditionalTypes() {
+    public Map<URI, ? extends IdentificationPojo> getAdditionalTypes() {
         return graphElement.getAdditionalTypes();
     }
 
     @Override
-    public Map<URI,?extends IdentificationPojo> getIdentifications() {
+    public Map<URI, ? extends IdentificationPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 
@@ -166,7 +172,7 @@ public class EdgePojo implements Edge{
         return graphElement.hashCode();
     }
 
-    public GraphElementPojo getGraphElement(){
+    public GraphElementPojo getGraphElement() {
         return graphElement;
     }
 
