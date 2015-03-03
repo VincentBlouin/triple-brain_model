@@ -102,7 +102,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public Boolean gotImages() {
-        return !images.isEmpty();
+        return images != null && !images.isEmpty();
     }
 
     @Override
