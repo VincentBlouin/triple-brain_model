@@ -11,10 +11,6 @@ import java.util.UUID;
 
 public class User {
 
-    // this field is completely hidden and only used for SQL-relative persistence
-    private Long internalId;
-
-    private final String id = UUID.randomUUID().toString();
     private String username;
     private String email;
     private String passwordHash;
@@ -96,6 +92,6 @@ public class User {
     }
 
     public String id() {
-        return id;
+        return new UserUris(this).baseUri().toString();
     }
 }

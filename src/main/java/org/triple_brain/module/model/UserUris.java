@@ -11,27 +11,32 @@ import java.util.UUID;
 
 public class UserUris {
 
-    public static String graphElementShortId (URI uri){
+    public static String graphElementShortId(URI uri) {
         String uriStr = uri.toString();
         return uriStr.substring(uriStr.lastIndexOf("/") + 1);
     }
 
-    public static String ownerUserNameFromUri(URI uri){
+    public static String ownerUserNameFromUri(URI uri) {
         String uriStr = uri.toString();
         String modifiedUriStr = uriStr.replace("/service/users/", "");
-        return modifiedUriStr.substring(
-                0,
-                modifiedUriStr.indexOf("/")
-        );
+        Integer indexOfSlash = modifiedUriStr.indexOf("/");
+        return indexOfSlash == -1 ?
+                modifiedUriStr.substring(
+                        0
+                ) :
+                modifiedUriStr.substring(
+                        0,
+                        indexOfSlash
+                );
     }
 
-    public static URI generateSchemaPropertyUri(URI schemaUri){
+    public static URI generateSchemaPropertyUri(URI schemaUri) {
         return URI.create(
                 schemaUri + "/property/" + UUID.randomUUID().toString()
         );
     }
 
-    public static URI schemaPropertyUriFromShortIdAndSchema(Schema schema, String shortId){
+    public static URI schemaPropertyUriFromShortIdAndSchema(Schema schema, String shortId) {
         return URI.create(
                 schema.uri() + "/property/" + shortId
         );
@@ -39,12 +44,13 @@ public class UserUris {
 
     private String userName;
 
-    public UserUris(User user){
+    public UserUris(User user) {
         this(
                 user.username()
         );
     }
-    public UserUris(String userName){
+
+    public UserUris(String userName) {
         this.userName = userName;
     }
 
@@ -85,19 +91,19 @@ public class UserUris {
         );
     }
 
-    public URI edgeUriFromShortId(String shortId){
+    public URI edgeUriFromShortId(String shortId) {
         return URI.create(
                 baseEdgeUri() + "/" + shortId
         );
     }
 
-    public URI vertexUriFromShortId(String shortId){
+    public URI vertexUriFromShortId(String shortId) {
         return URI.create(
-            baseVertexUri() + "/" + shortId
+                baseVertexUri() + "/" + shortId
         );
     }
 
-    public URI schemaUriFromShortId(String shortId){
+    public URI schemaUriFromShortId(String shortId) {
         return URI.create(
                 baseSchemaUri() + "/" + shortId
         );
@@ -115,25 +121,25 @@ public class UserUris {
         );
     }
 
-    public URI generateSchemaUri(){
+    public URI generateSchemaUri() {
         return URI.create(
                 baseSchemaUri() + "/" + UUID.randomUUID().toString()
         );
     }
 
-    public URI baseIdentificationUri(){
+    public URI baseIdentificationUri() {
         return URI.create(
                 graphUri() + "/identification"
         );
     }
 
-    public URI generateIdentificationUri(){
+    public URI generateIdentificationUri() {
         return URI.create(
                 baseIdentificationUri() + "/" + UUID.randomUUID().toString()
         );
     }
 
-    public URI generateSuggestionUri(){
+    public URI generateSuggestionUri() {
         return URI.create(
                 baseUri() + "/suggestion/" + UUID.randomUUID()
         );
