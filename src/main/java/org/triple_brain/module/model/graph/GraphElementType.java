@@ -5,6 +5,7 @@
 package org.triple_brain.module.model.graph;
 
 public enum GraphElementType {
+    resource,
     vertex,
     edge,
     schema,

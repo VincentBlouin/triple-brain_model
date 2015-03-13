@@ -11,10 +11,6 @@ import java.net.URI;
 
 public interface FriendlyResourceFactory {
     public FriendlyResourceOperator withUri(URI uri);
-    public FriendlyResourceOperator createOrLoadUsingUriAndLabel(
-            URI uri,
-            String label
-    );
     public FriendlyResourceOperator createOrLoadUsingPojo(
             FriendlyResourcePojo friendlyResource
     );

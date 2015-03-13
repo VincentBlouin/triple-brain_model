@@ -85,12 +85,6 @@ public class UserUris {
         );
     }
 
-    public URI defaultVertexUri() {
-        return URI.create(
-                baseVertexUri() + "/" + TripleBrainUris.DEFAULT_VERTEX_END_OF_URI
-        );
-    }
-
     public URI edgeUriFromShortId(String shortId) {
         return URI.create(
                 baseEdgeUri() + "/" + shortId
