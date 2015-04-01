@@ -6,6 +6,7 @@ package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.codehaus.jettison.json.JSONArray;
 
 import java.util.UUID;
 
@@ -15,16 +16,22 @@ public class User {
     private String email;
     private String passwordHash;
     private String salt;
-    private String preferredLocales;
+    private String preferredLocales = new JSONArray().toString();
 
-    public static User withUsernameEmailAndLocales(String username, String email, String preferedLocales) {
-        return new User(username, email, preferedLocales);
+    public static User withEmailAndUsername(String email, String username){
+        return new User(
+                email,
+                username
+        );
     }
 
-    private User(String username, String email, String preferredLocales) {
+    public static User withEmail(String email){
+        return new User(email, null);
+    }
+
+    private User(String email, String username) {
         this.username = username;
         this.email = email.toLowerCase().trim();
-        this.preferredLocales = preferredLocales;
     }
 
     public String passwordHash() {
@@ -93,5 +100,15 @@ public class User {
 
     public String id() {
         return new UserUris(this).baseUri().toString();
+    }
+
+    public User setUsername(String username){
+        this.username = username;
+        return this;
+    }
+
+    public User setPreferredLocales(String preferredLocales){
+        this.preferredLocales = preferredLocales;
+        return this;
     }
 }
