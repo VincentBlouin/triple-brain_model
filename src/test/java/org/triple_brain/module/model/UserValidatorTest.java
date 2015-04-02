@@ -66,18 +66,6 @@ public class UserValidatorTest {
         );
     }
 
-    @Test
-    public void password_verification_has_to_be_the_same_as_password() throws Exception{
-        assertTrue(
-                validationWithUserReturnsFieldWithMessage(
-                        validUser()
-                                .put(PASSWORD, "password")
-                                .put(PASSWORD_VERIFICATION, "another_password"),
-                        PASSWORD,
-                        PASSWORD_VERIFICATION_ERROR)
-        );
-    }
-
     private boolean validationWithUserReturnsFieldWithMessage(JSONObject user, String field, String message){
         Map<String, String> errors ;
         errors = validate(user);

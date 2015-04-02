@@ -28,8 +28,7 @@ public class UserValidator {
     public static final String ALREADY_REGISTERED_EMAIL = "already_registered_email";
 
     private static final int PASSWORD_MIN_LENGTH = 6;
-    
-    public static final String PASSWORD_VERIFICATION_ERROR = "password_verification_error";
+
     public static final String PASSWORD_TOO_SHORT = "password_too_short";
     public static final String MANDATORY_PASSWORD = "mandatory_password";
 
@@ -72,11 +71,6 @@ public class UserValidator {
             errors.put(PASSWORD, PASSWORD_TOO_SHORT);
             return errors;
         }
-
-        if (!password.equals(passwordVerification)) {
-            errors.put(PASSWORD, PASSWORD_VERIFICATION_ERROR);
-        }
-
         return errors;
     }
 
