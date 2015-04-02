@@ -16,10 +16,10 @@ import static org.triple_brain.module.model.json.UserJson.*;
 
 public class UserValidator {
 
-    private static String ATOM = "[^\\x00-\\x1F^\\(^\\)^\\<^\\>^\\@^\\,^\\;^\\:^\\\\^\\\"^\\.^\\[^\\]^\\s]";
-    private static String DOMAIN = "(" + ATOM + "+(\\." + ATOM + "+)*";
-    private static String IP_DOMAIN = "\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
-    private static Pattern email_pattern = Pattern.compile("^" + ATOM + "+(\\." + ATOM + "+)*@" + DOMAIN + "|" + IP_DOMAIN + ")$", Pattern.CASE_INSENSITIVE);
+    private static final String ATOM = "[^\\x00-\\x1F^\\(^\\)^\\<^\\>^\\@^\\,^\\;^\\:^\\\\^\\\"^\\.^\\[^\\]^\\s]";
+    private static final String DOMAIN = "(" + ATOM + "+(\\." + ATOM + "+)*";
+    private static final String IP_DOMAIN = "\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
+    private static final Pattern email_pattern = Pattern.compile("^" + ATOM + "+(\\." + ATOM + "+)*@" + DOMAIN + "|" + IP_DOMAIN + ")$", Pattern.CASE_INSENSITIVE);
     private static final int EMAIL_MAX_LENGTH = 255;
     
     public static final String INVALID_EMAIL = "invalid_email";
@@ -36,7 +36,7 @@ public class UserValidator {
         Map<String, String> errors = new LinkedHashMap<String, String>();
 
         errors.putAll(validateEmail(user.optString(EMAIL)));
-        errors.putAll(validatePassword(user.optString(PASSWORD), user.optString(PASSWORD_VERIFICATION)));
+        errors.putAll(validatePassword(user.optString(PASSWORD)));
         return errors;
     }
 
@@ -60,7 +60,7 @@ public class UserValidator {
         return errors;
     }
 
-    private static Map<String, String> validatePassword(String password, String passwordVerification) {
+    private static Map<String, String> validatePassword(String password) {
         Map<String, String> errors = new LinkedHashMap<String, String>();
         if (isBlank(password)) {
             errors.put(PASSWORD, MANDATORY_PASSWORD);

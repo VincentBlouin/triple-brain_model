@@ -13,7 +13,6 @@ public class UserJson {
     public static String USER_NAME = "user_name";
     public static String EMAIL = "email";
     public static String PASSWORD = "password";
-    public static final String PASSWORD_VERIFICATION = "password_verification";
     public static final String PREFERRED_LOCALES = "preferred_locales";
 
     public static JSONObject toJson(User user){

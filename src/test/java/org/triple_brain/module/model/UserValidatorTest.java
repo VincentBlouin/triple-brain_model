@@ -59,8 +59,7 @@ public class UserValidatorTest {
         assertTrue(
                 validationWithUserReturnsFieldWithMessage(
                         validUser()
-                                .put(PASSWORD, "pass")
-                                .put(PASSWORD_VERIFICATION, "pass"),
+                                .put(PASSWORD, "pass"),
                         PASSWORD,
                         PASSWORD_TOO_SHORT)
         );
@@ -82,7 +81,6 @@ public class UserValidatorTest {
         JSONObject user = new JSONObject();
         user.put(EMAIL, "generated_email@example.org");
         user.put(PASSWORD, "generated password");
-        user.put(PASSWORD_VERIFICATION, "generated password");
         return user;
     }
 }
