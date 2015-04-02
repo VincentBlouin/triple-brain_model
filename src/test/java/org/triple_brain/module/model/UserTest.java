@@ -118,7 +118,7 @@ public class UserTest {
         assertFalse(
                 user.hasPassword("potatoe")
         );
-        assertNotNull(
+        assertNull(
                 user.passwordHash()
         );
     }
@@ -152,10 +152,6 @@ public class UserTest {
                 "roger.lamothe@example.org"
         );
         JSONObject jsonUser = UserJson.toJson(user);
-        assertThat(
-                jsonUser.getString(USER_NAME),
-                is("roger_lamothe")
-        );
         assertThat(
                 jsonUser.getString(EMAIL),
                 is("roger.lamothe@example.org")

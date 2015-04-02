@@ -4,7 +4,6 @@
 
 package org.triple_brain.module.model;
 
-import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
 
@@ -79,44 +78,6 @@ public class UserValidatorTest {
         );
     }
 
-    @Test
-    public void username_is_mandatory() throws Exception{
-        assertTrue(
-                validationWithUserReturnsFieldWithMessage(
-                        validUserButWithFieldValue(USER_NAME, ""),
-                        USER_NAME,
-                        MANDATORY_USER_NAME)
-        );
-    }
-
-    @Test
-    public void username_has_to_be_valid() throws Exception{
-        assertTrue(
-                validationWithUserReturnsFieldWithMessage(
-                        validUserButWithFieldValue(
-                                USER_NAME,
-                                "roger/lamothe"
-                        ),
-                        USER_NAME,
-                        INVALID_USER_NAME)
-        );
-    }
-
-    @Test
-    public void username_cant_be_too_long() throws Exception{
-        assertTrue(
-                validationWithUserReturnsFieldWithMessage(
-                        validUserButWithFieldValue(
-                                USER_NAME,
-                                "roger_lamotheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
-                        ),
-                        USER_NAME,
-                        USER_NAME_TOO_LONG)
-        );
-    }
-
-
-
     private boolean validationWithUserReturnsFieldWithMessage(JSONObject user, String field, String message){
         Map<String, String> errors ;
         errors = validate(user);
@@ -131,14 +92,9 @@ public class UserValidatorTest {
     
     private JSONObject validUser()throws Exception{
         JSONObject user = new JSONObject();
-        user.put(USER_NAME, "generated_user_name");
         user.put(EMAIL, "generated_email@example.org");
         user.put(PASSWORD, "generated password");
         user.put(PASSWORD_VERIFICATION, "generated password");
-        user.put(
-                PREFERRED_LOCALES,
-                new JSONArray().put("fr")
-        );
         return user;
     }
 }

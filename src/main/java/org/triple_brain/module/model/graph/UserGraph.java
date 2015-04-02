@@ -16,16 +16,16 @@ import org.triple_brain.module.model.graph.vertex.VertexPojo;
 import java.net.URI;
 
 public interface UserGraph {
-    public VertexOperator defaultVertex();
-    public User user();
-    public Boolean haveElementWithId(URI id);
-    public SubGraphPojo graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
-    public SubGraphPojo graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
-    public String toRdfXml();
-    public VertexOperator vertexWithUri(URI uri);
-    public EdgeOperator edgeWithUri(URI uri);
-    public SchemaPojo schemaPojoWithUri(URI uri);
-    public SchemaOperator schemaOperatorWithUri(URI uri);
-    public VertexPojo createVertex();
-    public SchemaPojo createSchema();
+    VertexOperator defaultVertex();
+    User user();
+    Boolean haveElementWithId(URI id);
+    SubGraphPojo graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
+    SubGraphPojo graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
+    String toRdfXml();
+    VertexOperator vertexWithUri(URI uri);
+    EdgeOperator edgeWithUri(URI uri);
+    SchemaPojo schemaPojoWithUri(URI uri);
+    SchemaOperator schemaOperatorWithUri(URI uri);
+    VertexPojo createVertex();
+    SchemaPojo createSchema();
 }
