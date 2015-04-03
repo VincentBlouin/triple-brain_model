@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the Mozilla Public License 1.1
  */
 
-package org.triple_brain.module.model;
+package org.triple_brain.module.model.email.forget_password;
 
 import org.codehaus.jettison.json.JSONArray;
 import org.junit.Before;
@@ -10,7 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import org.triple_brain.module.model.email.ForgetPasswordEmailImpl;
+import org.triple_brain.module.model.User;
+import org.triple_brain.module.model.email.forget_password.ForgetPasswordEmailImpl;
 
 import javax.mail.Message;
 import javax.mail.Transport;

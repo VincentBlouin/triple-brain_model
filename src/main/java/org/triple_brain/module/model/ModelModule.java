@@ -5,8 +5,8 @@
 package org.triple_brain.module.model;
 
 import com.google.inject.AbstractModule;
-import org.triple_brain.module.model.email.ForgetPasswordEmail;
-import org.triple_brain.module.model.email.ForgetPasswordEmailImpl;
+import org.triple_brain.module.model.email.forget_password.ForgetPasswordEmail;
+import org.triple_brain.module.model.email.forget_password.ForgetPasswordEmailImpl;
 
 import javax.inject.Singleton;
 
