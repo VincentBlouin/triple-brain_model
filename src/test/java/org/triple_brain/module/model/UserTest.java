@@ -6,11 +6,14 @@ package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.triple_brain.module.model.json.UserJson;
+
+import java.util.Locale;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
@@ -45,7 +48,7 @@ public class UserTest {
                 user.hasPassword("secret")
         );
         assertThat(
-                user.preferredLocales(),
+                user.getPreferredLocalesAsString(),
                 is("[fr]")
         );
         assertThat(
@@ -157,4 +160,31 @@ public class UserTest {
                 is("roger.lamothe@example.org")
         );
     }
+
+    @Test
+    public void can_get_preferred_locales_of_user()throws Exception{
+        User user = User.withEmail(
+                "some_email@example.org"
+        ).setPreferredLocales(new JSONArray().put("fr").toString());
+        assertTrue(
+                user.getPreferredLocales().contains(
+                        Locale.FRENCH
+                )
+        );
+    }
+
+    @Test
+    public void can_get_preferred_locales_as_json_array_even_if_locale_string_is_empty()throws Exception{
+        User user = User.withEmail(
+                "some_email@example.org"
+        ).setPreferredLocales(
+                ""
+        );
+        try{
+            user.getPreferredLocalesAsJsonArray();
+        }catch(Exception e){
+            fail();
+        }
+    }
+
 }

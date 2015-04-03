@@ -27,7 +27,7 @@ public class UserJson {
                             EMAIL, user.email()
                     )
                     .put(
-                            PREFERRED_LOCALES, user.preferredLocales()
+                            PREFERRED_LOCALES, user.getPreferredLocalesAsString()
                     );
         }catch(JSONException e){
             throw new RuntimeException(e);

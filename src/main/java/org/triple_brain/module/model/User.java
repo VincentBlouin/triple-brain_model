@@ -6,8 +6,14 @@ package org.triple_brain.module.model;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
 import org.codehaus.jettison.json.JSONArray;
+import org.apache.commons.lang.LocaleUtils;
+import org.codehaus.jettison.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 public class User {
@@ -18,14 +24,14 @@ public class User {
     private String salt;
     private String preferredLocales = new JSONArray().toString();
 
-    public static User withEmailAndUsername(String email, String username){
+    public static User withEmailAndUsername(String email, String username) {
         return new User(
                 email,
                 username
         );
     }
 
-    public static User withEmail(String email){
+    public static User withEmail(String email) {
         return new User(email, null);
     }
 
@@ -94,21 +100,50 @@ public class User {
         return email;
     }
 
-    public String preferredLocales(){
+    public String getPreferredLocalesAsString() {
         return preferredLocales;
+    }
+
+    public List<Locale> getPreferredLocales() {
+        List<Locale> locales = new ArrayList<>();
+        JSONArray localesJsonArray = getPreferredLocalesAsJsonArray();
+        for (int i = 0; i < localesJsonArray.length(); i++) {
+            try {
+                locales.add(
+                        LocaleUtils.toLocale(
+                                localesJsonArray.getString(i)
+                        )
+                );
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return locales;
+    }
+
+    public JSONArray getPreferredLocalesAsJsonArray() {
+        try {
+            return StringUtils.isEmpty(
+                    getPreferredLocalesAsString()
+            ) ? new JSONArray() :
+                    new JSONArray(getPreferredLocalesAsString());
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String id() {
         return new UserUris(this).baseUri().toString();
     }
 
-    public User setUsername(String username){
+    public User setUsername(String username) {
         this.username = username;
         return this;
     }
 
-    public User setPreferredLocales(String preferredLocales){
+    public User setPreferredLocales(String preferredLocales) {
         this.preferredLocales = preferredLocales;
         return this;
     }
+
 }
