@@ -59,5 +59,4 @@ public class ModelModule extends AbstractModule{
     private void nonTestBinding(){
         bind(ForgetPasswordEmail.class).to(ForgetPasswordEmailImpl.class).in(Singleton.class);
     }
-
 }
