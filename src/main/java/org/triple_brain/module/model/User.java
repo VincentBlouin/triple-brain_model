@@ -47,7 +47,6 @@ public class User {
 
     public User password(String password) {
         if (password != null) {
-
             salt = UUID.randomUUID().toString();
             passwordHash = encode(password);
         }
