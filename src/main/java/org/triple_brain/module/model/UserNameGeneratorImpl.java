@@ -8,7 +8,7 @@ import org.apache.commons.lang.RandomStringUtils;
 
 public class UserNameGeneratorImpl implements UserNameGenerator {
 
-    private static final Integer NUMBER_OF_CHARS = 30;
+    private static final Integer NUMBER_OF_CHARS = 10;
     private UserNameGenerator override;
 
     @Override
@@ -31,6 +31,6 @@ public class UserNameGeneratorImpl implements UserNameGenerator {
     private String defaultGenerate() {
         return RandomStringUtils.randomAlphanumeric(
                 NUMBER_OF_CHARS
-        );
+        ).toLowerCase();
     }
 }
