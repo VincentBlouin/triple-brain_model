@@ -4,9 +4,13 @@
 
 package org.triple_brain.module.model.forget_password;
 
+import org.apache.commons.lang.RandomStringUtils;
+import org.joda.time.DateTime;
+
 import java.util.Date;
 
 public class UserForgetPasswordToken {
+
     private String token;
     private Date expirationDate;
 
@@ -16,8 +20,8 @@ public class UserForgetPasswordToken {
 
     public static UserForgetPasswordToken generate(){
         return UserForgetPasswordToken.withTokenAndExpirationDate(
-                ForgetPasswordTokenGenerator.generateToken(),
-                ForgetPasswordTokenGenerator.generateTokenExpirationDate()
+                generateToken(),
+                generateTokenExpirationDate()
         );
     }
 
@@ -48,5 +52,27 @@ public class UserForgetPasswordToken {
 
     public Boolean isEmpty(){
         return token == null;
+    }
+
+    public Boolean isExpired(){
+        return new Date().after(
+                expirationDate
+        );
+    }
+
+    public Boolean hasToken(String token){
+        return token.equals(this.token);
+    }
+
+    private static final Integer TOKEN_NUMBER_OF_CHARS = 30;
+
+    private static String generateToken(){
+        return RandomStringUtils.randomAlphanumeric(
+                TOKEN_NUMBER_OF_CHARS
+        );
+    }
+
+    private static Date generateTokenExpirationDate(){
+        return new DateTime().plusHours(12).toDate();
     }
 }
