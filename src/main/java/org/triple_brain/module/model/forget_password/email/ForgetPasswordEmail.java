@@ -9,5 +9,5 @@ import org.triple_brain.module.model.User;
 import javax.mail.Message;
 
 public interface ForgetPasswordEmail {
-    Message send(User user);
+    Message send(User user, String resetUrl);
 }

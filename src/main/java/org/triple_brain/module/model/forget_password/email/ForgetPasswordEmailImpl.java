@@ -22,7 +22,7 @@ public class ForgetPasswordEmailImpl implements ForgetPasswordEmail{
             new Properties(),
             null
     );
-    public Message send(User user){
+    public Message send(User user, String resetUrl){
         Locale emailLocale = user.getPreferredLocales().contains(
                 Locale.FRENCH
         ) ? Locale.FRENCH : Locale.ENGLISH;
@@ -31,6 +31,7 @@ public class ForgetPasswordEmailImpl implements ForgetPasswordEmail{
                 emailLocale
         );
         String msgBody = messages.getString("body");
+        msgBody += ":" + resetUrl;
         try {
             Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(from));

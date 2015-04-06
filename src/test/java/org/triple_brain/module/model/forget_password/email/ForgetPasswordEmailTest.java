@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.triple_brain.module.model.User;
-import org.triple_brain.module.model.forget_password.email.ForgetPasswordEmailImpl;
 
 import javax.mail.Message;
 import javax.mail.Transport;
@@ -33,7 +32,8 @@ public class ForgetPasswordEmailTest {
     @Test
     public void sent_to_correct_recipient() throws Exception {
         Message msg = new ForgetPasswordEmailImpl().send(
-                user()
+                user(),
+                ""
         );
         assertThat(
                 msg.getAllRecipients()[0].toString(),
@@ -44,7 +44,8 @@ public class ForgetPasswordEmailTest {
     @Test
     public void has_correct_from() throws Exception {
         Message msg = new ForgetPasswordEmailImpl().send(
-                user()
+                user(),
+                ""
         );
         assertThat(
                 msg.getFrom()[0].toString(),
@@ -55,7 +56,8 @@ public class ForgetPasswordEmailTest {
     @Test
     public void has_correct_body() throws Exception {
         Message msg = new ForgetPasswordEmailImpl().send(
-                user()
+                user(),
+                ""
         );
         assertTrue(
                 msg.getContent().toString().contains(
@@ -70,7 +72,8 @@ public class ForgetPasswordEmailTest {
                 new JSONArray().put("fr").toString()
         );
         Message msg = new ForgetPasswordEmailImpl().send(
-                user
+                user,
+                ""
         );
         assertFalse(
                 msg.getContent().toString().contains(
@@ -80,6 +83,19 @@ public class ForgetPasswordEmailTest {
         assertTrue(
                 msg.getContent().toString().contains(
                         "Suivez ce lien pour mettre à jour votre mot de passe"
+                )
+        );
+    }
+
+    @Test
+    public void reset_url_is_in_email()throws Exception{
+        Message msg = new ForgetPasswordEmailImpl().send(
+                user(),
+                "http://domain-url/reset/user-name/token"
+        );
+        assertTrue(
+                msg.getContent().toString().contains(
+                        "http://domain-url/reset/user-name/token"
                 )
         );
     }

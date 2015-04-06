@@ -14,6 +14,13 @@ public class UserForgetPasswordToken {
         return new UserForgetPasswordToken();
     }
 
+    public static UserForgetPasswordToken generate(){
+        return UserForgetPasswordToken.withTokenAndExpirationDate(
+                ForgetPasswordTokenGenerator.generateToken(),
+                ForgetPasswordTokenGenerator.generateTokenExpirationDate()
+        );
+    }
+
     public static UserForgetPasswordToken withTokenAndExpirationDate(String token, Date expirationDate){
         UserForgetPasswordToken userForgetPasswordToken = new UserForgetPasswordToken();
         userForgetPasswordToken.setResetPasswordToken(token);
