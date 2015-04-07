@@ -37,7 +37,9 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
             msg.setFrom(new InternetAddress(from));
             msg.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(user.email()));
-            msg.setSubject("bubl.guru password reset");
+            msg.setSubject(
+                    messages.getString("subject")
+            );
             msg.setText(msgBody);
             Transport.send(msg);
             return msg;
