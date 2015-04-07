@@ -31,7 +31,7 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
                 emailLocale
         );
         String msgBody = messages.getString("body");
-        msgBody += ":" + resetUrl;
+        msgBody += " " + resetUrl;
         try {
             Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(from));
