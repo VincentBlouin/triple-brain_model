@@ -37,7 +37,7 @@ public class UserForgetPasswordToken {
         return this;
     }
 
-    public String getResetPasswordToken(){
+    public String getToken(){
         return token;
     }
 

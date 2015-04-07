@@ -19,7 +19,7 @@ public class UserForgetPasswordTokenTest {
     public void token_has_30_chars() {
         UserForgetPasswordToken userForgetPasswordToken = UserForgetPasswordToken.generate();
         assertThat(
-                userForgetPasswordToken.getResetPasswordToken().length(),
+                userForgetPasswordToken.getToken().length(),
                 is(30)
         );
     }
