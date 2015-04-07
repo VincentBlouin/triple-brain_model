@@ -2,37 +2,37 @@
  * Copyright Vincent Blouin under the Mozilla Public License 1.1
  */
 
-package org.triple_brain.module.model.forget_password;
+package org.triple_brain.module.model.forgot_password;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.joda.time.DateTime;
 
 import java.util.Date;
 
-public class UserForgetPasswordToken {
+public class UserForgotPasswordToken {
 
     private String token;
     private Date expirationDate;
 
-    public static UserForgetPasswordToken empty(){
-        return new UserForgetPasswordToken();
+    public static UserForgotPasswordToken empty(){
+        return new UserForgotPasswordToken();
     }
 
-    public static UserForgetPasswordToken generate(){
-        return UserForgetPasswordToken.withTokenAndExpirationDate(
+    public static UserForgotPasswordToken generate(){
+        return UserForgotPasswordToken.withTokenAndExpirationDate(
                 generateToken(),
                 generateTokenExpirationDate()
         );
     }
 
-    public static UserForgetPasswordToken withTokenAndExpirationDate(String token, Date expirationDate){
-        UserForgetPasswordToken userForgetPasswordToken = new UserForgetPasswordToken();
-        userForgetPasswordToken.setResetPasswordToken(token);
-        userForgetPasswordToken.setResetPasswordExpirationDate(expirationDate);
-        return userForgetPasswordToken;
+    public static UserForgotPasswordToken withTokenAndExpirationDate(String token, Date expirationDate){
+        UserForgotPasswordToken userForgotPasswordToken = new UserForgotPasswordToken();
+        userForgotPasswordToken.setResetPasswordToken(token);
+        userForgotPasswordToken.setResetPasswordExpirationDate(expirationDate);
+        return userForgotPasswordToken;
     }
 
-    public UserForgetPasswordToken setResetPasswordToken(String token){
+    public UserForgotPasswordToken setResetPasswordToken(String token){
         this.token = token;
         return this;
     }
@@ -45,7 +45,7 @@ public class UserForgetPasswordToken {
         return expirationDate;
     }
 
-    public UserForgetPasswordToken setResetPasswordExpirationDate(Date expirationDate){
+    public UserForgotPasswordToken setResetPasswordExpirationDate(Date expirationDate){
         this.expirationDate = expirationDate;
         return this;
     }

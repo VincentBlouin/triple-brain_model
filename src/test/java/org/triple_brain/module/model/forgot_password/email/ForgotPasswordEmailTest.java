@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the Mozilla Public License 1.1
  */
 
-package org.triple_brain.module.model.forget_password.email;
+package org.triple_brain.module.model.forgot_password.email;
 
 import org.codehaus.jettison.json.JSONArray;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import static org.powermock.api.support.membermodification.MemberModifier.suppre
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(javax.mail.Transport.class)
-public class ForgetPasswordEmailTest {
+public class ForgotPasswordEmailTest {
 
     @Before
     public void before() throws Exception {
@@ -31,7 +31,7 @@ public class ForgetPasswordEmailTest {
 
     @Test
     public void sent_to_correct_recipient() throws Exception {
-        Message msg = new ForgetPasswordEmailImpl().send(
+        Message msg = new ForgotPasswordEmailImpl().send(
                 user(),
                 ""
         );
@@ -43,7 +43,7 @@ public class ForgetPasswordEmailTest {
 
     @Test
     public void has_correct_from() throws Exception {
-        Message msg = new ForgetPasswordEmailImpl().send(
+        Message msg = new ForgotPasswordEmailImpl().send(
                 user(),
                 ""
         );
@@ -55,7 +55,7 @@ public class ForgetPasswordEmailTest {
 
     @Test
     public void has_correct_body() throws Exception {
-        Message msg = new ForgetPasswordEmailImpl().send(
+        Message msg = new ForgotPasswordEmailImpl().send(
                 user(),
                 ""
         );
@@ -71,7 +71,7 @@ public class ForgetPasswordEmailTest {
         User user = user().setPreferredLocales(
                 new JSONArray().put("fr").toString()
         );
-        Message msg = new ForgetPasswordEmailImpl().send(
+        Message msg = new ForgotPasswordEmailImpl().send(
                 user,
                 ""
         );
@@ -89,7 +89,7 @@ public class ForgetPasswordEmailTest {
 
     @Test
     public void reset_url_is_in_email()throws Exception{
-        Message msg = new ForgetPasswordEmailImpl().send(
+        Message msg = new ForgotPasswordEmailImpl().send(
                 user(),
                 "http://domain-url/reset/user-name/token"
         );

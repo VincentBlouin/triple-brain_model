@@ -5,8 +5,8 @@
 package org.triple_brain.module.model;
 
 import com.google.inject.AbstractModule;
-import org.triple_brain.module.model.forget_password.email.ForgetPasswordEmail;
-import org.triple_brain.module.model.forget_password.email.ForgetPasswordEmailImpl;
+import org.triple_brain.module.model.forgot_password.email.ForgotPasswordEmail;
+import org.triple_brain.module.model.forgot_password.email.ForgotPasswordEmailImpl;
 
 import javax.inject.Singleton;
 import javax.mail.Message;
@@ -43,7 +43,7 @@ public class ModelModule extends AbstractModule{
     }
 
     private void testBinding(){
-        bind(ForgetPasswordEmail.class).toInstance(new ForgetPasswordEmail() {
+        bind(ForgotPasswordEmail.class).toInstance(new ForgotPasswordEmail() {
             @Override
             public Message send(User user, String resetUrl) {
                 return new MimeMessage(
@@ -57,6 +57,6 @@ public class ModelModule extends AbstractModule{
     }
 
     private void nonTestBinding(){
-        bind(ForgetPasswordEmail.class).to(ForgetPasswordEmailImpl.class).in(Singleton.class);
+        bind(ForgotPasswordEmail.class).to(ForgotPasswordEmailImpl.class).in(Singleton.class);
     }
 }

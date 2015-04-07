@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the Mozilla Public License 1.1
  */
 
-package org.triple_brain.module.model.forget_password;
+package org.triple_brain.module.model.forgot_password;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
@@ -13,22 +13,22 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class UserForgetPasswordTokenTest {
+public class UserForgotPasswordTokenTest {
 
     @Test
     public void token_has_30_chars() {
-        UserForgetPasswordToken userForgetPasswordToken = UserForgetPasswordToken.generate();
+        UserForgotPasswordToken userForgotPasswordToken = UserForgotPasswordToken.generate();
         assertThat(
-                userForgetPasswordToken.getToken().length(),
+                userForgotPasswordToken.getToken().length(),
                 is(30)
         );
     }
 
     @Test
     public void token_expiration_date_is_12_hours(){
-        UserForgetPasswordToken userForgetPasswordToken = UserForgetPasswordToken.generate();
+        UserForgotPasswordToken userForgotPasswordToken = UserForgotPasswordToken.generate();
         DateTime expirationDate = new DateTime(
-                userForgetPasswordToken.getResetPasswordExpirationDate()
+                userForgotPasswordToken.getResetPasswordExpirationDate()
         );
         Duration duration = new Duration(
                 new DateTime(),
@@ -42,29 +42,29 @@ public class UserForgetPasswordTokenTest {
 
     @Test
     public void can_be_expired(){
-        UserForgetPasswordToken userForgetPasswordToken = UserForgetPasswordToken.generate();
+        UserForgotPasswordToken userForgotPasswordToken = UserForgotPasswordToken.generate();
         assertFalse(
-                userForgetPasswordToken.isExpired()
+                userForgotPasswordToken.isExpired()
         );
-        userForgetPasswordToken.setResetPasswordExpirationDate(
+        userForgotPasswordToken.setResetPasswordExpirationDate(
                 DateTime.now().minusHours(1).toDate()
         );
         assertTrue(
-                userForgetPasswordToken.isExpired()
+                userForgotPasswordToken.isExpired()
         );
     }
 
     @Test
     public void can_test_if_has_token(){
-        UserForgetPasswordToken userForgetPasswordToken = UserForgetPasswordToken.generate();
+        UserForgotPasswordToken userForgotPasswordToken = UserForgotPasswordToken.generate();
         assertFalse(
-                userForgetPasswordToken.hasToken("token")
+                userForgotPasswordToken.hasToken("token")
         );
-        userForgetPasswordToken.setResetPasswordToken(
+        userForgotPasswordToken.setResetPasswordToken(
                 "token"
         );
         assertTrue(
-                userForgetPasswordToken.hasToken("token")
+                userForgotPasswordToken.hasToken("token")
         );
     }
 }

@@ -67,7 +67,7 @@ public class UserValidatorTest {
 
     private boolean validationWithUserReturnsFieldWithMessage(JSONObject user, String field, String message){
         Map<String, String> errors ;
-        errors = validate(user);
+        errors = errorsForUserAsJson(user);
         assertThat(errors.get(field), is(notNullValue()));
         assertThat(errors.get(field), is(message));
         return true;

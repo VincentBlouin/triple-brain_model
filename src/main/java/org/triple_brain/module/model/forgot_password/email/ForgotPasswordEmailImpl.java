@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the Mozilla Public License 1.1
  */
 
-package org.triple_brain.module.model.forget_password.email;
+package org.triple_brain.module.model.forgot_password.email;
 
 import org.triple_brain.module.model.User;
 
@@ -16,7 +16,7 @@ import java.util.Properties;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-public class ForgetPasswordEmailImpl implements ForgetPasswordEmail{
+public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
     private static final String from = "no-reply@bubl.guru";
     private static final Session session = Session.getDefaultInstance(
             new Properties(),
@@ -27,7 +27,7 @@ public class ForgetPasswordEmailImpl implements ForgetPasswordEmail{
                 Locale.FRENCH
         ) ? Locale.FRENCH : Locale.ENGLISH;
         ResourceBundle messages = PropertyResourceBundle.getBundle(
-                "org.triple_brain.module.model.forget_password.email.ForgetPasswordResourceBundle",
+                "org.triple_brain.module.model.forgot_password.email.ForgotPasswordResourceBundle",
                 emailLocale
         );
         String msgBody = messages.getString("body");
