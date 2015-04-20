@@ -20,7 +20,7 @@ public interface UserGraph {
     User user();
     Boolean haveElementWithId(URI id);
     SubGraphPojo graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
-    SubGraphPojo graphWithDefaultVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
+    SubGraphPojo graphWithAnyVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     String toRdfXml();
     VertexOperator vertexWithUri(URI uri);
     EdgeOperator edgeWithUri(URI uri);
