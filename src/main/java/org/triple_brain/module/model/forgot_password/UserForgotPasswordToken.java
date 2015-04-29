@@ -46,7 +46,7 @@ public class UserForgotPasswordToken {
     }
 
     public UserForgotPasswordToken setResetPasswordExpirationDate(Date expirationDate){
-        this.expirationDate = expirationDate;
+        this.expirationDate = new Date(expirationDate.getTime());
         return this;
     }
 

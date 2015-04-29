@@ -9,10 +9,10 @@ import org.codehaus.jettison.json.JSONObject;
 import org.triple_brain.module.model.User;
 
 public class UserJson {
-    public static String ID = "uri";
-    public static String USER_NAME = "user_name";
-    public static String EMAIL = "email";
-    public static String PASSWORD = "password";
+    public static final String ID = "uri";
+    public static final String USER_NAME = "user_name";
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
     public static final String PREFERRED_LOCALES = "preferred_locales";
 
     public static JSONObject toJson(User user){
