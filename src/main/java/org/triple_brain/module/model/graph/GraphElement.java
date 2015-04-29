@@ -8,7 +8,6 @@ import org.triple_brain.module.model.FriendlyResource;
 
 import java.net.URI;
 import java.util.Map;
-import java.util.Set;
 
 public interface GraphElement extends FriendlyResource, Identification{
     Map<URI, ?extends Identification> getGenericIdentifications();
