@@ -80,6 +80,12 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         return edgesPojo;
     }
 
+    public VertexInSubGraphPojo(GraphElementPojo graphElementPojo) {
+        this(
+                new VertexPojo(graphElementPojo)
+        );
+    }
+
     public VertexInSubGraphPojo(FriendlyResourcePojo friendlyResourcePojo) {
         this(
                 new VertexPojo(friendlyResourcePojo)

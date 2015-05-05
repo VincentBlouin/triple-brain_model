@@ -166,4 +166,8 @@ public class GraphElementPojo implements GraphElement {
     public void removeAllIdentifications(){
         identifications.clear();
     }
+
+    public void setLabel(String label){
+        friendlyResource.setLabel(label);
+    }
 }

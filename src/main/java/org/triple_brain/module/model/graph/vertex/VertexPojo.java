@@ -42,17 +42,21 @@ public class VertexPojo implements Vertex {
     }
 
     public VertexPojo(URI uri) {
-        this.graphElement = new GraphElementPojo(
+        this(new GraphElementPojo(
                 new FriendlyResourcePojo(
                         uri
                 )
-        );
+        ));
     }
 
     public VertexPojo(FriendlyResourcePojo friendlyResourcePojo) {
-        this.graphElement = new GraphElementPojo(
+        this(new GraphElementPojo(
                 friendlyResourcePojo
-        );
+        ));
+    }
+
+    public VertexPojo(GraphElementPojo graphElementPojo) {
+        this.graphElement = graphElementPojo;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class VertexPojo implements Vertex {
         return suggestions;
     }
 
-    public void addSuggestion(SuggestionPojo suggestion){
+    public void addSuggestion(SuggestionPojo suggestion) {
         suggestions.put(
                 suggestion.uri(),
                 suggestion
@@ -93,17 +97,17 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public Map<URI, ?extends Identification> getSameAs() {
+    public Map<URI, ? extends Identification> getSameAs() {
         return graphElement.getSameAs();
     }
 
     @Override
-    public Map<URI, ?extends Identification> getAdditionalTypes() {
+    public Map<URI, ? extends Identification> getAdditionalTypes() {
         return graphElement.getAdditionalTypes();
     }
 
     @Override
-    public Map<URI, ?extends Identification> getIdentifications() {
+    public Map<URI, ? extends Identification> getIdentifications() {
         return graphElement.getIdentifications();
     }
 

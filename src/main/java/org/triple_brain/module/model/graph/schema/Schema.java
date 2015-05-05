@@ -4,12 +4,11 @@
 
 package org.triple_brain.module.model.graph.schema;
 
-import org.triple_brain.module.model.FriendlyResource;
 import org.triple_brain.module.model.graph.GraphElement;
 
 import java.net.URI;
 import java.util.Map;
 
-public interface Schema extends FriendlyResource {
+public interface Schema extends GraphElement {
     Map<URI, ?extends GraphElement> getProperties();
 }
