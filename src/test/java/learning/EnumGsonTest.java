@@ -7,7 +7,7 @@ package learning;
 import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
-import org.triple_brain.module.model.graph.GraphElementType;
+import guru.bubl.module.model.graph.GraphElementType;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
