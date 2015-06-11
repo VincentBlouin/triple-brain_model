@@ -27,7 +27,7 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
                 Locale.FRENCH
         ) ? Locale.FRENCH : Locale.ENGLISH;
         ResourceBundle messages = PropertyResourceBundle.getBundle(
-                "org.triple_brain.module.model.forgot_password.email.ForgotPasswordResourceBundle",
+                "guru.bubl.module.model.forgot_password.email.ForgotPasswordResourceBundle",
                 emailLocale
         );
         String msgBody = messages.getString("body");
