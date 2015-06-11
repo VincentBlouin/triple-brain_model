@@ -15,7 +15,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
-
+//test push
 public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
     private static final String from = "no-reply@bubl.guru";
     private static final Session session = Session.getDefaultInstance(
