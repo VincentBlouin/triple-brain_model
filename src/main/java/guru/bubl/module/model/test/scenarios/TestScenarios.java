@@ -4,6 +4,8 @@
 
 package guru.bubl.module.model.test.scenarios;
 
+import guru.bubl.module.model.User;
+import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.test.GraphComponentTest;
 import guru.bubl.module.model.graph.GraphFactory;
@@ -16,6 +18,9 @@ public class TestScenarios {
 
     @Inject
     protected GraphFactory graphFactory;
+
+    @Inject
+    protected VertexFactory vertexFactory;
 
     @Inject
     protected GraphComponentTest graphComponentTest;
@@ -55,5 +60,14 @@ public class TestScenarios {
         VertexOperator pineApple = newEdge.destinationVertex();
         pineApple.label("pine Apple");
         return pineApple;
+    }
+
+    public VertexOperator createAVertex(){
+        UserGraph userGraph = graphFactory.createForUser(
+                User.withEmailAndUsername("a", "b")
+        );
+        return vertexFactory.createForOwnerUsername(
+                userGraph.user().username()
+        );
     }
 }
