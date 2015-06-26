@@ -62,9 +62,9 @@ public class TestScenarios {
         return pineApple;
     }
 
-    public VertexOperator createAVertex(){
+    public VertexOperator createAVertex(User user){
         UserGraph userGraph = graphFactory.createForUser(
-                User.withEmailAndUsername("a", "b")
+                user
         );
         return vertexFactory.createForOwnerUsername(
                 userGraph.user().username()
