@@ -46,6 +46,13 @@ public class IdentificationPojo implements Identification {
     }
 
     public IdentificationPojo(
+            URI externalResourceUri
+    ){
+        this.externalResourceUri = externalResourceUri;
+        this.friendlyResource = new FriendlyResourcePojo("");
+    }
+
+    public IdentificationPojo(
             FriendlyResourcePojo friendlyResourcePojo
     ) {
         this.friendlyResource = friendlyResourcePojo;
