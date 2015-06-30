@@ -14,4 +14,13 @@ public interface GraphElement extends FriendlyResource, Identification{
     Map<URI, ?extends Identification> getSameAs();
     Map<URI, ?extends Identification> getAdditionalTypes();
     Map<URI, ?extends Identification> getIdentifications();
+
+    default Identification getIdentificationHavingInternalUri(URI uri){
+        for(Identification identification : this.getIdentifications().values()){
+            if(identification.uri().equals(uri)){
+                return identification;
+            }
+        }
+        return null;
+    }
 }
