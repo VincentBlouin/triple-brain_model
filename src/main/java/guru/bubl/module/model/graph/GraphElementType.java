@@ -9,5 +9,16 @@ public enum GraphElementType {
     vertex,
     edge,
     schema,
-    property
+    property;
+
+    public static String[] names() {
+        GraphElementType[] states = values();
+        String[] names = new String[states.length];
+
+        for (int i = 0; i < states.length; i++) {
+            names[i] = states[i].name();
+        }
+
+        return names;
+    }
 }
