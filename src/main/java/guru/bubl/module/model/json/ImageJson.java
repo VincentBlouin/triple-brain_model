@@ -24,15 +24,9 @@ public class ImageJson {
         );
     }
 
-    public static JSONArray toJsonArray(Set<Image> images) {
-        try {
-            return new JSONArray(
-                    gson.toJson(
-                            images
-                    )
-            );
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
+    public static String toJsonArray(Set<Image> images) {
+        return gson.toJson(
+                images
+        );
     }
 }

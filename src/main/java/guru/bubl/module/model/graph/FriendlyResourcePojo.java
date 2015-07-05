@@ -10,13 +10,14 @@ import guru.bubl.module.model.UserUris;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class FriendlyResourcePojo implements FriendlyResource {
 
     private URI uri;
-    private String  label,
-                    comment;
+    private String label,
+            comment;
     private Set<Image> images;
     private Date creationDate,
             lastModificationDate;
@@ -24,7 +25,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
     @Deprecated
     public FriendlyResourcePojo(
             FriendlyResourceOperator friendlyResourceOperator
-    ){
+    ) {
         this(
                 friendlyResourceOperator.uri(),
                 friendlyResourceOperator.label(),
@@ -37,20 +38,20 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     public FriendlyResourcePojo(
             URI uri
-    ){
+    ) {
         this.uri = uri;
     }
 
     public FriendlyResourcePojo(
             String label
-    ){
+    ) {
         this.label = label;
     }
 
     public FriendlyResourcePojo(
             URI uri,
             String label
-    ){
+    ) {
         this.uri = uri;
         this.label = label;
     }
@@ -77,7 +78,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
         return uri;
     }
 
-    public void setUri(URI uri){
+    public void setUri(URI uri) {
         this.uri = uri;
     }
 
@@ -91,13 +92,15 @@ public class FriendlyResourcePojo implements FriendlyResource {
         return label;
     }
 
-    public void setLabel(String label){
+    public void setLabel(String label) {
         this.label = label;
     }
 
     @Override
     public Set<Image> images() {
-        return images;
+        return images == null ?
+                new HashSet<>() :
+                images;
     }
 
     @Override
@@ -115,7 +118,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
         return !comment().isEmpty();
     }
 
-    public void setComment(String comment){
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
@@ -145,15 +148,15 @@ public class FriendlyResourcePojo implements FriendlyResource {
         return uri().hashCode();
     }
 
-    public void setLastModificationDate(Date lastModificationDate){
+    public void setLastModificationDate(Date lastModificationDate) {
         this.lastModificationDate = lastModificationDate;
     }
 
-    public void setCreationDate(Date creationDate){
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
-    public void setImages(Set<Image> images){
+    public void setImages(Set<Image> images) {
         this.images = images;
     }
 }
