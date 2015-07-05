@@ -4,7 +4,6 @@
 
 package guru.bubl.module.model;
 
-import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.schema.SchemaOperator;
