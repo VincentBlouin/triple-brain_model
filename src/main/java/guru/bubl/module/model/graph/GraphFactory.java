@@ -7,6 +7,6 @@ package guru.bubl.module.model.graph;
 import guru.bubl.module.model.User;
 
 public interface GraphFactory {
-    public UserGraph createForUser(User user);
-    public UserGraph loadForUser(User user);
+    UserGraph createForUser(User user);
+    UserGraph loadForUser(User user);
 }

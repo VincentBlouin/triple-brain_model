@@ -9,19 +9,23 @@ import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class WholeGraphAdmin {
     private WholeGraph wholeGraph;
-    public WholeGraphAdmin(WholeGraph wholeGraph){
+
+    public WholeGraphAdmin(WholeGraph wholeGraph) {
         this.wholeGraph = wholeGraph;
     }
-    public void refreshNumberOfConnectedEdges(){
-        Iterator<VertexInSubGraphOperator> vertexIt = wholeGraph.getAllVertices();
-        while(vertexIt.hasNext()){
-            VertexOperator vertex = vertexIt.next();
+
+    public void refreshNumberOfConnectedEdges() {
+        Set<VertexInSubGraphOperator> vertices = wholeGraph.getAllVertices();
+        for (VertexInSubGraphOperator vertex : vertices) {
             vertex.setNumberOfConnectedEdges(
                     vertex.connectedEdges().size()
             );
+
         }
     }
 }

@@ -18,7 +18,6 @@ public interface GraphComponentTest {
     SubGraphPojo wholeGraphAroundDefaultCenterVertex();
     SubGraphOperator wholeGraph();
     void removeWholeGraph();
-    boolean graphContainsLabel(String label);
     User user();
     void user(User user);
     UserGraph userGraph();
