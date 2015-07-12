@@ -17,6 +17,6 @@ import java.util.Set;
 public interface WholeGraph {
     Set<VertexInSubGraphOperator> getAllVertices();
     Set<EdgeOperator> getAllEdges();
-    Iterator<SchemaOperator> getAllSchemas();
-    Iterator<GraphElementOperator> getAllGraphElements();
+    Set<SchemaOperator> getAllSchemas();
+    Set<GraphElementOperator> getAllGraphElements();
 }
