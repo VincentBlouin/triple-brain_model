@@ -103,6 +103,13 @@ public class FriendlyResourcePojo implements FriendlyResource {
                 images;
     }
 
+    public void addImage(Image image){
+        if(images == null){
+            images = new HashSet<>();
+        }
+        images().add(image);
+    }
+
     @Override
     public Boolean gotImages() {
         return images != null && !images.isEmpty();

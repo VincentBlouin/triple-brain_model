@@ -89,6 +89,10 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource.images();
     }
 
+    public void addImage(Image image) {
+        friendlyResource.addImage(image);
+    }
+
     @Override
     public Boolean gotImages() {
         return friendlyResource.gotImages();
