@@ -87,12 +87,6 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public boolean hasVertex(Vertex vertex) {
-        return sourceVertex().equals(vertex) ||
-                destinationVertex().equals(vertex);
-    }
-
-    @Override
     public Map<URI, ? extends IdentificationPojo> getGenericIdentifications() {
         return graphElement.getGenericIdentifications();
     }
@@ -179,5 +173,10 @@ public class EdgePojo implements Edge {
     @Override
     public URI getExternalResourceUri() {
         return graphElement.getExternalResourceUri();
+    }
+
+    @Override
+    public Boolean isPublic() {
+        return false;
     }
 }

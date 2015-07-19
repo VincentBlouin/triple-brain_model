@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.PublicPrivateOperator;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 

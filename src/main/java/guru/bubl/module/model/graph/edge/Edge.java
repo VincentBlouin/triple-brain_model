@@ -4,12 +4,12 @@
 
 package guru.bubl.module.model.graph.edge;
 
+import guru.bubl.module.model.PublicPrivateElement;
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.vertex.Vertex;
 
-public interface Edge extends GraphElement {
+public interface Edge extends GraphElement, PublicPrivateElement {
     Vertex sourceVertex();
     Vertex destinationVertex();
     Vertex otherVertex(Vertex vertex);
-    boolean hasVertex(Vertex vertex);
 }

@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph.vertex;
 
+import guru.bubl.module.model.graph.PublicPrivateOperator;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.GraphElementOperator;
@@ -13,7 +14,7 @@ import java.net.URI;
 import java.util.Map;
 import java.util.Set;
 
-public interface VertexOperator extends GraphElementOperator, Vertex {
+public interface VertexOperator extends GraphElementOperator, PublicPrivateOperator, Vertex {
     boolean hasEdge(Edge edge);
     EdgeOperator getEdgeThatLinksToDestinationVertex(Vertex destinationVertex);
     Boolean hasDestinationVertex(Vertex destinationVertex);
@@ -23,7 +24,5 @@ public interface VertexOperator extends GraphElementOperator, Vertex {
     void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
     void addSuggestions(Map<URI, SuggestionPojo> suggestions);
     void setSuggestions(Map<URI, SuggestionPojo> suggestions);
-    void makePublic();
-    void makePrivate();
     Set<EdgeOperator> connectedEdges();
 }
