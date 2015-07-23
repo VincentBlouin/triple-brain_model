@@ -43,6 +43,17 @@ public class EdgePojo implements Edge {
         this.destinationVertex = destinationVertex;
     }
 
+
+    public EdgePojo(
+            URI edgeUri,
+            URI sourceVertexUri,
+            URI destinationVertexUri
+    ) {
+        this.graphElement = new GraphElementPojo(edgeUri);
+        this.sourceVertex = new VertexInSubGraphPojo(sourceVertexUri);
+        this.destinationVertex = new VertexInSubGraphPojo(destinationVertexUri);
+    }
+
     public EdgePojo(
             GraphElementPojo graphElement
     ) {
