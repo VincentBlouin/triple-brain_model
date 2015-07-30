@@ -98,22 +98,22 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public Map<URI, ? extends IdentificationPojo> getGenericIdentifications() {
+    public Map<URI, IdentificationPojo> getGenericIdentifications() {
         return graphElement.getGenericIdentifications();
     }
 
     @Override
-    public Map<URI, ? extends IdentificationPojo> getSameAs() {
+    public Map<URI, IdentificationPojo> getSameAs() {
         return graphElement.getSameAs();
     }
 
     @Override
-    public Map<URI, ? extends IdentificationPojo> getAdditionalTypes() {
+    public Map<URI, IdentificationPojo> getAdditionalTypes() {
         return graphElement.getAdditionalTypes();
     }
 
     @Override
-    public Map<URI, ? extends IdentificationPojo> getIdentifications() {
+    public Map<URI, IdentificationPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 

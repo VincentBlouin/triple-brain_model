@@ -10,10 +10,10 @@ import java.net.URI;
 import java.util.Map;
 
 public interface GraphElement extends FriendlyResource, Identification{
-    Map<URI, ?extends Identification> getGenericIdentifications();
-    Map<URI, ?extends Identification> getSameAs();
-    Map<URI, ?extends Identification> getAdditionalTypes();
-    Map<URI, ?extends Identification> getIdentifications();
+    Map<URI, IdentificationPojo> getGenericIdentifications();
+    Map<URI, IdentificationPojo> getSameAs();
+    Map<URI, IdentificationPojo> getAdditionalTypes();
+    Map<URI, IdentificationPojo> getIdentifications();
 
     default Identification getIdentificationHavingInternalUri(URI uri){
         for(Identification identification : this.getIdentifications().values()){
