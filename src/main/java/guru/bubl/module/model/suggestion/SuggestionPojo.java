@@ -16,7 +16,6 @@ import java.util.Set;
 import java.util.UUID;
 
 public class SuggestionPojo implements Suggestion {
-
     FriendlyResourcePojo friendlyResource;
     FriendlyResourcePojo sameAs;
     FriendlyResourcePojo type;
