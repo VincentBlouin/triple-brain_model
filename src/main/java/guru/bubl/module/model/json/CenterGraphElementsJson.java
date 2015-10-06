@@ -13,6 +13,12 @@ import java.util.Set;
 public class CenterGraphElementsJson {
     private static Gson gson = new Gson();
 
+    public static String toJson(Set<CenterGraphElementPojo> elements) {
+        return gson.toJson(
+                elements
+        );
+    }
+
     public static Set<CenterGraphElementPojo> fromJson(String json) {
         return gson.fromJson(
                 json,
