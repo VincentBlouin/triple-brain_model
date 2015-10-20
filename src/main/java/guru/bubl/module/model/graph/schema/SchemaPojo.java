@@ -141,8 +141,4 @@ public class SchemaPojo implements Schema {
         return graphElement.getIdentifications();
     }
 
-    @Override
-    public URI getExternalResourceUri() {
-        return null;
-    }
 }

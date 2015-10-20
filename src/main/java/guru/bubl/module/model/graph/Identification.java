@@ -10,4 +10,5 @@ import java.net.URI;
 
 public interface Identification extends FriendlyResource {
     URI getExternalResourceUri();
+    Integer getNbReferences();
 }

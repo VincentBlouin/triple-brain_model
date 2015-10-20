@@ -175,9 +175,4 @@ public class VertexPojo implements Vertex {
     public GraphElementPojo getGraphElement() {
         return graphElement;
     }
-
-    @Override
-    public URI getExternalResourceUri() {
-        return graphElement.getExternalResourceUri();
-    }
 }

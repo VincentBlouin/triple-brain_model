@@ -9,7 +9,7 @@ import guru.bubl.module.model.FriendlyResource;
 import java.net.URI;
 import java.util.Map;
 
-public interface GraphElement extends FriendlyResource, Identification{
+public interface GraphElement extends FriendlyResource{
     Map<URI, IdentificationPojo> getGenericIdentifications();
     Map<URI, IdentificationPojo> getSameAs();
     Map<URI, IdentificationPojo> getAdditionalTypes();

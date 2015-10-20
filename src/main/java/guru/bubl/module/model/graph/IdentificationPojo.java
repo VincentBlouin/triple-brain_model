@@ -16,6 +16,7 @@ public class IdentificationPojo implements Identification {
     URI externalResourceUri;
     FriendlyResourcePojo friendlyResource;
     IdentificationType identificationType;
+    Integer nbReferences;
 
     public IdentificationPojo(
             URI uri,
@@ -61,6 +62,11 @@ public class IdentificationPojo implements Identification {
     @Override
     public URI getExternalResourceUri() {
         return externalResourceUri;
+    }
+
+    @Override
+    public Integer getNbReferences() {
+        return nbReferences;
     }
 
     public void setExternalResourceUri(URI externalResourceUri) {

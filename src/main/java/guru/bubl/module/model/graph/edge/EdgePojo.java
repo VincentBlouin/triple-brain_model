@@ -181,10 +181,6 @@ public class EdgePojo implements Edge {
         return graphElement;
     }
 
-    @Override
-    public URI getExternalResourceUri() {
-        return graphElement.getExternalResourceUri();
-    }
 
     @Override
     public Boolean isPublic() {

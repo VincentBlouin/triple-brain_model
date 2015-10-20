@@ -162,10 +162,6 @@ public class GraphElementPojo implements GraphElement {
         return identificationsPojo;
     }
 
-    @Override
-    public URI getExternalResourceUri() {
-        return uri();
-    }
 
     public void removeAllIdentifications(){
         identifications.clear();

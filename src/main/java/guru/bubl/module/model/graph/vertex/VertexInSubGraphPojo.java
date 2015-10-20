@@ -224,8 +224,4 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         return vertex.getGraphElement();
     }
 
-    @Override
-    public URI getExternalResourceUri() {
-        return vertex.getExternalResourceUri();
-    }
 }

@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model.graph;
 
-public interface GraphElementOperator extends GraphElement, IdentificationOperator {
+public interface GraphElementOperator extends GraphElement, FriendlyResourceOperator {
     void remove();
     void removeIdentification(Identification type);
     IdentificationPojo addType(Identification type);
