@@ -16,7 +16,7 @@ public class IdentificationPojo implements Identification {
     URI externalResourceUri;
     FriendlyResourcePojo friendlyResource;
     IdentificationType identificationType;
-    Integer nbReferences;
+    Integer nbReferences = 0;
 
     public IdentificationPojo(
             URI uri,
@@ -36,6 +36,16 @@ public class IdentificationPojo implements Identification {
             );
         }
         friendlyResource.setLastModificationDate(new Date());
+    }
+
+    public IdentificationPojo(
+            URI externalResourceUri,
+            Integer nbReferences,
+            FriendlyResourcePojo friendlyResourcePojo
+    ) {
+        this.externalResourceUri = externalResourceUri;
+        this.nbReferences = nbReferences;
+        this.friendlyResource = friendlyResourcePojo;
     }
 
     public IdentificationPojo(
