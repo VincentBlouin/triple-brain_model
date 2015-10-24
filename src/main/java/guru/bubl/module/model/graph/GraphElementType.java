@@ -12,11 +12,11 @@ public enum GraphElementType {
     property;
 
     public static String[] names() {
-        GraphElementType[] states = values();
-        String[] names = new String[states.length];
+        GraphElementType[] types = values();
+        String[] names = new String[types.length];
 
-        for (int i = 0; i < states.length; i++) {
-            names[i] = states[i].name();
+        for (int i = 0; i < types.length; i++) {
+            names[i] = types[i].name();
         }
 
         return names;

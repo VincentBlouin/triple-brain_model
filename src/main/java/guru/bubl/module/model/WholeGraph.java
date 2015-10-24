@@ -5,6 +5,7 @@
 package guru.bubl.module.model;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.IdentificationOperator;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.schema.SchemaOperator;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
@@ -19,4 +20,5 @@ public interface WholeGraph {
     Set<EdgeOperator> getAllEdges();
     Set<SchemaOperator> getAllSchemas();
     Set<GraphElementOperator> getAllGraphElements();
+    Set<IdentificationOperator> getAllIdentifications();
 }

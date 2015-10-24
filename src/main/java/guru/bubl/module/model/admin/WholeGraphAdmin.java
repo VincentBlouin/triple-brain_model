@@ -6,21 +6,13 @@ package guru.bubl.module.model.admin;
 
 import guru.bubl.module.model.WholeGraph;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
-import guru.bubl.module.model.graph.vertex.VertexOperator;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
-public class WholeGraphAdmin {
-    private WholeGraph wholeGraph;
+public interface WholeGraphAdmin {
 
-    public WholeGraphAdmin(WholeGraph wholeGraph) {
-        this.wholeGraph = wholeGraph;
-    }
-
-    public void refreshNumberOfConnectedEdges() {
-        Set<VertexInSubGraphOperator> vertices = wholeGraph.getAllVertices();
+    default void refreshNumberOfConnectedEdges() {
+        Set<VertexInSubGraphOperator> vertices = getWholeGraph().getAllVertices();
         for (VertexInSubGraphOperator vertex : vertices) {
             vertex.setNumberOfConnectedEdges(
                     vertex.connectedEdges().size()
@@ -28,4 +20,8 @@ public class WholeGraphAdmin {
 
         }
     }
+
+    void refreshNumberOfReferencesToAllIdentifications();
+
+    WholeGraph getWholeGraph();
 }
