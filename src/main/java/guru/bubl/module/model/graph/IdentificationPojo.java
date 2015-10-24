@@ -79,10 +79,6 @@ public class IdentificationPojo implements Identification {
         return nbReferences;
     }
 
-    public void setNbReferences(Integer nbReferences) {
-        this.nbReferences = nbReferences;
-    }
-
     public void setExternalResourceUri(URI externalResourceUri) {
         this.externalResourceUri = externalResourceUri;
     }
