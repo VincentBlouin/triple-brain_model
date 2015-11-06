@@ -20,14 +20,14 @@ public class UserUris {
         String uriStr = uri.toString();
         String modifiedUriStr = uriStr.replace("/service/users/", "");
         Integer indexOfSlash = modifiedUriStr.indexOf("/");
-        return indexOfSlash == -1 ?
-                modifiedUriStr.substring(
-                        0
-                ) :
-                modifiedUriStr.substring(
-                        0,
-                        indexOfSlash
-                );
+        if (indexOfSlash != -1) {
+            return modifiedUriStr.substring(
+                    0,
+                    indexOfSlash
+            );
+        }
+        return modifiedUriStr;
+
     }
 
     public static URI generateSchemaPropertyUri(URI schemaUri) {
