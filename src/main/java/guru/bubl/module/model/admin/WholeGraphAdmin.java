@@ -5,6 +5,7 @@
 package guru.bubl.module.model.admin;
 
 import guru.bubl.module.model.WholeGraph;
+import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
 
 import java.util.Set;
@@ -18,6 +19,18 @@ public interface WholeGraphAdmin {
                     vertex.connectedEdges().size()
             );
 
+        }
+    }
+
+    default void reAddIdentifications(){
+        for(GraphElementOperator operator :getWholeGraph().getAllGraphElements()){
+            try {
+                operator.getGenericIdentifications().values().forEach(operator::addGenericIdentification);
+                operator.getAdditionalTypes().values().forEach(operator::addType);
+                operator.getSameAs().values().forEach(operator::addSameAs);
+            }catch(IllegalArgumentException e){
+                //adding self identification causes this exception. No need to add readd it, so its ok continue the loop.
+            }
         }
     }
 
