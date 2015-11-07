@@ -46,8 +46,8 @@ public class PropertySearchResult implements GraphElementSearchResult {
     }
 
     @Override
-    public GraphElementType getType() {
-        return type;
+    public String getType() {
+        return type.name();
     }
 
     public SchemaPojo getSchema(){

@@ -5,33 +5,33 @@
 package guru.bubl.module.model.search;
 
 import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.GraphElementType;
 
-public class GraphElementSearchResultPojo implements GraphElementSearchResult {
+import java.net.URI;
+import java.util.Map;
+
+public class IdentificationSearchResult implements GraphElementSearchResult {
+
     private GraphElementPojo graphElement;
+    private Map<URI, GraphElementPojo> identifiedTo;
     private String type;
 
-    public GraphElementSearchResultPojo(
-            GraphElementPojo graphElement,
-            GraphElementType type
-    ) {
-        this(
-                graphElement,
-                type.name()
-        );
-    }
 
-    public GraphElementSearchResultPojo(
+    public IdentificationSearchResult(
             GraphElementPojo graphElement,
-            String type
-    ) {
+            String type,
+            Map<URI, GraphElementPojo> identifiedTo
+    ){
         this.graphElement = graphElement;
         this.type = type;
+        this.identifiedTo = identifiedTo;
     }
 
     @Override
     public GraphElementSearchResultPojo getGraphElementSearchResult() {
-        return this;
+        return new GraphElementSearchResultPojo(
+                graphElement,
+                type
+        );
     }
 
     @Override
@@ -42,5 +42,9 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     @Override
     public String getType() {
         return type;
+    }
+
+    public Map<URI, GraphElementPojo> getIdentifiedTo(){
+        return identifiedTo;
     }
 }

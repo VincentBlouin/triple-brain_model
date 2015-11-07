@@ -51,8 +51,8 @@ public class VertexSearchResult implements GraphElementSearchResult{
     }
 
     @Override
-    public GraphElementType getType() {
-        return null;
+    public String getType() {
+        return type.name();
     }
 
     public Map<URI, GraphElementPojo> getProperties(){

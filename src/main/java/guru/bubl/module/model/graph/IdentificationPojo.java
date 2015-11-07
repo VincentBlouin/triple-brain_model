@@ -171,4 +171,8 @@ public class IdentificationPojo implements Identification {
         this.identificationType = identificationType;
     }
 
+    public void setLabel(String label){
+        friendlyResource.setLabel(label);
+    }
+
 }

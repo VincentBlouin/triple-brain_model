@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 public interface GraphSearch {
-    List<VertexSearchResult> searchSchemasOwnVerticesAndPublicOnesForAutoCompletionByLabel(
+    List<GraphElementSearchResult> searchForAnyResourceThatCanBeUsedAsAnIdentifier(
             String searchTerm,
             User user
     );
