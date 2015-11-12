@@ -13,11 +13,12 @@ import org.codehaus.jettison.json.JSONObject;
 public class UserJson {
     private static Gson gson = new Gson();
 
-    public static final String ID = "uri";
-    public static final String USER_NAME = "user_name";
-    public static final String EMAIL = "email";
-    public static final String PASSWORD = "password";
-    public static final String PREFERRED_LOCALES = "preferred_locales";
+    public static final String
+            ID = "uri",
+            USER_NAME = "user_name",
+            EMAIL = "email",
+            PASSWORD = "password",
+            PREFERRED_LOCALES = "preferred_locales";
 
     public static JSONObject toJson(User user){
         try{

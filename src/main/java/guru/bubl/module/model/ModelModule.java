@@ -39,7 +39,6 @@ public class ModelModule extends AbstractModule{
         }else{
             nonTestBinding();
         }
-        bind(UserNameGenerator.class).to(UserNameGeneratorImpl.class).in(Singleton.class);
     }
 
     private void testBinding(){
