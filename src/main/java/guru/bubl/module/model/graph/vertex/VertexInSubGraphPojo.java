@@ -13,6 +13,7 @@ import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.suggestion.Suggestion;
 import guru.bubl.module.model.suggestion.SuggestionPojo;
+import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.util.*;
@@ -222,6 +223,10 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
 
     public GraphElementPojo getGraphElement() {
         return vertex.getGraphElement();
+    }
+
+    public void setCreationDate(DateTime date){
+        getGraphElement().setCreationDate(date);
     }
 
 }

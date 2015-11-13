@@ -10,6 +10,7 @@ import guru.bubl.module.model.graph.IdentificationPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
+import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.util.Date;
@@ -185,5 +186,9 @@ public class EdgePojo implements Edge {
     @Override
     public Boolean isPublic() {
         return false;
+    }
+
+    public void setCreationDate(DateTime date){
+        getGraphElement().setCreationDate(date);
     }
 }

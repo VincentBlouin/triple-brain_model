@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph;
 
 import guru.bubl.module.model.Image;
+import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.util.Date;
@@ -169,5 +170,9 @@ public class GraphElementPojo implements GraphElement {
 
     public void setLabel(String label){
         friendlyResource.setLabel(label);
+    }
+
+    public void setCreationDate(DateTime creationDate){
+        friendlyResource.setCreationDate(creationDate.toDate());
     }
 }

@@ -29,14 +29,14 @@ public class SubGraphPojo implements SubGraph {
     }
 
     @Override
-    public VertexInSubGraph vertexWithIdentifier(URI identifier) {
+    public VertexInSubGraphPojo vertexWithIdentifier(URI identifier) {
         return vertices.get(
                 identifier
         );
     }
 
     @Override
-    public Edge edgeWithIdentifier(URI identifier) {
+    public EdgePojo edgeWithIdentifier(URI identifier) {
         return edges.get(
                 identifier
         );
