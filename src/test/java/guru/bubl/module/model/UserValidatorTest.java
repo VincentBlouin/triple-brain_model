@@ -89,6 +89,19 @@ public class UserValidatorTest {
     }
 
     @Test
+    public void username_cant_have_spaces() throws Exception{
+        assertTrue(
+                validationWithUserReturnsFieldWithMessage(
+                        validUserButWithFieldValue(
+                                USER_NAME,
+                                "roger lamothe"
+                        ),
+                        USER_NAME,
+                        INVALID_USER_NAME )
+        );
+    }
+
+    @Test
     public void username_cant_be_too_long() throws Exception{
         assertTrue(
                 validationWithUserReturnsFieldWithMessage(
