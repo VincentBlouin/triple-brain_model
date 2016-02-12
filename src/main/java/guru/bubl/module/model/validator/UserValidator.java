@@ -37,7 +37,7 @@ public class UserValidator {
             MANDATORY_PASSWORD = "mandatory_password";
 
     private static final int USER_NAME_MAX_LENGTH = 30;
-    private static final String USERNAME_PATTERN = "^[a-z0-9_-]{1,30}$";
+    private static final String USERNAME_PATTERN = "^[\\p{L}0-9_-]{1,30}$";
     public static final String
             MANDATORY_USER_NAME = "mandatory_user_name",
             INVALID_USER_NAME = "invalid_user_name",
