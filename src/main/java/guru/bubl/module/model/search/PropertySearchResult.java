@@ -13,6 +13,7 @@ public class PropertySearchResult implements GraphElementSearchResult {
     private GraphElementPojo graphElement;
     private SchemaPojo schema;
     private GraphElementType type = GraphElementType.property;
+    private Integer nbReferences = 0;
 
     public static PropertySearchResult forPropertyAndSchema(
             GraphElementPojo property,
@@ -52,5 +53,13 @@ public class PropertySearchResult implements GraphElementSearchResult {
 
     public SchemaPojo getSchema(){
         return schema;
+    }
+
+    public void setNbReferences(Integer nbReferences){
+        this.nbReferences = nbReferences;
+    }
+
+    public Integer getNbReferences(){
+        return nbReferences;
     }
 }

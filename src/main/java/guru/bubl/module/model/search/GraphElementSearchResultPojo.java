@@ -10,6 +10,7 @@ import guru.bubl.module.model.graph.GraphElementType;
 public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     private GraphElementPojo graphElement;
     private String type;
+    private Integer nbReferences = 0;
 
     public GraphElementSearchResultPojo(
             GraphElementPojo graphElement,
@@ -42,5 +43,13 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     @Override
     public String getType() {
         return type;
+    }
+
+    public void setNbReferences(Integer nbReferences){
+        this.nbReferences = nbReferences;
+    }
+
+    public Integer getNbReferences(){
+        return nbReferences;
     }
 }

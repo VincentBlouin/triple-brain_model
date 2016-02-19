@@ -11,4 +11,6 @@ public interface GraphElementSearchResult {
     GraphElementSearchResultPojo getGraphElementSearchResult();
     GraphElementPojo getGraphElement();
     String getType();
+    void setNbReferences(Integer nbReferences);
+    Integer getNbReferences();
 }

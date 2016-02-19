@@ -12,6 +12,8 @@ public class EdgeSearchResult implements GraphElementSearchResult {
 
     private EdgePojo edge;
     private GraphElementType type = GraphElementType.edge;
+    private Integer nbReferences = 0;
+
     public EdgeSearchResult(
             EdgePojo edgePojo
     ){
@@ -38,5 +40,13 @@ public class EdgeSearchResult implements GraphElementSearchResult {
 
     public EdgePojo getEdge(){
         return edge;
+    }
+
+    public void setNbReferences(Integer nbReferences){
+        this.nbReferences = nbReferences;
+    }
+
+    public Integer getNbReferences(){
+        return nbReferences;
     }
 }

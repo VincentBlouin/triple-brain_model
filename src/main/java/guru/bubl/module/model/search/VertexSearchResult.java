@@ -15,6 +15,7 @@ public class VertexSearchResult implements GraphElementSearchResult{
     private GraphElementPojo graphElement;
     private Map<URI, GraphElementPojo> properties;
     private GraphElementType type;
+    private Integer nbReferences = 0;
 
     public VertexSearchResult(
             GraphElementPojo graphElement,
@@ -64,5 +65,13 @@ public class VertexSearchResult implements GraphElementSearchResult{
 
     public Boolean hasProperties(){
         return null != properties && !properties.isEmpty();
+    }
+
+    public void setNbReferences(Integer nbReferences){
+        this.nbReferences = nbReferences;
+    }
+
+    public Integer getNbReferences(){
+        return nbReferences;
     }
 }
