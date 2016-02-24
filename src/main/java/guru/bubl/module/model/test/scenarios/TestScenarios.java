@@ -5,11 +5,10 @@
 package guru.bubl.module.model.test.scenarios;
 
 import guru.bubl.module.model.User;
+import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.test.GraphComponentTest;
-import guru.bubl.module.model.graph.GraphFactory;
-import guru.bubl.module.model.graph.UserGraph;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 
 import javax.inject.Inject;
@@ -68,6 +67,13 @@ public class TestScenarios {
         );
         return vertexFactory.createForOwnerUsername(
                 userGraph.user().username()
+        );
+    }
+
+    public static IdentificationPojo identificationFromFriendlyResource(FriendlyResourceOperator resource){
+        return new IdentificationPojo(
+                resource.uri(),
+                new FriendlyResourcePojo(resource)
         );
     }
 }
