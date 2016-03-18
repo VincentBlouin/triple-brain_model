@@ -107,6 +107,12 @@ public class UserUris {
         );
     }
 
+    public URI identificationUriFromShortId(String shortId) {
+        return URI.create(
+                baseIdentificationUri() + "/" + shortId
+        );
+    }
+
     public URI generateVertexUri() {
         return URI.create(
                 baseVertexUri() + "/" + UUID.randomUUID().toString()
