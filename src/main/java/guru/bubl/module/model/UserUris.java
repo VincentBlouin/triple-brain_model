@@ -16,6 +16,12 @@ public class UserUris {
         return uriStr.substring(uriStr.lastIndexOf("/") + 1);
     }
 
+    public static URI dummyUniqueUri() {
+        return URI.create(
+                "/dummy/" + UUID.randomUUID()
+        );
+    }
+
     public static String ownerUserNameFromUri(URI uri) {
         String uriStr = uri.toString();
         String modifiedUriStr = uriStr.replace("/service/users/", "");
