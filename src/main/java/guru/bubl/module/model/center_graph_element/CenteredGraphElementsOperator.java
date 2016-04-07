@@ -4,6 +4,9 @@
 
 package guru.bubl.module.model.center_graph_element;
 
-public interface CenteredGraphElementsOperator extends CenteredGraphElements {
+import java.util.Set;
 
+public interface CenteredGraphElementsOperator{
+    Set<CenterGraphElementPojo> getPublicAndPrivate();
+    Set<CenterGraphElementPojo> getPublicOnly();
 }

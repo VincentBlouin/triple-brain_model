@@ -32,6 +32,10 @@ public class User {
         return new User(email, null);
     }
 
+    public static User withUsername(String username) {
+        return new User("", username);
+    }
+
     private User(String email, String username) {
         this.username = username;
         this.email = email.toLowerCase().trim();
