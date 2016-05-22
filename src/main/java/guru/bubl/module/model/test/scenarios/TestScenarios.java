@@ -6,6 +6,9 @@ package guru.bubl.module.model.test.scenarios;
 
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.*;
+import guru.bubl.module.model.graph.GraphFactory;
+import guru.bubl.module.model.graph.subgraph.UserGraph;
+import guru.bubl.module.model.graph.identification.IdentificationPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.test.GraphComponentTest;

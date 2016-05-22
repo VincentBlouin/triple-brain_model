@@ -4,10 +4,12 @@
 
 package guru.bubl.module.model.graph.vertex;
 
+import guru.bubl.module.model.User;
+import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.PublicPrivateOperator;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
-import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
@@ -25,4 +27,5 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     void addSuggestions(Map<URI, SuggestionPojo> suggestions);
     void setSuggestions(Map<URI, SuggestionPojo> suggestions);
     Set<EdgeOperator> connectedEdges();
+    VertexOperator cloneForUser(User user);
 }

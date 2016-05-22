@@ -6,6 +6,7 @@ package guru.bubl.module.model.graph.schema;
 
 import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.Image;
+import guru.bubl.module.model.graph.identification.IdentificationPojo;
 
 import java.net.URI;
 import java.util.Date;

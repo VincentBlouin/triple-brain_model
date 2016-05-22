@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import guru.bubl.module.model.graph.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentificationPojo;
 
 import java.net.URI;
 import java.util.Map;

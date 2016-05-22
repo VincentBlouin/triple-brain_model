@@ -2,10 +2,11 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph;
+package guru.bubl.module.model.graph.identification;
 
 
 import guru.bubl.module.model.Image;
+import guru.bubl.module.model.graph.FriendlyResourcePojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -19,11 +20,11 @@ public class IdentificationPojo implements Identification {
     Integer nbReferences = 0;
 
     public IdentificationPojo(
-            URI uri,
+            URI externalResourceUri,
             Identification identification
     ) {
-        friendlyResource = new FriendlyResourcePojo(uri);
-        externalResourceUri = identification.getExternalResourceUri();
+        friendlyResource = new FriendlyResourcePojo(externalResourceUri);
+        this.externalResourceUri = identification.getExternalResourceUri();
         friendlyResource.setLabel(identification.label());
         if (identification.comment() != null) {
             friendlyResource.setComment(

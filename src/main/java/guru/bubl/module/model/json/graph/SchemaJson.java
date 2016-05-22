@@ -6,15 +6,11 @@ package guru.bubl.module.model.json.graph;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import guru.bubl.module.model.graph.IdentificationPojo;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import guru.bubl.module.model.graph.schema.Schema;
 import guru.bubl.module.model.graph.schema.SchemaPojo;
 
-import java.net.URI;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class SchemaJson {

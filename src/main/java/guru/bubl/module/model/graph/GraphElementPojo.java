@@ -5,6 +5,9 @@
 package guru.bubl.module.model.graph;
 
 import guru.bubl.module.model.Image;
+import guru.bubl.module.model.graph.identification.Identification;
+import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentificationType;
 import org.joda.time.DateTime;
 
 import java.net.URI;

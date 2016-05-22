@@ -7,7 +7,7 @@ package guru.bubl.module.model.json.graph;
 import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import guru.bubl.module.model.graph.SubGraphPojo;
+import guru.bubl.module.model.graph.subgraph.SubGraphPojo;
 
 public class SubGraphJson {
     private static Gson gson = new Gson();
@@ -25,8 +25,14 @@ public class SubGraphJson {
     }
 
     public static SubGraphPojo fromJson(JSONObject jsonObject){
+        return fromJson(
+                jsonObject.toString()
+        );
+    }
+
+    public static SubGraphPojo fromJson(String jsonObject){
         return gson.fromJson(
-                jsonObject.toString(),
+                jsonObject,
                 SubGraphPojo.class
         );
     }

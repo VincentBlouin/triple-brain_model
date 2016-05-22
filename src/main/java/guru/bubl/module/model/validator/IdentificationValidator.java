@@ -5,7 +5,7 @@
 package guru.bubl.module.model.validator;
 
 import org.apache.commons.lang.StringUtils;
-import guru.bubl.module.model.graph.Identification;
+import guru.bubl.module.model.graph.identification.Identification;
 
 import java.util.HashSet;
 import java.util.Set;

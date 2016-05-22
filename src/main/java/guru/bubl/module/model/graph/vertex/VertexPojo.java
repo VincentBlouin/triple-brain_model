@@ -6,8 +6,7 @@ package guru.bubl.module.model.graph.vertex;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.Identification;
-import guru.bubl.module.model.graph.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentificationPojo;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.suggestion.SuggestionPojo;

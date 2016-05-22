@@ -8,8 +8,8 @@ import com.google.gson.Gson;
 import guru.bubl.module.model.validator.IdentificationValidator;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
-import guru.bubl.module.model.graph.Identification;
-import guru.bubl.module.model.graph.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.Identification;
+import guru.bubl.module.model.graph.identification.IdentificationPojo;
 
 import java.util.Set;
 
