@@ -21,7 +21,7 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     void changeSourceVertex(Vertex vertex);
 
-    EdgeOperator cloneUsingSourceAndDestinationVertex(
+    EdgeOperator forkUsingSourceAndDestinationVertex(
             Vertex sourceVertex,
             Vertex destinationVertex
     );

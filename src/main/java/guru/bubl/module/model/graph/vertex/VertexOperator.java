@@ -27,5 +27,5 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     void addSuggestions(Map<URI, SuggestionPojo> suggestions);
     void setSuggestions(Map<URI, SuggestionPojo> suggestions);
     Set<EdgeOperator> connectedEdges();
-    VertexOperator cloneForUser(User user);
+    VertexOperator forkForUser(User user);
 }
