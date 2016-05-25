@@ -117,6 +117,9 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public String comment() {
+        if(comment == null){
+            return "";
+        }
         return comment;
     }
 

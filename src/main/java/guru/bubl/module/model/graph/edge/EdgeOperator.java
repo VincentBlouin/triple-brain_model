@@ -4,9 +4,7 @@
 
 package guru.bubl.module.model.graph.edge;
 
-import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.GraphElementOperator;
-import guru.bubl.module.model.graph.PublicPrivateOperator;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
@@ -21,8 +19,9 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     void changeSourceVertex(Vertex vertex);
 
-    EdgeOperator forkUsingSourceAndDestinationVertex(
+    EdgeOperator forkUsingSourceAndDestinationVertexAndCache(
             Vertex sourceVertex,
-            Vertex destinationVertex
+            Vertex destinationVertex,
+            Edge cache
     );
 }
