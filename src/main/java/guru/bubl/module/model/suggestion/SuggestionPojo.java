@@ -21,7 +21,7 @@ public class SuggestionPojo implements Suggestion {
     FriendlyResourcePojo type;
     Set<SuggestionOriginPojo> origins;
 
-    public static SuggestionPojo forSameAsTypeAndOrigin(
+    public static SuggestionPojo forSameAsTypeOriginAndOwner(
             FriendlyResourcePojo sameAs,
             FriendlyResourcePojo type,
             String origin,
@@ -109,6 +109,15 @@ public class SuggestionPojo implements Suggestion {
                     uri
             );
         }
+    }
+
+    public Boolean isFromComparison(){
+        for(SuggestionOrigin origin: origins()){
+            if("comparison".equals(origin.getType())){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

@@ -11,6 +11,8 @@ import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.identification.IdentificationPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
+import guru.bubl.module.model.suggestion.Suggestion;
+import guru.bubl.module.model.suggestion.SuggestionPojo;
 import guru.bubl.module.model.test.GraphComponentTest;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 
@@ -64,7 +66,7 @@ public class TestScenarios {
         return pineApple;
     }
 
-    public VertexOperator createAVertex(User user){
+    public VertexOperator createAVertex(User user) {
         UserGraph userGraph = graphFactory.createForUser(
                 user
         );
@@ -73,10 +75,29 @@ public class TestScenarios {
         );
     }
 
-    public static IdentificationPojo identificationFromFriendlyResource(FriendlyResourceOperator resource){
+    public static IdentificationPojo identificationFromFriendlyResource(FriendlyResourceOperator resource) {
         return new IdentificationPojo(
                 resource.uri(),
                 new FriendlyResourcePojo(resource)
+        );
+    }
+
+    public static SuggestionPojo suggestionFromComparisonForUserAndTriple(
+            User user,
+            Triple triple
+    ) {
+
+        return SuggestionPojo.forSameAsTypeOriginAndOwner(
+                new FriendlyResourcePojo(
+                        triple.getEdge().uri(),
+                        triple.getEdge().label()
+                ),
+                new FriendlyResourcePojo(
+                        triple.getDestination().uri(),
+                        triple.getDestination().label()
+                ),
+                Suggestion.COMPARISON_PREFIX + triple.getSource().uri(),
+                user
         );
     }
 }

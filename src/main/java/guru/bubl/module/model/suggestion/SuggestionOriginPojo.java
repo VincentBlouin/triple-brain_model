@@ -30,15 +30,6 @@ public class SuggestionOriginPojo implements SuggestionOrigin{
         this.origin = origin;
     }
 
-    public SuggestionOriginPojo(
-            SuggestionOriginOperator suggestionOriginOperator
-    ){
-        this(
-                new FriendlyResourcePojo(suggestionOriginOperator),
-                suggestionOriginOperator.toString()
-        );
-    }
-
     @Override
     public URI uri() {
         return friendlyResource.uri();

@@ -11,6 +11,7 @@ import java.util.Set;
 
 public interface Suggestion extends FriendlyResource {
     String SUGGESTION_IDENTIFICATION_PREFIX = "identification_";
+    String COMPARISON_PREFIX = "comparison_";
     FriendlyResourcePojo getSameAs();
     FriendlyResourcePojo getType();
     Set<?extends SuggestionOrigin> origins();
