@@ -7,5 +7,5 @@ package guru.bubl.module.model.graph.edge;
 import java.net.URI;
 
 public interface EdgeFactory {
-    EdgeOperator createOrLoadUsingUri(URI uri);
+    EdgeOperator withUri(URI uri);
 }
