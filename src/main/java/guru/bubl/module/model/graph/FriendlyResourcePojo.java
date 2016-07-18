@@ -4,14 +4,17 @@
 
 package guru.bubl.module.model.graph;
 
+import guru.bubl.module.common_utils.Uris;
 import guru.bubl.module.model.FriendlyResource;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.UserUris;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 
 public class FriendlyResourcePojo implements FriendlyResource {
 
@@ -75,7 +78,11 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public URI uri() {
-        return uri;
+        try {
+            return Uris.decodeUriSafe(uri);
+        }catch(UnsupportedEncodingException e){
+            throw new RuntimeException(e);
+        }
     }
 
     public void setUri(URI uri) {
