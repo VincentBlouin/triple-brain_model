@@ -4,19 +4,17 @@
 
 package guru.bubl.module.model.json.graph;
 
-import com.google.gson.Gson;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
 import guru.bubl.module.model.graph.vertex.VertexPojo;
+import guru.bubl.module.model.json.JsonUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 public class VertexInSubGraphJson{
 
-    private static Gson gson = new Gson();
-
     public static JSONObject toJson(VertexPojo vertex) {
         try{
-            return new JSONObject(gson.toJson(
+            return new JSONObject(JsonUtils.getGson().toJson(
                     vertex
             ));
         }catch(JSONException e){
@@ -26,7 +24,7 @@ public class VertexInSubGraphJson{
 
     public static JSONObject toJson(VertexInSubGraphPojo vertex) {
         try{
-            return new JSONObject(gson.toJson(
+            return new JSONObject(JsonUtils.getGson().toJson(
                     vertex
             ));
         }catch(JSONException e){
@@ -35,7 +33,7 @@ public class VertexInSubGraphJson{
     }
 
     public static VertexInSubGraphPojo fromJson(JSONObject jsonObject){
-        return gson.fromJson(
+        return JsonUtils.getGson().fromJson(
                 jsonObject.toString(),
                 VertexInSubGraphPojo.class
         );

@@ -74,7 +74,7 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public Vertex sourceVertex() {
+    public VertexInSubGraphPojo sourceVertex() {
         return sourceVertex;
     }
 
@@ -83,7 +83,7 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public Vertex destinationVertex() {
+    public VertexInSubGraphPojo destinationVertex() {
         return destinationVertex;
     }
 
@@ -188,7 +188,7 @@ public class EdgePojo implements Edge {
         return false;
     }
 
-    public void setCreationDate(DateTime date){
+    public void setCreationDate(Long date){
         getGraphElement().setCreationDate(date);
     }
 }

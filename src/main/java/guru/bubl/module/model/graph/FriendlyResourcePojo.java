@@ -22,7 +22,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
     private String label,
             comment;
     private Set<Image> images;
-    private Date creationDate,
+    private Long creationDate,
             lastModificationDate;
 
     @Deprecated
@@ -34,8 +34,8 @@ public class FriendlyResourcePojo implements FriendlyResource {
                 friendlyResourceOperator.label(),
                 friendlyResourceOperator.images(),
                 friendlyResourceOperator.comment(),
-                friendlyResourceOperator.creationDate(),
-                friendlyResourceOperator.lastModificationDate()
+                friendlyResourceOperator.creationDate().getTime(),
+                friendlyResourceOperator.lastModificationDate().getTime()
         );
     }
 
@@ -64,8 +64,8 @@ public class FriendlyResourcePojo implements FriendlyResource {
             String label,
             Set<Image> images,
             String comment,
-            Date creationDate,
-            Date lastModificationDate
+            Long creationDate,
+            Long lastModificationDate
     ) {
         this.uri = uri;
         this.label = label;
@@ -80,7 +80,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
     public URI uri() {
         try {
             return Uris.decodeUriSafe(uri);
-        }catch(UnsupportedEncodingException e){
+        } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
     }
@@ -110,8 +110,8 @@ public class FriendlyResourcePojo implements FriendlyResource {
                 images;
     }
 
-    public void addImage(Image image){
-        if(images == null){
+    public void addImage(Image image) {
+        if (images == null) {
             images = new HashSet<>();
         }
         images().add(image);
@@ -124,7 +124,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public String comment() {
-        if(comment == null){
+        if (comment == null) {
             return "";
         }
         return comment;
@@ -141,12 +141,22 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public Date creationDate() {
-        return creationDate;
+        if(null == creationDate){
+            return null;
+        }
+        return new Date(
+                creationDate
+        );
     }
 
     @Override
     public Date lastModificationDate() {
-        return lastModificationDate;
+        if(null == lastModificationDate){
+            return null;
+        }
+        return new Date(
+                lastModificationDate
+        );
     }
 
     @Override
@@ -165,11 +175,11 @@ public class FriendlyResourcePojo implements FriendlyResource {
         return uri().hashCode();
     }
 
-    public void setLastModificationDate(Date lastModificationDate) {
+    public void setLastModificationDate(Long lastModificationDate) {
         this.lastModificationDate = lastModificationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(Long creationDate) {
         this.creationDate = creationDate;
     }
 

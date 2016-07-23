@@ -36,7 +36,7 @@ public class IdentificationPojo implements Identification {
                     identification.images()
             );
         }
-        friendlyResource.setLastModificationDate(new Date());
+        friendlyResource.setLastModificationDate(new Date().getTime());
     }
 
     public IdentificationPojo(
@@ -156,11 +156,13 @@ public class IdentificationPojo implements Identification {
         friendlyResource.setUri(uri);
     }
 
-    public void setLastModificationDate(Date date) {
-        friendlyResource.setLastModificationDate(date);
+    public void setLastModificationDate(Long date) {
+        friendlyResource.setLastModificationDate(
+                date
+        );
     }
 
-    public void setCreationDate(Date date) {
+    public void setCreationDate(Long date) {
         friendlyResource.setCreationDate(date);
     }
 

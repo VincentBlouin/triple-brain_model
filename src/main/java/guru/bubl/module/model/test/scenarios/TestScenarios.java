@@ -7,6 +7,7 @@ package guru.bubl.module.model.test.scenarios;
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.graph.GraphFactory;
+import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.identification.IdentificationPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
@@ -34,9 +35,13 @@ public class TestScenarios {
         graphFactory.createForUser(userGraph.user());
         VertexOperator vertexA = userGraph.defaultVertex();
         vertexA.label("vertex A");
-        VertexOperator vertexB = vertexA.addVertexAndRelation().destinationVertex();
+        VertexOperator vertexB = vertexFactory.withUri(
+                vertexA.addVertexAndRelation().destinationVertex().uri()
+        );
         vertexB.label("vertex B");
-        VertexOperator vertexC = vertexB.addVertexAndRelation().destinationVertex();
+        VertexOperator vertexC = vertexFactory.withUri(
+                vertexB.addVertexAndRelation().destinationVertex().uri()
+        );
         vertexC.label("vertex C");
         EdgeOperator betweenAAndB = vertexA.getEdgeThatLinksToDestinationVertex(vertexB);
         betweenAAndB.label("between vertex A and vertex B");
@@ -60,8 +65,10 @@ public class TestScenarios {
     }
 
     public VertexOperator addPineAppleVertexToVertex(VertexOperator vertex) {
-        EdgeOperator newEdge = vertex.addVertexAndRelation();
-        VertexOperator pineApple = newEdge.destinationVertex();
+        Edge newEdge = vertex.addVertexAndRelation();
+        VertexOperator pineApple = vertexFactory.withUri(
+                newEdge.destinationVertex().uri()
+        );
         pineApple.label("pine Apple");
         return pineApple;
     }

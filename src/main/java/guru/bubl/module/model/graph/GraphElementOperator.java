@@ -8,6 +8,7 @@ import guru.bubl.module.model.graph.identification.Identification;
 import guru.bubl.module.model.graph.identification.IdentificationPojo;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.Map;
 
 public interface GraphElementOperator extends GraphElement, FriendlyResourceOperator {
@@ -16,4 +17,5 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
     Map<URI, IdentificationPojo> addType(Identification type);
     Map<URI, IdentificationPojo> addSameAs(Identification friendlyResource);
     Map<URI, IdentificationPojo> addGenericIdentification(Identification friendlyResource);
+    void setSortDate(Date sortDate, Date moveDate);
 }

@@ -4,22 +4,19 @@
 
 package guru.bubl.module.model.json;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import guru.bubl.module.model.suggestion.SuggestionPojo;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
 import java.util.Map;
 
 public class SuggestionJson {
 
-    private static Gson gson = new Gson();
-
     public static JSONObject toJson(SuggestionPojo suggestionPojo) {
         try {
-            return new JSONObject(gson.toJson(
+            return new JSONObject(JsonUtils.getGson().toJson(
                     suggestionPojo
             ));
         } catch (JSONException e) {
@@ -28,12 +25,12 @@ public class SuggestionJson {
     }
 
     public static SuggestionPojo fromJson(String json) {
-        return gson.fromJson(json, SuggestionPojo.class);
+        return JsonUtils.getGson().fromJson(json, SuggestionPojo.class);
     }
 
     public static JSONObject multipleToJson(Map<URI, SuggestionPojo> suggestionPojo) {
         try {
-            return new JSONObject(gson.toJson(
+            return new JSONObject(JsonUtils.getGson().toJson(
                     suggestionPojo
             ));
         } catch (JSONException e) {
@@ -42,7 +39,7 @@ public class SuggestionJson {
     }
 
     public static Map<URI, SuggestionPojo> fromJsonArray(String json) {
-        return gson.fromJson(
+        return JsonUtils.getGson().fromJson(
                 json,
                 new TypeToken<Map<URI, SuggestionPojo>>() {
                 }.getType()

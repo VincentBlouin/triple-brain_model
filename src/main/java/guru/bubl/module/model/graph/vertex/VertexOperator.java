@@ -10,9 +10,11 @@ import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.PublicPrivateOperator;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
+import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,7 +22,7 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     boolean hasEdge(Edge edge);
     EdgeOperator getEdgeThatLinksToDestinationVertex(Vertex destinationVertex);
     Boolean hasDestinationVertex(Vertex destinationVertex);
-    EdgeOperator addVertexAndRelation();
+    EdgePojo addVertexAndRelation();
     EdgeOperator addRelationToVertex(Vertex destinationVertex);
     EdgeOperator acceptSuggestion(SuggestionPojo suggestion);
     void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
@@ -28,4 +30,5 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     void setSuggestions(Map<URI, SuggestionPojo> suggestions);
     Set<EdgeOperator> connectedEdges();
     VertexOperator forkForUserUsingCache(User user, Vertex cache);
+    void createUsingInitialValues(Map<String, Object> values);
 }

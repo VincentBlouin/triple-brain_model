@@ -5,17 +5,17 @@
 package guru.bubl.module.model.json.graph;
 
 import com.google.gson.Gson;
+import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 
 public class EdgeJson{
-    private static Gson gson = new Gson();
 
     public static JSONObject toJson(EdgePojo edge) {
         try {
             return new JSONObject(
-                    gson.toJson(
+                    JsonUtils.getGson().toJson(
                             edge
                     )
             );
@@ -24,7 +24,7 @@ public class EdgeJson{
         }
     }
     public static EdgePojo fromJson(JSONObject json){
-        return gson.fromJson(
+        return JsonUtils.getGson().fromJson(
                 json.toString(),
                 EdgePojo.class
         );

@@ -4,14 +4,12 @@
 
 package guru.bubl.module.model.json;
 
-import com.google.gson.Gson;
 import guru.bubl.module.model.User;
-import guru.bubl.module.model.suggestion.SuggestionPojo;
+import guru.bubl.module.model.json.graph.SubGraphJson;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 public class UserJson {
-    private static Gson gson = new Gson();
 
     public static final String
             ID = "uri",
@@ -39,6 +37,6 @@ public class UserJson {
         }
     }
     public static User fromJson(String json){
-        return gson.fromJson(json, User.class);
+        return JsonUtils.getGson().fromJson(json, User.class);
     }
 }

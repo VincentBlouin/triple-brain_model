@@ -4,22 +4,21 @@
 
 package guru.bubl.module.model.json.graph;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.json.JsonUtils;
 
 import java.net.URI;
 import java.util.Map;
 
 public class GraphElementJson {
-    private static Gson gson = new Gson();
 
     public static String multipleToJson(Map<URI, GraphElementPojo> elements){
-        return gson.toJson(elements);
+        return JsonUtils.getGson().toJson(elements);
     }
 
     public static Map<URI, GraphElementPojo> fromJsonObjectToMap(String json) {
-        return gson.fromJson(
+        return JsonUtils.getGson().fromJson(
                 json,
                 new TypeToken<Map<URI, GraphElementPojo>>() {
                 }.getType()

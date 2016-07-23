@@ -33,13 +33,13 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         );
     }
 
-    public VertexInSubGraphPojo(URI uri){
+    public VertexInSubGraphPojo(URI uri) {
         this(
                 new FriendlyResourcePojo(uri)
         );
     }
 
-    public VertexInSubGraphPojo(URI uri, String label){
+    public VertexInSubGraphPojo(URI uri, String label) {
         this(
                 new FriendlyResourcePojo(
                         uri,
@@ -93,7 +93,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         );
     }
 
-    public VertexInSubGraphPojo(VertexPojo vertex){
+    public VertexInSubGraphPojo(VertexPojo vertex) {
         this.vertex = vertex;
     }
 
@@ -224,7 +224,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         return vertex.getGraphElement();
     }
 
-    public void setCreationDate(DateTime date){
+    public void setCreationDate(Long date) {
         getGraphElement().setCreationDate(date);
     }
 

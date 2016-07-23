@@ -8,6 +8,8 @@ import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
+import java.util.Map;
+
 public interface EdgeOperator extends Edge, GraphElementOperator {
     void inverse();
 
@@ -24,4 +26,7 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
             Vertex destinationVertex,
             Edge cache
     );
+
+    EdgePojo createEdgeUsingInitialValues(Map<String, Object> values);
+    EdgePojo createEdge();
 }

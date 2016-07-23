@@ -4,21 +4,20 @@
 
 package guru.bubl.module.model.json.graph;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 import guru.bubl.module.model.graph.schema.Schema;
 import guru.bubl.module.model.graph.schema.SchemaPojo;
+import guru.bubl.module.model.json.JsonUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import java.util.Set;
 
 public class SchemaJson {
-    private static Gson gson = new Gson();
     public static JSONObject toJson(Schema schema) {
         try {
             return new JSONObject(
-                    gson.toJson(
+                    JsonUtils.getGson().toJson(
                             schema
                     )
             );
@@ -27,14 +26,14 @@ public class SchemaJson {
         }
     }
     public static SchemaPojo fromJson(String json){
-        return gson.fromJson(
+        return JsonUtils.getGson().fromJson(
                 json,
                 SchemaPojo.class
         );
     }
 
     public static Set<SchemaPojo> listFromJson(String json){
-        return gson.fromJson(
+        return JsonUtils.getGson().fromJson(
                 json,
                 new TypeToken<Set<SchemaPojo>>() {
                 }.getType()
@@ -42,7 +41,7 @@ public class SchemaJson {
     }
 
     public static String jsonFromList(Set<SchemaPojo> schemaList){
-        return gson.toJson(
+        return JsonUtils.getGson().toJson(
                 schemaList,
                 new TypeToken<Set<SchemaPojo>>() {
                 }.getType()

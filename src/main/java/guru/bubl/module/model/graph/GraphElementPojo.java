@@ -19,31 +19,35 @@ import java.util.Set;
 public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
-    private Map<URI,IdentificationPojo> identifications;
+    private Map<URI, IdentificationPojo> identifications;
+    private Long sortDate;
+    private Long moveDate;
 
     @Deprecated
-    public GraphElementPojo(GraphElementOperator graphElementOperator){
+    public GraphElementPojo(GraphElementOperator graphElementOperator) {
         this(
                 new FriendlyResourcePojo(graphElementOperator),
                 convertIdentificationsToPojo(graphElementOperator.getIdentifications())
         );
     }
-    public GraphElementPojo(URI uri){
+
+    public GraphElementPojo(URI uri) {
         this(
                 new FriendlyResourcePojo(uri)
         );
     }
+
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI,IdentificationPojo> identifications
-    ){
+            Map<URI, IdentificationPojo> identifications
+    ) {
         this.friendlyResource = friendlyResource;
         this.identifications = identifications;
     }
 
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource
-    ){
+    ) {
         this.friendlyResource = friendlyResource;
     }
 
@@ -138,14 +142,14 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Deprecated
-    public FriendlyResourcePojo getFriendlyResource(){
+    public FriendlyResourcePojo getFriendlyResource() {
         return friendlyResource;
     }
 
-    private Map<URI, IdentificationPojo> getIdentificationsOfType(IdentificationType identificationType){
+    private Map<URI, IdentificationPojo> getIdentificationsOfType(IdentificationType identificationType) {
         Map<URI, IdentificationPojo> identificationsOfType = new HashMap<>();
-        for(IdentificationPojo identification : getIdentifications().values()){
-            if(identification.getType().equals(identificationType)){
+        for (IdentificationPojo identification : getIdentifications().values()) {
+            if (identification.getType().equals(identificationType)) {
                 identificationsOfType.put(
                         identification.getExternalResourceUri(),
                         identification
@@ -155,7 +159,7 @@ public class GraphElementPojo implements GraphElement {
         return identificationsOfType;
     }
 
-    private static Map<URI, IdentificationPojo> convertIdentificationsToPojo(Map<URI, ? extends Identification> identifications){
+    private static Map<URI, IdentificationPojo> convertIdentificationsToPojo(Map<URI, ? extends Identification> identifications) {
         Map<URI, IdentificationPojo> identificationsPojo = new HashMap<>();
         for (Identification identification : identifications.values()) {
             identificationsPojo.put(
@@ -167,15 +171,43 @@ public class GraphElementPojo implements GraphElement {
     }
 
 
-    public void removeAllIdentifications(){
+    public void removeAllIdentifications() {
         identifications.clear();
     }
 
-    public void setLabel(String label){
+    public void setLabel(String label) {
         friendlyResource.setLabel(label);
     }
 
-    public void setCreationDate(DateTime creationDate){
-        friendlyResource.setCreationDate(creationDate.toDate());
+    public void setCreationDate(Long creationDate) {
+        friendlyResource.setCreationDate(creationDate);
+    }
+
+    public Date getSortDate() {
+        if(null == sortDate){
+            return null;
+        }
+        return new Date(
+                sortDate
+        );
+    }
+
+    public Date getMoveDate() {
+        if(null == moveDate){
+            return null;
+        }
+        return new Date(
+                moveDate
+        );
+    }
+
+    public GraphElementPojo setSortDate(Long sortDate) {
+        this.sortDate = sortDate;
+        return this;
+    }
+
+    public GraphElementPojo setMoveDate(Long moveDate) {
+        this.moveDate = moveDate;
+        return this;
     }
 }

@@ -4,18 +4,18 @@
 
 package guru.bubl.module.model.json.graph;
 
-import com.google.gson.Gson;
+import guru.bubl.module.model.graph.subgraph.SubGraphPojo;
+import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import guru.bubl.module.model.graph.subgraph.SubGraphPojo;
 
 public class SubGraphJson {
-    private static Gson gson = new Gson();
+
 
     public static JSONObject toJson(SubGraphPojo graph) {
         try {
             return new JSONObject(
-                    gson.toJson(
+                    JsonUtils.getGson().toJson(
                             graph
                     )
             );
@@ -24,14 +24,14 @@ public class SubGraphJson {
         }
     }
 
-    public static SubGraphPojo fromJson(JSONObject jsonObject){
+    public static SubGraphPojo fromJson(JSONObject jsonObject) {
         return fromJson(
                 jsonObject.toString()
         );
     }
 
-    public static SubGraphPojo fromJson(String jsonObject){
-        return gson.fromJson(
+    public static SubGraphPojo fromJson(String jsonObject) {
+        return JsonUtils.getGson().fromJson(
                 jsonObject,
                 SubGraphPojo.class
         );
