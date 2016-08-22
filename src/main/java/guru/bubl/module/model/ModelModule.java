@@ -5,6 +5,10 @@
 package guru.bubl.module.model;
 
 import com.google.inject.AbstractModule;
+import com.sendgrid.Mail;
+import com.sendgrid.SendGrid;
+import com.sun.mail.iap.Response;
+import guru.bubl.module.common_utils.NoExRun;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmailImpl;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmail;
 
@@ -14,48 +18,57 @@ import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class ModelModule extends AbstractModule{
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class ModelModule extends AbstractModule {
 
     private Boolean isTesting;
+    private String sendGridKey;
 
-    public static ModelModule forTesting(){
+    public static ModelModule forTesting() {
         return new ModelModule(
                 true
         );
     }
 
-    public ModelModule(){
+    public ModelModule(String sendGridKey) {
+
         this(false);
+        this.sendGridKey = sendGridKey;
     }
 
-    public ModelModule(Boolean isTesting){
+    private ModelModule(Boolean isTesting) {
         this.isTesting = isTesting;
     }
 
     @Override
     protected void configure() {
-        if(isTesting){
+        if (isTesting) {
             testBinding();
-        }else{
+        } else {
             nonTestBinding();
         }
     }
 
-    private void testBinding(){
-        bind(ForgotPasswordEmail.class).toInstance(new ForgotPasswordEmail() {
-            @Override
-            public Message send(User user, String resetUrl) {
-                return new MimeMessage(
-                        Session.getDefaultInstance(
-                                new Properties(),
-                                null
-                        )
-                );
-            }
-        });
+    private void testBinding() {
+        SendGrid doNothingSendGrid = mock(SendGrid.class);
+        NoExRun.wrap(() -> when(
+                doNothingSendGrid.api(
+                        any()
+                )
+        ).thenReturn(null)).get();
+        bind(
+                SendGrid.class
+        ).toInstance(
+                doNothingSendGrid
+        );
+        bind(ForgotPasswordEmail.class).to(ForgotPasswordEmailImpl.class).in(Singleton.class);
     }
 
-    private void nonTestBinding(){
+    private void nonTestBinding() {
+        bind(SendGrid.class).toInstance(new SendGrid(sendGridKey));
         bind(ForgotPasswordEmail.class).to(ForgotPasswordEmailImpl.class).in(Singleton.class);
     }
 }

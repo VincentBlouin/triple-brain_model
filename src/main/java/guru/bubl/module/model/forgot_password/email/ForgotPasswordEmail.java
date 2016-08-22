@@ -4,10 +4,9 @@
 
 package guru.bubl.module.model.forgot_password.email;
 
+import com.sendgrid.Mail;
 import guru.bubl.module.model.User;
 
-import javax.mail.Message;
-
 public interface ForgotPasswordEmail {
-    Message send(User user, String resetUrl);
+    Mail send(User user, String resetUrl);
 }

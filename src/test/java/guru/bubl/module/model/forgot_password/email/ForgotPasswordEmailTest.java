@@ -4,63 +4,63 @@
 
 package guru.bubl.module.model.forgot_password.email;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.sendgrid.Mail;
+import guru.bubl.module.model.ModelModule;
+import guru.bubl.module.model.User;
 import org.codehaus.jettison.json.JSONArray;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
-import guru.bubl.module.model.User;
-
-import javax.mail.Message;
-import javax.mail.Transport;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
-import static org.powermock.api.support.membermodification.MemberMatcher.method;
-import static org.powermock.api.support.membermodification.MemberModifier.suppress;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(javax.mail.Transport.class)
 public class ForgotPasswordEmailTest {
 
+    @Inject
+    ForgotPasswordEmail forgotPasswordEmail;
+
+
     @Before
-    public void before() throws Exception {
-        suppress(method(Transport.class, "send", Message.class));
+    public void before(){
+        Guice.createInjector(
+                ModelModule.forTesting()
+        ).injectMembers(this);
     }
 
     @Test
     public void sent_to_correct_recipient() throws Exception {
-        Message msg = new ForgotPasswordEmailImpl().send(
+        Mail msg = forgotPasswordEmail.send(
                 user(),
                 ""
         );
         assertThat(
-                msg.getAllRecipients()[0].toString(),
+                msg.getPersonalization().get(0).getTos().get(0).getEmail(),
                 is("test@example.org")
         );
     }
 
     @Test
     public void has_correct_from() throws Exception {
-        Message msg = new ForgotPasswordEmailImpl().send(
+        Mail msg = forgotPasswordEmail.send(
                 user(),
                 ""
         );
         assertThat(
-                msg.getFrom()[0].toString(),
+                msg.from.getEmail(),
                 is("no-reply@bubl.guru")
         );
     }
 
     @Test
     public void has_correct_body() throws Exception {
-        Message msg = new ForgotPasswordEmailImpl().send(
+        Mail msg = forgotPasswordEmail.send(
                 user(),
                 ""
         );
         assertTrue(
-                msg.getContent().toString().contains(
+                msg.getContent().get(0).getValue().contains(
                         "Follow this link to reset your password"
                 )
         );
@@ -71,17 +71,17 @@ public class ForgotPasswordEmailTest {
         User user = user().setPreferredLocales(
                 new JSONArray().put("fr").toString()
         );
-        Message msg = new ForgotPasswordEmailImpl().send(
+        Mail msg = forgotPasswordEmail.send(
                 user,
                 ""
         );
         assertFalse(
-                msg.getContent().toString().contains(
+                msg.getContent().get(0).getValue().contains(
                         "Follow this link to reset your password:"
                 )
         );
         assertTrue(
-                msg.getContent().toString().contains(
+                msg.getContent().get(0).getValue().contains(
                         "Suivez ce lien pour mettre à jour votre mot de passe"
                 )
         );
@@ -89,12 +89,12 @@ public class ForgotPasswordEmailTest {
 
     @Test
     public void reset_url_is_in_email()throws Exception{
-        Message msg = new ForgotPasswordEmailImpl().send(
+         Mail msg = forgotPasswordEmail.send(
                 user(),
                 "http://domain-url/reset/user-name/token"
         );
         assertTrue(
-                msg.getContent().toString().contains(
+                msg.getContent().get(0).getValue().contains(
                         "http://domain-url/reset/user-name/token"
                 )
         );
