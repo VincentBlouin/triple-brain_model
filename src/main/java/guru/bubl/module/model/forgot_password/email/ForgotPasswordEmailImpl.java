@@ -20,11 +20,6 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
     @Inject
     SendGrid sendgrid;
 
-//    private static final Session session = Session.getDefaultInstance(
-//            new Properties(),
-//            null
-//    );
-
     public Mail send(User user, String resetUrl) {
         Locale emailLocale = user.getPreferredLocales().contains(
                 Locale.FRENCH
@@ -35,35 +30,30 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
         );
         String msgBody = messages.getString("body");
         msgBody += " " + resetUrl;
+        Mail mail;
+        String subject = messages.getString("subject");
+        Email to = new Email(
+                user.email()
+        );
+        Content content = new Content(
+                "text/plain",
+                msgBody
+        );
+        mail = new Mail(from, subject, to, content);
         try {
-//            Message msg = new MimeMessage(session);
-//            msg.setFrom(new InternetAddress(from));
-//            msg.addRecipient(Message.RecipientType.TO,
-//                    new InternetAddress(user.email()));
-//            msg.setSubject(
-//                    messages.getString("subject")
-//            );
-//            msg.setText(msgBody);
-//            Transport.send(msg);
-
-            String subject = messages.getString("subject");
-            Email to = new Email(
-                    user.email()
-            );
-            Content content = new Content(
-                    "text/plain",
-                    msgBody
-            );
-            Mail mail = new Mail(from, subject, to, content);
-
             Request request = new Request();
             request.method = Method.POST;
             request.endpoint = "mail/send";
             request.body = mail.build();
             sendgrid.api(request);
-            return mail;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            /*
+            *  continue
+            *  SendGrid throws a non relevant error.
+            *  Update SendGrid version in maven when available
+            */
+
         }
+        return mail;
     }
 }
