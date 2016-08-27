@@ -19,7 +19,9 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     VertexOperator otherVertex(Vertex vertex);
 
-    void changeSourceVertex(Vertex vertex);
+    void changeSourceVertex(Vertex newSourceVertex);
+
+    void changeDestinationVertex(Vertex newDestinationVertex);
 
     EdgeOperator forkUsingSourceAndDestinationVertexAndCache(
             Vertex sourceVertex,

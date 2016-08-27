@@ -14,6 +14,7 @@ import java.util.Map;
 
 public interface Vertex extends GraphElement, PublicPrivateElement {
     Integer getNumberOfConnectedEdges();
+    Integer getNbPublicNeighbors();
     Map<URI, SuggestionPojo> getSuggestions();
     Map<URI, ?extends Vertex> getIncludedVertices();
     Map<URI, ?extends Edge> getIncludedEdges();

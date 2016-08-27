@@ -26,6 +26,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         this(
                 new GraphElementPojo(vertexOperator),
                 vertexOperator.getNumberOfConnectedEdges(),
+                vertexOperator.getNbPublicNeighbors(),
                 convertVertexSetToPojoMap(vertexOperator.getIncludedVertices()),
                 convertEdgeSetToPojoMap(vertexOperator.getIncludedEdges()),
                 convertSuggestionSetToPojo(vertexOperator.getSuggestions()),
@@ -100,6 +101,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     public VertexInSubGraphPojo(
             GraphElementPojo graphElement,
             Integer numberOfConnectedEdges,
+            Integer nbPublicNeighbors,
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
             Map<URI, SuggestionPojo> suggestions,
@@ -108,6 +110,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         this.vertex = new VertexPojo(
                 graphElement,
                 numberOfConnectedEdges,
+                nbPublicNeighbors,
                 includedVertices,
                 includedEdges,
                 suggestions,
@@ -118,6 +121,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     @Override
     public Integer getNumberOfConnectedEdges() {
         return vertex.getNumberOfConnectedEdges();
+    }
+
+    @Override
+    public Integer getNbPublicNeighbors() {
+        return vertex.getNbPublicNeighbors();
     }
 
     @Override
