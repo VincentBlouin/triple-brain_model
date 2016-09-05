@@ -12,7 +12,7 @@ public class ForgotPasswordResourceBundle_fr extends ListResourceBundle {
         return contents;
     }
     static final Object[][] contents = {
-            {"subject", "bubl.guru modifier son mot de passe"},
+            {"subject", "mindrespect.com modifier son mot de passe"},
             {"body", "Suivez ce lien pour mettre à jour votre mot de passe"}
     };
 }

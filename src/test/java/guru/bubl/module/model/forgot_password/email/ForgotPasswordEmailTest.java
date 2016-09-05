@@ -49,7 +49,7 @@ public class ForgotPasswordEmailTest {
         );
         assertThat(
                 msg.from.getEmail(),
-                is("no-reply@bubl.guru")
+                is("no-reply@mindrespect.com")
         );
     }
 
