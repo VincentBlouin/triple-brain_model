@@ -25,11 +25,9 @@ public interface WholeGraphAdmin {
     default void reAddIdentifications(){
         for(GraphElementOperator operator :getWholeGraph().getAllGraphElements()){
             try {
-                operator.getGenericIdentifications().values().forEach(operator::addGenericIdentification);
-                operator.getAdditionalTypes().values().forEach(operator::addType);
-                operator.getSameAs().values().forEach(operator::addSameAs);
+                operator.getIdentifications().values().forEach(operator::addMeta);
             }catch(IllegalArgumentException e){
-                //adding self identification causes this exception. No need to add readd it, so its ok continue the loop.
+                //adding self identification causes this exception. No need to add read it, so its ok continue the loop.
             }
         }
     }

@@ -123,21 +123,6 @@ public class SchemaPojo implements Schema {
     }
 
     @Override
-    public Map<URI, IdentificationPojo> getGenericIdentifications() {
-        return graphElement.getGenericIdentifications();
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getSameAs() {
-        return graphElement.getSameAs();
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getAdditionalTypes() {
-        return graphElement.getAdditionalTypes();
-    }
-
-    @Override
     public Map<URI, IdentificationPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }

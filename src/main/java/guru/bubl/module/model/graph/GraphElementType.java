@@ -9,7 +9,8 @@ public enum GraphElementType {
     vertex,
     edge,
     schema,
-    property;
+    property,
+    meta;
 
     public static String[] names() {
         GraphElementType[] types = values();

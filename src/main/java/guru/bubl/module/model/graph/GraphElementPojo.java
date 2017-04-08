@@ -7,8 +7,6 @@ package guru.bubl.module.model.graph;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.identification.Identification;
 import guru.bubl.module.model.graph.identification.IdentificationPojo;
-import guru.bubl.module.model.graph.identification.IdentificationType;
-import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.util.Date;
@@ -54,27 +52,6 @@ public class GraphElementPojo implements GraphElement {
     @Override
     public boolean hasLabel() {
         return friendlyResource.hasLabel();
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getGenericIdentifications() {
-        return getIdentificationsOfType(
-                IdentificationType.generic
-        );
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getSameAs() {
-        return getIdentificationsOfType(
-                IdentificationType.same_as
-        );
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getAdditionalTypes() {
-        return getIdentificationsOfType(
-                IdentificationType.type
-        );
     }
 
     @Override
@@ -144,19 +121,6 @@ public class GraphElementPojo implements GraphElement {
     @Deprecated
     public FriendlyResourcePojo getFriendlyResource() {
         return friendlyResource;
-    }
-
-    private Map<URI, IdentificationPojo> getIdentificationsOfType(IdentificationType identificationType) {
-        Map<URI, IdentificationPojo> identificationsOfType = new HashMap<>();
-        for (IdentificationPojo identification : getIdentifications().values()) {
-            if (identification.getType().equals(identificationType)) {
-                identificationsOfType.put(
-                        identification.getExternalResourceUri(),
-                        identification
-                );
-            }
-        }
-        return identificationsOfType;
     }
 
     private static Map<URI, IdentificationPojo> convertIdentificationsToPojo(Map<URI, ? extends Identification> identifications) {

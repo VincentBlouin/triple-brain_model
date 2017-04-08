@@ -14,8 +14,6 @@ import java.util.Map;
 public interface GraphElementOperator extends GraphElement, FriendlyResourceOperator {
     void remove();
     void removeIdentification(Identification type);
-    Map<URI, IdentificationPojo> addType(Identification type);
-    Map<URI, IdentificationPojo> addSameAs(Identification friendlyResource);
-    Map<URI, IdentificationPojo> addGenericIdentification(Identification friendlyResource);
+    Map<URI, IdentificationPojo> addMeta(Identification friendlyResource);
     void setSortDate(Date sortDate, Date moveDate);
 }

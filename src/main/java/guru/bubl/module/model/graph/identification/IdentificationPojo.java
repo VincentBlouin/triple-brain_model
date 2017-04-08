@@ -14,9 +14,9 @@ import java.util.Set;
 
 public class IdentificationPojo implements Identification {
 
+    URI relationExternalResourceUri = DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI;
     URI externalResourceUri;
     FriendlyResourcePojo friendlyResource;
-    IdentificationType identificationType;
     Integer nbReferences = 0;
 
     public IdentificationPojo(
@@ -68,6 +68,15 @@ public class IdentificationPojo implements Identification {
             FriendlyResourcePojo friendlyResourcePojo
     ) {
         this.friendlyResource = friendlyResourcePojo;
+    }
+
+    @Override
+    public URI getRelationExternalResourceUri() {
+        return relationExternalResourceUri;
+    }
+
+    public void setRelationExternalResourceUri(URI relationExternalResourceUri) {
+        this.relationExternalResourceUri = relationExternalResourceUri;
     }
 
     @Override
@@ -164,14 +173,6 @@ public class IdentificationPojo implements Identification {
 
     public void setCreationDate(Long date) {
         friendlyResource.setCreationDate(date);
-    }
-
-    public IdentificationType getType() {
-        return identificationType;
-    }
-
-    public void setType(IdentificationType identificationType) {
-        this.identificationType = identificationType;
     }
 
     public void setLabel(String label){

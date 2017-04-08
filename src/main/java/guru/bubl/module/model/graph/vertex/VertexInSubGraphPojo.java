@@ -154,21 +154,6 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public Map<URI, IdentificationPojo> getGenericIdentifications() {
-        return vertex.getGenericIdentifications();
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getSameAs() {
-        return vertex.getSameAs();
-    }
-
-    @Override
-    public Map<URI, IdentificationPojo> getAdditionalTypes() {
-        return vertex.getAdditionalTypes();
-    }
-
-    @Override
     public Map<URI, IdentificationPojo> getIdentifications() {
         return vertex.getIdentifications();
     }

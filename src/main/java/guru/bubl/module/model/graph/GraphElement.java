@@ -13,9 +13,6 @@ import java.util.Date;
 import java.util.Map;
 
 public interface GraphElement extends FriendlyResource{
-    Map<URI, IdentificationPojo> getGenericIdentifications();
-    Map<URI, IdentificationPojo> getSameAs();
-    Map<URI, IdentificationPojo> getAdditionalTypes();
     Map<URI, IdentificationPojo> getIdentifications();
 
     default Identification getIdentificationHavingInternalUri(URI uri){
