@@ -11,7 +11,7 @@ import guru.bubl.module.model.graph.edge.EdgePojo;
 public class EdgeSearchResult implements GraphElementSearchResult {
 
     private EdgePojo edge;
-    private GraphElementType type = GraphElementType.edge;
+    private final GraphElementType type = GraphElementType.edge;
     private Integer nbReferences = 0;
 
     public EdgeSearchResult(
@@ -34,8 +34,8 @@ public class EdgeSearchResult implements GraphElementSearchResult {
     }
 
     @Override
-    public String getType() {
-        return type.name();
+    public GraphElementType getType() {
+        return type;
     }
 
     public EdgePojo getEdge(){

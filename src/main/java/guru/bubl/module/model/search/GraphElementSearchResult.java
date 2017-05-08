@@ -10,7 +10,5 @@ import guru.bubl.module.model.graph.GraphElementType;
 public interface GraphElementSearchResult {
     GraphElementSearchResultPojo getGraphElementSearchResult();
     GraphElementPojo getGraphElement();
-    String getType();
-    void setNbReferences(Integer nbReferences);
-    Integer getNbReferences();
+    GraphElementType getType();
 }

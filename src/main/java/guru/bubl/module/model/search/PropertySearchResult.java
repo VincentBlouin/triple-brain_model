@@ -12,7 +12,7 @@ public class PropertySearchResult implements GraphElementSearchResult {
 
     private GraphElementPojo graphElement;
     private SchemaPojo schema;
-    private GraphElementType type = GraphElementType.property;
+    private final GraphElementType type = GraphElementType.property;
     private Integer nbReferences = 0;
 
     public static PropertySearchResult forPropertyAndSchema(
@@ -47,8 +47,8 @@ public class PropertySearchResult implements GraphElementSearchResult {
     }
 
     @Override
-    public String getType() {
-        return type.name();
+    public GraphElementType getType() {
+        return type;
     }
 
     public SchemaPojo getSchema(){

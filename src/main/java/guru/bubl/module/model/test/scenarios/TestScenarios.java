@@ -9,7 +9,7 @@ import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.graph.GraphFactory;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.suggestion.Suggestion;
@@ -82,8 +82,8 @@ public class TestScenarios {
         );
     }
 
-    public static IdentificationPojo identificationFromFriendlyResource(FriendlyResourceOperator resource) {
-        return new IdentificationPojo(
+    public static IdentifierPojo identificationFromFriendlyResource(FriendlyResourceOperator resource) {
+        return new IdentifierPojo(
                 resource.uri(),
                 new FriendlyResourcePojo(resource)
         );

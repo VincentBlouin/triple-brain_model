@@ -12,16 +12,16 @@ import java.net.URI;
 import java.util.Date;
 import java.util.Set;
 
-public class IdentificationPojo implements Identification {
+public class IdentifierPojo implements Identifier {
 
     URI relationExternalResourceUri = DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI;
     URI externalResourceUri;
     FriendlyResourcePojo friendlyResource;
     Integer nbReferences = 0;
 
-    public IdentificationPojo(
+    public IdentifierPojo(
             URI externalResourceUri,
-            Identification identification
+            Identifier identification
     ) {
         friendlyResource = new FriendlyResourcePojo(externalResourceUri);
         this.externalResourceUri = identification.getExternalResourceUri();
@@ -39,7 +39,7 @@ public class IdentificationPojo implements Identification {
         friendlyResource.setLastModificationDate(new Date().getTime());
     }
 
-    public IdentificationPojo(
+    public IdentifierPojo(
             URI externalResourceUri,
             Integer nbReferences,
             FriendlyResourcePojo friendlyResourcePojo
@@ -49,7 +49,7 @@ public class IdentificationPojo implements Identification {
         this.friendlyResource = friendlyResourcePojo;
     }
 
-    public IdentificationPojo(
+    public IdentifierPojo(
             URI externalResourceUri,
             FriendlyResourcePojo friendlyResourcePojo
     ) {
@@ -57,14 +57,14 @@ public class IdentificationPojo implements Identification {
         this.friendlyResource = friendlyResourcePojo;
     }
 
-    public IdentificationPojo(
+    public IdentifierPojo(
             URI externalResourceUri
-    ){
+    ) {
         this.externalResourceUri = externalResourceUri;
         this.friendlyResource = new FriendlyResourcePojo("");
     }
 
-    public IdentificationPojo(
+    public IdentifierPojo(
             FriendlyResourcePojo friendlyResourcePojo
     ) {
         this.friendlyResource = friendlyResourcePojo;
@@ -87,6 +87,11 @@ public class IdentificationPojo implements Identification {
     @Override
     public Integer getNbReferences() {
         return nbReferences;
+    }
+
+    public IdentifierPojo setNbRefences(Integer nbReferences) {
+        this.nbReferences = nbReferences;
+        return this;
     }
 
     public void setExternalResourceUri(URI externalResourceUri) {
@@ -171,11 +176,15 @@ public class IdentificationPojo implements Identification {
         );
     }
 
+    public FriendlyResourcePojo getFriendlyResource() {
+        return friendlyResource;
+    }
+
     public void setCreationDate(Long date) {
         friendlyResource.setCreationDate(date);
     }
 
-    public void setLabel(String label){
+    public void setLabel(String label) {
         friendlyResource.setLabel(label);
     }
 

@@ -16,6 +16,7 @@ public class VertexSearchResult implements GraphElementSearchResult{
     private Map<URI, GraphElementPojo> properties;
     private GraphElementType type;
     private Integer nbReferences = 0;
+    private Integer nbVisits = 0;
 
     public VertexSearchResult(
             GraphElementPojo graphElement,
@@ -52,8 +53,8 @@ public class VertexSearchResult implements GraphElementSearchResult{
     }
 
     @Override
-    public String getType() {
-        return type.name();
+    public GraphElementType getType() {
+        return type;
     }
 
     public Map<URI, GraphElementPojo> getProperties(){
@@ -69,6 +70,14 @@ public class VertexSearchResult implements GraphElementSearchResult{
 
     public void setNbReferences(Integer nbReferences){
         this.nbReferences = nbReferences;
+    }
+
+    public void setNbVisits(Integer nbVisits){
+        this.nbVisits = nbVisits;
+    }
+
+    public Integer getNbVisits(){
+        return this.nbVisits;
     }
 
     public Integer getNbReferences(){

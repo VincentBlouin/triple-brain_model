@@ -6,7 +6,7 @@ package guru.bubl.module.model.graph.schema;
 
 import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.Image;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -123,7 +123,7 @@ public class SchemaPojo implements Schema {
     }
 
     @Override
-    public Map<URI, IdentificationPojo> getIdentifications() {
+    public Map<URI, IdentifierPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 

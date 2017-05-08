@@ -4,8 +4,8 @@
 
 package guru.bubl.module.model.graph;
 
-import guru.bubl.module.model.graph.identification.Identification;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.Identifier;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public interface GraphElementOperator extends GraphElement, FriendlyResourceOperator {
     void remove();
-    void removeIdentification(Identification type);
-    Map<URI, IdentificationPojo> addMeta(Identification friendlyResource);
+    void removeIdentification(Identifier type);
+    Map<URI, IdentifierPojo> addMeta(Identifier friendlyResource);
     void setSortDate(Date sortDate, Date moveDate);
 }

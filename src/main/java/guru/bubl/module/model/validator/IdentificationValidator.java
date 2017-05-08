@@ -5,7 +5,7 @@
 package guru.bubl.module.model.validator;
 
 import org.apache.commons.lang.StringUtils;
-import guru.bubl.module.model.graph.identification.Identification;
+import guru.bubl.module.model.graph.identification.Identifier;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +17,7 @@ public class IdentificationValidator {
         EMPTY_EXTERNAL_URI
     }
 
-    public Set<IdentificationError> validate(Identification identification){
+    public Set<IdentificationError> validate(Identifier identification){
         Set<IdentificationError> errors = new HashSet<>();
         if(null == identification.getExternalResourceUri()){
             errors.add(

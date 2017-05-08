@@ -4,14 +4,14 @@
 
 package guru.bubl.module.model;
 
-import guru.bubl.module.model.graph.identification.Identification;
+import guru.bubl.module.model.graph.identification.Identifier;
 import guru.bubl.module.model.search.GraphElementSearchResult;
 
 import java.util.Set;
 
 public interface IdentifiedTo {
     Set<GraphElementSearchResult> getForIdentificationAndUser(
-            Identification identification,
+            Identifier identification,
             User user
     );
 }

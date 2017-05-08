@@ -8,8 +8,8 @@ import com.google.gson.Gson;
 import guru.bubl.module.model.validator.IdentificationValidator;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
-import guru.bubl.module.model.graph.identification.Identification;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.Identifier;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 
 import java.util.Set;
 
@@ -65,9 +65,9 @@ public class IdentificationValidatorTest {
                         "/service/users/vince/graph/edge/c30bbev5-0c1f-4b08-b600-fb6040abb7eq/identification"
                 );
         IdentificationValidator validator = new IdentificationValidator();
-        Identification identification = gson.fromJson(
+        Identifier identification = gson.fromJson(
                 json.toString(),
-                IdentificationPojo.class
+                IdentifierPojo.class
         );
         assertTrue(
                 validator.validate(
@@ -87,10 +87,10 @@ public class IdentificationValidatorTest {
         return errors.contains(message);
     }
 
-    private Identification identificationFromJson(JSONObject jsonObject){
+    private Identifier identificationFromJson(JSONObject jsonObject){
         return gson.fromJson(
                 jsonObject.toString(),
-                IdentificationPojo.class
+                IdentifierPojo.class
         );
     }
 }

@@ -48,7 +48,7 @@ public class UserUris {
         );
     }
 
-    public static Boolean isUriOfAnIdentification(URI uri){
+    public static Boolean isUriOfAnIdentifier(URI uri){
         return uri.toString().contains("/graph/identification");
     }
 

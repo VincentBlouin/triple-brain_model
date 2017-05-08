@@ -5,8 +5,8 @@
 package guru.bubl.module.model.graph;
 
 import guru.bubl.module.model.Image;
-import guru.bubl.module.model.graph.identification.Identification;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.Identifier;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
-    private Map<URI, IdentificationPojo> identifications;
+    private Map<URI, IdentifierPojo> identifications;
     private Long sortDate;
     private Long moveDate;
 
@@ -37,7 +37,7 @@ public class GraphElementPojo implements GraphElement {
 
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI, IdentificationPojo> identifications
+            Map<URI, IdentifierPojo> identifications
     ) {
         this.friendlyResource = friendlyResource;
         this.identifications = identifications;
@@ -55,7 +55,7 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public Map<URI, IdentificationPojo> getIdentifications() {
+    public Map<URI, IdentifierPojo> getIdentifications() {
         return identifications;
     }
 
@@ -123,12 +123,12 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource;
     }
 
-    private static Map<URI, IdentificationPojo> convertIdentificationsToPojo(Map<URI, ? extends Identification> identifications) {
-        Map<URI, IdentificationPojo> identificationsPojo = new HashMap<>();
-        for (Identification identification : identifications.values()) {
+    private static Map<URI, IdentifierPojo> convertIdentificationsToPojo(Map<URI, ? extends Identifier> identifications) {
+        Map<URI, IdentifierPojo> identificationsPojo = new HashMap<>();
+        for (Identifier identification : identifications.values()) {
             identificationsPojo.put(
                     identification.getExternalResourceUri(),
-                    (IdentificationPojo) identification
+                    (IdentifierPojo) identification
             );
         }
         return identificationsPojo;

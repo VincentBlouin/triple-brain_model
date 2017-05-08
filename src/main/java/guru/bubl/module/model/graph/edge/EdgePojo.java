@@ -6,11 +6,10 @@ package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
-import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.util.Date;
@@ -99,7 +98,7 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public Map<URI, IdentificationPojo> getIdentifications() {
+    public Map<URI, IdentifierPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 

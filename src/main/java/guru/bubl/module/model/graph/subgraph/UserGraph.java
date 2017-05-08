@@ -19,7 +19,7 @@ public interface UserGraph {
     VertexOperator defaultVertex();
     User user();
     Boolean haveElementWithId(URI id);
-    SubGraphPojo graphWithDepthAndCenterVertexId(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
+    SubGraphPojo graphWithDepthAndCenterBubbleUri(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
     SubGraphPojo graphWithAnyVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     VertexOperator vertexWithUri(URI uri);
     EdgeOperator edgeWithUri(URI uri);

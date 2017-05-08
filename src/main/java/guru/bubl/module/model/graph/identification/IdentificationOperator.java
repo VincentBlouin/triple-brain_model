@@ -6,6 +6,6 @@ package guru.bubl.module.model.graph.identification;
 
 import guru.bubl.module.model.graph.FriendlyResourceOperator;
 
-public interface IdentificationOperator extends Identification, FriendlyResourceOperator {
+public interface IdentificationOperator extends Identifier, FriendlyResourceOperator {
     void setNbReferences(Integer nb);
 }

@@ -5,7 +5,7 @@
 package guru.bubl.module.model.json;
 
 import com.google.gson.reflect.TypeToken;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -14,28 +14,28 @@ import java.util.Map;
 
 public class IdentificationJson {
 
-    public static String toJson(Map<URI, IdentificationPojo> identifications) {
+    public static String toJson(Map<URI, IdentifierPojo> identifications) {
         return JsonUtils.getGson().toJson(
                 identifications
         );
     }
 
-    public static Map<URI, IdentificationPojo> fromJson(String json) {
+    public static Map<URI, IdentifierPojo> fromJson(String json) {
         return JsonUtils.getGson().fromJson(
                 json,
-                new TypeToken<Map<URI, IdentificationPojo>>() {
+                new TypeToken<Map<URI, IdentifierPojo>>() {
                 }.getType()
         );
     }
 
-    public static IdentificationPojo singleFromJson(String json) {
+    public static IdentifierPojo singleFromJson(String json) {
         return JsonUtils.getGson().fromJson(
                 json,
-                IdentificationPojo.class
+                IdentifierPojo.class
         );
     }
 
-    public static JSONObject singleToJson(IdentificationPojo identification) {
+    public static JSONObject singleToJson(IdentifierPojo identification) {
         try {
             return new JSONObject(JsonUtils.getGson().toJson(
                     identification

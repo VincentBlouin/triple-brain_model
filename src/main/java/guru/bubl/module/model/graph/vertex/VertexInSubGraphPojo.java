@@ -6,13 +6,12 @@ package guru.bubl.module.model.graph.vertex;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.identification.IdentificationPojo;
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.suggestion.Suggestion;
 import guru.bubl.module.model.suggestion.SuggestionPojo;
-import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.util.*;
@@ -154,7 +153,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public Map<URI, IdentificationPojo> getIdentifications() {
+    public Map<URI, IdentifierPojo> getIdentifications() {
         return vertex.getIdentifications();
     }
 
