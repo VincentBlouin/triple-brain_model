@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph.identification;
 
 
+import guru.bubl.module.model.FriendlyResource;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 
@@ -18,6 +19,14 @@ public class IdentifierPojo implements Identifier {
     URI externalResourceUri;
     FriendlyResourcePojo friendlyResource;
     Integer nbReferences = 0;
+
+    public IdentifierPojo(
+            Integer nbReferences,
+            FriendlyResourcePojo meta
+    ) {
+        this.nbReferences = nbReferences;
+        this.friendlyResource = meta;
+    }
 
     public IdentifierPojo(
             URI externalResourceUri,

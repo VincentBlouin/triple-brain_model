@@ -5,7 +5,6 @@
 package guru.bubl.module.model.json;
 
 import guru.bubl.module.model.User;
-import guru.bubl.module.model.json.graph.SubGraphJson;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 

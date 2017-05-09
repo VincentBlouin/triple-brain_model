@@ -2,8 +2,9 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model;
+package guru.bubl.module.model.meta;
 
+import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.identification.Identifier;
 import guru.bubl.module.model.search.GraphElementSearchResult;
 

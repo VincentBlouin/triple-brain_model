@@ -2,38 +2,31 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.json.graph;
+package guru.bubl.module.model.graph.edge;
 
-import guru.bubl.module.model.graph.subgraph.SubGraphPojo;
+import com.google.gson.Gson;
 import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import guru.bubl.module.model.graph.edge.EdgePojo;
 
-public class SubGraphJson {
+public class EdgeJson{
 
-
-    public static JSONObject toJson(SubGraphPojo graph) {
+    public static JSONObject toJson(EdgePojo edge) {
         try {
             return new JSONObject(
                     JsonUtils.getGson().toJson(
-                            graph
+                            edge
                     )
             );
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
-
-    public static SubGraphPojo fromJson(JSONObject jsonObject) {
-        return fromJson(
-                jsonObject.toString()
-        );
-    }
-
-    public static SubGraphPojo fromJson(String jsonObject) {
+    public static EdgePojo fromJson(JSONObject json){
         return JsonUtils.getGson().fromJson(
-                jsonObject,
-                SubGraphPojo.class
+                json.toString(),
+                EdgePojo.class
         );
     }
 }

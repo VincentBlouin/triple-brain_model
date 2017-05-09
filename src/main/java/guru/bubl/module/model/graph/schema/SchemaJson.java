@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.json.graph;
+package guru.bubl.module.model.graph.schema;
 
 import com.google.gson.reflect.TypeToken;
 import guru.bubl.module.model.graph.schema.Schema;
