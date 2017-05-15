@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
+import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.schema.SchemaOperator;
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.edge.EdgeOperator;

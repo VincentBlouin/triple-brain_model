@@ -24,4 +24,5 @@ public interface SubGraph {
     Boolean hasEdgeWithUri(URI uri);
     Map<URI, ? extends VertexInSubGraph> vertices();
     Map<URI, ? extends Edge> edges();
+    IdentifierPojo getCenterMeta();
 }

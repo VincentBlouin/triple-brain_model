@@ -86,6 +86,11 @@ public class SubGraphPojo implements SubGraph {
         return edges;
     }
 
+    @Override
+    public IdentifierPojo getCenterMeta() {
+        return null;
+    }
+
     public void addEdge(EdgePojo edge) {
         edges.put(
                 edge.uri(),
