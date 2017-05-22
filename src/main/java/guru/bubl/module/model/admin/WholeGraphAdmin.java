@@ -34,5 +34,7 @@ public interface WholeGraphAdmin {
 
     void refreshNumberOfReferencesToAllIdentifications();
 
+    void removeMetasHavingZeroReferences();
+
     WholeGraph getWholeGraph();
 }
