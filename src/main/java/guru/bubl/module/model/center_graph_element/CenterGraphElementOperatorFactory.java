@@ -4,8 +4,8 @@
 
 package guru.bubl.module.model.center_graph_element;
 
-import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.FriendlyResource;
 
 public interface CenterGraphElementOperatorFactory {
-    CenterGraphElementOperator usingGraphElement(GraphElement element);
+    CenterGraphElementOperator usingFriendlyResource(FriendlyResource friendlyResource);
 }

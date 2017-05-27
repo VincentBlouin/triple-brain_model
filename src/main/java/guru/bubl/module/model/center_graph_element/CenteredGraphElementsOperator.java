@@ -8,5 +8,5 @@ import java.util.Set;
 
 public interface CenteredGraphElementsOperator{
     Set<CenterGraphElementPojo> getPublicAndPrivate();
-    Set<CenterGraphElementPojo> getPublicOnly();
+    Set<CenterGraphElementPojo> getPublicOnlyOfType();
 }
