@@ -21,6 +21,7 @@ public interface UserGraph {
     User user();
     Boolean haveElementWithId(URI id);
     SubGraphPojo graphWithDepthAndCenterBubbleUri(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
+    SubGraphPojo graphWithDepthResultsLimitAndCenterBubbleUri(Integer depthOfSubVertices, Integer resultsLimit, URI centerBubbleUri) throws NonExistingResourceException;
     SubGraphPojo graphWithAnyVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     VertexOperator vertexWithUri(URI uri);
     EdgeOperator edgeWithUri(URI uri);

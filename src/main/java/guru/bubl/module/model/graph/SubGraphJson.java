@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph;
 
+import guru.bubl.module.model.graph.subgraph.SubGraph;
 import guru.bubl.module.model.graph.subgraph.SubGraphPojo;
 import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONException;
@@ -15,13 +16,17 @@ public class SubGraphJson {
     public static JSONObject toJson(SubGraphPojo graph) {
         try {
             return new JSONObject(
-                    JsonUtils.getGson().toJson(
-                            graph
-                    )
+                    SubGraphJson.toJsonString(graph)
             );
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String toJsonString(SubGraphPojo graph) {
+        return JsonUtils.getGson().toJson(
+                graph
+        );
     }
 
     public static SubGraphPojo fromJson(JSONObject jsonObject) {

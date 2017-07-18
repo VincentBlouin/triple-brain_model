@@ -22,7 +22,7 @@ public class SchemaPojo implements Schema {
     @Deprecated
     public SchemaPojo(SchemaOperator schemaOperator) {
         this.graphElement = new GraphElementPojo(schemaOperator);
-        Map<URI, GraphElementPojo> properties = new HashMap<>();
+        properties = new HashMap<>();
         for(GraphElement property : schemaOperator.getProperties().values()){
             properties.put(
                     property.uri(),

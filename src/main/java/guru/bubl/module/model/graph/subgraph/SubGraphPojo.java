@@ -10,6 +10,7 @@ import guru.bubl.module.model.graph.identification.Identifier;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
+import guru.bubl.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -104,4 +105,22 @@ public class SubGraphPojo implements SubGraph {
                 vertex
         );
     }
+
+    public Boolean isEmpty(){
+        return this.vertices().isEmpty();
+    }
+
+    public Map<URI, VertexInSubGraphPojo> getPublicVertices(){
+        Map<URI, VertexInSubGraphPojo> publicVertices = new HashMap<>();
+        for(VertexInSubGraphPojo vertex : vertices().values()){
+            if(vertex.isPublic()){
+                publicVertices.put(
+                        vertex.uri(),
+                        vertex
+                );
+            }
+        }
+        return publicVertices;
+    }
+
 }

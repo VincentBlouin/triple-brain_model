@@ -37,4 +37,6 @@ public interface WholeGraphAdmin {
     void removeMetasHavingZeroReferences();
 
     WholeGraph getWholeGraph();
+
+    void reindexAll();
 }

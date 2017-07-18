@@ -4,6 +4,11 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
+import guru.bubl.module.model.graph.vertex.VertexOperator;
+
+import java.net.URI;
+import java.util.Map;
+
 public interface SubGraphForker {
-    void fork(SubGraph subGraph);
+    Map<URI, VertexOperator> fork(SubGraph subGraph);
 }

@@ -15,11 +15,11 @@ public interface GraphSearch {
             User user
     );
 
-    List<VertexSearchResult> searchOnlyForOwnVerticesOrSchemasForAutoCompletionByLabel(
+    List<GraphElementSearchResult> searchOnlyForOwnVerticesOrSchemasForAutoCompletionByLabel(
             String label, User user
     );
 
-    List<VertexSearchResult> searchOnlyForOwnVerticesForAutoCompletionByLabel(
+    List<GraphElementSearchResult> searchOnlyForOwnVerticesForAutoCompletionByLabel(
             String searchTerm, User user
     );
     List<GraphElementSearchResult> searchRelationsPropertiesSchemasForAutoCompletionByLabel(
@@ -28,7 +28,7 @@ public interface GraphSearch {
     );
     GraphElementSearchResult getDetails(URI uri, User user);
 
-    List<VertexSearchResult> searchPublicVerticesOnly(
+    List<GraphElementSearchResult> searchPublicVerticesOnly(
             String searchTerm
     );
 

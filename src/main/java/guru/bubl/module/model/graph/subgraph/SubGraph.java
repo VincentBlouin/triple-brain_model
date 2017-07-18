@@ -25,4 +25,5 @@ public interface SubGraph {
     Map<URI, ? extends VertexInSubGraph> vertices();
     Map<URI, ? extends Edge> edges();
     IdentifierPojo getCenterMeta();
+    Boolean isEmpty();
 }

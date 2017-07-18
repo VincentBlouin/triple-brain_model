@@ -25,6 +25,7 @@ public class SchemaJson {
             throw new RuntimeException(e);
         }
     }
+
     public static SchemaPojo fromJson(String json){
         return JsonUtils.getGson().fromJson(
                 json,
