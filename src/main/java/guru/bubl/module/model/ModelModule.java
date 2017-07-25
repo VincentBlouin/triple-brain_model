@@ -5,23 +5,16 @@
 package guru.bubl.module.model;
 
 import com.google.inject.AbstractModule;
-import com.sendgrid.Mail;
 import com.sendgrid.SendGrid;
-import com.sun.mail.iap.Response;
 import guru.bubl.module.common_utils.NoExRun;
-import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmailImpl;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmail;
+import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmailImpl;
 
 import javax.inject.Singleton;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
 public class ModelModule extends AbstractModule {
 
     private Boolean isTesting;
