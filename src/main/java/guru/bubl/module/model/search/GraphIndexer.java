@@ -11,6 +11,7 @@ import guru.bubl.module.model.graph.schema.SchemaPojo;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
 public interface GraphIndexer {
+        Integer CONTEXT_LIMIT = 5;
     void indexVertex(VertexOperator vertex);
     void indexRelation(Edge edge);
     void indexSchema(SchemaPojo schema);
