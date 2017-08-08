@@ -9,4 +9,5 @@ import java.util.Set;
 public interface CenteredGraphElementsOperator{
     Set<CenterGraphElementPojo> getPublicAndPrivate();
     Set<CenterGraphElementPojo> getPublicOnlyOfType();
+    void removeCenterGraphElements(Set<CenterGraphElementPojo> centers);
 }

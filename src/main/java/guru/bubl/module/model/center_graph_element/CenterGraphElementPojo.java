@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.Map;
 
-public class CenterGraphElementPojo implements CenterGraphElement{
+public class CenterGraphElementPojo implements CenterGraphElement {
     private Integer numberOfVisits;
     private GraphElementPojo graphElement;
     private Date lastCenterDate;
@@ -22,11 +22,19 @@ public class CenterGraphElementPojo implements CenterGraphElement{
             Date lastCenterDate,
             GraphElementPojo graphElement,
             Map<URI, String> context
-    ){
+    ) {
         this.numberOfVisits = numberOfVisits;
         this.graphElement = graphElement;
         this.lastCenterDate = lastCenterDate;
         this.context = context;
+    }
+
+    public CenterGraphElementPojo(
+            URI uri
+    ){
+        this.graphElement = new GraphElementPojo(
+                uri
+        );
     }
 
     @Override
@@ -48,4 +56,5 @@ public class CenterGraphElementPojo implements CenterGraphElement{
     public Map<URI, String> getContext() {
         return context;
     }
+
 }
