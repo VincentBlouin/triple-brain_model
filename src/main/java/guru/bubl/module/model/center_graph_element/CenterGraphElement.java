@@ -15,4 +15,5 @@ public interface CenterGraphElement {
     GraphElement getGraphElement();
     Date getLastCenterDate();
     Map<URI, String> getContext();
+    Integer getNbReferences();
 }
