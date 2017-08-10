@@ -198,11 +198,6 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public String getOwnerUsername() {
-        return vertex.getOwnerUsername();
-    }
-
-    @Override
     public boolean equals(Object vertexToCompareAsObject) {
         return vertex.equals(vertexToCompareAsObject);
     }

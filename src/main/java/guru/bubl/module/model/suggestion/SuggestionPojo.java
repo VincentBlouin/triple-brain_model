@@ -160,8 +160,4 @@ public class SuggestionPojo implements Suggestion {
         return friendlyResource.lastModificationDate();
     }
 
-    @Override
-    public String getOwnerUsername() {
-        return friendlyResource.getOwnerUsername();
-    }
 }

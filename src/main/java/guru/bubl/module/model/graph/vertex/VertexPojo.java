@@ -154,11 +154,6 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public String getOwnerUsername() {
-        return graphElement.getOwnerUsername();
-    }
-
-    @Override
     public boolean equals(Object vertexToCompareAsObject) {
         return graphElement.equals(vertexToCompareAsObject);
     }

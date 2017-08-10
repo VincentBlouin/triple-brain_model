@@ -104,11 +104,6 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public String getOwnerUsername() {
-        return friendlyResource.getOwnerUsername();
-    }
-
-    @Override
     public boolean equals(Object graphElementToCompareAsObject) {
         return friendlyResource.equals(graphElementToCompareAsObject);
     }

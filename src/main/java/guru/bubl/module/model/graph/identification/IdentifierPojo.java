@@ -161,11 +161,6 @@ public class IdentifierPojo implements Identifier {
     }
 
     @Override
-    public String getOwnerUsername() {
-        return friendlyResource.getOwnerUsername();
-    }
-
-    @Override
     public boolean equals(Object toCompare) {
         return friendlyResource.equals(toCompare);
     }

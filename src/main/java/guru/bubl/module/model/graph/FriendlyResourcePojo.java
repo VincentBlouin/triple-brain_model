@@ -160,11 +160,6 @@ public class FriendlyResourcePojo implements FriendlyResource {
     }
 
     @Override
-    public String getOwnerUsername() {
-        return UserUris.ownerUserNameFromUri(uri);
-    }
-
-    @Override
     public boolean equals(Object friendlyResourceToCompareAsObject) {
         FriendlyResource friendlyResourceToCompare = (FriendlyResource) friendlyResourceToCompareAsObject;
         return uri().equals(friendlyResourceToCompare.uri());

@@ -18,6 +18,8 @@ public interface FriendlyResource {
     Boolean gotComments();
     Date creationDate();
     Date lastModificationDate();
-    String getOwnerUsername();
+    default String getOwnerUsername() {
+        return UserUris.ownerUserNameFromUri(uri());
+    }
 }
 

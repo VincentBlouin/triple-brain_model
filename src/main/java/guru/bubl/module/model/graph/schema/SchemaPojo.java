@@ -94,11 +94,6 @@ public class SchemaPojo implements Schema {
         return graphElement.lastModificationDate();
     }
 
-    @Override
-    public String getOwnerUsername() {
-        return graphElement.getOwnerUsername();
-    }
-
     public void setLabel(String label) {
         graphElement.setLabel(label);
     }

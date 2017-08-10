@@ -88,11 +88,6 @@ public class SuggestionOriginPojo implements SuggestionOrigin{
     }
 
     @Override
-    public String getOwnerUsername() {
-        return friendlyResource.getOwnerUsername();
-    }
-
-    @Override
     public Boolean isRelatedToFriendlyResource(FriendlyResource friendlyResource) {
         return origin.contains(
                 friendlyResource.uri().toString()

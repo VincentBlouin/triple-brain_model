@@ -148,11 +148,6 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public String getOwnerUsername() {
-        return graphElement.getOwnerUsername();
-    }
-
-    @Override
     public boolean equals(Object edgeToCompareAsObject) {
         return graphElement.equals(edgeToCompareAsObject);
     }
