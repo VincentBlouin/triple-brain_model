@@ -6,6 +6,8 @@ package guru.bubl.module.model.admin;
 
 import guru.bubl.module.model.WholeGraph;
 import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.edge.Edge;
+import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
 
 import java.util.Set;
@@ -15,10 +17,17 @@ public interface WholeGraphAdmin {
     default void refreshNumberOfConnectedEdges() {
         Set<VertexInSubGraphOperator> vertices = getWholeGraph().getAllVertices();
         for (VertexInSubGraphOperator vertex : vertices) {
+            Set<EdgeOperator> connectedEdges = vertex.connectedEdges();
             vertex.setNumberOfConnectedEdges(
-                    vertex.connectedEdges().size()
+                    connectedEdges.size()
             );
-
+            Integer nbPublic = 0;
+            for(Edge edge: connectedEdges){
+                if(edge.isPublic()){
+                    nbPublic++;
+                }
+            }
+            vertex.setNumberOfPublicConnectedEdges(nbPublic);
         }
     }
 
