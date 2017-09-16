@@ -10,6 +10,11 @@ import java.net.URI;
 import java.util.List;
 
 public interface GraphSearch {
+    List<GraphElementSearchResult> searchForAllOwnResources(
+            String searchTerm,
+            User user
+    );
+
     List<GraphElementSearchResult> searchForAnyResourceThatCanBeUsedAsAnIdentifier(
             String searchTerm,
             User user
