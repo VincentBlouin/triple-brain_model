@@ -32,8 +32,9 @@ public class TestScenarios {
 
     public VerticesCalledABAndC makeGraphHave3VerticesABCWhereAIsDefaultCenterVertexAndAPointsToBAndBPointsToC(UserGraph userGraph) {
         graphComponentTest.removeWholeGraph();
-        graphFactory.createForUser(userGraph.user());
-        VertexOperator vertexA = userGraph.defaultVertex();
+        VertexOperator vertexA = vertexFactory.withUri(
+                userGraph.createVertex().uri()
+        );
         vertexA.label("vertex A");
         VertexOperator vertexB = vertexFactory.withUri(
                 vertexA.addVertexAndRelation().destinationVertex().uri()
@@ -71,15 +72,6 @@ public class TestScenarios {
         );
         pineApple.label("pine Apple");
         return pineApple;
-    }
-
-    public VertexOperator createAVertex(User user) {
-        UserGraph userGraph = graphFactory.createForUser(
-                user
-        );
-        return vertexFactory.createForOwnerUsername(
-                userGraph.user().username()
-        );
     }
 
     public static IdentifierPojo identificationFromFriendlyResource(FriendlyResourceOperator resource) {

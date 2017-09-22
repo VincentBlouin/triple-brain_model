@@ -5,8 +5,17 @@
 package guru.bubl.module.model;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.sendgrid.SendGrid;
 import guru.bubl.module.common_utils.NoExRun;
+import guru.bubl.module.model.content.AllContentFactory;
+import guru.bubl.module.model.content.CommonContent;
+import guru.bubl.module.model.content.CommonContentFactory;
+import guru.bubl.module.model.content.evaluation.EvaluationContentFactory;
+import guru.bubl.module.model.content.movie.MovieContentFactory;
+import guru.bubl.module.model.content.procedure.ProcedureContentFactory;
+import guru.bubl.module.model.content.project.ProjectContent;
+import guru.bubl.module.model.content.project.ProjectContentFactory;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmail;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmailImpl;
 
@@ -38,6 +47,19 @@ public class ModelModule extends AbstractModule {
 
     @Override
     protected void configure() {
+        FactoryModuleBuilder factoryModuleBuilder = new FactoryModuleBuilder();
+        install(factoryModuleBuilder
+                .build(ProjectContentFactory.class));
+        install(factoryModuleBuilder
+                .build(AllContentFactory.class));
+        install(factoryModuleBuilder
+                .build(CommonContentFactory.class));
+        install(factoryModuleBuilder
+                .build(EvaluationContentFactory.class));
+        install(factoryModuleBuilder
+                .build(MovieContentFactory.class));
+        install(factoryModuleBuilder
+                .build(ProcedureContentFactory.class));
         if (isTesting) {
             testBinding();
         } else {

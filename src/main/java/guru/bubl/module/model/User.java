@@ -121,6 +121,12 @@ public class User {
         return locales;
     }
 
+    public Locale getLocaleForBundle() {
+        return getPreferredLocales().toString().toLowerCase().contains(
+                Locale.FRENCH.toString().toLowerCase()
+        ) ? Locale.FRENCH : Locale.ENGLISH;
+    }
+
     public JSONArray getPreferredLocalesAsJsonArray() {
         try {
             return StringUtils.isEmpty(
@@ -143,6 +149,11 @@ public class User {
 
     public User setPreferredLocales(String preferredLocales) {
         this.preferredLocales = preferredLocales;
+        return this;
+    }
+
+    public User setPreferredLocales(List<Locale> preferredLocales) {
+        this.preferredLocales = preferredLocales.toString();
         return this;
     }
 }

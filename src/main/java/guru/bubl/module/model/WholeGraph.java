@@ -14,8 +14,11 @@ import java.util.Set;
 
 public interface WholeGraph {
     Set<VertexInSubGraphOperator> getAllVertices();
+    Set<VertexInSubGraphOperator> getAllVerticesOfUser(User user);
     Set<EdgeOperator> getAllEdges();
+    Set<EdgeOperator> getAllEdgesOfUser(User user);
     Set<SchemaOperator> getAllSchemas();
     Set<GraphElementOperator> getAllGraphElements();
-    Set<IdentificationOperator> getAllIdentifications();
+    Set<IdentificationOperator> getAllTags();
+    Set<IdentificationOperator> getAllTagsOfUser(User user);
 }

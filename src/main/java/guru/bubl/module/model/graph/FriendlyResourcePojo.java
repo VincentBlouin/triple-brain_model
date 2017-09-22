@@ -52,6 +52,14 @@ public class FriendlyResourcePojo implements FriendlyResource {
     }
 
     public FriendlyResourcePojo(
+            String label,
+            String comment
+    ) {
+        this.label = label;
+        this.comment = comment;
+    }
+
+    public FriendlyResourcePojo(
             URI uri,
             String label
     ) {

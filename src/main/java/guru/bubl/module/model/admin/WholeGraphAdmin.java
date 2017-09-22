@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.admin;
 
+import guru.bubl.module.model.User;
 import guru.bubl.module.model.WholeGraph;
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.edge.Edge;
@@ -48,4 +49,5 @@ public interface WholeGraphAdmin {
     WholeGraph getWholeGraph();
 
     void reindexAll();
+    void reindexAllForUser(User user);
 }

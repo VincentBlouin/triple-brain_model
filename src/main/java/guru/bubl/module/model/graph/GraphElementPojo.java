@@ -113,7 +113,6 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource.hashCode();
     }
 
-    @Deprecated
     public FriendlyResourcePojo getFriendlyResource() {
         return friendlyResource;
     }

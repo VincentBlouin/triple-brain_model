@@ -21,9 +21,7 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
     SendGrid sendgrid;
 
     public Mail send(User user, String resetUrl) {
-        Locale emailLocale = user.getPreferredLocales().contains(
-                Locale.FRENCH
-        ) ? Locale.FRENCH : Locale.ENGLISH;
+        Locale emailLocale = user.getLocaleForBundle();
         ResourceBundle messages = PropertyResourceBundle.getBundle(
                 "guru.bubl.module.model.forgot_password.email.ForgotPasswordResourceBundle",
                 emailLocale
