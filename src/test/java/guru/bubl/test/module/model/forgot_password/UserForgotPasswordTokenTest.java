@@ -2,8 +2,9 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.forgot_password;
+package guru.bubl.test.module.model.forgot_password;
 
+import guru.bubl.module.model.forgot_password.UserForgotPasswordToken;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.junit.Test;
