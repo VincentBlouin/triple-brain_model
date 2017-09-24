@@ -9,25 +9,18 @@ import com.google.inject.assistedinject.AssistedInject;
 import guru.bubl.module.model.FriendlyResource;
 import guru.bubl.module.model.center_graph_element.CenterGraphElementOperator;
 import guru.bubl.module.model.center_graph_element.CenterGraphElementOperatorFactory;
-import guru.bubl.module.model.center_graph_element.CenterGraphElementsOperatorFactory;
 import guru.bubl.module.model.content.CommonContent;
 import guru.bubl.module.model.content.CommonContentFactory;
 import guru.bubl.module.model.content.Content;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
-import guru.bubl.module.model.graph.edge.EdgeFactory;
-import guru.bubl.module.model.graph.edge.EdgeOperator;
-import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
-import guru.bubl.module.model.graph.vertex.VertexPojo;
 import guru.bubl.module.model.search.GraphIndexer;
 
 import javax.inject.Inject;
 import java.net.URI;
-import java.util.ListResourceBundle;
-import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 public class ProjectContent implements Content {
@@ -37,9 +30,6 @@ public class ProjectContent implements Content {
 
     @Inject
     CenterGraphElementOperatorFactory centerGraphElementOperatorFactory;
-
-    @Inject
-    GraphIndexer graphIndexer;
 
     private CommonContent commonContent;
 
@@ -55,7 +45,7 @@ public class ProjectContent implements Content {
         this.userGraph = userGraph;
         messages = getResourceBundle();
         commonContent = commonContentFactory.usingLocale(
-                userGraph.user().getLocaleForBundle()
+                getLocale()
         );
     }
 

@@ -12,7 +12,7 @@ public class ProcedureContentResourceBundle_en extends ListResourceBundle {
         return contents;
     }
     private static final Object[][] contents = {
-            {"procedure_x", "procedure x"},
+            {"procedure_x", "procedure for ..."},
             {"procedure", "procedure"},
             {"procedureDesc", "defines how to implement one or several activities of a business process, identifies the sequence of steps, and specifies for each step what needs to be done, when, and by whom"},
             {"things", "thing to have"},

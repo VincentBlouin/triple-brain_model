@@ -71,6 +71,37 @@ public class CommonContent {
         task2.label(messages.getString("task2"));
     }
 
+    public void addGroupRelationWithTwoVertices(VertexOperator parent, String label){
+        EdgePojo edge1Pojo = parent.addVertexAndRelation();
+        edgeFactory.withUri(
+                edge1Pojo.uri()
+        ).label(
+                label
+        );
+        vertexFactory.withUri(
+                edge1Pojo.destinationVertex().uri()
+        ).label(
+                label + " 1"
+        );
+        EdgePojo edge2Pojo = parent.addVertexAndRelation();
+        EdgeOperator edge2 = edgeFactory.withUri(
+                edge2Pojo.uri()
+        );
+        edge2.addMeta(
+                new IdentifierPojo(
+                        edge1Pojo.uri(),
+                        new FriendlyResourcePojo(
+                                label
+                        )
+                )
+        );
+        vertexFactory.withUri(
+                edge2Pojo.destinationVertex().uri()
+        ).label(
+                label + " 2"
+        );
+    }
+
     private IdentifierPojo task(){
         return new IdentifierPojo(
                 URI.create("https://www.wikidata.org/wiki/Q145326551"),

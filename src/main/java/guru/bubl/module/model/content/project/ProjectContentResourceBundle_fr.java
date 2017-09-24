@@ -12,7 +12,7 @@ public class ProjectContentResourceBundle_fr extends ListResourceBundle {
         return contents;
     }
     private static final Object[][] contents = {
-            {"project", "Projet x"},
+            {"project", "un projet"},
             {"strategy", "stratégie"},
             {"strategyDesc", "un « ensemble d'actions coordonnées, d'opérations habiles, de manœuvres en vue d'atteindre un but précis »."},
             {"definitionAndVision", "définition et vision"},

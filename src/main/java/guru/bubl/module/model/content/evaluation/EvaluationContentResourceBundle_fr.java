@@ -12,7 +12,7 @@ public class EvaluationContentResourceBundle_fr extends ListResourceBundle{
         return contents;
     }
     private static final Object[][] contents = {
-            {"evaluation", "analyse stratégique x"},
+            {"evaluation", "analyse stratégique de ..."},
             {"swot", "Analyse FFOM"},
             {"swotDesc", "forces, faiblesses, opportunités, menaces"},
             {"advantage", "avantage"},

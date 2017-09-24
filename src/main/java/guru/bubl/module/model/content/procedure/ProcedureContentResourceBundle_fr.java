@@ -14,7 +14,7 @@ public class ProcedureContentResourceBundle_fr extends ListResourceBundle {
     }
 
     private static final Object[][] contents = {
-            {"procedure_x", "procédure x"},
+            {"procedure_x", "procédure pour ..."},
             {"procedure", "procédure"},
             {"procedureDesc", "description de l'exécution, du savoir-faire d'une compétence"},
             {"things", "chose à avoir"},

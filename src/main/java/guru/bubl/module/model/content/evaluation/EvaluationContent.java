@@ -9,9 +9,10 @@ import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import guru.bubl.module.model.FriendlyResource;
 import guru.bubl.module.model.center_graph_element.CenterGraphElementOperatorFactory;
+import guru.bubl.module.model.content.CommonContent;
+import guru.bubl.module.model.content.CommonContentFactory;
 import guru.bubl.module.model.content.Content;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
-import guru.bubl.module.model.graph.edge.EdgeFactory;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
@@ -26,10 +27,9 @@ public class EvaluationContent implements Content {
     VertexFactory vertexFactory;
 
     @Inject
-    EdgeFactory edgeFactory;
-
-    @Inject
     CenterGraphElementOperatorFactory centerGraphElementOperatorFactory;
+
+    CommonContent commonContent;
 
     private UserGraph userGraph;
     private ResourceBundle messages;
@@ -37,33 +37,31 @@ public class EvaluationContent implements Content {
 
     @AssistedInject
     public EvaluationContent (
-            @Assisted UserGraph userGraph
+            @Assisted UserGraph userGraph,
+            CommonContentFactory commonContentFactory
     ) {
         this.userGraph = userGraph;
         messages = getResourceBundle();
+        commonContent = commonContentFactory.usingLocale(getLocale());
     }
 
     @Override
     public FriendlyResource add() {
         addCenter();
-        edgeFactory.withUri(
-                center.addVertexAndRelation().uri()
-        ).label(
+        commonContent.addGroupRelationWithTwoVertices(
+                center,
                 messages.getString("advantage")
         );
-        edgeFactory.withUri(
-                center.addVertexAndRelation().uri()
-        ).label(
+        commonContent.addGroupRelationWithTwoVertices(
+                center,
                 messages.getString("opportunity")
         );
-        edgeFactory.withUri(
-                center.addVertexAndRelation().uri()
-        ).label(
+        commonContent.addGroupRelationWithTwoVertices(
+                center,
                 messages.getString("risk")
         );
-        edgeFactory.withUri(
-                center.addVertexAndRelation().uri()
-        ).label(
+        commonContent.addGroupRelationWithTwoVertices(
+                center,
                 messages.getString("disadvantage")
         );
         return center;
@@ -92,5 +90,4 @@ public class EvaluationContent implements Content {
                 center
         ).updateLastCenterDate();
     }
-
 }
