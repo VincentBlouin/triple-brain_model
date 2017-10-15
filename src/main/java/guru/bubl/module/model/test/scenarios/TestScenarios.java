@@ -4,7 +4,9 @@
 
 package guru.bubl.module.model.test.scenarios;
 
+import guru.bubl.module.common_utils.Uris;
 import guru.bubl.module.model.User;
+import guru.bubl.module.model.UserUris;
 import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.graph.GraphFactory;
 import guru.bubl.module.model.graph.edge.Edge;
