@@ -11,6 +11,8 @@ import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
 
+import java.net.URI;
+import java.util.Map;
 import java.util.Set;
 
 public interface WholeGraphAdmin {
@@ -18,12 +20,12 @@ public interface WholeGraphAdmin {
     default void refreshNumberOfConnectedEdges() {
         Set<VertexInSubGraphOperator> vertices = getWholeGraph().getAllVertices();
         for (VertexInSubGraphOperator vertex : vertices) {
-            Set<EdgeOperator> connectedEdges = vertex.connectedEdges();
+            Map<URI, EdgeOperator> connectedEdges = vertex.connectedEdges();
             vertex.setNumberOfConnectedEdges(
                     connectedEdges.size()
             );
             Integer nbPublic = 0;
-            for(Edge edge: connectedEdges){
+            for(Edge edge: connectedEdges.values()){
                 if(edge.isPublic()){
                     nbPublic++;
                 }

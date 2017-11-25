@@ -4,12 +4,11 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
-import guru.bubl.module.model.graph.schema.SchemaOperator;
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.exceptions.InvalidDepthOfSubVerticesException;
 import guru.bubl.module.model.graph.exceptions.NonExistingResourceException;
+import guru.bubl.module.model.graph.schema.SchemaOperator;
 import guru.bubl.module.model.graph.schema.SchemaPojo;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.graph.vertex.VertexPojo;
