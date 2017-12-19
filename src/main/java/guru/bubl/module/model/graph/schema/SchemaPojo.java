@@ -122,4 +122,9 @@ public class SchemaPojo implements Schema {
         return graphElement.getIdentifications();
     }
 
+    @Override
+    public String getChildrenIndex() {
+        return graphElement.getChildrenIndex();
+    }
+
 }

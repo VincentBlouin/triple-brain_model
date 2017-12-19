@@ -22,4 +22,6 @@ public interface GraphElement extends FriendlyResource{
         }
         return null;
     }
+
+    String getChildrenIndex();
 }

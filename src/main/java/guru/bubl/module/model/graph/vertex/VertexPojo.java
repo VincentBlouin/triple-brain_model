@@ -109,6 +109,11 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
+    public String getChildrenIndex() {
+        return graphElement.getChildrenIndex();
+    }
+
+    @Override
     public URI uri() {
         return graphElement.uri();
     }

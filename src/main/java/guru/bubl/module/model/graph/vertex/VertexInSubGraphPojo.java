@@ -158,6 +158,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
+    public String getChildrenIndex() {
+        return getGraphElement().getChildrenIndex();
+    }
+
+    @Override
     public URI uri() {
         return vertex.uri();
     }

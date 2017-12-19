@@ -103,6 +103,11 @@ public class EdgePojo implements Edge {
     }
 
     @Override
+    public String getChildrenIndex() {
+        return graphElement.getChildrenIndex();
+    }
+
+    @Override
     public URI uri() {
         return graphElement.uri();
     }
