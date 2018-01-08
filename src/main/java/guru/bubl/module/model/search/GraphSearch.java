@@ -27,10 +27,16 @@ public interface GraphSearch {
     List<GraphElementSearchResult> searchOnlyForOwnVerticesForAutoCompletionByLabel(
             String searchTerm, User user
     );
+
+    List<GraphElementSearchResult> searchOwnTagsForAutoCompletionByLabel(
+            String searchTerm, User user
+    );
+
     List<GraphElementSearchResult> searchRelationsPropertiesSchemasForAutoCompletionByLabel(
             String searchTerm,
             User user
     );
+
     GraphElementSearchResult getDetails(URI uri, User user);
 
     List<GraphElementSearchResult> searchPublicVerticesOnly(
