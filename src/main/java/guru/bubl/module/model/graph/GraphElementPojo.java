@@ -21,6 +21,7 @@ public class GraphElementPojo implements GraphElement {
     private Long sortDate;
     private Long moveDate;
     private String childrenIndex;
+    private String colors;
 
     @Deprecated
     public GraphElementPojo(GraphElementOperator graphElementOperator) {
@@ -59,6 +60,16 @@ public class GraphElementPojo implements GraphElement {
     public Map<URI, IdentifierPojo> getIdentifications() {
         return identifications;
     }
+
+    @Override
+    public String getColors() {
+        return colors == null ? "" : colors;
+    }
+
+    public void setColors(String colors) {
+        this.colors = colors;
+    }
+
 
     @Override
     public String getChildrenIndex() {

@@ -118,6 +118,11 @@ public class EdgePojo implements Edge {
     }
 
     @Override
+    public String getColors() {
+        return graphElement.getColors();
+    }
+
+    @Override
     public String getChildrenIndex() {
         return graphElement.getChildrenIndex();
     }

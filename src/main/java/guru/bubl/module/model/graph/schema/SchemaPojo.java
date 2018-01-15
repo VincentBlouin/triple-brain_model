@@ -123,6 +123,11 @@ public class SchemaPojo implements Schema {
     }
 
     @Override
+    public String getColors() {
+        return graphElement.getColors();
+    }
+
+    @Override
     public String getChildrenIndex() {
         return graphElement.getChildrenIndex();
     }

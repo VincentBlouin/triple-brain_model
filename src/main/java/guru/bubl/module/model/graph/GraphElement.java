@@ -22,6 +22,6 @@ public interface GraphElement extends FriendlyResource{
         }
         return null;
     }
-
+    String getColors();
     String getChildrenIndex();
 }
