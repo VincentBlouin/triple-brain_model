@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph.vertex;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
+import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.edge.Edge;
@@ -155,6 +156,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     @Override
     public Map<URI, IdentifierPojo> getIdentifications() {
         return vertex.getIdentifications();
+    }
+
+    @Override
+    public Map<GraphElementOperator.colorProps, String> getColors() {
+        return getGraphElement().getColors();
     }
 
     @Override

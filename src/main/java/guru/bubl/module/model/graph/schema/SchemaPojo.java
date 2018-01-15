@@ -122,4 +122,9 @@ public class SchemaPojo implements Schema {
         return graphElement.getIdentifications();
     }
 
+    @Override
+    public Map<GraphElementOperator.colorProps, String> getColors() {
+        return graphElement.getColors();
+    }
+
 }

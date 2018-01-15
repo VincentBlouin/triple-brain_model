@@ -60,6 +60,11 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
+    public Map<GraphElementOperator.colorProps, String> getColors() {
+        return null;
+    }
+
+    @Override
     public URI uri() {
         return friendlyResource.uri();
     }

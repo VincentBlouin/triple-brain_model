@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
+import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
@@ -100,6 +101,11 @@ public class EdgePojo implements Edge {
     @Override
     public Map<URI, IdentifierPojo> getIdentifications() {
         return graphElement.getIdentifications();
+    }
+
+    @Override
+    public Map<GraphElementOperator.colorProps, String> getColors() {
+        return graphElement.getColors();
     }
 
     @Override
