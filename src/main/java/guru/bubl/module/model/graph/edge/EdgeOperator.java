@@ -31,4 +31,8 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     EdgePojo createEdgeUsingInitialValues(Map<String, Object> values);
     EdgePojo createEdge();
+
+    void setToTheLeft();
+    void setToTheRight();
+    void unsetToTheLeftOrRight();
 }

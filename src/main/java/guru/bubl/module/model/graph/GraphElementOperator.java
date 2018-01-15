@@ -20,4 +20,5 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
     Map<URI, IdentifierPojo> addMeta(Identifier friendlyResource);
     void setSortDate(Date sortDate, Date moveDate);
     void setColors(Map<colorProps, String> colors);
+    void setChildrenIndex(String childrenIndex);
 }

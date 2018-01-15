@@ -123,8 +123,8 @@ public class SchemaPojo implements Schema {
     }
 
     @Override
-    public Map<GraphElementOperator.colorProps, String> getColors() {
-        return graphElement.getColors();
+    public String getChildrenIndex() {
+        return graphElement.getChildrenIndex();
     }
 
 }

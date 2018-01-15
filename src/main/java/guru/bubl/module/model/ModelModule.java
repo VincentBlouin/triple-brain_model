@@ -7,7 +7,7 @@ package guru.bubl.module.model;
 import com.google.inject.AbstractModule;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.sendgrid.SendGrid;
-import guru.bubl.module.common_utils.NoExRun;
+import guru.bubl.module.common_utils.NoEx;
 import guru.bubl.module.model.content.AllContentFactory;
 import guru.bubl.module.model.content.CommonContentFactory;
 import guru.bubl.module.model.content.evaluation.EvaluationContentFactory;
@@ -67,7 +67,7 @@ public class ModelModule extends AbstractModule {
 
     private void testBinding() {
         SendGrid doNothingSendGrid = mock(SendGrid.class);
-        NoExRun.wrap(() -> when(
+        NoEx.wrap(() -> when(
                 doNothingSendGrid.api(
                         any()
                 )

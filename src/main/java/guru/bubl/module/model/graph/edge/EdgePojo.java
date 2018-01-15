@@ -5,7 +5,6 @@
 package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
-import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
@@ -22,6 +21,7 @@ public class EdgePojo implements Edge {
     private GraphElementPojo graphElement;
     private VertexInSubGraphPojo sourceVertex;
     private VertexInSubGraphPojo destinationVertex;
+    private Boolean isToTheLeft;
 
     @Deprecated
     public EdgePojo(
@@ -99,13 +99,27 @@ public class EdgePojo implements Edge {
     }
 
     @Override
+    public Boolean isToTheLeft() {
+        return isToTheLeft != null && isToTheLeft;
+    }
+
+    @Override
+    public Boolean isToTheRight() {
+        return isToTheLeft != null && !isToTheLeft;
+    }
+
+    public void setIsToTheLeft(Boolean isToTheLeft){
+        this.isToTheLeft = isToTheLeft;
+    }
+
+    @Override
     public Map<URI, IdentifierPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 
     @Override
-    public Map<GraphElementOperator.colorProps, String> getColors() {
-        return graphElement.getColors();
+    public String getChildrenIndex() {
+        return graphElement.getChildrenIndex();
     }
 
     @Override

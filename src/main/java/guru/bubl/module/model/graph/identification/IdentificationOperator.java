@@ -9,4 +9,5 @@ import guru.bubl.module.model.graph.FriendlyResourceOperator;
 public interface IdentificationOperator extends Identifier, FriendlyResourceOperator {
     void setNbReferences(Integer nb);
     IdentifierPojo buildPojo();
+    void mergeTo(Identifier identifier);
 }

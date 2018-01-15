@@ -11,7 +11,9 @@ import java.util.Set;
 
 public interface VertexFactory {
     VertexInSubGraphOperator withUri(URI uri);
-    VertexInSubGraphOperator createForOwnerUsername(String username);
+
+    VertexInSubGraphOperator createForOwner(String username);
+
     VertexInSubGraphOperator createFromGraphElements(
             Set<Vertex> includedVertices,
             Set<Edge> includedEdges

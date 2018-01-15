@@ -22,5 +22,6 @@ public interface GraphElement extends FriendlyResource{
         }
         return null;
     }
-    Map<GraphElementOperator.colorProps, String> getColors();
+
+    String getChildrenIndex();
 }

@@ -12,4 +12,6 @@ public interface Edge extends GraphElement, PublicPrivateElement {
     Vertex sourceVertex();
     Vertex destinationVertex();
     Vertex otherVertex(Vertex vertex);
+    Boolean isToTheLeft();
+    Boolean isToTheRight();
 }
