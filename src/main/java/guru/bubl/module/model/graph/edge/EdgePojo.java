@@ -21,7 +21,6 @@ public class EdgePojo implements Edge {
     private GraphElementPojo graphElement;
     private VertexInSubGraphPojo sourceVertex;
     private VertexInSubGraphPojo destinationVertex;
-    private Boolean isToTheLeft;
 
     @Deprecated
     public EdgePojo(
@@ -96,20 +95,6 @@ public class EdgePojo implements Edge {
         return sourceVertex().equals(vertex) ?
                 destinationVertex() :
                 sourceVertex();
-    }
-
-    @Override
-    public Boolean isToTheLeft() {
-        return isToTheLeft != null && isToTheLeft;
-    }
-
-    @Override
-    public Boolean isToTheRight() {
-        return isToTheLeft != null && !isToTheLeft;
-    }
-
-    public void setIsToTheLeft(Boolean isToTheLeft){
-        this.isToTheLeft = isToTheLeft;
     }
 
     @Override
@@ -192,7 +177,7 @@ public class EdgePojo implements Edge {
         return false;
     }
 
-    public void setCreationDate(Long date){
+    public void setCreationDate(Long date) {
         getGraphElement().setCreationDate(date);
     }
 }
