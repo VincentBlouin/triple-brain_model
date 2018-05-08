@@ -114,6 +114,11 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
+    public String getFont() {
+        return graphElement.getColors();
+    }
+
+    @Override
     public String getChildrenIndex() {
         return graphElement.getChildrenIndex();
     }

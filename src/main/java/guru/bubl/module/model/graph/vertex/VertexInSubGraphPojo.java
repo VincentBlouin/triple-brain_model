@@ -163,6 +163,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
+    public String getFont() {
+        return getGraphElement().getColors();
+    }
+
+    @Override
     public String getChildrenIndex() {
         return getGraphElement().getChildrenIndex();
     }

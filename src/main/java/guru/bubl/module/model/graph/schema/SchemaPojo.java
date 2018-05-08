@@ -128,6 +128,11 @@ public class SchemaPojo implements Schema {
     }
 
     @Override
+    public String getFont() {
+        return graphElement.getFont();
+    }
+
+    @Override
     public String getChildrenIndex() {
         return graphElement.getChildrenIndex();
     }

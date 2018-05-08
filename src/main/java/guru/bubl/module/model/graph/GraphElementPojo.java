@@ -22,6 +22,7 @@ public class GraphElementPojo implements GraphElement {
     private Long moveDate;
     private String childrenIndex;
     private String colors;
+    private String font;
 
     @Deprecated
     public GraphElementPojo(GraphElementOperator graphElementOperator) {
@@ -66,8 +67,17 @@ public class GraphElementPojo implements GraphElement {
         return colors == null ? "" : colors;
     }
 
+    @Override
+    public String getFont() {
+        return font == null ? "" : font;
+    }
+
     public void setColors(String colors) {
         this.colors = colors;
+    }
+
+    public void setFont(String font) {
+        this.font = font;
     }
 
 
