@@ -23,8 +23,6 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     EdgeOperator getEdgeThatLinksToDestinationVertex(Vertex destinationVertex);
     Boolean hasDestinationVertex(Vertex destinationVertex);
     EdgePojo addVertexAndRelation();
-    EdgePojo addVertexAndRelationToTheLeft();
-    EdgePojo addVertexAndRelationToTheRight();
     EdgeOperator addRelationToVertex(Vertex destinationVertex);
     EdgeOperator acceptSuggestion(SuggestionPojo suggestion);
     void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
