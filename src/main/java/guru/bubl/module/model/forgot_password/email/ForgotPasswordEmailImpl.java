@@ -40,9 +40,9 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
         mail = new Mail(from, subject, to, content);
         try {
             Request request = new Request();
-            request.method = Method.POST;
-            request.endpoint = "mail/send";
-            request.body = mail.build();
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
             sendgrid.api(request);
         } catch (Exception e) {
             /*
