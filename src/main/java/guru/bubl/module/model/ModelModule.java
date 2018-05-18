@@ -19,9 +19,6 @@ import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmailImpl;
 
 import javax.inject.Singleton;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 public class ModelModule extends AbstractModule {
 
     private Boolean isTesting;
@@ -58,26 +55,9 @@ public class ModelModule extends AbstractModule {
                 .build(MovieContentFactory.class));
         install(factoryModuleBuilder
                 .build(ProcedureContentFactory.class));
-        if (isTesting) {
-            testBinding();
-        } else {
+        if (!isTesting) {
             nonTestBinding();
         }
-    }
-
-    private void testBinding() {
-        SendGrid doNothingSendGrid = mock(SendGrid.class);
-        NoEx.wrap(() -> when(
-                doNothingSendGrid.api(
-                        any()
-                )
-        ).thenReturn(null)).get();
-        bind(
-                SendGrid.class
-        ).toInstance(
-                doNothingSendGrid
-        );
-        bind(ForgotPasswordEmail.class).to(ForgotPasswordEmailImpl.class).in(Singleton.class);
     }
 
     private void nonTestBinding() {
