@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
     private static final Email from = new Email(
-            "no-reply@mindrespect.com"
+            "mindrespect.com <no-reply@mindrespect.com>"
     );
 
     @Inject
