@@ -2,34 +2,34 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.forgot_password.email;
+package guru.bubl.module.model.friend.friend_request_email;
 
 import com.sendgrid.*;
 import guru.bubl.module.model.EmailMindRespect;
 import guru.bubl.module.model.User;
+import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmail;
 
 import javax.inject.Inject;
 import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
+public class FriendRequestEmailImpl implements FriendRequestEmail {
 
     @Inject
     EmailMindRespect emailMindRespect;
 
-    public Mail send(User user, String resetUrl) {
-        Locale emailLocale = user.getLocaleForBundle();
+    public Mail sendToUserFromUser(User destinationUser, User requestUser, String confirmURL) {
+        Locale emailLocale = destinationUser.getLocaleForBundle();
         ResourceBundle messages = PropertyResourceBundle.getBundle(
-                "guru.bubl.module.model.forgot_password.email.ForgotPasswordResourceBundle",
+                "guru.bubl.module.model.friend.friend_request_email.FriendRequestResourceBundle",
                 emailLocale
         );
-        String msgBody = messages.getString("body");
-        msgBody += " " + resetUrl;
+        String subject = requestUser.username() + " " +messages.getString("subject");
+        String msgBody =  messages.getString("body") + " " + confirmURL;
         Mail mail;
-        String subject = messages.getString("subject");
         Email to = new Email(
-                user.email()
+                destinationUser.email()
         );
         Content content = new Content(
                 "text/plain",

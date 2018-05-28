@@ -16,6 +16,10 @@ import guru.bubl.module.model.content.procedure.ProcedureContentFactory;
 import guru.bubl.module.model.content.project.ProjectContentFactory;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmail;
 import guru.bubl.module.model.forgot_password.email.ForgotPasswordEmailImpl;
+import guru.bubl.module.model.friend.friend_confirmation_email.FriendConfirmationEmail;
+import guru.bubl.module.model.friend.friend_confirmation_email.FriendConfirmationEmailImpl;
+import guru.bubl.module.model.friend.friend_request_email.FriendRequestEmail;
+import guru.bubl.module.model.friend.friend_request_email.FriendRequestEmailImpl;
 
 import javax.inject.Singleton;
 
@@ -55,6 +59,10 @@ public class ModelModule extends AbstractModule {
                 .build(MovieContentFactory.class));
         install(factoryModuleBuilder
                 .build(ProcedureContentFactory.class));
+        bind(EmailMindRespect.class);
+        bind(ForgotPasswordEmail.class).to(ForgotPasswordEmailImpl.class).in(Singleton.class);
+        bind(FriendRequestEmail.class).to(FriendRequestEmailImpl.class).in(Singleton.class);
+        bind(FriendConfirmationEmail.class).to(FriendConfirmationEmailImpl.class).in(Singleton.class);
         if (!isTesting) {
             nonTestBinding();
         }
@@ -62,6 +70,5 @@ public class ModelModule extends AbstractModule {
 
     private void nonTestBinding() {
         bind(SendGrid.class).toInstance(new SendGrid(sendGridKey));
-        bind(ForgotPasswordEmail.class).to(ForgotPasswordEmailImpl.class).in(Singleton.class);
     }
 }

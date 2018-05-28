@@ -11,6 +11,8 @@ import java.util.UUID;
 
 public class UserUris {
 
+    public static final String BASE_URI = "/service/users/";
+
     public static String graphElementShortId(URI uri) {
         String uriStr = uri.toString();
         return uriStr.substring(uriStr.lastIndexOf("/") + 1);
@@ -66,7 +68,7 @@ public class UserUris {
 
     public URI baseUri() {
         return URI.create(
-                "/service/users/" + userName
+                BASE_URI + userName
         );
     }
 

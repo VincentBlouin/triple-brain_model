@@ -10,8 +10,8 @@ import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import java.net.URI;
 
 public interface FriendlyResourceFactory {
-    public FriendlyResourceOperator withUri(URI uri);
-    public FriendlyResourceOperator createOrLoadUsingPojo(
+    FriendlyResourceOperator withUri(URI uri);
+    FriendlyResourceOperator createOrLoadUsingPojo(
             FriendlyResourcePojo friendlyResource
     );
 }
