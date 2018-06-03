@@ -18,7 +18,7 @@ public class FriendConfirmationEmailImpl implements FriendConfirmationEmail {
     @Inject
     EmailMindRespect emailMindRespect;
 
-    public Mail sendForUserToUser(User destinationUser, User requestUser) {
+    public Mail sendForUserToUser(User destinationUser, User requestUser, String destinationUserUrl) {
         Locale emailLocale = destinationUser.getLocaleForBundle();
         ResourceBundle messages = PropertyResourceBundle.getBundle(
                 "guru.bubl.module.model.friend.friend_confirmation_email.FriendConfirmationResourceBundle",
@@ -26,6 +26,7 @@ public class FriendConfirmationEmailImpl implements FriendConfirmationEmail {
         );
         String subject = destinationUser.username() + " " + messages.getString("subject");
         String msgBody = messages.getString("body");
+        msgBody+= " " + destinationUserUrl;
         Mail mail;
         Email to = new Email(
                 requestUser.email()

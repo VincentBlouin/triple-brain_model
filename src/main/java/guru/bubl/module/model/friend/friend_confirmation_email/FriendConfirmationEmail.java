@@ -10,6 +10,7 @@ import guru.bubl.module.model.User;
 public interface FriendConfirmationEmail {
     Mail sendForUserToUser(
             User destinationUser,
-            User requestUser
+            User requestUser,
+            String destinationUserUrl
     );
 }
