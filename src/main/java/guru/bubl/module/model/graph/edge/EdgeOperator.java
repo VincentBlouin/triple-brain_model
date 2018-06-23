@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
@@ -31,4 +32,5 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     EdgePojo createEdgeUsingInitialValues(Map<String, Object> values);
     EdgePojo createEdge();
+    EdgePojo createWithShareLevel(ShareLevel shareLevel);
 }

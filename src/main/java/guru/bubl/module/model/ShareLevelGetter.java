@@ -4,6 +4,9 @@
 
 package guru.bubl.module.model;
 
-public interface PublicPrivateElement {
+import guru.bubl.module.model.graph.ShareLevel;
+
+public interface ShareLevelGetter {
     Boolean isPublic();
+    ShareLevel getShareLevel();
 }

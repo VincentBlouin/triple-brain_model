@@ -6,6 +6,7 @@ package guru.bubl.module.model.graph.vertex;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgePojo;
@@ -29,7 +30,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
                 convertVertexSetToPojoMap(vertexOperator.getIncludedVertices()),
                 convertEdgeSetToPojoMap(vertexOperator.getIncludedEdges()),
                 convertSuggestionSetToPojo(vertexOperator.getSuggestions()),
-                vertexOperator.isPublic()
+                vertexOperator.getShareLevel()
         );
     }
 
@@ -104,7 +105,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
             Map<URI, SuggestionPojo> suggestions,
-            Boolean isPublic
+            ShareLevel shareLevel
     ) {
         this.vertex = new VertexPojo(
                 graphElement,
@@ -113,7 +114,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
                 includedVertices,
                 includedEdges,
                 suggestions,
-                isPublic
+                shareLevel
         );
     }
 
@@ -128,6 +129,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
+    public Integer getNbFriendNeighbors() {
+        return vertex.getNbFriendNeighbors();
+    }
+
+    @Override
     public Map<URI, SuggestionPojo> getSuggestions() {
         return vertex.getSuggestions();
     }
@@ -135,6 +141,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     @Override
     public Boolean isPublic() {
         return vertex.isPublic();
+    }
+
+    @Override
+    public ShareLevel getShareLevel() {
+        return vertex.getShareLevel();
     }
 
     @Override

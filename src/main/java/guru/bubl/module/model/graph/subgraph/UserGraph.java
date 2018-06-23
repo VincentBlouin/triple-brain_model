@@ -5,6 +5,7 @@
 package guru.bubl.module.model.graph.subgraph;
 
 import guru.bubl.module.model.User;
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.exceptions.InvalidDepthOfSubVerticesException;
 import guru.bubl.module.model.graph.exceptions.NonExistingResourceException;
@@ -14,12 +15,15 @@ import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
+import java.util.Set;
 
 public interface UserGraph {
     VertexOperator defaultVertex();
     User user();
     Boolean haveElementWithId(URI id);
     SubGraphPojo graphWithDepthAndCenterBubbleUri(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
+    SubGraphPojo aroundVertexUriInShareLevels(URI centerVertexUri, Set<ShareLevel> shareLevels) throws NonExistingResourceException;
+    SubGraphPojo aroundVertexUriInShareLevelsWithDepth(URI centerVertexUri, Set<ShareLevel> shareLevels, Integer depth) throws NonExistingResourceException;
     SubGraphPojo graphWithDepthResultsLimitAndCenterBubbleUri(Integer depthOfSubVertices, Integer resultsLimit, URI centerBubbleUri) throws NonExistingResourceException;
     SubGraphPojo graphWithAnyVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
     VertexOperator vertexWithUri(URI uri);

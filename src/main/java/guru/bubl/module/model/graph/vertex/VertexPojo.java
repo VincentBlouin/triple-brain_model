@@ -6,6 +6,7 @@ package guru.bubl.module.model.graph.vertex;
 
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.Image;
@@ -21,10 +22,11 @@ public class VertexPojo implements Vertex {
     private GraphElementPojo graphElement;
     private Integer numberOfConnectedEdges;
     private Integer nbPublicNeighbors;
+    private Integer nbFriendNeighbors;
     private Map<URI, VertexInSubGraphPojo> includedVertices;
     private Map<URI, EdgePojo> includedEdges;
     private Map<URI, SuggestionPojo> suggestions;
-    private Boolean isPublic;
+    private ShareLevel shareLevel;
 
     public VertexPojo(
             GraphElementPojo graphElement,
@@ -33,7 +35,7 @@ public class VertexPojo implements Vertex {
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
             Map<URI, SuggestionPojo> suggestions,
-            Boolean isPublic
+            ShareLevel shareLevel
     ) {
         this.graphElement = graphElement;
         this.numberOfConnectedEdges = numberOfConnectedEdges;
@@ -41,7 +43,7 @@ public class VertexPojo implements Vertex {
         this.includedVertices = includedVertices;
         this.includedEdges = includedEdges;
         this.suggestions = suggestions;
-        this.isPublic = isPublic;
+        this.shareLevel = shareLevel;
     }
 
     public VertexPojo(URI uri) {
@@ -72,6 +74,11 @@ public class VertexPojo implements Vertex {
         return nbPublicNeighbors;
     }
 
+    @Override
+    public Integer getNbFriendNeighbors() {
+        return nbFriendNeighbors;
+    }
+
     public void setNbPublicNeighbors(Integer nbPublicNeighbors) {
         this.nbPublicNeighbors = nbPublicNeighbors;
     }
@@ -90,7 +97,12 @@ public class VertexPojo implements Vertex {
 
     @Override
     public Boolean isPublic() {
-        return isPublic;
+        return shareLevel == ShareLevel.PUBLIC || shareLevel == ShareLevel.PUBLIC_WITH_LINK;
+    }
+
+    @Override
+    public ShareLevel getShareLevel() {
+        return shareLevel;
     }
 
     @Override

@@ -4,9 +4,9 @@
 
 package guru.bubl.module.model.graph;
 
-import guru.bubl.module.model.PublicPrivateElement;
+import guru.bubl.module.model.ShareLevelGetter;
 
-public interface PublicPrivateOperator extends PublicPrivateElement {
+public interface PublicPrivateOperator extends ShareLevelGetter {
     void makePublic();
     void makePrivate();
 }

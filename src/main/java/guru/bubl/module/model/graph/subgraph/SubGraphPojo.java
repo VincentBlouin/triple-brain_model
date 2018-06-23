@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.graph.identification.IdentifierPojo;
@@ -12,7 +13,11 @@ import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
 
 import java.net.URI;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SubGraphPojo implements SubGraph {
 
@@ -21,6 +26,15 @@ public class SubGraphPojo implements SubGraph {
 
     public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
         return new SubGraphPojo(vertices, edges);
+    }
+
+    public static SubGraphPojo withSingleVertex(VertexInSubGraphPojo vertex) {
+        Map<URI, VertexInSubGraphPojo> vertices = new HashMap<>();
+        vertices.put(vertex.uri(), vertex);
+        return new SubGraphPojo(
+                vertices,
+                new HashMap<>()
+        );
     }
 
     protected SubGraphPojo(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
@@ -104,14 +118,28 @@ public class SubGraphPojo implements SubGraph {
         );
     }
 
-    public Boolean isEmpty(){
+    public Boolean isEmpty() {
         return this.vertices().isEmpty();
     }
 
-    public Map<URI, VertexInSubGraphPojo> getPublicVertices(){
+    public Map<URI, VertexInSubGraphPojo> getFriendsAndPublicIndexableVertices() {
+        Map<URI, VertexInSubGraphPojo> friendAndPublicVertices = new HashMap<>();
+        for (VertexInSubGraphPojo vertex : vertices().values()) {
+            ShareLevel shareLevel = vertex.getShareLevel();
+            if (shareLevel == ShareLevel.FRIENDS || shareLevel == ShareLevel.PUBLIC) {
+                friendAndPublicVertices.put(
+                        vertex.uri(),
+                        vertex
+                );
+            }
+        }
+        return friendAndPublicVertices;
+    }
+
+    public Map<URI, VertexInSubGraphPojo> getPublicIndexableVertices() {
         Map<URI, VertexInSubGraphPojo> publicVertices = new HashMap<>();
-        for(VertexInSubGraphPojo vertex : vertices().values()){
-            if(vertex.isPublic()){
+        for (VertexInSubGraphPojo vertex : vertices().values()) {
+            if (vertex.getShareLevel() == ShareLevel.PUBLIC) {
                 publicVertices.put(
                         vertex.uri(),
                         vertex
