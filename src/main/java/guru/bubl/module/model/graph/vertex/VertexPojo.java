@@ -32,6 +32,7 @@ public class VertexPojo implements Vertex {
             GraphElementPojo graphElement,
             Integer numberOfConnectedEdges,
             Integer nbPublicNeighbors,
+            Integer nbFriendNeighbors,
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
             Map<URI, SuggestionPojo> suggestions,
@@ -40,6 +41,7 @@ public class VertexPojo implements Vertex {
         this.graphElement = graphElement;
         this.numberOfConnectedEdges = numberOfConnectedEdges;
         this.nbPublicNeighbors = nbPublicNeighbors;
+        this.nbFriendNeighbors = nbFriendNeighbors;
         this.includedVertices = includedVertices;
         this.includedEdges = includedEdges;
         this.suggestions = suggestions;
