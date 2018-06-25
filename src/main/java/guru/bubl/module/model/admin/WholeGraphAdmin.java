@@ -7,6 +7,7 @@ package guru.bubl.module.model.admin;
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.WholeGraph;
 import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
@@ -25,20 +26,26 @@ public interface WholeGraphAdmin {
                     connectedEdges.size()
             );
             Integer nbPublic = 0;
-            for(Edge edge: connectedEdges.values()){
-                if(edge.isPublic()){
+            Integer nbFriend = 0;
+            for (Edge edge : connectedEdges.values()) {
+                ShareLevel shareLevel = edge.getShareLevel();
+                if (shareLevel.isPublic()) {
                     nbPublic++;
+                }
+                if(edge.otherVertex(vertex).getShareLevel() == ShareLevel.FRIENDS){
+                    nbFriend++;
                 }
             }
             vertex.setNumberOfPublicConnectedEdges(nbPublic);
+            vertex.setNbFriendNeighbors(nbFriend);
         }
     }
 
-    default void reAddIdentifications(){
-        for(GraphElementOperator operator :getWholeGraph().getAllGraphElements()){
+    default void reAddIdentifications() {
+        for (GraphElementOperator operator : getWholeGraph().getAllGraphElements()) {
             try {
                 operator.getIdentifications().values().forEach(operator::addMeta);
-            }catch(IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 //adding self identification causes this exception. No need to add read it, so its ok continue the loop.
             }
         }
@@ -51,5 +58,6 @@ public interface WholeGraphAdmin {
     WholeGraph getWholeGraph();
 
     void reindexAll();
+
     void reindexAllForUser(User user);
 }
