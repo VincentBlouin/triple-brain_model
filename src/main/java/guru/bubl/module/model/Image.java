@@ -6,28 +6,28 @@ package guru.bubl.module.model;
 
 import java.net.URI;
 
-public class Image{
+public class Image {
 
-    String base64ForSmall;
+    String urlForSmall;
     URI urlForBigger;
 
-    public static Image withBase64ForSmallAndUriForBigger(String base64ForSmall, URI urlForBigger){
+    public static Image withUrlForSmallAndUriForBigger(String urlForSmall, URI urlForBigger) {
         return new Image(
-                base64ForSmall,
+                urlForSmall,
                 urlForBigger
         );
     }
 
-    public Image(String base64ForSmall, URI urlForBigger){
-        this.base64ForSmall = base64ForSmall;
+    public Image(String urlForSmall, URI urlForBigger) {
+        this.urlForSmall = urlForSmall;
         this.urlForBigger = urlForBigger;
     }
 
-    public String base64ForSmall(){
-        return base64ForSmall;
+    public String urlForSmall() {
+        return urlForSmall;
     }
 
-    public URI urlForBigger(){
+    public URI urlForBigger() {
         return urlForBigger;
     }
 
