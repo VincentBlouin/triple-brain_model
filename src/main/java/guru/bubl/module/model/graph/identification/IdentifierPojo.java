@@ -4,8 +4,6 @@
 
 package guru.bubl.module.model.graph.identification;
 
-
-import guru.bubl.module.model.FriendlyResource;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 
