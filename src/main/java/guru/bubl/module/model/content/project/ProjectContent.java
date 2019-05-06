@@ -58,6 +58,10 @@ public class ProjectContent implements Content {
         addObjectAndInfrastructures();
         addCommunication();
         commonContent.addTwoTasksToVertex(center);
+        CenterGraphElementOperator centerGraphElementOperator = centerGraphElementOperatorFactory.usingFriendlyResource(
+                center
+        );
+        centerGraphElementOperator.updateLastCenterDate();
         return center;
     }
 
@@ -71,10 +75,6 @@ public class ProjectContent implements Content {
                 userGraph.createVertex().uri()
         );
         center.label(messages.getString("project"));
-        CenterGraphElementOperator centerGraphElementOperator = centerGraphElementOperatorFactory.usingFriendlyResource(
-                center
-        );
-        centerGraphElementOperator.updateLastCenterDate();
     }
 
     private void addStrategy(){
