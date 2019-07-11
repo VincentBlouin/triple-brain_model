@@ -17,7 +17,6 @@ import guru.bubl.module.model.graph.identification.IdentifierPojo;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
-import guru.bubl.module.model.search.GraphIndexer;
 
 import javax.inject.Inject;
 import java.net.URI;

@@ -83,7 +83,6 @@ public class ProcedureContent implements Content {
         EdgeOperator object1Relation = edgeFactory.withUri(
                 edge1Pojo.uri()
         );
-        object1Relation.label(messages.getString("things"));
         VertexOperator object1Vertex = vertexFactory.withUri(
                 object1Relation.destinationVertex().uri()
         );
@@ -92,7 +91,6 @@ public class ProcedureContent implements Content {
         EdgeOperator object2Relation = edgeFactory.withUri(
                 center.addVertexAndRelation().uri()
         );
-        object2Relation.label(messages.getString("things"));
         object2Relation.addMeta(
                 new IdentifierPojo(
                         object1Relation.uri(),
@@ -112,7 +110,6 @@ public class ProcedureContent implements Content {
         EdgeOperator step1Relation = edgeFactory.withUri(
                 edge1Pojo.uri()
         );
-        step1Relation.label(messages.getString("step"));
         VertexOperator step1Vertex = vertexFactory.withUri(
                 step1Relation.destinationVertex().uri()
         );
@@ -121,7 +118,6 @@ public class ProcedureContent implements Content {
         EdgeOperator step2Relation = edgeFactory.withUri(
                 center.addVertexAndRelation().uri()
         );
-        step2Relation.label(messages.getString("step"));
         step2Relation.addMeta(
                 new IdentifierPojo(
                         step1Relation.uri(),

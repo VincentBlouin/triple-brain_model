@@ -50,7 +50,6 @@ public class CommonContent {
         EdgeOperator task1Edge = edgeFactory.withUri(
                 task1EdgePojo.uri()
         );
-        task1Edge.label(messages.getString("task"));
         IdentifierPojo taskTag = task();
         centerGraphElementOperatorFactory.usingFriendlyResource(
                 task1Edge.addMeta(taskTag).values().iterator().next()
@@ -64,7 +63,6 @@ public class CommonContent {
                 task2EdgePojo.uri()
         );
         task2Edge.addMeta(taskTag);
-        task2Edge.label(messages.getString("task"));
         VertexOperator task2 = vertexFactory.withUri(
                 task2EdgePojo.destinationVertex().uri()
         );
@@ -73,11 +71,6 @@ public class CommonContent {
 
     public void addGroupRelationWithTwoVertices(VertexOperator parent, String label){
         EdgePojo edge1Pojo = parent.addVertexAndRelation();
-        edgeFactory.withUri(
-                edge1Pojo.uri()
-        ).label(
-                label
-        );
         vertexFactory.withUri(
                 edge1Pojo.destinationVertex().uri()
         ).label(
