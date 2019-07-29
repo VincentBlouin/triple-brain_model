@@ -26,7 +26,7 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
 
     EdgePojo addVertexAndRelation();
 
-    EdgePojo addVertexAndRelationWithIds(UUID vertexId, UUID edgeId);
+    EdgePojo addVertexAndRelationWithIds(String vertexId, String edgeId);
 
     EdgeOperator addRelationToVertex(VertexOperator destinationVertex);
 
