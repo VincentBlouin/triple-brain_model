@@ -9,6 +9,7 @@ import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
+import java.net.URI;
 import java.util.Map;
 
 public interface EdgeOperator extends Edge, GraphElementOperator {
@@ -31,6 +32,8 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
     );
 
     EdgePojo createEdgeUsingInitialValues(Map<String, Object> values);
+
     EdgePojo createEdge();
+
     EdgePojo createWithShareLevel(ShareLevel shareLevel);
 }

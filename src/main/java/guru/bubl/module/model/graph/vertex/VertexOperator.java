@@ -15,6 +15,7 @@ import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.UUID;
 
 public interface VertexOperator extends GraphElementOperator, PublicPrivateOperator, Vertex {
     boolean hasEdge(Edge edge);
@@ -24,6 +25,8 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     Boolean hasDestinationVertex(Vertex destinationVertex);
 
     EdgePojo addVertexAndRelation();
+
+    EdgePojo addVertexAndRelationWithIds(UUID vertexId, UUID edgeId);
 
     EdgeOperator addRelationToVertex(VertexOperator destinationVertex);
 

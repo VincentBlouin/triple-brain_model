@@ -7,6 +7,7 @@ package guru.bubl.module.model.graph;
 import guru.bubl.module.model.FriendlyResource;
 import guru.bubl.module.model.Image;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.Set;
 
