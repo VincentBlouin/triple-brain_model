@@ -6,6 +6,7 @@ package guru.bubl.module.model.center_graph_element;
 
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.ShareLevel;
 
 import java.net.URI;
 import java.util.Date;
@@ -18,19 +19,22 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     private Date lastCenterDate;
     private Map<URI, String> context;
     private Integer nbReferences;
+    private ShareLevel shareLevel;
 
     public CenterGraphElementPojo(
             Integer numberOfVisits,
             Date lastCenterDate,
             GraphElementPojo graphElement,
             Map<URI, String> context,
-            Integer nbReferences
+            Integer nbReferences,
+            ShareLevel shareLevel
     ) {
         this.numberOfVisits = numberOfVisits;
         this.graphElement = graphElement;
         this.lastCenterDate = lastCenterDate;
         this.context = context;
         this.nbReferences = nbReferences;
+        this.shareLevel = shareLevel;
     }
 
     public CenterGraphElementPojo(
@@ -64,6 +68,11 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     @Override
     public Integer getNbReferences() {
         return nbReferences;
+    }
+
+    @Override
+    public ShareLevel getShareLevel() {
+        return shareLevel;
     }
 
 }

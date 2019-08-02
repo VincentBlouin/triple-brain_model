@@ -5,6 +5,7 @@
 package guru.bubl.module.model.center_graph_element;
 
 import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.ShareLevel;
 
 import java.net.URI;
 import java.util.Date;
@@ -16,4 +17,5 @@ public interface CenterGraphElement {
     Date getLastCenterDate();
     Map<URI, String> getContext();
     Integer getNbReferences();
+    ShareLevel getShareLevel();
 }
