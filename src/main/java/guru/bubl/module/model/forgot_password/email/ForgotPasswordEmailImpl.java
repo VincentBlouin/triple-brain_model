@@ -4,7 +4,9 @@
 
 package guru.bubl.module.model.forgot_password.email;
 
-import com.sendgrid.*;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
 import guru.bubl.module.model.EmailMindRespect;
 import guru.bubl.module.model.User;
 

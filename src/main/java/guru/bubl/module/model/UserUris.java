@@ -4,6 +4,8 @@
 
 package guru.bubl.module.model;
 
+import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.GraphElementType;
 import guru.bubl.module.model.graph.schema.Schema;
 
 import java.net.URI;
@@ -50,7 +52,7 @@ public class UserUris {
         );
     }
 
-    public static Boolean isUriOfAnIdentifier(URI uri){
+    public static Boolean isUriOfAnIdentifier(URI uri) {
         return uri.toString().contains("/graph/identification");
     }
 
@@ -101,6 +103,25 @@ public class UserUris {
         return URI.create(
                 baseEdgeUri() + "/" + shortId
         );
+    }
+
+    public URI uriFromTypeAndShortId(GraphElementType type, String shortId) {
+        return URI.create(
+                baseUriFromType(type) + "/" + shortId
+        );
+    }
+
+    private URI baseUriFromType(GraphElementType type) {
+        switch (type) {
+            case Vertex:
+                return baseVertexUri();
+            case Edge:
+                return baseEdgeUri();
+            case Meta:
+                return baseIdentificationUri();
+            default:
+                return baseUri();
+        }
     }
 
     public URI vertexUriFromShortId(String shortId) {

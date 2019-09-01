@@ -4,13 +4,19 @@
 
 package guru.bubl.module.model.graph;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum GraphElementType {
-    resource,
-    vertex,
-    edge,
-    schema,
-    property,
-    meta;
+    Resource,
+    GraphElement,
+    Vertex,
+    Edge,
+    Schema,
+    Property,
+    Meta;
+
+    public static List<GraphElementType> commonTypes = Arrays.asList(new GraphElementType[]{GraphElementType.Resource, GraphElementType.GraphElement});
 
     public static String[] names() {
         GraphElementType[] types = values();

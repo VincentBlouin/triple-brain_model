@@ -3,8 +3,7 @@
  */
 
 package guru.bubl.module.model.forgot_password.email;
-
-import com.sendgrid.Mail;
+import com.sendgrid.helpers.mail.Mail;
 import guru.bubl.module.model.User;
 
 public interface ForgotPasswordEmail {

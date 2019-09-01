@@ -11,5 +11,4 @@ public interface CenteredGraphElementsOperator{
     Set<CenterGraphElementPojo> getPublicAndPrivateWithLimit(Integer limit);
     Set<CenterGraphElementPojo> getPublicOnlyOfType();
     Set<CenterGraphElementPojo> getPublicOnlyOfTypeWithLimit(Integer limit);
-    void removeCenterGraphElements(Set<CenterGraphElementPojo> centers);
 }

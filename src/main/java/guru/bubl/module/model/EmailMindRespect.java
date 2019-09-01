@@ -6,6 +6,8 @@ package guru.bubl.module.model;
 
 import com.google.inject.Inject;
 import com.sendgrid.*;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Email;
 import guru.bubl.module.common_utils.NoEx;
 
 public class EmailMindRespect {
@@ -13,7 +15,7 @@ public class EmailMindRespect {
     @Inject
     SendGrid sendgrid;
 
-    public static final com.sendgrid.Email FROM = new com.sendgrid.Email(
+    public static final Email FROM = new Email(
             "mindrespect.com <no-reply@mindrespect.com>"
     );
 

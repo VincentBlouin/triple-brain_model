@@ -28,8 +28,8 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
                 vertexOperator.getNumberOfConnectedEdges(),
                 vertexOperator.getNbPublicNeighbors(),
                 vertexOperator.getNbFriendNeighbors(),
-                convertVertexSetToPojoMap(vertexOperator.getIncludedVertices()),
-                convertEdgeSetToPojoMap(vertexOperator.getIncludedEdges()),
+                new HashMap<>(),
+                new HashMap<>(),
                 convertSuggestionSetToPojo(vertexOperator.getSuggestions()),
                 vertexOperator.getShareLevel()
         );

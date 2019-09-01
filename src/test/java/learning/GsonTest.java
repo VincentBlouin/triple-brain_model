@@ -7,7 +7,6 @@ package learning;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import guru.bubl.module.model.json.JsonUtils;
-import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
 import guru.bubl.module.model.graph.GraphElementType;
@@ -32,7 +31,7 @@ public class GsonTest {
                 GraphElementType.valueOf(
                         json.getString("type")
                 ),
-                is(GraphElementType.edge)
+                is(GraphElementType.Edge)
         );
     }
 
@@ -71,7 +70,7 @@ public class GsonTest {
     }
 
     private class WithEnum {
-        private GraphElementType type = GraphElementType.edge;
+        private GraphElementType type = GraphElementType.Edge;
     }
 
 }

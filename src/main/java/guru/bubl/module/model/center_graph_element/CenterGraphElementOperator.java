@@ -11,4 +11,5 @@ public interface CenterGraphElementOperator {
     Integer getNumberOfVisits();
     void updateLastCenterDate();
     Date getLastCenterDate();
+    void remove();
 }
