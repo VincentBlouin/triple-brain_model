@@ -6,9 +6,12 @@ package guru.bubl.module.model.center_graph_element;
 
 import java.util.Set;
 
-public interface CenteredGraphElementsOperator{
+public interface CenteredGraphElementsOperator {
     Set<CenterGraphElementPojo> getPublicAndPrivate();
-    Set<CenterGraphElementPojo> getPublicAndPrivateWithLimit(Integer limit);
+
+    Set<CenterGraphElementPojo> getPublicAndPrivateWithLimitAndSkip(Integer limit, Integer skip);
+
     Set<CenterGraphElementPojo> getPublicOnlyOfType();
-    Set<CenterGraphElementPojo> getPublicOnlyOfTypeWithLimit(Integer limit);
+
+    Set<CenterGraphElementPojo> getPublicOnlyOfTypeWithLimitAndSkip(Integer limit, Integer skip);
 }
