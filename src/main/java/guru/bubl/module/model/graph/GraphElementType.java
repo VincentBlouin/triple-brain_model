@@ -14,9 +14,10 @@ public enum GraphElementType {
     Edge,
     Schema,
     Property,
-    Meta;
+    Meta,
+    Pattern;
 
-    public static List<GraphElementType> commonTypes = Arrays.asList(new GraphElementType[]{GraphElementType.Resource, GraphElementType.GraphElement});
+    public static List<GraphElementType> commonTypes = Arrays.asList(new GraphElementType[]{GraphElementType.Resource, GraphElementType.GraphElement, GraphElementType.Pattern});
 
     public static String[] names() {
         GraphElementType[] types = values();

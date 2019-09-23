@@ -14,10 +14,17 @@ import java.util.Map;
 
 public interface Vertex extends GraphElement, ShareLevelGetter {
     Integer getNumberOfConnectedEdges();
+
     Integer getNbPublicNeighbors();
+
     Integer getNbFriendNeighbors();
+
     Map<URI, SuggestionPojo> getSuggestions();
-    Map<URI, ?extends Vertex> getIncludedVertices();
-    Map<URI, ?extends Edge> getIncludedEdges();
+
+    Map<URI, ? extends Vertex> getIncludedVertices();
+
+    Map<URI, ? extends Edge> getIncludedEdges();
+
+    Boolean isPattern();
 }
 

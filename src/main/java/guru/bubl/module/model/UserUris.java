@@ -111,6 +111,19 @@ public class UserUris {
         );
     }
 
+    public URI uriFromTypeStringAndShortId(String typeStr, String shortId) {
+        GraphElementType type;
+        if (typeStr.equals("identification")) {
+            type = GraphElementType.Meta;
+        } else {
+            type = GraphElementType.valueOf(typeStr.substring(0, 1).toUpperCase() + typeStr.substring(1));
+        }
+        return uriFromTypeAndShortId(
+                type,
+                shortId
+        );
+    }
+
     private URI baseUriFromType(GraphElementType type) {
         switch (type) {
             case Vertex:

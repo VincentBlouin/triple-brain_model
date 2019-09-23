@@ -52,4 +52,8 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
 
     void setShareLevel(ShareLevel shareLevel);
 
+    void makePattern();
+
+    void undoPattern();
+
 }

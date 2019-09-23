@@ -162,6 +162,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
+    public Boolean isPattern() {
+        return vertex.isPattern();
+    }
+
+    @Override
     public boolean hasLabel() {
         return vertex.hasLabel();
     }
@@ -238,6 +243,10 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
 
     public GraphElementPojo getGraphElement() {
         return vertex.getGraphElement();
+    }
+
+    public VertexPojo getVertex() {
+        return vertex;
     }
 
     public void setCreationDate(Long date) {

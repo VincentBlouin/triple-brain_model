@@ -1,0 +1,11 @@
+package guru.bubl.module.model.graph.pattern;
+
+import guru.bubl.module.model.graph.GraphElement;
+
+import java.net.URI;
+import java.util.Map;
+
+public interface Pattern {
+    GraphElement getGraphElement();
+    Map<URI, String> getContext();
+}

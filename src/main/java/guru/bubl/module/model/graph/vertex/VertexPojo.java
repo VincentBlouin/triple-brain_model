@@ -27,6 +27,7 @@ public class VertexPojo implements Vertex {
     private Map<URI, EdgePojo> includedEdges;
     private Map<URI, SuggestionPojo> suggestions;
     private ShareLevel shareLevel;
+    private Boolean isPattern = false;
 
     public VertexPojo(
             GraphElementPojo graphElement,
@@ -117,6 +118,15 @@ public class VertexPojo implements Vertex {
         return includedEdges;
     }
 
+    public void setAsPattern() {
+        this.isPattern = true;
+    }
+
+    @Override
+    public Boolean isPattern() {
+        return isPattern;
+    }
+
     @Override
     public Map<URI, IdentifierPojo> getIdentifications() {
         return graphElement.getIdentifications();
@@ -190,6 +200,10 @@ public class VertexPojo implements Vertex {
     @Override
     public int hashCode() {
         return graphElement.hashCode();
+    }
+
+    public void setUri(URI uri) {
+        graphElement.getFriendlyResource().setUri(uri);
     }
 
     public GraphElementPojo getGraphElement() {
