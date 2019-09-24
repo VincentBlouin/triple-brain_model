@@ -13,9 +13,16 @@ import java.util.Map;
 
 public interface CenterGraphElement {
     Integer getNumberOfVisits();
+
     GraphElement getGraphElement();
+
     Date getLastCenterDate();
+
     Map<URI, String> getContext();
+
     Integer getNbReferences();
+
     ShareLevel getShareLevel();
+
+    Boolean isPattern();
 }

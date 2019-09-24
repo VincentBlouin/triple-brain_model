@@ -25,4 +25,5 @@ public interface GraphElement extends FriendlyResource{
     String getColors();
     String getFont();
     String getChildrenIndex();
+    URI getPatternUri();
 }

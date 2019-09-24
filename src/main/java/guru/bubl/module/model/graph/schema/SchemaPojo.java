@@ -137,4 +137,9 @@ public class SchemaPojo implements Schema {
         return graphElement.getChildrenIndex();
     }
 
+    @Override
+    public URI getPatternUri() {
+        return graphElement.getPatternUri();
+    }
+
 }

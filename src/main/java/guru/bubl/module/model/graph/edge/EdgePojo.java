@@ -119,6 +119,11 @@ public class EdgePojo implements Edge {
     }
 
     @Override
+    public URI getPatternUri() {
+        return graphElement.getPatternUri();
+    }
+
+    @Override
     public URI uri() {
         return graphElement.uri();
     }

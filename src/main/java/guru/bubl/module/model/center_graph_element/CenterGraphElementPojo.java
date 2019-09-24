@@ -20,6 +20,8 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     private Map<URI, String> context;
     private Integer nbReferences;
     private ShareLevel shareLevel;
+    private Boolean isPattern;
+
 
     public CenterGraphElementPojo(
             Integer numberOfVisits,
@@ -27,7 +29,8 @@ public class CenterGraphElementPojo implements CenterGraphElement {
             GraphElementPojo graphElement,
             Map<URI, String> context,
             Integer nbReferences,
-            ShareLevel shareLevel
+            ShareLevel shareLevel,
+            Boolean isPattern
     ) {
         this.numberOfVisits = numberOfVisits;
         this.graphElement = graphElement;
@@ -35,6 +38,7 @@ public class CenterGraphElementPojo implements CenterGraphElement {
         this.context = context;
         this.nbReferences = nbReferences;
         this.shareLevel = shareLevel;
+        this.isPattern = isPattern;
     }
 
     public CenterGraphElementPojo(
@@ -73,6 +77,11 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     @Override
     public ShareLevel getShareLevel() {
         return shareLevel;
+    }
+
+    @Override
+    public Boolean isPattern() {
+        return isPattern;
     }
 
 }

@@ -23,6 +23,7 @@ public class GraphElementPojo implements GraphElement {
     private String childrenIndex;
     private String colors;
     private String font;
+    URI patternUri;
 
     @Deprecated
     public GraphElementPojo(GraphElementOperator graphElementOperator) {
@@ -44,6 +45,16 @@ public class GraphElementPojo implements GraphElement {
     ) {
         this.friendlyResource = friendlyResource;
         this.identifications = identifications;
+    }
+
+    public GraphElementPojo(
+            FriendlyResourcePojo friendlyResource,
+            Map<URI, IdentifierPojo> identifications,
+            URI patternUri
+    ) {
+        this.friendlyResource = friendlyResource;
+        this.identifications = identifications;
+        this.patternUri = patternUri;
     }
 
     public GraphElementPojo(
@@ -86,7 +97,16 @@ public class GraphElementPojo implements GraphElement {
         return childrenIndex == null ? "" : childrenIndex;
     }
 
-    public void setChildrenIndex(String childrenIndex){
+    public void setPatternUri(URI patternUri) {
+        this.patternUri = patternUri;
+    }
+
+    @Override
+    public URI getPatternUri() {
+        return patternUri;
+    }
+
+    public void setChildrenIndex(String childrenIndex) {
         this.childrenIndex = childrenIndex;
     }
 
@@ -173,7 +193,7 @@ public class GraphElementPojo implements GraphElement {
     }
 
     public Date getSortDate() {
-        if(null == sortDate){
+        if (null == sortDate) {
             return null;
         }
         return new Date(
@@ -182,7 +202,7 @@ public class GraphElementPojo implements GraphElement {
     }
 
     public Date getMoveDate() {
-        if(null == moveDate){
+        if (null == moveDate) {
             return null;
         }
         return new Date(
