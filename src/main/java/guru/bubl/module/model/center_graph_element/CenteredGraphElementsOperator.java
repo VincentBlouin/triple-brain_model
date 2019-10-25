@@ -4,14 +4,22 @@
 
 package guru.bubl.module.model.center_graph_element;
 
-import java.util.Set;
+import guru.bubl.module.model.User;
+
+import java.util.List;
 
 public interface CenteredGraphElementsOperator {
-    Set<CenterGraphElementPojo> getPublicAndPrivate();
 
-    Set<CenterGraphElementPojo> getPublicAndPrivateWithLimitAndSkip(Integer limit, Integer skip);
+    List<CenterGraphElementPojo> getPublicAndPrivateForOwner(User owner);
 
-    Set<CenterGraphElementPojo> getPublicOnlyOfType();
+    List<CenterGraphElementPojo> getAllPublic();
 
-    Set<CenterGraphElementPojo> getPublicOnlyOfTypeWithLimitAndSkip(Integer limit, Integer skip);
+    List<CenterGraphElementPojo> getPublicOfUser(User owner);
+
+    List<CenterGraphElementPojo> getAllPatterns();
+
+    List<CenterGraphElementPojo> getFriendsFeedForUser(User user);
+
+    List<CenterGraphElementPojo> getForAFriend(User friend);
+
 }

@@ -4,8 +4,12 @@
 
 package guru.bubl.module.model.center_graph_element;
 
-import guru.bubl.module.model.User;
+import com.google.inject.assistedinject.Assisted;
 
 public interface CenterGraphElementsOperatorFactory {
-    CenteredGraphElementsOperator forUser(User user);
+    CenteredGraphElementsOperator usingLimitAndSkip(
+            @Assisted("limit") Integer limit,
+            @Assisted("skip") Integer skip
+    );
+    CenteredGraphElementsOperator usingDefaultLimits();
 }
