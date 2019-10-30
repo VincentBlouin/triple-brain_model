@@ -10,39 +10,32 @@ import java.net.URI;
 import java.util.List;
 
 public interface GraphSearch {
+    static final Integer LIMIT = 10;
+
     List<GraphElementSearchResult> searchForAllOwnResources(
-            String searchTerm,
             User user
     );
 
     List<GraphElementSearchResult> searchForAnyResourceThatCanBeUsedAsAnIdentifier(
-            String searchTerm,
             User user
-    );
-
-    List<GraphElementSearchResult> searchOnlyForOwnVerticesOrSchemasForAutoCompletionByLabel(
-            String label, User user
     );
 
     List<GraphElementSearchResult> searchOnlyForOwnVerticesForAutoCompletionByLabel(
-            String searchTerm, User user
-    );
-
-    List<GraphElementSearchResult> searchOwnTagsForAutoCompletionByLabel(
-            String searchTerm, User user
-    );
-
-    List<GraphElementSearchResult> searchRelationsPropertiesSchemasForAutoCompletionByLabel(
-            String searchTerm,
             User user
     );
 
-    GraphElementSearchResult getDetails(URI uri, User user);
-
-    List<GraphElementSearchResult> searchPublicVerticesOnly(
-            String searchTerm
+    List<GraphElementSearchResult> searchRelationsForAutoCompletionByLabel(
+            User user
     );
 
-    GraphElementSearchResult getDetailsAnonymously(URI uri);
+    List<GraphElementSearchResult> searchOwnTagsForAutoCompletionByLabel(
+            User user
+    );
+
+//    GraphElementSearchResult getDetails(URI uri, User user);
+
+    List<GraphElementSearchResult> searchPublicVerticesOnly();
+
+//    GraphElementSearchResult getDetailsAnonymously(URI uri);
 
 }
