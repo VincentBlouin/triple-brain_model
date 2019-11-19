@@ -10,6 +10,7 @@ public interface CenterGraphElementOperator {
     void incrementNumberOfVisits();
     Integer getNumberOfVisits();
     void updateLastCenterDate();
+    void setLastCenterDate(Date lastCenterDate);
     Date getLastCenterDate();
     void remove();
 }
