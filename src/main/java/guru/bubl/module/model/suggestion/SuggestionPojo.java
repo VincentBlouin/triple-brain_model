@@ -111,9 +111,9 @@ public class SuggestionPojo implements Suggestion {
         }
     }
 
-    public Boolean isFromComparison(){
-        for(SuggestionOrigin origin: origins()){
-            if("comparison".equals(origin.getType())){
+    public Boolean isFromComparison() {
+        for (SuggestionOrigin origin : origins()) {
+            if ("comparison".equals(origin.getType())) {
                 return true;
             }
         }
@@ -158,6 +158,11 @@ public class SuggestionPojo implements Suggestion {
     @Override
     public Date lastModificationDate() {
         return friendlyResource.lastModificationDate();
+    }
+
+    @Override
+    public String getColors() {
+        return friendlyResource.getColors();
     }
 
 }

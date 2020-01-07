@@ -159,6 +159,11 @@ public class IdentifierPojo implements Identifier {
     }
 
     @Override
+    public String getColors() {
+        return friendlyResource.getColors();
+    }
+
+    @Override
     public boolean equals(Object toCompare) {
         return friendlyResource.equals(toCompare);
     }

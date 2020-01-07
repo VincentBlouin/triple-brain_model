@@ -88,6 +88,11 @@ public class SuggestionOriginPojo implements SuggestionOrigin{
     }
 
     @Override
+    public String getColors() {
+        return this.friendlyResource.getColors();
+    }
+
+    @Override
     public Boolean isRelatedToFriendlyResource(FriendlyResource friendlyResource) {
         return origin.contains(
                 friendlyResource.uri().toString()

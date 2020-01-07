@@ -21,7 +21,6 @@ public class GraphElementPojo implements GraphElement {
     private Long sortDate;
     private Long moveDate;
     private String childrenIndex;
-    private String colors;
     private String font;
     URI patternUri;
 
@@ -75,16 +74,16 @@ public class GraphElementPojo implements GraphElement {
 
     @Override
     public String getColors() {
-        return colors == null ? "" : colors;
+        return this.friendlyResource.getColors();
+    }
+
+    public void setColors(String colors) {
+        this.friendlyResource.setColors(colors);
     }
 
     @Override
     public String getFont() {
         return font == null ? "" : font;
-    }
-
-    public void setColors(String colors) {
-        this.colors = colors;
     }
 
     public void setFont(String font) {

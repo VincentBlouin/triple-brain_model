@@ -18,7 +18,6 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
     void remove();
     void removeIdentification(Identifier type);
     Map<URI, IdentifierPojo> addMeta(Identifier friendlyResource);
-    void setColors(String colors);
     void setFont(String font);
     void setChildrenIndex(String childrenIndex);
 }

@@ -24,6 +24,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
     private Set<Image> images;
     private Long creationDate,
             lastModificationDate;
+    private String colors;
 
     @Deprecated
     public FriendlyResourcePojo(
@@ -149,7 +150,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public Date creationDate() {
-        if(null == creationDate){
+        if (null == creationDate) {
             return null;
         }
         return new Date(
@@ -159,12 +160,21 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public Date lastModificationDate() {
-        if(null == lastModificationDate){
+        if (null == lastModificationDate) {
             return null;
         }
         return new Date(
                 lastModificationDate
         );
+    }
+
+    public void setColors(String colors) {
+        this.colors = colors;
+    }
+
+    @Override
+    public String getColors() {
+        return colors == null ? "" : colors;
     }
 
     @Override

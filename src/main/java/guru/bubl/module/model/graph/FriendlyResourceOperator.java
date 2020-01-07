@@ -18,4 +18,5 @@ public interface FriendlyResourceOperator extends FriendlyResource {
     void create();
     void createUsingInitialValues(Map<String, Object> values);
     void remove();
+    void setColors(String colors);
 }

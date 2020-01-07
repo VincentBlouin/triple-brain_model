@@ -21,5 +21,6 @@ public interface FriendlyResource {
     default String getOwnerUsername() {
         return UserUris.ownerUserNameFromUri(uri());
     }
+    String getColors();
 }
 
