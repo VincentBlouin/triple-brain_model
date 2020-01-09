@@ -26,6 +26,7 @@ public class SubGraphPojo implements SubGraph {
     private String childrenIndexesCenterTag;
     private String colorsCenterTag;
     private String fontCenterTag;
+    private IdentifierPojo centerTag;
 
     public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
         return new SubGraphPojo(vertices, edges);
@@ -104,7 +105,11 @@ public class SubGraphPojo implements SubGraph {
 
     @Override
     public IdentifierPojo getCenterMeta() {
-        return null;
+        return centerTag;
+    }
+
+    public void setCenterMeta(IdentifierPojo tag) {
+        this.centerTag = tag;
     }
 
     public void addEdge(EdgePojo edge) {
