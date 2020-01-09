@@ -7,7 +7,7 @@ package guru.bubl.module.model.search;
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.edge.Edge;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.schema.SchemaPojo;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
@@ -17,7 +17,7 @@ public interface GraphIndexer {
     void indexRelation(Edge edge);
     void indexSchema(SchemaPojo schema);
     void indexProperty(GraphElementPojo property, SchemaPojo schema);
-    void indexMeta(IdentifierPojo identifier);
+    void indexMeta(TagPojo identifier);
     void deleteGraphElement(GraphElement graphElement);
     void commit();
 }

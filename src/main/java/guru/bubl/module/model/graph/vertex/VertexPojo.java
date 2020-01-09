@@ -7,7 +7,7 @@ package guru.bubl.module.model.graph.vertex;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.suggestion.SuggestionPojo;
@@ -128,7 +128,7 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public Map<URI, IdentifierPojo> getIdentifications() {
+    public Map<URI, TagPojo> getIdentifications() {
         return graphElement.getIdentifications();
     }
 

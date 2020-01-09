@@ -5,29 +5,29 @@
 package guru.bubl.module.model.validator;
 
 import org.apache.commons.lang.StringUtils;
-import guru.bubl.module.model.graph.identification.Identifier;
+import guru.bubl.module.model.graph.tag.Tag;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class IdentificationValidator {
+public class TagValidator {
 
-    public static enum IdentificationError {
+    public static enum TagError {
         EXTERNAL_URI_MANDATORY,
         EMPTY_EXTERNAL_URI
     }
 
-    public Set<IdentificationError> validate(Identifier identification){
-        Set<IdentificationError> errors = new HashSet<>();
+    public Set<TagError> validate(Tag identification){
+        Set<TagError> errors = new HashSet<>();
         if(null == identification.getExternalResourceUri()){
             errors.add(
-                    IdentificationError.EXTERNAL_URI_MANDATORY
+                    TagError.EXTERNAL_URI_MANDATORY
             );
             return errors;
         }
         if(StringUtils.isEmpty(identification.getExternalResourceUri().toString())){
             errors.add(
-                    IdentificationError.EMPTY_EXTERNAL_URI
+                    TagError.EMPTY_EXTERNAL_URI
             );
         }
         return errors;

@@ -4,11 +4,10 @@
 
 package guru.bubl.module.model.graph;
 
-import guru.bubl.module.model.graph.identification.Identifier;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.Tag;
+import guru.bubl.module.model.graph.tag.TagPojo;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.Map;
 
 public interface GraphElementOperator extends GraphElement, FriendlyResourceOperator {
@@ -16,8 +15,8 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
       background
     };
     void remove();
-    void removeIdentification(Identifier type);
-    Map<URI, IdentifierPojo> addMeta(Identifier friendlyResource);
+    void removeIdentification(Tag type);
+    Map<URI, TagPojo> addMeta(Tag friendlyResource);
     void setFont(String font);
     void setChildrenIndex(String childrenIndex);
 }

@@ -5,17 +5,17 @@
 package guru.bubl.module.model.graph;
 
 import guru.bubl.module.model.FriendlyResource;
-import guru.bubl.module.model.graph.identification.Identifier;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.Tag;
+import guru.bubl.module.model.graph.tag.TagPojo;
 
 import java.net.URI;
 import java.util.Map;
 
 public interface GraphElement extends FriendlyResource{
-    Map<URI, IdentifierPojo> getIdentifications();
+    Map<URI, TagPojo> getIdentifications();
 
-    default Identifier getIdentificationHavingInternalUri(URI uri){
-        for(Identifier identification : this.getIdentifications().values()){
+    default Tag getIdentificationHavingInternalUri(URI uri){
+        for(Tag identification : this.getIdentifications().values()){
             if(identification.uri().equals(uri)){
                 return identification;
             }

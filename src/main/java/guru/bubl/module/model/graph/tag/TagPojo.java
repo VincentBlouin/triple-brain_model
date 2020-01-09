@@ -2,79 +2,94 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph.identification;
+package guru.bubl.module.model.graph.tag;
 
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
+import guru.bubl.module.model.graph.GraphElementPojo;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.Map;
 import java.util.Set;
 
-public class IdentifierPojo implements Identifier {
+public class TagPojo implements Tag {
 
     URI relationExternalResourceUri = DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI;
     URI externalResourceUri;
-    FriendlyResourcePojo friendlyResource;
+    GraphElementPojo graphElement;
     Integer nbReferences = 0;
 
-    public IdentifierPojo(
+    public TagPojo(
             Integer nbReferences,
-            FriendlyResourcePojo meta
+            GraphElementPojo meta
     ) {
         this.nbReferences = nbReferences;
-        this.friendlyResource = meta;
+        this.graphElement = meta;
     }
 
-    public IdentifierPojo(
+    public TagPojo(
             URI externalResourceUri,
-            Identifier identification
+            Tag identification
     ) {
-        friendlyResource = new FriendlyResourcePojo(externalResourceUri);
+        graphElement = new GraphElementPojo(externalResourceUri);
         this.externalResourceUri = identification.getExternalResourceUri();
-        friendlyResource.setLabel(identification.label());
+        graphElement.setLabel(identification.label());
         if (identification.comment() != null) {
-            friendlyResource.setComment(
+            graphElement.getFriendlyResource().setComment(
                     identification.comment()
             );
         }
         if (identification.images() != null) {
-            friendlyResource.setImages(
+            graphElement.getFriendlyResource().setImages(
                     identification.images()
             );
         }
-        friendlyResource.setLastModificationDate(new Date().getTime());
+        graphElement.getFriendlyResource().setLastModificationDate(new Date().getTime());
     }
 
-    public IdentifierPojo(
+    public TagPojo(
             URI externalResourceUri,
             Integer nbReferences,
-            FriendlyResourcePojo friendlyResourcePojo
+            GraphElementPojo graphElementPojo
     ) {
         this.externalResourceUri = externalResourceUri;
         this.nbReferences = nbReferences;
-        this.friendlyResource = friendlyResourcePojo;
+        this.graphElement = graphElementPojo;
     }
 
-    public IdentifierPojo(
+    public TagPojo(
+            URI externalResourceUri,
+            GraphElementPojo graphElementPojo
+    ) {
+        this.externalResourceUri = externalResourceUri;
+        this.graphElement = graphElementPojo;
+    }
+
+
+    public TagPojo(
             URI externalResourceUri,
             FriendlyResourcePojo friendlyResourcePojo
     ) {
         this.externalResourceUri = externalResourceUri;
-        this.friendlyResource = friendlyResourcePojo;
+        this.graphElement = new GraphElementPojo(friendlyResourcePojo);
     }
 
-    public IdentifierPojo(
+    public TagPojo(
             URI externalResourceUri
     ) {
         this.externalResourceUri = externalResourceUri;
-        this.friendlyResource = new FriendlyResourcePojo("");
+        this.graphElement = new GraphElementPojo(
+                new FriendlyResourcePojo(
+                        ""
+                )
+        );
     }
 
-    public IdentifierPojo(
-            FriendlyResourcePojo friendlyResourcePojo
+    public TagPojo(
+            GraphElementPojo graphElementPojo
     ) {
-        this.friendlyResource = friendlyResourcePojo;
+        this.graphElement = graphElementPojo;
     }
 
     @Override
@@ -96,7 +111,7 @@ public class IdentifierPojo implements Identifier {
         return nbReferences;
     }
 
-    public IdentifierPojo setNbRefences(Integer nbReferences) {
+    public TagPojo setNbRefences(Integer nbReferences) {
         this.nbReferences = nbReferences;
         return this;
     }
@@ -107,92 +122,111 @@ public class IdentifierPojo implements Identifier {
 
     @Override
     public URI uri() {
-        return friendlyResource.uri();
+        return graphElement.uri();
     }
 
     @Override
     public boolean hasLabel() {
-        return friendlyResource.hasLabel();
+        return graphElement.hasLabel();
     }
 
     @Override
     public String label() {
-        return friendlyResource.label();
+        return graphElement.label();
     }
 
     @Override
     public Set<Image> images() {
-        return friendlyResource.images();
+        return graphElement.images();
     }
 
     public void setImages(Set<Image> images) {
-        friendlyResource.setImages(images);
+        graphElement.getFriendlyResource().setImages(images);
     }
 
     @Override
     public Boolean gotImages() {
-        return friendlyResource.gotImages();
+        return graphElement.gotImages();
     }
 
     @Override
     public String comment() {
-        return friendlyResource.comment();
+        return graphElement.comment();
     }
 
     public void setComment(String comment) {
-        friendlyResource.setComment(comment);
+        graphElement.getFriendlyResource().setComment(comment);
     }
 
     @Override
     public Boolean gotComments() {
-        return friendlyResource.gotComments();
+        return graphElement.gotComments();
     }
 
     @Override
     public Date creationDate() {
-        return friendlyResource.creationDate();
+        return graphElement.creationDate();
     }
 
     @Override
     public Date lastModificationDate() {
-        return friendlyResource.lastModificationDate();
+        return graphElement.lastModificationDate();
     }
 
     @Override
     public String getColors() {
-        return friendlyResource.getColors();
+        return graphElement.getColors();
     }
 
     @Override
     public boolean equals(Object toCompare) {
-        return friendlyResource.equals(toCompare);
+        return graphElement.equals(toCompare);
     }
 
     @Override
     public int hashCode() {
-        return friendlyResource.hashCode();
+        return graphElement.hashCode();
     }
 
     public void setUri(URI uri) {
-        friendlyResource.setUri(uri);
+        graphElement.getFriendlyResource().setUri(uri);
     }
 
     public void setLastModificationDate(Long date) {
-        friendlyResource.setLastModificationDate(
+        graphElement.getFriendlyResource().setLastModificationDate(
                 date
         );
     }
 
-    public FriendlyResourcePojo getFriendlyResource() {
-        return friendlyResource;
+    public GraphElementPojo getGraphElement() {
+        return graphElement;
     }
 
     public void setCreationDate(Long date) {
-        friendlyResource.setCreationDate(date);
+        graphElement.setCreationDate(date);
     }
 
     public void setLabel(String label) {
-        friendlyResource.setLabel(label);
+        graphElement.setLabel(label);
     }
 
+    @Override
+    public Map<URI, TagPojo> getIdentifications() {
+        return graphElement.getIdentifications();
+    }
+
+    @Override
+    public String getFont() {
+        return graphElement.getFont();
+    }
+
+    @Override
+    public String getChildrenIndex() {
+        return graphElement.getChildrenIndex();
+    }
+
+    @Override
+    public URI getPatternUri() {
+        return graphElement.getPatternUri();
+    }
 }

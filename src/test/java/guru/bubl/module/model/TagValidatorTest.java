@@ -5,18 +5,18 @@
 package guru.bubl.module.model;
 
 import com.google.gson.Gson;
-import guru.bubl.module.model.validator.IdentificationValidator;
+import guru.bubl.module.model.graph.tag.Tag;
+import guru.bubl.module.model.validator.TagValidator;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
-import guru.bubl.module.model.graph.identification.Identifier;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.TagPojo;
 
 import java.util.Set;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class IdentificationValidatorTest {
+public class TagValidatorTest {
 
     private Gson gson = new Gson();
 
@@ -32,7 +32,7 @@ public class IdentificationValidatorTest {
         );
         assertFalse(validationWithJsonReturnsMessage(
                 friendlyResource,
-                IdentificationValidator.IdentificationError.EXTERNAL_URI_MANDATORY
+                TagValidator.TagError.EXTERNAL_URI_MANDATORY
         ));
     }
 
@@ -40,7 +40,7 @@ public class IdentificationValidatorTest {
     public void external_resource_uri_is_mandatory(){
         assertTrue(validationWithJsonReturnsMessage(
                 new JSONObject(),
-                IdentificationValidator.IdentificationError.EXTERNAL_URI_MANDATORY
+                TagValidator.TagError.EXTERNAL_URI_MANDATORY
         ));
     }
 
@@ -53,7 +53,7 @@ public class IdentificationValidatorTest {
                 );
         assertTrue(validationWithJsonReturnsMessage(
                 friendlyResource,
-                IdentificationValidator.IdentificationError.EMPTY_EXTERNAL_URI
+                TagValidator.TagError.EMPTY_EXTERNAL_URI
         ));
     }
 
@@ -64,10 +64,10 @@ public class IdentificationValidatorTest {
                         fields.externalResourceUri.name(),
                         "/service/users/vince/graph/edge/c30bbev5-0c1f-4b08-b600-fb6040abb7eq/identification"
                 );
-        IdentificationValidator validator = new IdentificationValidator();
-        Identifier identification = gson.fromJson(
+        TagValidator validator = new TagValidator();
+        Tag identification = gson.fromJson(
                 json.toString(),
-                IdentifierPojo.class
+                TagPojo.class
         );
         assertTrue(
                 validator.validate(
@@ -78,19 +78,19 @@ public class IdentificationValidatorTest {
 
     private boolean validationWithJsonReturnsMessage(
             JSONObject json,
-            IdentificationValidator.IdentificationError message
+            TagValidator.TagError message
     ){
-        Set<IdentificationValidator.IdentificationError> errors ;
-        errors = new IdentificationValidator().validate(
+        Set<TagValidator.TagError> errors ;
+        errors = new TagValidator().validate(
                 identificationFromJson(json)
         );
         return errors.contains(message);
     }
 
-    private Identifier identificationFromJson(JSONObject jsonObject){
+    private Tag identificationFromJson(JSONObject jsonObject){
         return gson.fromJson(
                 jsonObject.toString(),
-                IdentifierPojo.class
+                TagPojo.class
         );
     }
 }

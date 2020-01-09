@@ -4,14 +4,12 @@
 
 package guru.bubl.module.model.test.scenarios;
 
-import guru.bubl.module.common_utils.Uris;
 import guru.bubl.module.model.User;
-import guru.bubl.module.model.UserUris;
 import guru.bubl.module.model.graph.*;
 import guru.bubl.module.model.graph.GraphFactory;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.suggestion.Suggestion;
@@ -76,10 +74,10 @@ public class TestScenarios {
         return pineApple;
     }
 
-    public static IdentifierPojo identificationFromFriendlyResource(FriendlyResourceOperator resource) {
-        return new IdentifierPojo(
+    public static TagPojo identificationFromFriendlyResource(GraphElementOperator resource) {
+        return new TagPojo(
                 resource.uri(),
-                new FriendlyResourcePojo(resource)
+                new GraphElementPojo(resource)
         );
     }
 

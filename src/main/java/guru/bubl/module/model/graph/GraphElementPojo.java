@@ -5,8 +5,8 @@
 package guru.bubl.module.model.graph;
 
 import guru.bubl.module.model.Image;
-import guru.bubl.module.model.graph.identification.Identifier;
-import guru.bubl.module.model.graph.identification.IdentifierPojo;
+import guru.bubl.module.model.graph.tag.Tag;
+import guru.bubl.module.model.graph.tag.TagPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
-    private Map<URI, IdentifierPojo> identifications;
+    private Map<URI, TagPojo> identifications;
     private Long sortDate;
     private Long moveDate;
     private String childrenIndex;
@@ -40,7 +40,7 @@ public class GraphElementPojo implements GraphElement {
 
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI, IdentifierPojo> identifications
+            Map<URI, TagPojo> identifications
     ) {
         this.friendlyResource = friendlyResource;
         this.identifications = identifications;
@@ -48,7 +48,7 @@ public class GraphElementPojo implements GraphElement {
 
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
-            Map<URI, IdentifierPojo> identifications,
+            Map<URI, TagPojo> identifications,
             URI patternUri
     ) {
         this.friendlyResource = friendlyResource;
@@ -68,7 +68,7 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public Map<URI, IdentifierPojo> getIdentifications() {
+    public Map<URI, TagPojo> getIdentifications() {
         return identifications;
     }
 
@@ -167,12 +167,12 @@ public class GraphElementPojo implements GraphElement {
         return friendlyResource;
     }
 
-    private static Map<URI, IdentifierPojo> convertIdentificationsToPojo(Map<URI, ? extends Identifier> identifications) {
-        Map<URI, IdentifierPojo> identificationsPojo = new HashMap<>();
-        for (Identifier identification : identifications.values()) {
+    private static Map<URI, TagPojo> convertIdentificationsToPojo(Map<URI, ? extends Tag> identifications) {
+        Map<URI, TagPojo> identificationsPojo = new HashMap<>();
+        for (Tag identification : identifications.values()) {
             identificationsPojo.put(
                     identification.getExternalResourceUri(),
-                    (IdentifierPojo) identification
+                    (TagPojo) identification
             );
         }
         return identificationsPojo;

@@ -5,7 +5,7 @@
 package guru.bubl.module.model;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
-import guru.bubl.module.model.graph.identification.IdentificationOperator;
+import guru.bubl.module.model.graph.tag.TagOperator;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.schema.SchemaOperator;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
@@ -19,6 +19,6 @@ public interface WholeGraph {
     Set<EdgeOperator> getAllEdgesOfUser(User user);
     Set<SchemaOperator> getAllSchemas();
     Set<GraphElementOperator> getAllGraphElements();
-    Set<IdentificationOperator> getAllTags();
-    Set<IdentificationOperator> getAllTagsOfUser(User user);
+    Set<TagOperator> getAllTags();
+    Set<TagOperator> getAllTagsOfUser(User user);
 }
