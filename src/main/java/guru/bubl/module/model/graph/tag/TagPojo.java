@@ -7,6 +7,7 @@ package guru.bubl.module.model.graph.tag;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.ShareLevel;
 
 import java.net.URI;
 import java.util.Date;
@@ -15,10 +16,11 @@ import java.util.Set;
 
 public class TagPojo implements Tag {
 
-    URI relationExternalResourceUri = DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI;
-    URI externalResourceUri;
-    GraphElementPojo graphElement;
-    Integer nbReferences = 0;
+    private ShareLevel shareLevel = ShareLevel.PRIVATE;
+    private URI relationExternalResourceUri = DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI;
+    private URI externalResourceUri;
+    private GraphElementPojo graphElement;
+    private Integer nbReferences = 0;
 
     public TagPojo(
             Integer nbReferences,
@@ -228,5 +230,19 @@ public class TagPojo implements Tag {
     @Override
     public URI getPatternUri() {
         return graphElement.getPatternUri();
+    }
+
+    public void setShareLevel(ShareLevel shareLevel) {
+        this.shareLevel = shareLevel;
+    }
+
+    @Override
+    public Boolean isPublic() {
+        return shareLevel.isPublic();
+    }
+
+    @Override
+    public ShareLevel getShareLevel() {
+        return shareLevel;
     }
 }

@@ -16,19 +16,30 @@ public enum ShareLevel {
     PUBLIC_WITH_LINK(30),
     PUBLIC(40);
 
-    public static Set<ShareLevel> allShareLevels = Stream.of(
+    public final static Set<ShareLevel> allShareLevels = Stream.of(
             ShareLevel.PRIVATE,
             ShareLevel.FRIENDS,
             ShareLevel.PUBLIC_WITH_LINK,
             ShareLevel.PUBLIC
     ).collect(Collectors.toSet());
 
+    public final static Integer[] allShareLevelsInt = {
+            ShareLevel.PRIVATE.getIndex(),
+            ShareLevel.FRIENDS.getIndex(),
+            ShareLevel.PUBLIC_WITH_LINK.getIndex(),
+            ShareLevel.PUBLIC.getIndex()
+    };
+
+    public static Integer[] shareLevelsToIntegers(Set<ShareLevel> shareLevels) {
+        return Stream.of(shareLevels.stream().map(ShareLevel::getIndex)).toArray(Integer[]::new);
+    }
+
     // Reverse-lookup map for getting a share level from it's index
     private static final Map<Integer, ShareLevel> lookup = new HashMap<Integer, ShareLevel>();
 
     static {
         for (ShareLevel d : ShareLevel.values()) {
-            lookup.put(d.getConfidentialityIndex(), d);
+            lookup.put(d.getIndex(), d);
         }
     }
 
@@ -38,7 +49,7 @@ public enum ShareLevel {
         this.confidentialityIndex = confidentialityIndex;
     }
 
-    public Integer getConfidentialityIndex() {
+    public Integer getIndex() {
         return confidentialityIndex;
     }
 

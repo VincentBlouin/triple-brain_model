@@ -4,11 +4,12 @@
 
 package guru.bubl.module.model.graph.tag;
 
+import guru.bubl.module.model.ShareLevelGetter;
 import guru.bubl.module.model.graph.GraphElement;
 
 import java.net.URI;
 
-public interface Tag extends GraphElement {
+public interface Tag extends GraphElement, ShareLevelGetter {
     URI DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI = URI.create("generic");
     URI getRelationExternalResourceUri();
     URI getExternalResourceUri();
