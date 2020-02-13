@@ -78,7 +78,12 @@ public class UserUris {
         return URI.create(
                 baseUri() + "/graph"
         );
+    }
 
+    public URI baseGraphElementUri() {
+        return URI.create(
+                graphUri() + "/graphElement"
+        );
     }
 
     public URI baseVertexUri() {
