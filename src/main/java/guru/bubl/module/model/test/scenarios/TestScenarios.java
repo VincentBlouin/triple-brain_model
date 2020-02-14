@@ -74,7 +74,7 @@ public class TestScenarios {
         return pineApple;
     }
 
-    public static TagPojo identificationFromFriendlyResource(GraphElementOperator resource) {
+    public static TagPojo tagFromFriendlyResource(GraphElementOperator resource) {
         return new TagPojo(
                 resource.uri(),
                 new GraphElementPojo(resource)
