@@ -6,10 +6,10 @@ package guru.bubl.module.model.search;
 
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.GraphElementType;
+import guru.bubl.module.model.graph.ShareLevel;
 
 import java.net.URI;
 import java.util.Map;
-import java.util.Set;
 
 public class GraphElementSearchResultPojo implements GraphElementSearchResult {
 
@@ -18,12 +18,13 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     private GraphElementType type;
     private Integer nbReferences = 0;
     private Integer nbVisits = 0;
+    private ShareLevel shareLevel = ShareLevel.PRIVATE;
 
     public GraphElementSearchResultPojo(
             GraphElementType type,
             GraphElementPojo graphElement,
             Map<URI, String> context
-    ){
+    ) {
         this.context = context;
         this.graphElement = graphElement;
         this.type = type;
@@ -39,7 +40,7 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
         return type;
     }
 
-    public Map<URI, String> getContext(){
+    public Map<URI, String> getContext() {
         return context;
     }
 
@@ -58,11 +59,21 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
         return nbReferences;
     }
 
-    public void setNbReferences(Integer nbReferences){
+    @Override
+    public ShareLevel getShareLevel() {
+        return shareLevel;
+    }
+
+    public void setShareLevel(ShareLevel shareLevel) {
+        this.shareLevel = shareLevel;
+    }
+
+    public void setNbReferences(Integer nbReferences) {
         this.nbReferences = nbReferences;
     }
 
-    public void setNbVisits(Integer nbVisits){
+    public void setNbVisits(Integer nbVisits) {
         this.nbVisits = nbVisits;
     }
+
 }
