@@ -25,4 +25,6 @@ public interface GraphElementSearchResult {
     Integer getNbReferences();
 
     ShareLevel getShareLevel();
+
+    Boolean isPattern();
 }

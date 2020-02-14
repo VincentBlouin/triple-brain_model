@@ -19,6 +19,7 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     private Integer nbReferences = 0;
     private Integer nbVisits = 0;
     private ShareLevel shareLevel = ShareLevel.PRIVATE;
+    private Boolean isPattern = false;
 
     public GraphElementSearchResultPojo(
             GraphElementType type,
@@ -63,6 +64,16 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     public ShareLevel getShareLevel() {
         return shareLevel;
     }
+
+    @Override
+    public Boolean isPattern() {
+        return isPattern;
+    }
+
+    public void setIsPattern(Boolean isPattern) {
+        this.isPattern = isPattern;
+    }
+
 
     public void setShareLevel(ShareLevel shareLevel) {
         this.shareLevel = shareLevel;
