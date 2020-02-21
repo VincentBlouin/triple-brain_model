@@ -56,4 +56,6 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
 
     void undoPattern();
 
+    Integer getNbPatternUsage();
+
 }
