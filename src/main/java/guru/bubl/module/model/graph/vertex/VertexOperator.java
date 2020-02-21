@@ -48,11 +48,11 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
 
     void createUsingInitialValues(Map<String, Object> values);
 
-    void mergeTo(VertexOperator vertexOperator);
+    Boolean mergeTo(VertexOperator vertexOperator);
 
     void setShareLevel(ShareLevel shareLevel);
 
-    void makePattern();
+    Boolean makePattern();
 
     void undoPattern();
 

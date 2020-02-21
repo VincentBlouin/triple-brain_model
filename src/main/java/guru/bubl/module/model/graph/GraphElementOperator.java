@@ -19,4 +19,6 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
     Map<URI, TagPojo> addMeta(Tag friendlyResource);
     void setFont(String font);
     void setChildrenIndex(String childrenIndex);
+    Boolean isUnderPattern();
+    Boolean isPatternOrUnderPattern();
 }

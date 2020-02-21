@@ -35,5 +35,7 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     EdgePojo createEdge();
 
+    EdgePojo createEdgeWithAdditionalProperties(Map<String, Object> props);
+
     EdgePojo createWithShareLevel(ShareLevel shareLevel);
 }
