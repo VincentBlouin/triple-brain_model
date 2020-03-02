@@ -94,6 +94,10 @@ public class FriendlyResourcePojo implements FriendlyResource {
         }
     }
 
+    public Boolean hasUri() {
+        return this.uri != null;
+    }
+
     public void setUri(URI uri) {
         this.uri = uri;
     }

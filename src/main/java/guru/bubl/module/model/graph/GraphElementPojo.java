@@ -218,4 +218,8 @@ public class GraphElementPojo implements GraphElement {
         this.moveDate = moveDate;
         return this;
     }
+
+    public Boolean hasUri() {
+        return this.friendlyResource.hasUri();
+    }
 }

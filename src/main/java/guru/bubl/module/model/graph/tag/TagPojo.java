@@ -245,4 +245,8 @@ public class TagPojo implements Tag {
     public ShareLevel getShareLevel() {
         return shareLevel;
     }
+
+    public Boolean hasUri() {
+        return this.graphElement.hasUri();
+    }
 }
