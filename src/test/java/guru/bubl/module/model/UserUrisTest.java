@@ -17,4 +17,12 @@ public class UserUrisTest {
                 userUris.generateSchemaUri().toString().contains("schema")
         );
     }
+
+    @Test
+    public void generate_tag_uri_has_service_prefix(){
+        UserUris userUris = new UserUris("user_name");
+        assertTrue(
+                userUris.generateIdentificationUri().toString().contains("service")
+        );
+    }
 }
