@@ -38,4 +38,7 @@ public interface GraphSearch {
 
 //    GraphElementSearchResult getDetailsAnonymously(URI uri);
 
+
+    List<GraphElementSearchResult> searchAllPatterns();
+
 }
