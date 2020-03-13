@@ -4,9 +4,7 @@
 
 package guru.bubl.module.model;
 
-import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementType;
-import guru.bubl.module.model.graph.schema.Schema;
 
 import java.net.URI;
 import java.util.UUID;
@@ -43,12 +41,6 @@ public class UserUris {
     public static URI generateSchemaPropertyUri(URI schemaUri) {
         return URI.create(
                 schemaUri + "/property/" + UUID.randomUUID().toString()
-        );
-    }
-
-    public static URI schemaPropertyUriFromShortIdAndSchema(Schema schema, String shortId) {
-        return URI.create(
-                schema.uri() + "/property/" + shortId
         );
     }
 
