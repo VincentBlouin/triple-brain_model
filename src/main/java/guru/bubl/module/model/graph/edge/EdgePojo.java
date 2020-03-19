@@ -4,12 +4,11 @@
 
 package guru.bubl.module.model.graph.edge;
 
+import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
-import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
 
 import java.net.URI;
@@ -99,8 +98,8 @@ public class EdgePojo implements Edge {
     }
 
     @Override
-    public Map<URI, TagPojo> getIdentifications() {
-        return graphElement.getIdentifications();
+    public Map<URI, TagPojo> getTags() {
+        return graphElement.getTags();
     }
 
     @Override
@@ -122,6 +121,7 @@ public class EdgePojo implements Edge {
     public URI getPatternUri() {
         return graphElement.getPatternUri();
     }
+
 
     @Override
     public URI uri() {
@@ -182,16 +182,6 @@ public class EdgePojo implements Edge {
         return graphElement;
     }
 
-
-    @Override
-    public Boolean isPublic() {
-        return false;
-    }
-
-    @Override
-    public ShareLevel getShareLevel() {
-        return null;
-    }
 
     public void setCreationDate(Long date) {
         getGraphElement().setCreationDate(date);

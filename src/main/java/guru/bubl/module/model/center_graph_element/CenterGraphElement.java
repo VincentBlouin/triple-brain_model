@@ -6,6 +6,7 @@ package guru.bubl.module.model.center_graph_element;
 
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.vertex.NbNeighbors;
 
 import java.net.URI;
 import java.util.Date;
@@ -20,7 +21,7 @@ public interface CenterGraphElement {
 
     Map<URI, String> getContext();
 
-    Integer getNbReferences();
+    NbNeighbors getNbNeighbors();
 
     ShareLevel getShareLevel();
 

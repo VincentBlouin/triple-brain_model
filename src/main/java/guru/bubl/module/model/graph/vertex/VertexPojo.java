@@ -20,9 +20,7 @@ import java.util.Set;
 public class VertexPojo implements Vertex {
 
     private GraphElementPojo graphElement;
-    private Integer numberOfConnectedEdges;
-    private Integer nbPublicNeighbors;
-    private Integer nbFriendNeighbors;
+    private NbNeighborsPojo nbNeighbors = new NbNeighborsPojo();
     private Map<URI, VertexInSubGraphPojo> includedVertices;
     private Map<URI, EdgePojo> includedEdges;
     private Map<URI, SuggestionPojo> suggestions;
@@ -31,18 +29,14 @@ public class VertexPojo implements Vertex {
 
     public VertexPojo(
             GraphElementPojo graphElement,
-            Integer numberOfConnectedEdges,
-            Integer nbPublicNeighbors,
-            Integer nbFriendNeighbors,
+            NbNeighborsPojo nbNeighbors,
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
             Map<URI, SuggestionPojo> suggestions,
             ShareLevel shareLevel
     ) {
         this.graphElement = graphElement;
-        this.numberOfConnectedEdges = numberOfConnectedEdges;
-        this.nbPublicNeighbors = nbPublicNeighbors;
-        this.nbFriendNeighbors = nbFriendNeighbors;
+        this.nbNeighbors = nbNeighbors;
         this.includedVertices = includedVertices;
         this.includedEdges = includedEdges;
         this.suggestions = suggestions;
@@ -67,23 +61,9 @@ public class VertexPojo implements Vertex {
         this.graphElement = graphElementPojo;
     }
 
-    @Override
-    public Integer getNumberOfConnectedEdges() {
-        return numberOfConnectedEdges;
-    }
 
-    @Override
-    public Integer getNbPublicNeighbors() {
-        return nbPublicNeighbors;
-    }
-
-    @Override
-    public Integer getNbFriendNeighbors() {
-        return nbFriendNeighbors;
-    }
-
-    public void setNbPublicNeighbors(Integer nbPublicNeighbors) {
-        this.nbPublicNeighbors = nbPublicNeighbors;
+    public NbNeighborsPojo getNbNeighbors() {
+        return nbNeighbors;
     }
 
     @Override
@@ -98,7 +78,6 @@ public class VertexPojo implements Vertex {
         );
     }
 
-    @Override
     public Boolean isPublic() {
         return shareLevel == ShareLevel.PUBLIC || shareLevel == ShareLevel.PUBLIC_WITH_LINK;
     }
@@ -128,8 +107,8 @@ public class VertexPojo implements Vertex {
     }
 
     @Override
-    public Map<URI, TagPojo> getIdentifications() {
-        return graphElement.getIdentifications();
+    public Map<URI, TagPojo> getTags() {
+        return graphElement.getTags();
     }
 
     @Override

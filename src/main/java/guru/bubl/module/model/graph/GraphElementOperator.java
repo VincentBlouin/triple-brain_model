@@ -11,14 +11,29 @@ import java.net.URI;
 import java.util.Map;
 
 public interface GraphElementOperator extends GraphElement, FriendlyResourceOperator {
-    enum colorProps{
-      background
-    };
+    enum colorProps {
+        background
+    }
+
     void remove();
-    void removeIdentification(Tag type);
-    Map<URI, TagPojo> addMeta(Tag friendlyResource);
+
+    void removeTag(Tag type);
+
+    @Deprecated
+    default Map<URI, TagPojo> addTag(Tag friendlyResource) {
+        return addTag(
+                friendlyResource,
+                getShareLevel()
+        );
+    }
+
+    Map<URI, TagPojo> addTag(Tag friendlyResource, ShareLevel sourceShareLevel);
+
     void setFont(String font);
+
     void setChildrenIndex(String childrenIndex);
+
     Boolean isUnderPattern();
+
     Boolean isPatternOrUnderPattern();
 }

@@ -6,7 +6,6 @@ package guru.bubl.module.model.graph.vertex;
 
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.GraphElementOperator;
-import guru.bubl.module.model.graph.PublicPrivateOperator;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
@@ -15,9 +14,8 @@ import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
 import java.util.Map;
-import java.util.UUID;
 
-public interface VertexOperator extends GraphElementOperator, PublicPrivateOperator, Vertex {
+public interface VertexOperator extends VertexTypeOperator, GraphElementOperator, Vertex {
     boolean hasEdge(Edge edge);
 
     EdgeOperator getEdgeThatLinksToDestinationVertex(Vertex destinationVertex);
@@ -31,12 +29,6 @@ public interface VertexOperator extends GraphElementOperator, PublicPrivateOpera
     EdgeOperator addRelationToVertex(VertexOperator destinationVertex);
 
     EdgeOperator acceptSuggestion(SuggestionPojo suggestion);
-
-    void setNumberOfConnectedEdges(Integer numberOfConnectedEdges);
-
-    void setNumberOfPublicConnectedEdges(Integer nbPublicNeighbors);
-
-    void setNbFriendNeighbors(Integer nbFriendNeighbors);
 
     void addSuggestions(Map<URI, SuggestionPojo> suggestions);
 

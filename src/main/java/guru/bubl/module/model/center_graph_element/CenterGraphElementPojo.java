@@ -7,6 +7,8 @@ package guru.bubl.module.model.center_graph_element;
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.vertex.NbNeighbors;
+import guru.bubl.module.model.graph.vertex.NbNeighborsPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -18,36 +20,26 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     private GraphElementPojo graphElement;
     private Date lastCenterDate;
     private Map<URI, String> context;
-    private Integer nbReferences;
     private ShareLevel shareLevel;
     private Boolean isPattern;
-
-    private Integer numberOfConnectedEdges;
-    private Integer nbPublicNeighbors;
-    private Integer nbFriendNeighbors;
+    private NbNeighborsPojo nbNeighbors;
 
     public CenterGraphElementPojo(
             Integer numberOfVisits,
             Date lastCenterDate,
             GraphElementPojo graphElement,
             Map<URI, String> context,
-            Integer nbReferences,
             ShareLevel shareLevel,
             Boolean isPattern,
-            Integer nbConnected,
-            Integer nbPublicNeighbors,
-            Integer nbFriendNeighbors
+            NbNeighborsPojo nbNeighbors
     ) {
         this.numberOfVisits = numberOfVisits;
         this.graphElement = graphElement;
         this.lastCenterDate = lastCenterDate;
         this.context = context;
-        this.nbReferences = nbReferences;
         this.shareLevel = shareLevel;
         this.isPattern = isPattern;
-        this.numberOfConnectedEdges = nbConnected;
-        this.nbPublicNeighbors = nbPublicNeighbors;
-        this.nbFriendNeighbors = nbFriendNeighbors;
+        this.nbNeighbors = nbNeighbors;
     }
 
     public CenterGraphElementPojo(
@@ -79,8 +71,8 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     }
 
     @Override
-    public Integer getNbReferences() {
-        return nbReferences;
+    public NbNeighbors getNbNeighbors() {
+        return nbNeighbors;
     }
 
     @Override
@@ -93,15 +85,4 @@ public class CenterGraphElementPojo implements CenterGraphElement {
         return isPattern;
     }
 
-    public Integer getNumberOfConnectedEdges() {
-        return numberOfConnectedEdges;
-    }
-
-    public Integer getNbPublicNeighbors() {
-        return nbPublicNeighbors;
-    }
-
-    public Integer getNbFriendNeighbors() {
-        return nbFriendNeighbors;
-    }
 }

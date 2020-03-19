@@ -6,23 +6,23 @@ package guru.bubl.module.model.graph.subgraph;
 
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
-import guru.bubl.module.model.graph.exceptions.InvalidDepthOfSubVerticesException;
-import guru.bubl.module.model.graph.exceptions.NonExistingResourceException;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 import guru.bubl.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
 
 public interface UserGraph {
-    VertexOperator defaultVertex();
     User user();
+
     Boolean haveElementWithId(URI id);
-    SubGraphPojo graphWithDepthAndCenterBubbleUri(Integer depthOfSubVertices, URI centerVertexUri) throws NonExistingResourceException;
-    SubGraphPojo aroundVertexUriInShareLevels(URI centerVertexUri, Integer... shareLevels) throws NonExistingResourceException;
-    SubGraphPojo aroundVertexUriWithDepthInShareLevels(URI centerVertexUri, Integer depth, Integer... shareLevels) throws NonExistingResourceException;
-    SubGraphPojo graphWithDepthResultsLimitAndCenterBubbleUri(Integer depthOfSubVertices, Integer resultsLimit, URI centerBubbleUri) throws NonExistingResourceException;
-    SubGraphPojo graphWithAnyVertexAndDepth(Integer depth) throws InvalidDepthOfSubVerticesException;
+
+    SubGraphPojo aroundVertexUriInShareLevels(URI centerVertexUri, Integer... shareLevels);
+
+    SubGraphPojo aroundVertexUriWithDepthInShareLevels(URI centerVertexUri, Integer depth, Integer... shareLevels);
+
     VertexOperator vertexWithUri(URI uri);
+
     EdgeOperator edgeWithUri(URI uri);
+
     VertexPojo createVertex();
 }

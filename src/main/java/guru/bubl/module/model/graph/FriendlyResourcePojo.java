@@ -87,15 +87,14 @@ public class FriendlyResourcePojo implements FriendlyResource {
 
     @Override
     public URI uri() {
+        if (uri == null) {
+            return null;
+        }
         try {
             return Uris.decodeUriSafe(uri);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public Boolean hasUri() {
-        return this.uri != null;
     }
 
     public void setUri(URI uri) {

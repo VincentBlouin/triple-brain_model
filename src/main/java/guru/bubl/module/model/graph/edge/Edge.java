@@ -4,12 +4,22 @@
 
 package guru.bubl.module.model.graph.edge;
 
-import guru.bubl.module.model.ShareLevelGetter;
 import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.vertex.Vertex;
 
-public interface Edge extends GraphElement, ShareLevelGetter {
+public interface Edge extends GraphElement {
     Vertex sourceVertex();
+
     Vertex destinationVertex();
+
     Vertex otherVertex(Vertex vertex);
+
+    @Override
+    default ShareLevel getShareLevel() {
+        ShareLevel sourceShareLevel = sourceVertex().getShareLevel();
+        ShareLevel destinationShareLevel = destinationVertex().getShareLevel();
+        return sourceShareLevel.getIndex() < destinationShareLevel.getIndex() ?
+                sourceShareLevel : destinationShareLevel;
+    }
 }

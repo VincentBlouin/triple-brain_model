@@ -16,10 +16,6 @@ public interface GraphSearch {
             User user
     );
 
-    List<GraphElementSearchResult> searchForAnyResourceThatCanBeUsedAsAnIdentifier(
-            User user
-    );
-
     List<GraphElementSearchResult> searchOnlyForOwnVerticesForAutoCompletionByLabel(
             User user
     );
@@ -31,13 +27,6 @@ public interface GraphSearch {
     List<GraphElementSearchResult> searchOwnTagsForAutoCompletionByLabel(
             User user
     );
-
-//    GraphElementSearchResult getDetails(URI uri, User user);
-
-    List<GraphElementSearchResult> searchPublicVerticesOnly();
-
-//    GraphElementSearchResult getDetailsAnonymously(URI uri);
-
 
     List<GraphElementSearchResult> searchAllPatterns();
 

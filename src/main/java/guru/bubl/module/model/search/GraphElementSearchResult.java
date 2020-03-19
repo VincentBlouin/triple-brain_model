@@ -7,6 +7,8 @@ package guru.bubl.module.model.search;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.GraphElementType;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.vertex.NbNeighbors;
+import guru.bubl.module.model.graph.vertex.NbNeighborsPojo;
 
 import java.net.URI;
 import java.util.Map;
@@ -22,7 +24,7 @@ public interface GraphElementSearchResult {
 
     Integer getNbVisits();
 
-    Integer getNbReferences();
+    NbNeighborsPojo getNbNeighbors();
 
     ShareLevel getShareLevel();
 

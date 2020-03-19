@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +24,11 @@ public enum ShareLevel {
             ShareLevel.PUBLIC
     ).collect(Collectors.toSet());
 
+    public final static Set<ShareLevel> publicShareLevels = Stream.of(
+            ShareLevel.PUBLIC_WITH_LINK,
+            ShareLevel.PUBLIC
+    ).collect(Collectors.toSet());
+
     public final static Integer[] allShareLevelsInt = {
             ShareLevel.PRIVATE.getIndex(),
             ShareLevel.FRIENDS.getIndex(),
@@ -32,6 +38,10 @@ public enum ShareLevel {
 
     public static Integer[] shareLevelsToIntegers(Set<ShareLevel> shareLevels) {
         return Stream.of(shareLevels.stream().map(ShareLevel::getIndex)).toArray(Integer[]::new);
+    }
+
+    public static Set<ShareLevel> arrayOfIntegersToSet(Integer[] shareLevels) {
+        return Arrays.stream(shareLevels).map(i -> get(i)).collect(Collectors.toSet());
     }
 
     // Reverse-lookup map for getting a share level from it's index
@@ -66,5 +76,16 @@ public enum ShareLevel {
             return true;
         }
         return this == shareLevel;
+    }
+
+    public String getNbNeighborsPropertyName() {
+        switch (this) {
+            case PRIVATE:
+                return "nb_private_neighbors";
+            case FRIENDS:
+                return "nb_friend_neighbors";
+            default:
+                return "nb_public_neighbors";
+        }
     }
 }

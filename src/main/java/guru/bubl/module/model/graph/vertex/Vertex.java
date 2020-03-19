@@ -4,7 +4,6 @@
 
 package guru.bubl.module.model.graph.vertex;
 
-import guru.bubl.module.model.ShareLevelGetter;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.suggestion.SuggestionPojo;
@@ -12,12 +11,7 @@ import guru.bubl.module.model.suggestion.SuggestionPojo;
 import java.net.URI;
 import java.util.Map;
 
-public interface Vertex extends GraphElement, ShareLevelGetter {
-    Integer getNumberOfConnectedEdges();
-
-    Integer getNbPublicNeighbors();
-
-    Integer getNbFriendNeighbors();
+public interface Vertex extends VertexType, GraphElement {
 
     Map<URI, SuggestionPojo> getSuggestions();
 

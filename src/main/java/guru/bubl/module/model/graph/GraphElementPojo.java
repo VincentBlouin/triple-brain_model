@@ -18,8 +18,6 @@ public class GraphElementPojo implements GraphElement {
 
     private FriendlyResourcePojo friendlyResource;
     private Map<URI, TagPojo> identifications;
-    private Long sortDate;
-    private Long moveDate;
     private String childrenIndex;
     private String font;
     URI patternUri;
@@ -28,7 +26,7 @@ public class GraphElementPojo implements GraphElement {
     public GraphElementPojo(GraphElementOperator graphElementOperator) {
         this(
                 new FriendlyResourcePojo(graphElementOperator),
-                convertIdentificationsToPojo(graphElementOperator.getIdentifications())
+                convertIdentificationsToPojo(graphElementOperator.getTags())
         );
     }
 
@@ -68,7 +66,7 @@ public class GraphElementPojo implements GraphElement {
     }
 
     @Override
-    public Map<URI, TagPojo> getIdentifications() {
+    public Map<URI, TagPojo> getTags() {
         return identifications;
     }
 
@@ -103,6 +101,11 @@ public class GraphElementPojo implements GraphElement {
     @Override
     public URI getPatternUri() {
         return patternUri;
+    }
+
+    @Override
+    public ShareLevel getShareLevel() {
+        return null;
     }
 
     public void setChildrenIndex(String childrenIndex) {
@@ -178,11 +181,6 @@ public class GraphElementPojo implements GraphElement {
         return identificationsPojo;
     }
 
-
-    public void removeAllIdentifications() {
-        identifications.clear();
-    }
-
     public void setLabel(String label) {
         friendlyResource.setLabel(label);
     }
@@ -191,35 +189,4 @@ public class GraphElementPojo implements GraphElement {
         friendlyResource.setCreationDate(creationDate);
     }
 
-    public Date getSortDate() {
-        if (null == sortDate) {
-            return null;
-        }
-        return new Date(
-                sortDate
-        );
-    }
-
-    public Date getMoveDate() {
-        if (null == moveDate) {
-            return null;
-        }
-        return new Date(
-                moveDate
-        );
-    }
-
-    public GraphElementPojo setSortDate(Long sortDate) {
-        this.sortDate = sortDate;
-        return this;
-    }
-
-    public GraphElementPojo setMoveDate(Long moveDate) {
-        this.moveDate = moveDate;
-        return this;
-    }
-
-    public Boolean hasUri() {
-        return this.friendlyResource.hasUri();
-    }
 }

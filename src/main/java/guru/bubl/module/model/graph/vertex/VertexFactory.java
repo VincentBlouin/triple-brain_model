@@ -13,9 +13,4 @@ public interface VertexFactory {
     VertexInSubGraphOperator withUri(URI uri);
 
     VertexInSubGraphOperator createForOwner(String username);
-
-    VertexInSubGraphOperator createFromGraphElements(
-            Set<Vertex> includedVertices,
-            Set<Edge> includedEdges
-    );
 }

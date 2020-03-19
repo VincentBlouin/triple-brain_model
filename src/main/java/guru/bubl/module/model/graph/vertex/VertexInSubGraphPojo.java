@@ -8,7 +8,6 @@ import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.tag.TagPojo;
-import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.suggestion.Suggestion;
@@ -25,9 +24,11 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     public VertexInSubGraphPojo(VertexOperator vertexOperator) {
         this(
                 new GraphElementPojo(vertexOperator),
-                vertexOperator.getNumberOfConnectedEdges(),
-                vertexOperator.getNbPublicNeighbors(),
-                vertexOperator.getNbFriendNeighbors(),
+                new NbNeighborsPojo(
+                        vertexOperator.getNbNeighbors().getPrivate(),
+                        vertexOperator.getNbNeighbors().getFriend(),
+                        vertexOperator.getNbNeighbors().getPublic()
+                ),
                 new HashMap<>(),
                 new HashMap<>(),
                 convertSuggestionSetToPojo(vertexOperator.getSuggestions()),
@@ -50,17 +51,6 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
         );
     }
 
-    public static Map<URI, VertexInSubGraphPojo> convertVertexSetToPojoMap(Map<URI, ? extends Vertex> vertices) {
-        Map<URI, VertexInSubGraphPojo> verticesPojo = new HashMap<>();
-        for (Vertex vertex : vertices.values()) {
-            verticesPojo.put(
-                    vertex.uri(),
-                    (VertexInSubGraphPojo) vertex
-            );
-        }
-        return verticesPojo;
-    }
-
     public static Map<URI, SuggestionPojo> convertSuggestionSetToPojo(Map<URI, ? extends Suggestion> suggestions) {
         Map<URI, SuggestionPojo> suggestionsPojo = new HashMap<>();
         for (Suggestion suggestion : suggestions.values()) {
@@ -70,17 +60,6 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
             );
         }
         return suggestionsPojo;
-    }
-
-    public static Map<URI, EdgePojo> convertEdgeSetToPojoMap(Map<URI, ? extends Edge> edges) {
-        Map<URI, EdgePojo> edgesPojo = new HashMap<>();
-        for (Edge edge : edges.values()) {
-            edgesPojo.put(
-                    edge.uri(),
-                    (EdgePojo) edge
-            );
-        }
-        return edgesPojo;
     }
 
     public VertexInSubGraphPojo(GraphElementPojo graphElementPojo) {
@@ -101,9 +80,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
 
     public VertexInSubGraphPojo(
             GraphElementPojo graphElement,
-            Integer numberOfConnectedEdges,
-            Integer nbPublicNeighbors,
-            Integer nbFriendNeighbors,
+            NbNeighborsPojo nbNeighbors,
             Map<URI, VertexInSubGraphPojo> includedVertices,
             Map<URI, EdgePojo> includedEdges,
             Map<URI, SuggestionPojo> suggestions,
@@ -111,9 +88,7 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     ) {
         this.vertex = new VertexPojo(
                 graphElement,
-                numberOfConnectedEdges,
-                nbPublicNeighbors,
-                nbFriendNeighbors,
+                nbNeighbors,
                 includedVertices,
                 includedEdges,
                 suggestions,
@@ -122,31 +97,19 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public Integer getNumberOfConnectedEdges() {
-        return vertex.getNumberOfConnectedEdges();
-    }
-
-    @Override
-    public Integer getNbPublicNeighbors() {
-        return vertex.getNbPublicNeighbors();
-    }
-
-    @Override
-    public Integer getNbFriendNeighbors() {
-        return vertex.getNbFriendNeighbors();
-    }
-
-    @Override
     public Map<URI, SuggestionPojo> getSuggestions() {
         return vertex.getSuggestions();
     }
 
-    @Override
     public Boolean isPublic() {
         return vertex.isPublic();
     }
 
     @Override
+    public NbNeighbors getNbNeighbors() {
+        return vertex.getNbNeighbors();
+    }
+
     public ShareLevel getShareLevel() {
         return vertex.getShareLevel();
     }
@@ -172,8 +135,8 @@ public class VertexInSubGraphPojo implements VertexInSubGraph {
     }
 
     @Override
-    public Map<URI, TagPojo> getIdentifications() {
-        return vertex.getIdentifications();
+    public Map<URI, TagPojo> getTags() {
+        return vertex.getTags();
     }
 
     @Override

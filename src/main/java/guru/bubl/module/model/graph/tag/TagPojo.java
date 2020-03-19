@@ -7,6 +7,7 @@ package guru.bubl.module.model.graph.tag;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.vertex.NbNeighborsPojo;
 import guru.bubl.module.model.graph.ShareLevel;
 
 import java.net.URI;
@@ -20,13 +21,11 @@ public class TagPojo implements Tag {
     private URI relationExternalResourceUri = DEFAULT_IDENTIFIER_RELATION_EXTERNAL_URI;
     private URI externalResourceUri;
     private GraphElementPojo graphElement;
-    private Integer nbReferences = 0;
+    private NbNeighborsPojo nbNeighbors = new NbNeighborsPojo();
 
     public TagPojo(
-            Integer nbReferences,
             GraphElementPojo meta
     ) {
-        this.nbReferences = nbReferences;
         this.graphElement = meta;
     }
 
@@ -52,20 +51,20 @@ public class TagPojo implements Tag {
 
     public TagPojo(
             URI externalResourceUri,
-            Integer nbReferences,
             GraphElementPojo graphElementPojo
     ) {
         this.externalResourceUri = externalResourceUri;
-        this.nbReferences = nbReferences;
         this.graphElement = graphElementPojo;
     }
 
     public TagPojo(
             URI externalResourceUri,
-            GraphElementPojo graphElementPojo
+            GraphElementPojo graphElementPojo,
+            NbNeighborsPojo nbNeighborsPojo
     ) {
         this.externalResourceUri = externalResourceUri;
         this.graphElement = graphElementPojo;
+        this.nbNeighbors = nbNeighborsPojo;
     }
 
 
@@ -88,12 +87,6 @@ public class TagPojo implements Tag {
         );
     }
 
-    public TagPojo(
-            GraphElementPojo graphElementPojo
-    ) {
-        this.graphElement = graphElementPojo;
-    }
-
     @Override
     public URI getRelationExternalResourceUri() {
         return relationExternalResourceUri;
@@ -106,16 +99,6 @@ public class TagPojo implements Tag {
     @Override
     public URI getExternalResourceUri() {
         return externalResourceUri;
-    }
-
-    @Override
-    public Integer getNbReferences() {
-        return nbReferences;
-    }
-
-    public TagPojo setNbRefences(Integer nbReferences) {
-        this.nbReferences = nbReferences;
-        return this;
     }
 
     public void setExternalResourceUri(URI externalResourceUri) {
@@ -213,8 +196,8 @@ public class TagPojo implements Tag {
     }
 
     @Override
-    public Map<URI, TagPojo> getIdentifications() {
-        return graphElement.getIdentifications();
+    public Map<URI, TagPojo> getTags() {
+        return graphElement.getTags();
     }
 
     @Override
@@ -236,17 +219,15 @@ public class TagPojo implements Tag {
         this.shareLevel = shareLevel;
     }
 
-    @Override
     public Boolean isPublic() {
         return shareLevel.isPublic();
     }
 
-    @Override
     public ShareLevel getShareLevel() {
         return shareLevel;
     }
 
-    public Boolean hasUri() {
-        return this.graphElement.hasUri();
+    public NbNeighborsPojo getNbNeighbors() {
+        return this.nbNeighbors;
     }
 }
