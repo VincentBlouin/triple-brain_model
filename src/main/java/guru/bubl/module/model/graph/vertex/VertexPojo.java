@@ -4,13 +4,11 @@
 
 package guru.bubl.module.model.graph.vertex;
 
+import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.tag.TagPojo;
-import guru.bubl.module.model.graph.edge.EdgePojo;
-import guru.bubl.module.model.Image;
-import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -21,25 +19,16 @@ public class VertexPojo implements Vertex {
 
     private GraphElementPojo graphElement;
     private NbNeighborsPojo nbNeighbors = new NbNeighborsPojo();
-    private Map<URI, VertexInSubGraphPojo> includedVertices;
-    private Map<URI, EdgePojo> includedEdges;
-    private Map<URI, SuggestionPojo> suggestions;
     private ShareLevel shareLevel;
     private Boolean isPattern = false;
 
     public VertexPojo(
             GraphElementPojo graphElement,
             NbNeighborsPojo nbNeighbors,
-            Map<URI, VertexInSubGraphPojo> includedVertices,
-            Map<URI, EdgePojo> includedEdges,
-            Map<URI, SuggestionPojo> suggestions,
             ShareLevel shareLevel
     ) {
         this.graphElement = graphElement;
         this.nbNeighbors = nbNeighbors;
-        this.includedVertices = includedVertices;
-        this.includedEdges = includedEdges;
-        this.suggestions = suggestions;
         this.shareLevel = shareLevel;
     }
 
@@ -66,17 +55,6 @@ public class VertexPojo implements Vertex {
         return nbNeighbors;
     }
 
-    @Override
-    public Map<URI, SuggestionPojo> getSuggestions() {
-        return suggestions;
-    }
-
-    public void addSuggestion(SuggestionPojo suggestion) {
-        suggestions.put(
-                suggestion.uri(),
-                suggestion
-        );
-    }
 
     public Boolean isPublic() {
         return shareLevel == ShareLevel.PUBLIC || shareLevel == ShareLevel.PUBLIC_WITH_LINK;
@@ -85,16 +63,6 @@ public class VertexPojo implements Vertex {
     @Override
     public ShareLevel getShareLevel() {
         return shareLevel;
-    }
-
-    @Override
-    public Map<URI, VertexInSubGraphPojo> getIncludedVertices() {
-        return includedVertices;
-    }
-
-    @Override
-    public Map<URI, EdgePojo> getIncludedEdges() {
-        return includedEdges;
     }
 
     public void setAsPattern() {

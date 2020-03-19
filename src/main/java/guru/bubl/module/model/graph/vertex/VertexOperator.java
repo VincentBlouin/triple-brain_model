@@ -10,7 +10,6 @@ import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.edge.EdgePojo;
-import guru.bubl.module.model.suggestion.SuggestionPojo;
 
 import java.net.URI;
 import java.util.Map;
@@ -27,12 +26,6 @@ public interface VertexOperator extends VertexTypeOperator, GraphElementOperator
     EdgePojo addVertexAndRelationWithIds(String vertexId, String edgeId);
 
     EdgeOperator addRelationToVertex(VertexOperator destinationVertex);
-
-    EdgeOperator acceptSuggestion(SuggestionPojo suggestion);
-
-    void addSuggestions(Map<URI, SuggestionPojo> suggestions);
-
-    void setSuggestions(Map<URI, SuggestionPojo> suggestions);
 
     Map<URI, EdgeOperator> connectedEdges();
 

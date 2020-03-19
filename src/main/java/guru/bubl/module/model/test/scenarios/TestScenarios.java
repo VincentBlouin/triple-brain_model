@@ -4,18 +4,16 @@
 
 package guru.bubl.module.model.test.scenarios;
 
-import guru.bubl.module.model.User;
-import guru.bubl.module.model.graph.*;
+import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.GraphFactory;
 import guru.bubl.module.model.graph.edge.Edge;
+import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
-import guru.bubl.module.model.suggestion.Suggestion;
-import guru.bubl.module.model.suggestion.SuggestionPojo;
 import guru.bubl.module.model.test.GraphComponentTest;
-import guru.bubl.module.model.graph.edge.EdgeOperator;
 
 import javax.inject.Inject;
 
@@ -78,25 +76,6 @@ public class TestScenarios {
         return new TagPojo(
                 resource.uri(),
                 new GraphElementPojo(resource)
-        );
-    }
-
-    public static SuggestionPojo suggestionFromComparisonForUserAndTriple(
-            User user,
-            Triple triple
-    ) {
-
-        return SuggestionPojo.forSameAsTypeOriginAndOwner(
-                new FriendlyResourcePojo(
-                        triple.getEdge().uri(),
-                        triple.getEdge().label()
-                ),
-                new FriendlyResourcePojo(
-                        triple.getDestination().uri(),
-                        triple.getDestination().label()
-                ),
-                Suggestion.COMPARISON_PREFIX + triple.getSource().uri(),
-                user
         );
     }
 }
