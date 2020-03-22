@@ -18,12 +18,6 @@ public class UserUris {
         return uriStr.substring(uriStr.lastIndexOf("/") + 1);
     }
 
-    public static URI dummyUniqueUri() {
-        return URI.create(
-                "/dummy/" + UUID.randomUUID()
-        );
-    }
-
     public static String ownerUserNameFromUri(URI uri) {
         String uriStr = uri.toString();
         String modifiedUriStr = uriStr.replace("/service/users/", "");
@@ -38,14 +32,12 @@ public class UserUris {
 
     }
 
-    public static URI generateSchemaPropertyUri(URI schemaUri) {
-        return URI.create(
-                schemaUri + "/property/" + UUID.randomUUID().toString()
-        );
+    public static Boolean isUriOfATag(URI uri) {
+        return uri.toString().contains("/graph/identification");
     }
 
-    public static Boolean isUriOfAnIdentifier(URI uri) {
-        return uri.toString().contains("/graph/identification");
+    public static Boolean isMindRespectUri(URI uri) {
+        return uri.toString().startsWith(BASE_URI);
     }
 
     private String userName;
@@ -90,12 +82,6 @@ public class UserUris {
         );
     }
 
-    public URI baseSchemaUri() {
-        return URI.create(
-                graphUri() + "/schema"
-        );
-    }
-
     public URI edgeUriFromShortId(String shortId) {
         return URI.create(
                 baseEdgeUri() + "/" + shortId
@@ -128,7 +114,7 @@ public class UserUris {
             case Edge:
                 return baseEdgeUri();
             case Meta:
-                return baseIdentificationUri();
+                return baseTagUri();
             default:
                 return baseUri();
         }
@@ -140,15 +126,9 @@ public class UserUris {
         );
     }
 
-    public URI schemaUriFromShortId(String shortId) {
-        return URI.create(
-                baseSchemaUri() + "/" + shortId
-        );
-    }
-
     public URI identificationUriFromShortId(String shortId) {
         return URI.create(
-                baseIdentificationUri() + "/" + shortId
+                baseTagUri() + "/" + shortId
         );
     }
 
@@ -164,21 +144,15 @@ public class UserUris {
         );
     }
 
-    public URI generateSchemaUri() {
-        return URI.create(
-                baseSchemaUri() + "/" + UUID.randomUUID().toString()
-        );
-    }
-
-    public URI baseIdentificationUri() {
+    public URI baseTagUri() {
         return URI.create(
                 graphUri() + "/identification"
         );
     }
 
-    public URI generateIdentificationUri() {
+    public URI generateTagUri() {
         return URI.create(
-                baseIdentificationUri() + "/" + UUID.randomUUID().toString()
+                baseTagUri() + "/" + UUID.randomUUID().toString()
         );
     }
 }

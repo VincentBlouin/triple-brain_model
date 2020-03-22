@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.test.scenarios;
 
+import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.GraphFactory;
@@ -73,9 +74,16 @@ public class TestScenarios {
     }
 
     public static TagPojo tagFromFriendlyResource(GraphElementOperator resource) {
+        FriendlyResourcePojo friendlyResourcePojo = new FriendlyResourcePojo(
+                resource.label(),
+                resource.comment()
+        );
+        friendlyResourcePojo.setImages(resource.images());
         return new TagPojo(
                 resource.uri(),
-                new GraphElementPojo(resource)
+                new GraphElementPojo(
+                        friendlyResourcePojo
+                )
         );
     }
 }
