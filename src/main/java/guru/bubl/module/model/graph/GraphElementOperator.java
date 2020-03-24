@@ -17,7 +17,15 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
 
     void remove();
 
-    void removeTag(Tag type);
+    @Deprecated
+    default void removeTag(Tag tag) {
+        removeTag(
+                tag,
+                getShareLevel()
+        );
+    }
+
+    void removeTag(Tag tag, ShareLevel sourceShareLevel);
 
     @Deprecated
     default Map<URI, TagPojo> addTag(Tag friendlyResource) {
