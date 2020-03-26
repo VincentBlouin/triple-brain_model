@@ -7,15 +7,15 @@ package guru.bubl.module.model.admin;
 import javax.inject.Inject;
 
 @javax.inject.Singleton
-public class WholeGraphAdminDailyJob{
+public class WholeGraphAdminDailyJob {
 
     @Inject
     private WholeGraphAdmin wholeGraphAdmin;
 
-    public void execute(){
-        wholeGraphAdmin.reindexAll();
+    public void execute() {
         wholeGraphAdmin.refreshNbNeighborsToAllTags();
-        wholeGraphAdmin.removeMetasHavingZeroReferences();
+//        wholeGraphAdmin.removeMetasHavingZeroReferences();
         wholeGraphAdmin.refreshNbNeighbors();
+        wholeGraphAdmin.reindexAll();
     }
 }
