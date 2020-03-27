@@ -14,8 +14,7 @@ public class WholeGraphAdminDailyJob {
 
     public void execute() {
         wholeGraphAdmin.refreshNbNeighborsToAllTags();
-//        wholeGraphAdmin.removeMetasHavingZeroReferences();
         wholeGraphAdmin.refreshNbNeighbors();
-//        wholeGraphAdmin.reindexAll();
+        wholeGraphAdmin.reindexAll();
     }
 }

@@ -19,7 +19,7 @@ public class CenterGraphElementPojo implements CenterGraphElement {
 
     private GraphElementPojo graphElement;
     private Date lastCenterDate;
-    private Map<URI, String> context;
+    private String context;
     private ShareLevel shareLevel;
     private Boolean isPattern;
     private NbNeighborsPojo nbNeighbors;
@@ -28,7 +28,7 @@ public class CenterGraphElementPojo implements CenterGraphElement {
             Integer numberOfVisits,
             Date lastCenterDate,
             GraphElementPojo graphElement,
-            Map<URI, String> context,
+            String context,
             ShareLevel shareLevel,
             Boolean isPattern,
             NbNeighborsPojo nbNeighbors
@@ -66,7 +66,7 @@ public class CenterGraphElementPojo implements CenterGraphElement {
     }
 
     @Override
-    public Map<URI, String> getContext() {
+    public String getContext() {
         return context;
     }
 

@@ -18,7 +18,7 @@ public interface GraphElementSearchResult {
 
     GraphElementType getType();
 
-    Map<URI, String> getContext();
+    String getContext();
 
     GraphElementSearchResultPojo getGraphElementSearchResult();
 

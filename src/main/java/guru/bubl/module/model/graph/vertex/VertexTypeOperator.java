@@ -16,5 +16,4 @@ public interface VertexTypeOperator extends VertexType {
         setShareLevel(ShareLevel.PRIVATE);
     }
 
-
 }

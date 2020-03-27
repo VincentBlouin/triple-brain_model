@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class GraphElementSearchResultPojo implements GraphElementSearchResult {
 
-    private Map<URI, String> context;
+    private String context;
     private GraphElementPojo graphElement;
     private GraphElementType type;
     private NbNeighborsPojo nbNeighbors;
@@ -26,7 +26,7 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
     public GraphElementSearchResultPojo(
             GraphElementType type,
             GraphElementPojo graphElement,
-            Map<URI, String> context
+            String context
     ) {
         this.context = context;
         this.graphElement = graphElement;
@@ -43,7 +43,7 @@ public class GraphElementSearchResultPojo implements GraphElementSearchResult {
         return type;
     }
 
-    public Map<URI, String> getContext() {
+    public String getContext() {
         return context;
     }
 

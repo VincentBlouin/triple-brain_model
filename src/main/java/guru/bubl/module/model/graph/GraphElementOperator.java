@@ -44,4 +44,6 @@ public interface GraphElementOperator extends GraphElement, FriendlyResourceOper
     Boolean isUnderPattern();
 
     Boolean isPatternOrUnderPattern();
+
+    String getPrivateContext();
 }
