@@ -101,6 +101,10 @@ public class SubGraphPojo implements SubGraph {
         return centerTag;
     }
 
+    public Boolean hasCenter(URI uri) {
+        return this.getCenterMeta() != null || this.vertexWithIdentifier(uri) != null;
+    }
+
     public void setCenterMeta(TagPojo tag) {
         this.centerTag = tag;
     }
