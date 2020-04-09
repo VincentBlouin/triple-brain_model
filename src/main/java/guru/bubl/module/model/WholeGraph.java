@@ -7,14 +7,14 @@ package guru.bubl.module.model;
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.tag.TagOperator;
-import guru.bubl.module.model.graph.vertex.VertexInSubGraphOperator;
+import guru.bubl.module.model.graph.vertex.VertexOperator;
 
 import java.util.Set;
 
 public interface WholeGraph {
-    Set<VertexInSubGraphOperator> getAllVertices();
+    Set<VertexOperator> getAllVertices();
 
-    Set<VertexInSubGraphOperator> getAllVerticesOfUser(User user);
+    Set<VertexOperator> getAllVerticesOfUser(User user);
 
     Set<EdgeOperator> getAllEdges();
 

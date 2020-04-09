@@ -12,10 +12,9 @@ public enum GraphElementType {
     GraphElement,
     Vertex,
     Edge,
-    Schema,
-    Property,
     Meta,
     Pattern,
+    GroupRelation,
     Unknown;
 
     public static List<GraphElementType> commonTypes = Arrays.asList(new GraphElementType[]{GraphElementType.Resource, GraphElementType.GraphElement, GraphElementType.Pattern});

@@ -7,7 +7,7 @@ package guru.bubl.module.model.graph.tag;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.vertex.NbNeighborsPojo;
+import guru.bubl.module.model.graph.fork.NbNeighborsPojo;
 import guru.bubl.module.model.graph.ShareLevel;
 
 import java.net.URI;

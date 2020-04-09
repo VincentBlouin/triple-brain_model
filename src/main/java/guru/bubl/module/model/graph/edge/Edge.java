@@ -8,17 +8,23 @@ import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.vertex.Vertex;
 
+import java.net.URI;
+
 public interface Edge extends GraphElement {
-    Vertex sourceVertex();
+    URI sourceUri();
 
-    Vertex destinationVertex();
+    URI destinationUri();
 
-    Vertex otherVertex(Vertex vertex);
+    @Deprecated
+    GraphElement sourceFork();
+
+    @Deprecated
+    GraphElement destinationFork();
 
     @Override
     default ShareLevel getShareLevel() {
-        ShareLevel sourceShareLevel = sourceVertex().getShareLevel();
-        ShareLevel destinationShareLevel = destinationVertex().getShareLevel();
+        ShareLevel sourceShareLevel = sourceFork().getShareLevel();
+        ShareLevel destinationShareLevel = destinationFork().getShareLevel();
         return sourceShareLevel.getIndex() < destinationShareLevel.getIndex() ?
                 sourceShareLevel : destinationShareLevel;
     }

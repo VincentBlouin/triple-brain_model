@@ -5,11 +5,13 @@
 package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.Image;
+import guru.bubl.module.model.UserUris;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
+import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
-import guru.bubl.module.model.graph.vertex.Vertex;
-import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
+import guru.bubl.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
 import java.util.Date;
@@ -19,8 +21,9 @@ import java.util.Set;
 public class EdgePojo implements Edge {
 
     private GraphElementPojo graphElement;
-    private VertexInSubGraphPojo sourceVertex;
-    private VertexInSubGraphPojo destinationVertex;
+    private GroupRelationPojo sourceGroupRelation;
+    private VertexPojo sourceVertex;
+    private VertexPojo destinationVertex;
 
     @Deprecated
     public EdgePojo(
@@ -28,15 +31,15 @@ public class EdgePojo implements Edge {
     ) {
         this(
                 new GraphElementPojo(edgeOperator),
-                new VertexInSubGraphPojo(edgeOperator.sourceVertex()),
-                new VertexInSubGraphPojo(edgeOperator.destinationVertex())
+                new VertexPojo(edgeOperator.sourceUri()),
+                new VertexPojo(edgeOperator.destinationUri())
         );
     }
 
     public EdgePojo(
             GraphElementPojo graphElement,
-            VertexInSubGraphPojo sourceVertex,
-            VertexInSubGraphPojo destinationVertex
+            VertexPojo sourceVertex,
+            VertexPojo destinationVertex
     ) {
         this.graphElement = graphElement;
         this.sourceVertex = sourceVertex;
@@ -50,8 +53,8 @@ public class EdgePojo implements Edge {
             URI destinationVertexUri
     ) {
         this.graphElement = new GraphElementPojo(edgeUri);
-        this.sourceVertex = new VertexInSubGraphPojo(sourceVertexUri);
-        this.destinationVertex = new VertexInSubGraphPojo(destinationVertexUri);
+        this.sourceVertex = new VertexPojo(sourceVertexUri);
+        this.destinationVertex = new VertexPojo(destinationVertexUri);
     }
 
     public EdgePojo(
@@ -72,29 +75,48 @@ public class EdgePojo implements Edge {
         );
     }
 
-    @Override
-    public VertexInSubGraphPojo sourceVertex() {
-        return sourceVertex;
+    public GraphElement getSource() {
+        return this.sourceGroupRelation == null ? sourceVertex : sourceGroupRelation;
     }
 
-    public void setSourceVertex(VertexInSubGraphPojo vertex) {
+    @Override
+    public URI sourceUri() {
+        return getSource().uri();
+    }
+
+    public void setSource(URI uri) {
+        if (UserUris.isUriOfAGroupRelation(uri)) {
+            this.sourceGroupRelation = new GroupRelationPojo(uri);
+        } else {
+            this.sourceVertex = new VertexPojo(uri);
+        }
+    }
+
+    public void setSourceVertex(VertexPojo vertex) {
         this.sourceVertex = vertex;
     }
 
     @Override
-    public VertexInSubGraphPojo destinationVertex() {
-        return destinationVertex;
-    }
-
-    public void setDestinationVertex(VertexInSubGraphPojo vertex) {
-        this.destinationVertex = vertex;
+    public URI destinationUri() {
+        return destinationVertex.uri();
     }
 
     @Override
-    public Vertex otherVertex(Vertex vertex) {
-        return sourceVertex().equals(vertex) ?
-                destinationVertex() :
-                sourceVertex();
+    public GraphElement sourceFork() {
+        return getSource();
+    }
+
+    @Override
+    public GraphElement destinationFork() {
+        return destinationVertex;
+    }
+
+    public VertexPojo getDestinationVertex() {
+        return this.destinationVertex;
+    }
+
+    public void setDestinationVertex(VertexPojo vertex) {
+        this.destinationVertex = vertex;
     }
 
     @Override

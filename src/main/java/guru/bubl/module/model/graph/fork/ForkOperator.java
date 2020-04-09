@@ -1,8 +1,9 @@
-package guru.bubl.module.model.graph.vertex;
+package guru.bubl.module.model.graph.fork;
 
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.edge.EdgePojo;
 
-public interface VertexTypeOperator extends VertexType {
+public interface ForkOperator extends Fork {
 
     void setShareLevel(ShareLevel shareLevel);
 
@@ -15,5 +16,9 @@ public interface VertexTypeOperator extends VertexType {
     default void makePrivate() {
         setShareLevel(ShareLevel.PRIVATE);
     }
+
+    EdgePojo addVertexAndRelation();
+
+    EdgePojo addVertexAndRelationWithIds(String vertexId, String edgeId);
 
 }

@@ -7,12 +7,11 @@ package guru.bubl.module.model.center_graph_element;
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.vertex.NbNeighbors;
-import guru.bubl.module.model.graph.vertex.NbNeighborsPojo;
+import guru.bubl.module.model.graph.fork.NbNeighbors;
+import guru.bubl.module.model.graph.fork.NbNeighborsPojo;
 
 import java.net.URI;
 import java.util.Date;
-import java.util.Map;
 
 public class CenterGraphElementPojo implements CenterGraphElement {
     private Integer numberOfVisits;

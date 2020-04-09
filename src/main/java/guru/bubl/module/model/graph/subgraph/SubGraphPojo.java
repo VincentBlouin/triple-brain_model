@@ -4,12 +4,13 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
-import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgePojo;
+import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
-import guru.bubl.module.model.graph.vertex.VertexInSubGraphPojo;
+import guru.bubl.module.model.graph.vertex.VertexPojo;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -17,30 +18,22 @@ import java.util.Map;
 
 public class SubGraphPojo implements SubGraph {
 
-    private Map<URI, VertexInSubGraphPojo> vertices = new HashMap<>();
+    private Map<URI, VertexPojo> vertices = new HashMap<>();
     private Map<URI, EdgePojo> edges = new HashMap<>();
+    Map<URI, GroupRelationPojo> groupRelations = new HashMap<>();
     private TagPojo centerTag;
 
-    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
+    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexPojo> vertices, Map<URI, EdgePojo> edges) {
         return new SubGraphPojo(vertices, edges);
     }
 
-    public static SubGraphPojo withSingleVertex(VertexInSubGraphPojo vertex) {
-        Map<URI, VertexInSubGraphPojo> vertices = new HashMap<>();
-        vertices.put(vertex.uri(), vertex);
-        return new SubGraphPojo(
-                vertices,
-                new HashMap<>()
-        );
-    }
-
-    protected SubGraphPojo(Map<URI, VertexInSubGraphPojo> vertices, Map<URI, EdgePojo> edges) {
+    protected SubGraphPojo(Map<URI, VertexPojo> vertices, Map<URI, EdgePojo> edges) {
         this.vertices = vertices;
         this.edges = edges;
     }
 
     @Override
-    public VertexInSubGraphPojo vertexWithIdentifier(URI identifier) {
+    public VertexPojo vertexWithIdentifier(URI identifier) {
         return vertices.get(
                 identifier
         );
@@ -87,8 +80,14 @@ public class SubGraphPojo implements SubGraph {
     }
 
     @Override
-    public Map<URI, VertexInSubGraphPojo> vertices() {
+    public Map<URI, VertexPojo> vertices() {
         return vertices;
+    }
+
+    public Boolean containsGraphElement(GraphElement graphElement) {
+        return edges.containsKey(graphElement.uri()) ||
+                vertices.containsKey(graphElement.uri()) ||
+                groupRelations.containsKey(graphElement.uri());
     }
 
     @Override
@@ -116,41 +115,21 @@ public class SubGraphPojo implements SubGraph {
         );
     }
 
-    public void addVertex(VertexInSubGraphPojo vertex) {
+    public void addVertex(VertexPojo vertex) {
         vertices.put(
                 vertex.uri(),
                 vertex
         );
     }
 
+    public void addGroupRelation(GroupRelationPojo groupRelation) {
+        groupRelations.put(
+                groupRelation.uri(),
+                groupRelation
+        );
+    }
+
     public Boolean isEmpty() {
         return this.vertices().isEmpty();
-    }
-
-    public Map<URI, VertexInSubGraphPojo> getFriendsAndPublicIndexableVertices() {
-        Map<URI, VertexInSubGraphPojo> friendAndPublicVertices = new HashMap<>();
-        for (VertexInSubGraphPojo vertex : vertices().values()) {
-            ShareLevel shareLevel = vertex.getShareLevel();
-            if (shareLevel == ShareLevel.FRIENDS || shareLevel == ShareLevel.PUBLIC) {
-                friendAndPublicVertices.put(
-                        vertex.uri(),
-                        vertex
-                );
-            }
-        }
-        return friendAndPublicVertices;
-    }
-
-    public Map<URI, VertexInSubGraphPojo> getPublicIndexableVertices() {
-        Map<URI, VertexInSubGraphPojo> publicVertices = new HashMap<>();
-        for (VertexInSubGraphPojo vertex : vertices().values()) {
-            if (vertex.getShareLevel() == ShareLevel.PUBLIC) {
-                publicVertices.put(
-                        vertex.uri(),
-                        vertex
-                );
-            }
-        }
-        return publicVertices;
     }
 }

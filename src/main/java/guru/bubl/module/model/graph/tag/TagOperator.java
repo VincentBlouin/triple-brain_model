@@ -5,12 +5,11 @@
 package guru.bubl.module.model.graph.tag;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
-import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.vertex.VertexTypeOperator;
+import guru.bubl.module.model.graph.fork.ForkOperator;
 
 import java.net.URI;
 
-public interface TagOperator extends Tag, VertexTypeOperator, GraphElementOperator {
+public interface TagOperator extends Tag, ForkOperator, GraphElementOperator {
     void setExternalResourceUri(URI uri);
 
     TagPojo buildPojo();

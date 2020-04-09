@@ -9,21 +9,17 @@ import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.Edge;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
-import guru.bubl.module.model.graph.edge.EdgePojo;
+import guru.bubl.module.model.graph.fork.ForkOperator;
 
 import java.net.URI;
 import java.util.Map;
 
-public interface VertexOperator extends VertexTypeOperator, GraphElementOperator, Vertex {
+public interface VertexOperator extends ForkOperator, GraphElementOperator, Vertex {
     boolean hasEdge(Edge edge);
 
-    EdgeOperator getEdgeThatLinksToDestinationVertex(Vertex destinationVertex);
+    EdgeOperator getEdgeToDestinationVertex(Vertex destinationVertex);
 
     Boolean hasDestinationVertex(Vertex destinationVertex);
-
-    EdgePojo addVertexAndRelation();
-
-    EdgePojo addVertexAndRelationWithIds(String vertexId, String edgeId);
 
     EdgeOperator addRelationToVertex(VertexOperator destinationVertex);
 

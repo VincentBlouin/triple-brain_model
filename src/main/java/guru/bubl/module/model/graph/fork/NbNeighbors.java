@@ -1,4 +1,4 @@
-package guru.bubl.module.model.graph.vertex;
+package guru.bubl.module.model.graph.fork;
 
 import guru.bubl.module.model.graph.ShareLevel;
 

@@ -6,7 +6,9 @@ package guru.bubl.module.model.graph.edge;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.vertex.Vertex;
+import guru.bubl.module.model.graph.fork.Fork;
+import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
+import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
 import java.net.URI;
@@ -15,21 +17,9 @@ import java.util.Map;
 public interface EdgeOperator extends Edge, GraphElementOperator {
     void inverse();
 
-    VertexOperator sourceVertex();
+    void changeSource(URI newSourceUri, ShareLevel oldEndShareLevel, ShareLevel keptEndShareLevel, ShareLevel newEndShareLevel);
 
-    VertexOperator destinationVertex();
-
-    VertexOperator otherVertex(Vertex vertex);
-
-    void changeSourceVertex(Vertex newSourceVertex);
-
-    void changeDestinationVertex(Vertex newDestinationVertex);
-
-    EdgeOperator forkUsingSourceAndDestinationVertexAndCache(
-            Vertex sourceVertex,
-            Vertex destinationVertex,
-            Edge cache
-    );
+    void changeDestination(URI newDestinationUri, ShareLevel oldEndShareLevel, ShareLevel keptEndShareLevel, ShareLevel newEndShareLevel);
 
     EdgePojo createEdgeUsingInitialValues(Map<String, Object> values);
 
@@ -38,4 +28,6 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
     EdgePojo createEdgeWithAdditionalProperties(Map<String, Object> props);
 
     EdgePojo createWithShareLevel(ShareLevel shareLevel);
+
+    GroupRelationPojo convertToGroupRelation(TagPojo tag, Boolean isNewTag, ShareLevel initialShareLevel);
 }

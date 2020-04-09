@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.Set;
 
 public interface VertexFactory {
-    VertexInSubGraphOperator withUri(URI uri);
+    VertexOperator withUri(URI uri);
 
-    VertexInSubGraphOperator createForOwner(String username);
+    VertexOperator createForOwner(String username);
 }

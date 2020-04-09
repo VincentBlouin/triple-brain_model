@@ -8,6 +8,7 @@ import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.fork.NbNeighborsPojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
 
 import java.net.URI;
@@ -21,6 +22,18 @@ public class VertexPojo implements Vertex {
     private NbNeighborsPojo nbNeighbors = new NbNeighborsPojo();
     private ShareLevel shareLevel;
     private Boolean isPattern = false;
+
+    public VertexPojo(VertexOperator vertexOperator) {
+        this(
+                new GraphElementPojo(vertexOperator),
+                new NbNeighborsPojo(
+                        vertexOperator.getNbNeighbors().getPrivate(),
+                        vertexOperator.getNbNeighbors().getFriend(),
+                        vertexOperator.getNbNeighbors().getPublic()
+                ),
+                vertexOperator.getShareLevel()
+        );
+    }
 
     public VertexPojo(
             GraphElementPojo graphElement,
@@ -160,5 +173,9 @@ public class VertexPojo implements Vertex {
 
     public GraphElementPojo getGraphElement() {
         return graphElement;
+    }
+
+    public void setCreationDate(Long creationDate) {
+        graphElement.setCreationDate(creationDate);
     }
 }

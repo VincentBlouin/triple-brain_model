@@ -36,6 +36,10 @@ public class UserUris {
         return uri.toString().contains("/graph/identification");
     }
 
+    public static Boolean isUriOfAGroupRelation(URI uri) {
+        return uri.toString().contains("/graph/gr/");
+    }
+
     public static Boolean isMindRespectUri(URI uri) {
         return uri.toString().startsWith(BASE_URI);
     }
@@ -153,6 +157,12 @@ public class UserUris {
     public URI generateTagUri() {
         return URI.create(
                 baseTagUri() + "/" + UUID.randomUUID().toString()
+        );
+    }
+
+    public URI generateGroupRelationUri() {
+        return URI.create(
+                graphUri() + "/gr/" + UUID.randomUUID().toString()
         );
     }
 }
