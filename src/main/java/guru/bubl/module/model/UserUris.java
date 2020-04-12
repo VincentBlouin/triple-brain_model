@@ -86,6 +86,12 @@ public class UserUris {
         );
     }
 
+    public URI baseGroupRelationUri() {
+        return URI.create(
+                graphUri() + "/gr"
+        );
+    }
+
     public URI edgeUriFromShortId(String shortId) {
         return URI.create(
                 baseEdgeUri() + "/" + shortId
@@ -160,9 +166,9 @@ public class UserUris {
         );
     }
 
-    public URI generateGroupRelationUri() {
+    public URI groupRelationUriFromShortId(String shortId) {
         return URI.create(
-                graphUri() + "/gr/" + UUID.randomUUID().toString()
+                baseGroupRelationUri() + "/" + shortId
         );
     }
 }

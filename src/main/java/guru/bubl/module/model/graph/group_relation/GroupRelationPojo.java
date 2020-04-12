@@ -23,6 +23,7 @@ public class GroupRelationPojo implements GroupRelation {
     private Set<EdgePojo> edgeChildren;
     private Set<GroupRelationPojo> groupRelationChildren;
 
+
     public GroupRelationPojo(URI uri) {
         this.graphElement = new GraphElementPojo(uri);
     }
@@ -30,6 +31,11 @@ public class GroupRelationPojo implements GroupRelation {
     public GroupRelationPojo(URI uri, TagPojo tag) {
         this.graphElement = new GraphElementPojo(uri);
         this.tag = tag;
+    }
+
+    public GroupRelationPojo(GroupRelationOperator groupRelationOperator) {
+        this.graphElement = new GraphElementPojo(groupRelationOperator);
+        this.tag = groupRelationOperator.getTag();
     }
 
     public GroupRelationPojo(GraphElementPojo graphElement, TagPojo tag, NbNeighborsPojo nbNeighbors, ShareLevel shareLevel) {

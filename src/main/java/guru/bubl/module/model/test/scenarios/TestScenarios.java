@@ -10,6 +10,7 @@ import guru.bubl.module.model.graph.edge.EdgeFactory;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.group_relation.GroupRelationFactory;
 import guru.bubl.module.model.graph.group_relation.GroupRelationOperator;
+import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 import guru.bubl.module.model.graph.subgraph.UserGraph;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.VertexFactory;
@@ -18,6 +19,7 @@ import guru.bubl.module.model.test.GraphComponentTest;
 
 import javax.inject.Inject;
 import java.net.URI;
+import java.util.UUID;
 
 public class TestScenarios {
 
@@ -69,8 +71,15 @@ public class TestScenarios {
                         "To do"
                 )
         );
-        GroupRelationOperator groupRelation = groupRelationFactory.withUri(
-                edgeCD.convertToGroupRelation(todo, true, ShareLevel.PRIVATE).uri()
+        GroupRelationPojo newGroupRelation = edgeCD.convertToGroupRelation(
+                UUID.randomUUID().toString(),
+                todo,
+                true,
+                ShareLevel.PRIVATE
+        );
+        GroupRelationOperator groupRelation = groupRelationFactory.withUriAndTagUri(
+                newGroupRelation.uri(),
+                newGroupRelation.getTag().uri()
         );
         EdgeOperator edgeCE = edgeFactory.withUri(
                 groupRelation.addVertexAndRelation().uri()

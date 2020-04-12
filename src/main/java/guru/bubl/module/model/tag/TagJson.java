@@ -16,9 +16,9 @@ import java.util.Set;
 
 public class TagJson {
 
-    public static String toJson(Map<URI, TagPojo> identifications) {
+    public static String toJson(Map<URI, TagPojo> tags) {
         return JsonUtils.getGson().toJson(
-                identifications
+                tags
         );
     }
 
@@ -51,10 +51,10 @@ public class TagJson {
         );
     }
 
-    public static JSONObject singleToJson(TagPojo identification) {
+    public static JSONObject singleToJson(TagPojo tag) {
         try {
             return new JSONObject(JsonUtils.getGson().toJson(
-                    identification
+                    tag
             ));
         }catch(JSONException e){
             throw new RuntimeException(e);

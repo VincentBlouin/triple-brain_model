@@ -17,9 +17,19 @@ import java.util.Map;
 public interface EdgeOperator extends Edge, GraphElementOperator {
     void inverse();
 
-    void changeSource(URI newSourceUri, ShareLevel oldEndShareLevel, ShareLevel keptEndShareLevel, ShareLevel newEndShareLevel);
+    void changeSource(
+            URI newSourceUri,
+            ShareLevel oldEndShareLevel,
+            ShareLevel keptEndShareLevel,
+            ShareLevel newEndShareLevel
+    );
 
-    void changeDestination(URI newDestinationUri, ShareLevel oldEndShareLevel, ShareLevel keptEndShareLevel, ShareLevel newEndShareLevel);
+    void changeDestination(
+            URI newDestinationUri,
+            ShareLevel oldEndShareLevel,
+            ShareLevel keptEndShareLevel,
+            ShareLevel newEndShareLevel
+    );
 
     EdgePojo createEdgeUsingInitialValues(Map<String, Object> values);
 
@@ -29,5 +39,10 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     EdgePojo createWithShareLevel(ShareLevel shareLevel);
 
-    GroupRelationPojo convertToGroupRelation(TagPojo tag, Boolean isNewTag, ShareLevel initialShareLevel);
+    GroupRelationPojo convertToGroupRelation(
+            String newGroupRelationId,
+            TagPojo tag,
+            Boolean isNewTag,
+            ShareLevel initialShareLevel
+    );
 }
