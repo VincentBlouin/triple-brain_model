@@ -41,8 +41,7 @@ public interface EdgeOperator extends Edge, GraphElementOperator {
 
     GroupRelationPojo convertToGroupRelation(
             String newGroupRelationId,
-            TagPojo tag,
-            Boolean isNewTag,
-            ShareLevel initialShareLevel
+            ShareLevel initialShareLevel,
+            String label
     );
 }

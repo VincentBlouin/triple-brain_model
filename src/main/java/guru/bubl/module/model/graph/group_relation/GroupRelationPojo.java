@@ -16,45 +16,32 @@ import java.util.Set;
 
 public class GroupRelationPojo implements GroupRelation {
 
-    private TagPojo tag;
     private GraphElementPojo graphElement;
     private NbNeighborsPojo nbNeighbors;
     private ShareLevel shareLevel;
-    private Set<EdgePojo> edgeChildren;
-    private Set<GroupRelationPojo> groupRelationChildren;
-
 
     public GroupRelationPojo(URI uri) {
         this.graphElement = new GraphElementPojo(uri);
     }
 
-    public GroupRelationPojo(URI uri, TagPojo tag) {
-        this.graphElement = new GraphElementPojo(uri);
-        this.tag = tag;
-    }
-
     public GroupRelationPojo(GroupRelationOperator groupRelationOperator) {
         this.graphElement = new GraphElementPojo(groupRelationOperator);
-        this.tag = groupRelationOperator.getTag();
     }
 
-    public GroupRelationPojo(GraphElementPojo graphElement, TagPojo tag, NbNeighborsPojo nbNeighbors, ShareLevel shareLevel) {
+    public GroupRelationPojo(GraphElementPojo graphElement, NbNeighborsPojo nbNeighbors, ShareLevel shareLevel) {
         this.graphElement = graphElement;
-        this.tag = tag;
         this.nbNeighbors = nbNeighbors;
         this.shareLevel = shareLevel;
     }
 
     @Override
     public Map<URI, TagPojo> getTags() {
-        return new HashMap<URI, TagPojo>() {{
-            put(tag.uri(), tag);
-        }};
+        return graphElement.getTags();
     }
 
     @Override
     public String getFont() {
-        return tag.getFont();
+        return graphElement.getFont();
     }
 
     @Override
@@ -69,7 +56,7 @@ public class GroupRelationPojo implements GroupRelation {
 
     @Override
     public ShareLevel getShareLevel() {
-        return tag.getShareLevel();
+        return graphElement.getShareLevel();
     }
 
     @Override
@@ -79,32 +66,32 @@ public class GroupRelationPojo implements GroupRelation {
 
     @Override
     public boolean hasLabel() {
-        return tag.hasLabel();
+        return graphElement.hasLabel();
     }
 
     @Override
     public String label() {
-        return tag.label();
+        return graphElement.label();
     }
 
     @Override
     public Set<Image> images() {
-        return tag.images();
+        return graphElement.images();
     }
 
     @Override
     public Boolean gotImages() {
-        return tag.gotImages();
+        return graphElement.gotImages();
     }
 
     @Override
     public String comment() {
-        return tag.comment();
+        return graphElement.comment();
     }
 
     @Override
     public Boolean gotComments() {
-        return tag.gotComments();
+        return graphElement.gotComments();
     }
 
     @Override
@@ -119,7 +106,7 @@ public class GroupRelationPojo implements GroupRelation {
 
     @Override
     public String getColors() {
-        return tag.getColors();
+        return graphElement.getColors();
     }
 
     @Override

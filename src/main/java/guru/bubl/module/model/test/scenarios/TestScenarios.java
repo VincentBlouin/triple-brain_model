@@ -73,14 +73,13 @@ public class TestScenarios {
         );
         GroupRelationPojo newGroupRelation = edgeCD.convertToGroupRelation(
                 UUID.randomUUID().toString(),
-                todo,
-                true,
-                ShareLevel.PRIVATE
+                ShareLevel.PRIVATE,
+                "to do"
         );
-        GroupRelationOperator groupRelation = groupRelationFactory.withUriAndTagUri(
-                newGroupRelation.uri(),
-                newGroupRelation.getTag().uri()
+        GroupRelationOperator groupRelation = groupRelationFactory.withUri(
+                newGroupRelation.uri()
         );
+        groupRelation.addTag(todo, ShareLevel.PRIVATE);
         EdgeOperator edgeCE = edgeFactory.withUri(
                 groupRelation.addVertexAndRelation().uri()
         );
