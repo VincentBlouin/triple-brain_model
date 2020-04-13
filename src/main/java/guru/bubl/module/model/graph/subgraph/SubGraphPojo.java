@@ -101,7 +101,7 @@ public class SubGraphPojo implements SubGraph {
     }
 
     public Boolean hasCenter(URI uri) {
-        return this.getCenterMeta() != null || this.vertexWithIdentifier(uri) != null;
+        return this.getCenterMeta() != null || this.vertexWithIdentifier(uri) != null || this.groupRelations.containsKey(uri);
     }
 
     public void setCenterMeta(TagPojo tag) {

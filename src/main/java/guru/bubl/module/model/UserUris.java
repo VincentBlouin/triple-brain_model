@@ -108,6 +108,8 @@ public class UserUris {
         GraphElementType type;
         if (typeStr.equals("identification")) {
             type = GraphElementType.Meta;
+        } else if (typeStr.equals("gr")) {
+            type = GraphElementType.GroupRelation;
         } else {
             type = GraphElementType.valueOf(typeStr.substring(0, 1).toUpperCase() + typeStr.substring(1));
         }
@@ -125,6 +127,8 @@ public class UserUris {
                 return baseEdgeUri();
             case Meta:
                 return baseTagUri();
+            case GroupRelation:
+                return baseGroupRelationUri();
             default:
                 return baseUri();
         }
