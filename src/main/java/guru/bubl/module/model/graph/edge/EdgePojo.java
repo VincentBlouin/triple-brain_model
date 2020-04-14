@@ -22,6 +22,7 @@ public class EdgePojo implements Edge {
 
     private GraphElementPojo graphElement;
     private GroupRelationPojo sourceGroupRelation;
+    private GroupRelationPojo destinationGroupRelation;
     private VertexPojo sourceVertex;
     private VertexPojo destinationVertex;
 
@@ -96,9 +97,21 @@ public class EdgePojo implements Edge {
         this.sourceVertex = vertex;
     }
 
+    public GraphElement getDestination() {
+        return this.destinationGroupRelation == null ? destinationVertex : destinationGroupRelation;
+    }
+
+    public void setDestination(URI uri) {
+        if (UserUris.isUriOfAGroupRelation(uri)) {
+            this.destinationGroupRelation = new GroupRelationPojo(uri);
+        } else {
+            this.destinationVertex = new VertexPojo(uri);
+        }
+    }
+
     @Override
     public URI destinationUri() {
-        return destinationVertex.uri();
+        return getDestination().uri();
     }
 
     @Override
@@ -108,7 +121,7 @@ public class EdgePojo implements Edge {
 
     @Override
     public GraphElement destinationFork() {
-        return destinationVertex;
+        return getDestination();
     }
 
     public VertexPojo getDestinationVertex() {
