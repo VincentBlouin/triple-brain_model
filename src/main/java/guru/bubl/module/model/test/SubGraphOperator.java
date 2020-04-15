@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model.test;
 
-import guru.bubl.module.model.graph.edge.EdgeOperator;
+import guru.bubl.module.model.graph.relation.RelationOperator;
 import guru.bubl.module.model.graph.vertex.Vertex;
 import guru.bubl.module.model.graph.vertex.VertexOperator;
 
@@ -14,13 +14,13 @@ import java.util.Set;
 public class SubGraphOperator{
 
     private Set<VertexOperator> vertices = new HashSet<VertexOperator>();
-    private Set<EdgeOperator> edges = new HashSet<EdgeOperator>();
+    private Set<RelationOperator> edges = new HashSet<RelationOperator>();
 
-    public static SubGraphOperator withVerticesAndEdges(Set<VertexOperator> vertices, Set<EdgeOperator> edges){
+    public static SubGraphOperator withVerticesAndEdges(Set<VertexOperator> vertices, Set<RelationOperator> edges){
         return new SubGraphOperator(vertices, edges);
     }
 
-    protected SubGraphOperator(Set<VertexOperator> vertices, Set<EdgeOperator> edges){
+    protected SubGraphOperator(Set<VertexOperator> vertices, Set<RelationOperator> edges){
         this.vertices = vertices;
         this.edges = edges;
     }
@@ -33,7 +33,7 @@ public class SubGraphOperator{
         return vertices;
     }
 
-    public Set<EdgeOperator> edges() {
+    public Set<RelationOperator> edges() {
         return edges;
     }
 }

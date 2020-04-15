@@ -5,8 +5,8 @@
 package guru.bubl.module.model.graph.subgraph;
 
 import guru.bubl.module.model.graph.GraphElement;
-import guru.bubl.module.model.graph.edge.Edge;
-import guru.bubl.module.model.graph.edge.EdgePojo;
+import guru.bubl.module.model.graph.relation.Relation;
+import guru.bubl.module.model.graph.relation.RelationPojo;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
@@ -19,15 +19,15 @@ import java.util.Map;
 public class SubGraphPojo implements SubGraph {
 
     private Map<URI, VertexPojo> vertices = new HashMap<>();
-    private Map<URI, EdgePojo> edges = new HashMap<>();
+    private Map<URI, RelationPojo> edges = new HashMap<>();
     Map<URI, GroupRelationPojo> groupRelations = new HashMap<>();
     private TagPojo centerTag;
 
-    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexPojo> vertices, Map<URI, EdgePojo> edges) {
+    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexPojo> vertices, Map<URI, RelationPojo> edges) {
         return new SubGraphPojo(vertices, edges);
     }
 
-    protected SubGraphPojo(Map<URI, VertexPojo> vertices, Map<URI, EdgePojo> edges) {
+    protected SubGraphPojo(Map<URI, VertexPojo> vertices, Map<URI, RelationPojo> edges) {
         this.vertices = vertices;
         this.edges = edges;
     }
@@ -40,7 +40,7 @@ public class SubGraphPojo implements SubGraph {
     }
 
     @Override
-    public EdgePojo edgeWithIdentifier(URI identifier) {
+    public RelationPojo edgeWithIdentifier(URI identifier) {
         return edges.get(
                 identifier
         );
@@ -70,8 +70,8 @@ public class SubGraphPojo implements SubGraph {
     }
 
     @Override
-    public Boolean containsEdge(Edge edge) {
-        return edges.containsKey(edge.uri());
+    public Boolean containsEdge(Relation relation) {
+        return edges.containsKey(relation.uri());
     }
 
     @Override
@@ -91,7 +91,7 @@ public class SubGraphPojo implements SubGraph {
     }
 
     @Override
-    public Map<URI, EdgePojo> edges() {
+    public Map<URI, RelationPojo> edges() {
         return edges;
     }
 
@@ -108,7 +108,7 @@ public class SubGraphPojo implements SubGraph {
         this.centerTag = tag;
     }
 
-    public void addEdge(EdgePojo edge) {
+    public void addEdge(RelationPojo edge) {
         edges.put(
                 edge.uri(),
                 edge

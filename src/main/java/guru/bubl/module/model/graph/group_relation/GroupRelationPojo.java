@@ -3,14 +3,12 @@ package guru.bubl.module.model.graph.group_relation;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.fork.NbNeighbors;
 import guru.bubl.module.model.graph.fork.NbNeighborsPojo;
 
 import java.net.URI;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 

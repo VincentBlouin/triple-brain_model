@@ -5,9 +5,9 @@
 package guru.bubl.module.model.test.scenarios;
 
 import guru.bubl.module.model.graph.*;
-import guru.bubl.module.model.graph.edge.Edge;
-import guru.bubl.module.model.graph.edge.EdgeFactory;
-import guru.bubl.module.model.graph.edge.EdgeOperator;
+import guru.bubl.module.model.graph.relation.Relation;
+import guru.bubl.module.model.graph.relation.RelationFactory;
+import guru.bubl.module.model.graph.relation.RelationOperator;
 import guru.bubl.module.model.graph.group_relation.GroupRelationFactory;
 import guru.bubl.module.model.graph.group_relation.GroupRelationOperator;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
@@ -30,7 +30,7 @@ public class TestScenarios {
     protected VertexFactory vertexFactory;
 
     @Inject
-    protected EdgeFactory edgeFactory;
+    protected RelationFactory relationFactory;
 
     @Inject
     protected GroupRelationFactory groupRelationFactory;
@@ -52,12 +52,12 @@ public class TestScenarios {
                 vertexB.addVertexAndRelation().destinationUri()
         );
         vertexC.label("vertex C");
-        EdgeOperator edgeAB = vertexA.getEdgeToDestinationVertex(vertexB);
+        RelationOperator edgeAB = vertexA.getEdgeToDestinationVertex(vertexB);
         edgeAB.label("edge AB");
-        EdgeOperator edgeBC = vertexB.getEdgeToDestinationVertex(vertexC);
+        RelationOperator edgeBC = vertexB.getEdgeToDestinationVertex(vertexC);
         edgeBC.label("edge BC");
 
-        EdgeOperator edgeCD = edgeFactory.withUri(
+        RelationOperator edgeCD = relationFactory.withUri(
                 vertexC.addVertexAndRelation().uri()
         );
         edgeCD.label("edge CD");
@@ -80,7 +80,7 @@ public class TestScenarios {
                 newGroupRelation.uri()
         );
         groupRelation.addTag(todo, ShareLevel.PRIVATE);
-        EdgeOperator edgeCE = edgeFactory.withUri(
+        RelationOperator edgeCE = relationFactory.withUri(
                 groupRelation.addVertexAndRelation().uri()
         );
         edgeCE.label("edge DC");
@@ -110,9 +110,9 @@ public class TestScenarios {
     }
 
     public VertexOperator addPineAppleVertexToVertex(VertexOperator vertex) {
-        Edge newEdge = vertex.addVertexAndRelation();
+        Relation newRelation = vertex.addVertexAndRelation();
         VertexOperator pineApple = vertexFactory.withUri(
-                newEdge.destinationUri()
+                newRelation.destinationUri()
         );
         pineApple.label("pine Apple");
         return pineApple;

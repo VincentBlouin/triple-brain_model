@@ -2,17 +2,15 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph.edge;
+package guru.bubl.module.model.graph.relation;
 
-import com.google.gson.Gson;
 import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import guru.bubl.module.model.graph.edge.EdgePojo;
 
-public class EdgeJson{
+public class RelationJson {
 
-    public static JSONObject toJson(EdgePojo edge) {
+    public static JSONObject toJson(RelationPojo edge) {
         try {
             return new JSONObject(
                     JsonUtils.getGson().toJson(
@@ -23,10 +21,10 @@ public class EdgeJson{
             throw new RuntimeException(e);
         }
     }
-    public static EdgePojo fromJson(JSONObject json){
+    public static RelationPojo fromJson(JSONObject json){
         return JsonUtils.getGson().fromJson(
                 json.toString(),
-                EdgePojo.class
+                RelationPojo.class
         );
     }
 }

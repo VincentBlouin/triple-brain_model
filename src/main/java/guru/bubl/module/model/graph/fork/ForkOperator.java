@@ -1,7 +1,7 @@
 package guru.bubl.module.model.graph.fork;
 
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.edge.EdgePojo;
+import guru.bubl.module.model.graph.relation.RelationPojo;
 
 public interface ForkOperator extends Fork {
 
@@ -17,8 +17,8 @@ public interface ForkOperator extends Fork {
         setShareLevel(ShareLevel.PRIVATE);
     }
 
-    EdgePojo addVertexAndRelation();
+    RelationPojo addVertexAndRelation();
 
-    EdgePojo addVertexAndRelationWithIds(String vertexId, String edgeId);
+    RelationPojo addVertexAndRelationWithIds(String vertexId, String edgeId);
 
 }

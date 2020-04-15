@@ -7,23 +7,23 @@ package guru.bubl.module.model.graph.vertex;
 import guru.bubl.module.model.User;
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.edge.Edge;
-import guru.bubl.module.model.graph.edge.EdgeOperator;
+import guru.bubl.module.model.graph.relation.Relation;
+import guru.bubl.module.model.graph.relation.RelationOperator;
 import guru.bubl.module.model.graph.fork.ForkOperator;
 
 import java.net.URI;
 import java.util.Map;
 
 public interface VertexOperator extends ForkOperator, GraphElementOperator, Vertex {
-    boolean hasEdge(Edge edge);
+    boolean hasEdge(Relation relation);
 
-    EdgeOperator getEdgeToDestinationVertex(Vertex destinationVertex);
+    RelationOperator getEdgeToDestinationVertex(Vertex destinationVertex);
 
     Boolean hasDestinationVertex(Vertex destinationVertex);
 
-    EdgeOperator addRelationToVertex(VertexOperator destinationVertex);
+    RelationOperator addRelationToVertex(VertexOperator destinationVertex);
 
-    Map<URI, EdgeOperator> connectedEdges();
+    Map<URI, RelationOperator> connectedEdges();
 
     VertexOperator forkForUserUsingCache(User user, Vertex cache);
 

@@ -2,15 +2,14 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph.edge;
+package guru.bubl.module.model.graph.relation;
 
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.ShareLevel;
-import guru.bubl.module.model.graph.vertex.Vertex;
 
 import java.net.URI;
 
-public interface Edge extends GraphElement {
+public interface Relation extends GraphElement {
     URI sourceUri();
 
     URI destinationUri();

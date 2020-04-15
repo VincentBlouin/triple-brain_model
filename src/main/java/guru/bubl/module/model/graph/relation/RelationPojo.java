@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph.edge;
+package guru.bubl.module.model.graph.relation;
 
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.UserUris;
@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-public class EdgePojo implements Edge {
+public class RelationPojo implements Relation {
 
     private GraphElementPojo graphElement;
     private GroupRelationPojo sourceGroupRelation;
@@ -27,17 +27,17 @@ public class EdgePojo implements Edge {
     private VertexPojo destinationVertex;
 
     @Deprecated
-    public EdgePojo(
-            EdgeOperator edgeOperator
+    public RelationPojo(
+            RelationOperator relationOperator
     ) {
         this(
-                new GraphElementPojo(edgeOperator),
-                new VertexPojo(edgeOperator.sourceUri()),
-                new VertexPojo(edgeOperator.destinationUri())
+                new GraphElementPojo(relationOperator),
+                new VertexPojo(relationOperator.sourceUri()),
+                new VertexPojo(relationOperator.destinationUri())
         );
     }
 
-    public EdgePojo(
+    public RelationPojo(
             GraphElementPojo graphElement,
             VertexPojo sourceVertex,
             VertexPojo destinationVertex
@@ -48,7 +48,7 @@ public class EdgePojo implements Edge {
     }
 
 
-    public EdgePojo(
+    public RelationPojo(
             URI edgeUri,
             URI sourceVertexUri,
             URI destinationVertexUri
@@ -58,13 +58,13 @@ public class EdgePojo implements Edge {
         this.destinationVertex = new VertexPojo(destinationVertexUri);
     }
 
-    public EdgePojo(
+    public RelationPojo(
             GraphElementPojo graphElement
     ) {
         this.graphElement = graphElement;
     }
 
-    public EdgePojo(
+    public RelationPojo(
             URI uri,
             String label
     ) {
