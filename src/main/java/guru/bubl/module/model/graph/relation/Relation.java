@@ -6,24 +6,16 @@ package guru.bubl.module.model.graph.relation;
 
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.edge.Edge;
 
 import java.net.URI;
 
-public interface Relation extends GraphElement {
-    URI sourceUri();
-
-    URI destinationUri();
-
-    @Deprecated
-    GraphElement sourceFork();
-
-    @Deprecated
-    GraphElement destinationFork();
+public interface Relation extends Edge, GraphElement {
 
     @Override
     default ShareLevel getShareLevel() {
-        ShareLevel sourceShareLevel = sourceFork().getShareLevel();
-        ShareLevel destinationShareLevel = destinationFork().getShareLevel();
+        ShareLevel sourceShareLevel = source().getShareLevel();
+        ShareLevel destinationShareLevel = destination().getShareLevel();
         return sourceShareLevel.getIndex() < destinationShareLevel.getIndex() ?
                 sourceShareLevel : destinationShareLevel;
     }

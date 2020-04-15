@@ -115,12 +115,12 @@ public class RelationPojo implements Relation {
     }
 
     @Override
-    public GraphElement sourceFork() {
+    public GraphElement source() {
         return getSource();
     }
 
     @Override
-    public GraphElement destinationFork() {
+    public GraphElement destination() {
         return getDestination();
     }
 

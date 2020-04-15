@@ -11,9 +11,9 @@ import java.net.URI;
 
 public interface UserGraph {
 
-    SubGraphPojo aroundVertexUriInShareLevels(URI centerVertexUri, Integer... shareLevels);
+    SubGraphPojo aroundForkUriInShareLevels(URI centerVertexUri, Integer... shareLevels);
 
-    SubGraphPojo aroundVertexUriWithDepthInShareLevels(URI centerVertexUri, Integer depth, Integer... shareLevels);
+    SubGraphPojo aroundForkUriWithDepthInShareLevels(URI centerVertexUri, Integer depth, Integer... shareLevels);
 
     VertexPojo createVertex();
 

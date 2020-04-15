@@ -6,27 +6,14 @@ package guru.bubl.module.model.graph.relation;
 
 import guru.bubl.module.model.graph.GraphElementOperator;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 
 import java.net.URI;
 import java.util.Map;
 
-public interface RelationOperator extends Relation, GraphElementOperator {
+public interface RelationOperator extends Relation, EdgeOperator, GraphElementOperator {
     void inverse();
-
-    void changeSource(
-            URI newSourceUri,
-            ShareLevel oldEndShareLevel,
-            ShareLevel keptEndShareLevel,
-            ShareLevel newEndShareLevel
-    );
-
-    void changeDestination(
-            URI newDestinationUri,
-            ShareLevel oldEndShareLevel,
-            ShareLevel keptEndShareLevel,
-            ShareLevel newEndShareLevel
-    );
 
     RelationPojo createEdgeUsingInitialValues(Map<String, Object> values);
 
