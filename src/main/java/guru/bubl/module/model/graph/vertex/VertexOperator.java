@@ -21,11 +21,7 @@ public interface VertexOperator extends ForkOperator, GraphElementOperator, Vert
 
     Boolean hasDestinationVertex(Vertex destinationVertex);
 
-    RelationOperator addRelationToVertex(VertexOperator destinationVertex);
-
     Map<URI, RelationOperator> connectedEdges();
-
-    VertexOperator forkForUserUsingCache(User user, Vertex cache);
 
     void createUsingInitialValues(Map<String, Object> values);
 

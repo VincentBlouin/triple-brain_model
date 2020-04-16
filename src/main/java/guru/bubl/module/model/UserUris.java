@@ -5,6 +5,7 @@
 package guru.bubl.module.model;
 
 import guru.bubl.module.model.graph.GraphElementType;
+import org.apache.commons.lang.StringUtils;
 
 import java.net.URI;
 import java.util.UUID;
@@ -12,6 +13,8 @@ import java.util.UUID;
 public class UserUris {
 
     public static final String BASE_URI = "/service/users/";
+
+    public static final String graphPart = "/graph/";
 
     public static String graphElementShortId(URI uri) {
         String uriStr = uri.toString();
@@ -42,6 +45,20 @@ public class UserUris {
 
     public static Boolean isMindRespectUri(URI uri) {
         return uri.toString().startsWith(BASE_URI);
+    }
+
+    public static GraphElementType getGraphElementTypeFromUri(URI uri) {
+        String uriStr = uri.toString().substring(
+                uri.toString().indexOf(graphPart) + graphPart.length()
+        );
+        String graphElementTypeString = uriStr.substring(0, uriStr.indexOf("/"));
+        if (graphElementTypeString.equals("identification")) {
+            return GraphElementType.Meta;
+        }
+        if (graphElementTypeString.equals("gr")) {
+            return GraphElementType.GroupRelation;
+        }
+        return GraphElementType.valueOf(StringUtils.capitalize(graphElementTypeString));
     }
 
     private String userName;
