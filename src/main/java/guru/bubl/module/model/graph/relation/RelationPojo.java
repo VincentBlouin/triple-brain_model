@@ -9,6 +9,7 @@ import guru.bubl.module.model.UserUris;
 import guru.bubl.module.model.graph.FriendlyResourcePojo;
 import guru.bubl.module.model.graph.GraphElement;
 import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.VertexPojo;
@@ -18,7 +19,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-public class RelationPojo implements Relation {
+public class RelationPojo implements Relation, EdgePojo {
 
     private GraphElementPojo graphElement;
     private GroupRelationPojo sourceGroupRelation;
@@ -85,11 +86,21 @@ public class RelationPojo implements Relation {
         return getSource().uri();
     }
 
-    public void setSource(URI uri) {
-        if (UserUris.isUriOfAGroupRelation(uri)) {
-            this.sourceGroupRelation = new GroupRelationPojo(uri);
+    @Override
+    public void setSourceUri(URI sourceUri) {
+        if (UserUris.isUriOfAGroupRelation(sourceUri)) {
+            this.sourceGroupRelation = new GroupRelationPojo(sourceUri);
         } else {
-            this.sourceVertex = new VertexPojo(uri);
+            this.sourceVertex = new VertexPojo(sourceUri);
+        }
+    }
+
+    @Override
+    public void setDestinationUri(URI destinationUri) {
+        if (UserUris.isUriOfAGroupRelation(destinationUri)) {
+            this.destinationGroupRelation = new GroupRelationPojo(destinationUri);
+        } else {
+            this.destinationVertex = new VertexPojo(destinationUri);
         }
     }
 
@@ -99,14 +110,6 @@ public class RelationPojo implements Relation {
 
     public GraphElement getDestination() {
         return this.destinationGroupRelation == null ? destinationVertex : destinationGroupRelation;
-    }
-
-    public void setDestination(URI uri) {
-        if (UserUris.isUriOfAGroupRelation(uri)) {
-            this.destinationGroupRelation = new GroupRelationPojo(uri);
-        } else {
-            this.destinationVertex = new VertexPojo(uri);
-        }
     }
 
     @Override

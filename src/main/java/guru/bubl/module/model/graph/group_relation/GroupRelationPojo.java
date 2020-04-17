@@ -3,6 +3,7 @@ package guru.bubl.module.model.graph.group_relation;
 import guru.bubl.module.model.Image;
 import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
+import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.fork.NbNeighbors;
 import guru.bubl.module.model.graph.fork.NbNeighborsPojo;
@@ -12,11 +13,12 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-public class GroupRelationPojo implements GroupRelation {
+public class GroupRelationPojo implements GroupRelation, EdgePojo {
 
     private GraphElementPojo graphElement;
     private NbNeighborsPojo nbNeighbors;
     private ShareLevel shareLevel;
+    private URI sourceForkUri;
 
     public GroupRelationPojo(URI uri) {
         this.graphElement = new GraphElementPojo(uri);
@@ -114,5 +116,19 @@ public class GroupRelationPojo implements GroupRelation {
 
     public GraphElementPojo getGraphElement() {
         return graphElement;
+    }
+
+    @Override
+    public void setSourceUri(URI sourceUri) {
+        this.sourceForkUri = sourceUri;
+    }
+
+    public URI getSourceForkUri() {
+        return this.sourceForkUri;
+    }
+
+    @Override
+    public void setDestinationUri(URI destinationUri) {
+        //should not happen
     }
 }

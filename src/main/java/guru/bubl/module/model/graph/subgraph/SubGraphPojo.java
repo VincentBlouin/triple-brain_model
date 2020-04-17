@@ -23,7 +23,7 @@ public class SubGraphPojo implements SubGraph {
     Map<URI, GroupRelationPojo> groupRelations = new HashMap<>();
     private TagPojo centerTag;
 
-    public static SubGraphPojo withVerticesAndEdges(Map<URI, VertexPojo> vertices, Map<URI, RelationPojo> edges) {
+    public static SubGraphPojo withCenterUriVerticesAndEdges(Map<URI, VertexPojo> vertices, Map<URI, RelationPojo> edges) {
         return new SubGraphPojo(vertices, edges);
     }
 
@@ -131,5 +131,9 @@ public class SubGraphPojo implements SubGraph {
 
     public Boolean isEmpty() {
         return this.vertices().isEmpty();
+    }
+
+    public Map<URI, GroupRelationPojo> getGroupRelations() {
+        return groupRelations;
     }
 }
