@@ -24,6 +24,13 @@ public enum ShareLevel {
             ShareLevel.PUBLIC
     ).collect(Collectors.toSet());
 
+
+    public final static Set<ShareLevel> friendShareLevels = Stream.of(
+            ShareLevel.FRIENDS,
+            ShareLevel.PUBLIC_WITH_LINK,
+            ShareLevel.PUBLIC
+    ).collect(Collectors.toSet());
+
     public final static Set<ShareLevel> publicShareLevels = Stream.of(
             ShareLevel.PUBLIC_WITH_LINK,
             ShareLevel.PUBLIC
@@ -37,7 +44,7 @@ public enum ShareLevel {
     };
 
     public static Integer[] shareLevelsToIntegers(Set<ShareLevel> shareLevels) {
-        return Stream.of(shareLevels.stream().map(ShareLevel::getIndex)).toArray(Integer[]::new);
+        return shareLevels.stream().map(ShareLevel::getIndex).toArray(Integer[]::new);
     }
 
     public static Set<ShareLevel> arrayOfIntegersToSet(Integer[] shareLevels) {
