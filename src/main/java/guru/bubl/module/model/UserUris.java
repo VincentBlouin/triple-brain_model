@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model;
 
-import guru.bubl.module.model.graph.GraphElementType;
+import guru.bubl.module.model.graph.graph_element.GraphElementType;
 import org.apache.commons.lang.StringUtils;
 
 import java.net.URI;

@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.Test;
-import guru.bubl.module.model.graph.GraphElementType;
+import guru.bubl.module.model.graph.graph_element.GraphElementType;
 
 import java.net.URI;
 import java.util.HashMap;

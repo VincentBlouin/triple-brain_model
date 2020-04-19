@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model;
 
-import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.graph_element.GraphElementOperator;
 import guru.bubl.module.model.graph.relation.RelationOperator;
 import guru.bubl.module.model.graph.tag.TagOperator;
 import guru.bubl.module.model.graph.vertex.VertexOperator;

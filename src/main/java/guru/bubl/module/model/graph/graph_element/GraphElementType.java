@@ -2,7 +2,7 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph;
+package guru.bubl.module.model.graph.graph_element;
 
 import java.util.Arrays;
 import java.util.List;

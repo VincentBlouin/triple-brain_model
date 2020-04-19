@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model.center_graph_element;
 
-import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.fork.NbNeighbors;
 

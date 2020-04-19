@@ -51,6 +51,12 @@ public enum ShareLevel {
         return Arrays.stream(shareLevels).map(i -> get(i)).collect(Collectors.toSet());
     }
 
+    public static Set<ShareLevel> shareLevelsToSet(ShareLevel... shareLevels) {
+        return Stream.of(
+                shareLevels
+        ).collect(Collectors.toSet());
+    }
+
     // Reverse-lookup map for getting a share level from it's index
     private static final Map<Integer, ShareLevel> lookup = new HashMap<Integer, ShareLevel>();
 

@@ -4,11 +4,9 @@
 
 package guru.bubl.module.model.graph.relation;
 
-import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.Edge;
-
-import java.net.URI;
 
 public interface Relation extends Edge, GraphElement {
 

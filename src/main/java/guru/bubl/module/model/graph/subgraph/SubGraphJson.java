@@ -2,10 +2,8 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph;
+package guru.bubl.module.model.graph.subgraph;
 
-import guru.bubl.module.model.graph.subgraph.SubGraph;
-import guru.bubl.module.model.graph.subgraph.SubGraphPojo;
 import guru.bubl.module.model.json.JsonUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;

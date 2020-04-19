@@ -13,7 +13,7 @@ public class WholeGraphAdminDailyJob {
     private WholeGraphAdmin wholeGraphAdmin;
 
     public void execute() {
-        wholeGraphAdmin.refreshNbNeighborsToAllTags();
+        wholeGraphAdmin.refreshNbNeighborsOfTags();
         wholeGraphAdmin.refreshNbNeighbors();
         wholeGraphAdmin.reindexAll();
     }

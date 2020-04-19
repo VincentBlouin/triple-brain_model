@@ -5,6 +5,8 @@
 package guru.bubl.module.model.test.scenarios;
 
 import guru.bubl.module.model.graph.*;
+import guru.bubl.module.model.graph.graph_element.GraphElementOperator;
+import guru.bubl.module.model.graph.graph_element.GraphElementPojo;
 import guru.bubl.module.model.graph.relation.Relation;
 import guru.bubl.module.model.graph.relation.RelationFactory;
 import guru.bubl.module.model.graph.relation.RelationOperator;

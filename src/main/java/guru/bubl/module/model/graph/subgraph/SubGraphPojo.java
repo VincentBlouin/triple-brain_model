@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
-import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.relation.Relation;
 import guru.bubl.module.model.graph.relation.RelationPojo;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;

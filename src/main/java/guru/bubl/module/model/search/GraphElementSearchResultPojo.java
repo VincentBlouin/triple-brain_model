@@ -4,8 +4,8 @@
 
 package guru.bubl.module.model.search;
 
-import guru.bubl.module.model.graph.GraphElementPojo;
-import guru.bubl.module.model.graph.GraphElementType;
+import guru.bubl.module.model.graph.graph_element.GraphElementPojo;
+import guru.bubl.module.model.graph.graph_element.GraphElementType;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.fork.NbNeighborsPojo;
 

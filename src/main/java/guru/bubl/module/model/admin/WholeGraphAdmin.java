@@ -8,7 +8,7 @@ public interface WholeGraphAdmin {
 
     void refreshNbNeighbors();
 
-    void refreshNbNeighborsToAllTags();
+    void refreshNbNeighborsOfTags();
 
     void reindexAll();
 

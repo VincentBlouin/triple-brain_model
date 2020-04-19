@@ -2,10 +2,9 @@
  * Copyright Vincent Blouin under the GPL License version 3
  */
 
-package guru.bubl.module.model.graph;
+package guru.bubl.module.model.graph.graph_element;
 
 import com.google.gson.reflect.TypeToken;
-import guru.bubl.module.model.graph.GraphElementPojo;
 import guru.bubl.module.model.json.JsonUtils;
 
 import java.net.URI;

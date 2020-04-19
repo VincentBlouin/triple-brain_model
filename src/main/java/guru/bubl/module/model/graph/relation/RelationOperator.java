@@ -4,12 +4,11 @@
 
 package guru.bubl.module.model.graph.relation;
 
-import guru.bubl.module.model.graph.GraphElementOperator;
+import guru.bubl.module.model.graph.graph_element.GraphElementOperator;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.EdgeOperator;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 
-import java.net.URI;
 import java.util.Map;
 
 public interface RelationOperator extends Relation, EdgeOperator, GraphElementOperator {

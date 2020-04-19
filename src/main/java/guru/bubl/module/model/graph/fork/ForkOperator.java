@@ -28,4 +28,6 @@ public interface ForkOperator extends Fork {
     RelationOperator addRelationToFork(ForkOperator destinationFork);
 
     URI uri();
+
+    void remove();
 }

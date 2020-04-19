@@ -4,7 +4,7 @@
 
 package guru.bubl.module.model.graph.tag;
 
-import guru.bubl.module.model.graph.GraphElement;
+import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.fork.Fork;
 
 import java.net.URI;

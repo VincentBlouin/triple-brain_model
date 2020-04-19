@@ -1,7 +1,7 @@
 package guru.bubl.module.model.graph.group_relation;
 
 import guru.bubl.module.model.Image;
-import guru.bubl.module.model.graph.GraphElementPojo;
+import guru.bubl.module.model.graph.graph_element.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.EdgePojo;
 import guru.bubl.module.model.graph.tag.TagPojo;
