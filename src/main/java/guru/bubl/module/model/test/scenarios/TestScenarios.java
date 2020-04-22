@@ -76,7 +76,8 @@ public class TestScenarios {
         GroupRelationPojo newGroupRelation = edgeCD.convertToGroupRelation(
                 UUID.randomUUID().toString(),
                 ShareLevel.PRIVATE,
-                "to do"
+                "to do",
+                ""
         );
         GroupRelationOperator groupRelation = groupRelationFactory.withUri(
                 newGroupRelation.uri()

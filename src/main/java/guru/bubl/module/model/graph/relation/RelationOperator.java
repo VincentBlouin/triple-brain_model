@@ -25,6 +25,7 @@ public interface RelationOperator extends Relation, EdgeOperator, GraphElementOp
     GroupRelationPojo convertToGroupRelation(
             String newGroupRelationId,
             ShareLevel initialShareLevel,
-            String label
+            String label,
+            String note
     );
 }

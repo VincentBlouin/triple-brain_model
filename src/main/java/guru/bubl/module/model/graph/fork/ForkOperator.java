@@ -25,7 +25,7 @@ public interface ForkOperator extends Fork {
 
     RelationPojo addVertexAndRelationWithIds(String vertexId, String edgeId);
 
-    RelationOperator addRelationToFork(ForkOperator destinationFork);
+    RelationOperator addRelationToFork(URI destinationUri, ShareLevel sourceShareLevel, ShareLevel destinationShareLevel);
 
     URI uri();
 

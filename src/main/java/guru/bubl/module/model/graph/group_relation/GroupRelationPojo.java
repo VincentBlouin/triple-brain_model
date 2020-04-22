@@ -131,4 +131,8 @@ public class GroupRelationPojo implements GroupRelation, EdgePojo {
     public void setDestinationUri(URI destinationUri) {
         //should not happen
     }
+
+    public void setCreationDate(Long time) {
+        graphElement.setCreationDate(time);
+    }
 }
