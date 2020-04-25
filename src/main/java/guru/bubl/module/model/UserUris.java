@@ -8,6 +8,7 @@ import guru.bubl.module.model.graph.graph_element.GraphElementType;
 import org.apache.commons.lang.StringUtils;
 
 import java.net.URI;
+import java.util.Set;
 import java.util.UUID;
 
 public class UserUris {
@@ -192,4 +193,11 @@ public class UserUris {
                 baseGroupRelationUri() + "/" + shortId
         );
     }
+
+    public Boolean areAllUrisOwned(Set<URI> uris){
+        return uris.stream().allMatch(
+                uri -> UserUris.ownerUserNameFromUri(uri).equals(userName)
+        );
+    }
+
 }
