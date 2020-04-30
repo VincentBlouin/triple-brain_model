@@ -20,6 +20,8 @@ public class GroupRelationPojo implements GroupRelation, EdgePojo {
     private ShareLevel shareLevel;
     private URI sourceForkUri;
 
+    private URI indexVertexUri;
+
     public GroupRelationPojo(URI uri) {
         this.graphElement = new GraphElementPojo(uri);
     }
@@ -134,5 +136,9 @@ public class GroupRelationPojo implements GroupRelation, EdgePojo {
 
     public void setCreationDate(Long time) {
         graphElement.setCreationDate(time);
+    }
+
+    public void setIndexVertexUri(URI indexVertexUri) {
+        this.indexVertexUri = indexVertexUri;
     }
 }
