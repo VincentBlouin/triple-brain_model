@@ -210,6 +210,10 @@ public class TagPojo implements Tag {
         return graphElement.getChildrenIndex();
     }
 
+    public void setChildrenIndex(String childrenIndex) {
+        graphElement.setChildrenIndex(childrenIndex);
+    }
+
     @Override
     public URI getPatternUri() {
         return graphElement.getPatternUri();

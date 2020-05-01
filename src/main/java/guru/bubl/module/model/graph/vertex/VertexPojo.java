@@ -178,4 +178,5 @@ public class VertexPojo implements Vertex {
     public void setCreationDate(Long creationDate) {
         graphElement.setCreationDate(creationDate);
     }
+
 }

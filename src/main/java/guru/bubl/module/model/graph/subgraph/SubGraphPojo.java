@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
+import guru.bubl.module.model.graph.fork.Fork;
 import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.relation.Relation;
 import guru.bubl.module.model.graph.relation.RelationPojo;
@@ -98,6 +99,10 @@ public class SubGraphPojo implements SubGraph {
     @Override
     public TagPojo getCenterMeta() {
         return centerTag;
+    }
+
+    public Fork getCenter(URI uri) {
+        return this.getCenterMeta() == null ? this.vertexWithIdentifier(uri) : this.getCenterMeta();
     }
 
     public Boolean hasCenter(URI uri) {
