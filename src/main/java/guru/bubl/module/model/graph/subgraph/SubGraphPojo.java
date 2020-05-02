@@ -138,6 +138,7 @@ public class SubGraphPojo implements SubGraph {
         return this.vertices().isEmpty();
     }
 
+    @Override
     public Map<URI, GroupRelationPojo> getGroupRelations() {
         return groupRelations;
     }

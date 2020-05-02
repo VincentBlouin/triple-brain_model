@@ -4,6 +4,7 @@
 
 package guru.bubl.module.model.graph.subgraph;
 
+import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
 import guru.bubl.module.model.graph.relation.Relation;
 import guru.bubl.module.model.graph.tag.TagPojo;
 import guru.bubl.module.model.graph.vertex.Vertex;
@@ -35,4 +36,6 @@ public interface SubGraph {
     TagPojo getCenterMeta();
 
     Boolean isEmpty();
+
+    Map<URI, GroupRelationPojo> getGroupRelations();
 }
