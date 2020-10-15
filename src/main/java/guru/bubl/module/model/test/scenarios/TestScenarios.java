@@ -41,7 +41,7 @@ public class TestScenarios {
     protected GraphComponentTest graphComponentTest;
 
     public GraphElementsOfTestScenario buildTestScenario(UserGraph userGraph) {
-        graphComponentTest.removeWholeGraph();
+        graphComponentTest.removeGraphElements();
         VertexOperator vertexA = vertexFactory.withUri(
                 userGraph.createVertex().uri()
         );

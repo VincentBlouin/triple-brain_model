@@ -12,8 +12,12 @@ import guru.bubl.module.model.graph.vertex.VertexOperator;
 public interface GraphComponentTest {
     int numberOfEdgesAndVertices();
     SubGraphPojo wholeGraphAroundDefaultCenterVertex();
-    SubGraphOperator wholeGraph();
-    void removeWholeGraph();
+    default void removeWholeGraph(){
+        removeGraphElements();
+        removeUsers();
+    };
+    void removeGraphElements();
+    void removeUsers();
     User user();
     void user(User user);
     UserGraph userGraph();
