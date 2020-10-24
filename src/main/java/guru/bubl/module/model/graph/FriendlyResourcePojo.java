@@ -14,6 +14,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 
 public class FriendlyResourcePojo implements FriendlyResource {
@@ -56,6 +57,7 @@ public class FriendlyResourcePojo implements FriendlyResource {
             String label,
             String comment
     ) {
+        this.uri = URI.create(UUID.randomUUID().toString());
         this.label = label;
         this.comment = comment;
     }
