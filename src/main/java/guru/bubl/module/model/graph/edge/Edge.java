@@ -9,6 +9,8 @@ public interface Edge {
 
     URI destinationUri();
 
+    URI uri();
+
     @Deprecated
     GraphElement source();
 

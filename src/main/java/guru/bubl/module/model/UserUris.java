@@ -200,4 +200,8 @@ public class UserUris {
         );
     }
 
+    public static String[] urisToString(Set<URI> uris) {
+        return uris.stream().map(URI::toString).toArray(String[]::new);
+    }
+
 }

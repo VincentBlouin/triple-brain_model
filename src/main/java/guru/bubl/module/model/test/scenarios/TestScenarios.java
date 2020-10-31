@@ -86,7 +86,7 @@ public class TestScenarios {
         RelationOperator edgeCE = relationFactory.withUri(
                 groupRelation.addVertexAndRelation().uri()
         );
-        edgeCE.label("edge DC");
+        edgeCE.label("edge CE");
         VertexOperator vertexE = vertexFactory.withUri(edgeCE.destinationUri());
         vertexE.label("vertex E");
 
@@ -96,7 +96,11 @@ public class TestScenarios {
                 vertexC,
                 vertexD,
                 vertexE,
-                groupRelation
+                groupRelation,
+                edgeAB,
+                edgeBC,
+                edgeCD,
+                edgeCE
         );
     }
 
