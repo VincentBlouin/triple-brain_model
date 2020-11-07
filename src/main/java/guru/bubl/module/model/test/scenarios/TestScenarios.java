@@ -5,6 +5,7 @@
 package guru.bubl.module.model.test.scenarios;
 
 import guru.bubl.module.model.graph.*;
+import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.graph_element.GraphElementOperator;
 import guru.bubl.module.model.graph.graph_element.GraphElementPojo;
 import guru.bubl.module.model.graph.relation.Relation;
@@ -125,7 +126,7 @@ public class TestScenarios {
         return pineApple;
     }
 
-    public static TagPojo tagFromFriendlyResource(GraphElementOperator resource) {
+    public static TagPojo tagFromFriendlyResource(GraphElement resource) {
         FriendlyResourcePojo friendlyResourcePojo = new FriendlyResourcePojo(
                 resource.label(),
                 resource.comment()

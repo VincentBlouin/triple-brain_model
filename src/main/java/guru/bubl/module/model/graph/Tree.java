@@ -11,9 +11,9 @@ public class Tree {
 
     private URI rootUri;
 
-    private Tag rootAsTag;
+    private TagPojo rootAsTag;
 
-    public static Tree withUrisOfGraphElementsAndRootUriAndTag(Set<URI> urisOfGraphElements, URI rootUri, Tag rootAsTag) {
+    public static Tree withUrisOfGraphElementsAndRootUriAndTag(Set<URI> urisOfGraphElements, URI rootUri, TagPojo rootAsTag) {
         return new Tree(
                 urisOfGraphElements,
                 rootUri,
@@ -21,7 +21,7 @@ public class Tree {
         );
     }
 
-    private Tree(Set<URI> urisOfGraphElements, URI rootUri, Tag rootAsTag) {
+    private Tree(Set<URI> urisOfGraphElements, URI rootUri, TagPojo rootAsTag) {
         this.urisOfGraphElements = urisOfGraphElements;
         this.rootUri = rootUri;
         this.rootAsTag = rootAsTag;
