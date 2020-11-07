@@ -6,7 +6,7 @@ import guru.bubl.module.model.graph.Tree;
 import java.net.URI;
 
 public interface TreeCopier {
-    URI ofAnotherUser(
+    URI copyTreeOfUser(
             Tree tree,
             User copiedUser
     );
