@@ -35,7 +35,7 @@ public class Tree {
         return rootUri;
     }
 
-    public Tag getRootAsTag() {
+    public TagPojo getRootAsTag() {
         return rootAsTag;
     }
 }
