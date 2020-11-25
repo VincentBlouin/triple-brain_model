@@ -11,4 +11,10 @@ public interface TreeCopier {
             Tree tree,
             User copiedUser
     );
+
+    Map<URI, URI> copyTreeOfUserWithNewParentUri(
+            Tree tree,
+            User copiedUser,
+            URI newParentUri
+    );
 }

@@ -194,10 +194,14 @@ public class UserUris {
         );
     }
 
-    public Boolean areAllUrisOwned(Set<URI> uris){
+    public Boolean areAllUrisOwned(Set<URI> uris) {
         return uris.stream().allMatch(
-                uri -> UserUris.ownerUserNameFromUri(uri).equals(userName)
+                this::isOwnerOfUri
         );
+    }
+
+    public Boolean isOwnerOfUri(URI uri) {
+        return UserUris.ownerUserNameFromUri(uri).equals(userName);
     }
 
     public static String[] urisToString(Set<URI> uris) {
