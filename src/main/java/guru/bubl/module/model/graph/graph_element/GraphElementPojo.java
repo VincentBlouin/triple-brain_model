@@ -22,7 +22,7 @@ public class GraphElementPojo implements GraphElement {
     private Map<URI, TagPojo> identifications;
     private String childrenIndex;
     private String font;
-    URI patternUri;
+    URI copiedFromUri;
 
     @Deprecated
     public GraphElementPojo(GraphElementOperator graphElementOperator) {
@@ -49,11 +49,11 @@ public class GraphElementPojo implements GraphElement {
     public GraphElementPojo(
             FriendlyResourcePojo friendlyResource,
             Map<URI, TagPojo> identifications,
-            URI patternUri
+            URI copiedFromUri
     ) {
         this.friendlyResource = friendlyResource;
         this.identifications = identifications;
-        this.patternUri = patternUri;
+        this.copiedFromUri = copiedFromUri;
     }
 
     public GraphElementPojo(
@@ -96,13 +96,13 @@ public class GraphElementPojo implements GraphElement {
         return childrenIndex == null ? "" : childrenIndex;
     }
 
-    public void setPatternUri(URI patternUri) {
-        this.patternUri = patternUri;
+    public void setCopiedFromUri(URI copiedFromUri) {
+        this.copiedFromUri = copiedFromUri;
     }
 
     @Override
-    public URI getPatternUri() {
-        return patternUri;
+    public URI getCopiedFromUri() {
+        return copiedFromUri;
     }
 
     @Override

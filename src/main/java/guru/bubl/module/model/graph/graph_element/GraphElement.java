@@ -19,7 +19,7 @@ public interface GraphElement extends FriendlyResource {
 
     String getChildrenIndex();
 
-    URI getPatternUri();
+    URI getCopiedFromUri();
 
     ShareLevel getShareLevel();
 

@@ -52,8 +52,8 @@ public class GroupRelationPojo implements GroupRelation, EdgePojo {
     }
 
     @Override
-    public URI getPatternUri() {
-        return graphElement.getPatternUri();
+    public URI getCopiedFromUri() {
+        return graphElement.getCopiedFromUri();
     }
 
     @Override

@@ -215,8 +215,8 @@ public class TagPojo implements Tag {
     }
 
     @Override
-    public URI getPatternUri() {
-        return graphElement.getPatternUri();
+    public URI getCopiedFromUri() {
+        return graphElement.getCopiedFromUri();
     }
 
     public void setShareLevel(ShareLevel shareLevel) {

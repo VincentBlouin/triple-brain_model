@@ -156,8 +156,8 @@ public class RelationPojo implements Relation, EdgePojo {
     }
 
     @Override
-    public URI getPatternUri() {
-        return graphElement.getPatternUri();
+    public URI getCopiedFromUri() {
+        return graphElement.getCopiedFromUri();
     }
 
 
