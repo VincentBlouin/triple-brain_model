@@ -18,4 +18,23 @@ public class Notification {
         this.action = action;
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public URI getRootUri() {
+        return rootUri;
+    }
+
+    public URI getWatchUri() {
+        return watchUri;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getAction() {
+        return action;
+    }
 }
