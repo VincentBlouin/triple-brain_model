@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface NotificationOperator {
     void add();
-    List<Notification> listForUser(User user);
+    List<Notification> listForUserAndNbSkip(User user, Integer nbSkip);
 }

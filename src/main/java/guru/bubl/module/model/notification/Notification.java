@@ -4,25 +4,19 @@ import java.net.URI;
 import java.util.Date;
 
 public class Notification {
-    private String label;
     private URI rootUri;
     private URI watchUri;
-    private Date date;
+    private Date creationDate;
     private String action;
 
     private String watchLabel;
 
-    public Notification(String label, URI rootUri, URI watchUri, Date date, String action, String watchLabel) {
-        this.label = label;
+    public Notification(URI rootUri, URI watchUri, Date creationDate, String action, String watchLabel) {
         this.rootUri = rootUri;
         this.watchUri = watchUri;
-        this.date = date;
+        this.creationDate = creationDate;
         this.action = action;
         this.watchLabel = watchLabel;
-    }
-
-    public String getLabel() {
-        return label;
     }
 
     public URI getRootUri() {
@@ -33,8 +27,8 @@ public class Notification {
         return watchUri;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
     public String getAction() {
