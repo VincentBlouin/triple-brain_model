@@ -17,8 +17,8 @@ public class UserJson {
             PASSWORD = "password",
             PREFERRED_LOCALES = "preferred_locales";
 
-    public static JSONObject toJson(User user){
-        try{
+    public static JSONObject toJson(User user) {
+        try {
             return new JSONObject()
                     .put(
                             ID, user.id()
@@ -29,13 +29,18 @@ public class UserJson {
                             EMAIL, user.email()
                     )
                     .put(
+                            "consultNotificationsDate",
+                            user.getConsultNotificationDate()
+                    )
+                    .put(
                             PREFERRED_LOCALES, user.getPreferredLocalesAsString()
                     );
-        }catch(JSONException e){
+        } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
-    public static User fromJson(String json){
+
+    public static User fromJson(String json) {
         return JsonUtils.getGson().fromJson(json, User.class);
     }
 }

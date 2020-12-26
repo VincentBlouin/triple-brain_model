@@ -21,6 +21,8 @@ public class User {
             salt,
             preferredLocales = new JSONArray().toString();
 
+    private Date consultNotificationDate;
+
     public static User withEmailAndUsername(String email, String username) {
         return new User(
                 email,
@@ -155,5 +157,13 @@ public class User {
     public User setPreferredLocales(List<Locale> preferredLocales) {
         this.preferredLocales = preferredLocales.toString();
         return this;
+    }
+
+    public Date getConsultNotificationDate() {
+        return consultNotificationDate;
+    }
+
+    public void setConsultNotificationDate(Date consultNotificationDate) {
+        this.consultNotificationDate = consultNotificationDate;
     }
 }
