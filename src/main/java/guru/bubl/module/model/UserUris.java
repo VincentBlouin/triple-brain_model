@@ -44,6 +44,10 @@ public class UserUris {
         return uri.toString().contains("/graph/gr/");
     }
 
+    public static Boolean isUriOfARelation(URI uri) {
+        return uri.toString().contains("/graph/edge/");
+    }
+
     public static Boolean isMindRespectUri(URI uri) {
         return uri.toString().startsWith(BASE_URI);
     }
