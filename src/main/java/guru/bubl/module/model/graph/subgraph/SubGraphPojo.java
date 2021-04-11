@@ -6,6 +6,7 @@ package guru.bubl.module.model.graph.subgraph;
 
 import guru.bubl.module.model.graph.fork.Fork;
 import guru.bubl.module.model.graph.graph_element.GraphElement;
+import guru.bubl.module.model.graph.group_relation.GroupRelation;
 import guru.bubl.module.model.graph.relation.Relation;
 import guru.bubl.module.model.graph.relation.RelationPojo;
 import guru.bubl.module.model.graph.group_relation.GroupRelationPojo;
@@ -23,6 +24,13 @@ public class SubGraphPojo implements SubGraph {
     private Map<URI, RelationPojo> edges = new HashMap<>();
     Map<URI, GroupRelationPojo> groupRelations = new HashMap<>();
     private TagPojo centerTag;
+
+    public static SubGraphPojo empty() {
+        return new SubGraphPojo(
+                new HashMap<>(),
+                new HashMap<>()
+        );
+    }
 
     public static SubGraphPojo withCenterUriVerticesAndEdges(Map<URI, VertexPojo> vertices, Map<URI, RelationPojo> edges) {
         return new SubGraphPojo(vertices, edges);
@@ -136,6 +144,28 @@ public class SubGraphPojo implements SubGraph {
 
     public Boolean isEmpty() {
         return this.vertices().isEmpty();
+    }
+
+    @Override
+    public void mergeWith(SubGraphPojo subGraph) {
+        for (VertexPojo vertex : subGraph.vertices().values()) {
+            vertices.put(
+                    vertex.uri(),
+                    vertex
+            );
+        }
+        for (RelationPojo relation : subGraph.edges().values()) {
+            edges.put(
+                    relation.uri(),
+                    relation
+            );
+        }
+        for (GroupRelationPojo groupRelation : subGraph.groupRelations.values()) {
+            groupRelations.put(
+                    groupRelation.uri(),
+                    groupRelation
+            );
+        }
     }
 
     @Override

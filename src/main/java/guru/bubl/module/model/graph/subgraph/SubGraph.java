@@ -13,6 +13,8 @@ import java.net.URI;
 import java.util.Map;
 
 public interface SubGraph {
+    void mergeWith(SubGraphPojo subGraph);
+
     Vertex vertexWithIdentifier(URI identifier);
 
     Relation edgeWithIdentifier(URI identifier);
