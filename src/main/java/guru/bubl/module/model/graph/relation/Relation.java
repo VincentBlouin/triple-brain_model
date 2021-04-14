@@ -19,15 +19,4 @@ public interface Relation extends Edge, GraphElement {
         return sourceShareLevel.getIndex() < destinationShareLevel.getIndex() ?
                 sourceShareLevel : destinationShareLevel;
     }
-
-    default URI getOtherForkUri(URI forkUri) {
-        if (this.sourceUri().equals(forkUri)) {
-            return this.destinationUri();
-        } else if (this.destinationUri().equals(forkUri)) {
-            return this.sourceUri();
-        } else {
-            return null;
-        }
-    }
-
 }

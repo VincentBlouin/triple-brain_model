@@ -1,6 +1,7 @@
 package guru.bubl.module.model.graph.group_relation;
 
 import guru.bubl.module.model.Image;
+import guru.bubl.module.model.graph.graph_element.GraphElement;
 import guru.bubl.module.model.graph.graph_element.GraphElementPojo;
 import guru.bubl.module.model.graph.ShareLevel;
 import guru.bubl.module.model.graph.edge.EdgePojo;
@@ -67,6 +68,16 @@ public class GroupRelationPojo implements GroupRelation, EdgePojo {
     }
 
     @Override
+    public GraphElement source() {
+        return null;
+    }
+
+    @Override
+    public GraphElement destination() {
+        return null;
+    }
+
+    @Override
     public boolean hasLabel() {
         return graphElement.hasLabel();
     }
@@ -127,6 +138,16 @@ public class GroupRelationPojo implements GroupRelation, EdgePojo {
 
     public URI getSourceForkUri() {
         return this.sourceForkUri;
+    }
+
+    @Override
+    public URI sourceUri() {
+        return getSourceForkUri();
+    }
+
+    @Override
+    public URI destinationUri() {
+        return sourceUri();
     }
 
     @Override

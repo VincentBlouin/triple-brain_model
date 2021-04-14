@@ -11,6 +11,19 @@ public interface Edge {
 
     URI uri();
 
+    default URI getOtherForkUri(URI forkUri) {
+        if (this.sourceUri() == null) {
+            return null;
+        }
+        if (this.sourceUri().equals(forkUri)) {
+            return this.destinationUri();
+        } else if (this.destinationUri().equals(forkUri)) {
+            return this.sourceUri();
+        } else {
+            return null;
+        }
+    }
+
     @Deprecated
     GraphElement source();
 
