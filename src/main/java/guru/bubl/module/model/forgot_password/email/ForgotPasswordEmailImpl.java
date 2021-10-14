@@ -37,6 +37,7 @@ public class ForgotPasswordEmailImpl implements ForgotPasswordEmail {
                 "text/plain",
                 msgBody
         );
+        System.out.println("sending forgot password email using from " + EmailMindRespect.FROM);
         mail = new Mail(EmailMindRespect.FROM, subject, to, content);
         emailMindRespect.send(mail);
         return mail;
