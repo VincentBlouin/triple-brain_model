@@ -16,7 +16,7 @@ public class EmailMindRespect {
     SendGrid sendgrid;
 
     public static final Email FROM = new Email(
-            "mindrespect.com <no-reply@mindrespect.com>"
+            "mindrespect.com <vincent.blouin@gmail.com>"
     );
 
     public Response send(Mail mail) {
